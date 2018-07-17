@@ -1825,55 +1825,64 @@
   <div id="tambahjarakpagar" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form action="<?php echo base_url(). 'crud/tambah_aksi'; ?>" method="post">
-          <div class="modal-header">            
-            <h4 class="modal-title">Tambah Data Tanaman Jarak Pagar</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          </div>
-          <div class="modal-body">
-          
+        <div class="modal-header">            
+          <h4 class="modal-title">Tambah Data Tanaman Jarak Pagar</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+        <form method="post">
             <div class="form-group">
                 <label>Nama Tanaman</label>
-                <input type="text" class="form-control" name="NAMA_JARAK_PAGAR" required>
+                <input type="text" class="form-control" name="NAMA_JARAK_PAGAR" value="<?=isset($default['NAMA_JARAK_PAGAR'])? $default['NAMA_JARAK_PAGAR'] : ""?>" required>
               </div>          
               <div class="form-group">
                 <label>Komoditas</label>
-                <input type="text" class="form-control" name="KOMODITAS">
+                <input type="text" class="form-control" name="KOMODITAS" value="<?=isset($default['KOMODITAS'])? $default['KOMODITAS'] : ""?>">
               </div>
               <div class="form-group">
                 <label>Tahun Pelepasan</label>
-                <input type="text" class="form-control" name="TAHUN_PELEPASAN">
+                <input type="text" class="form-control" name="TAHUN_PELEPASAN" value="<?=isset($default['TAHUN_PELEPASAN'])? $default['TAHUN_PELEPASAN'] : ""?>">
               </div>
               <div class="form-group">
                 <label>Karakteristik</label>
-                <input type="text" class="form-control" name="KARAKTERISTIK">
+                <input type="text" class="form-control" name="KARAKTERISTIK" value="<?=isset($default['KARAKTERISTIK'])? $default['KARAKTERISTIK'] : ""?>">
               </div>
               <div class="form-group">
                 <label>Status</label>
-                <input type="text" class="form-control" name="STATUS">
+                <input type="text" class="form-control" name="STATUS" value="<?=isset($default['STATUS'])? $default['STATUS'] : ""?>">
               </div>
               <div class="form-group">
                 <label>Instansi</label>
-                <input type="text" class="form-control" name="INSTANSI">
+                <input type="text" class="form-control" name="INSTANSI" value="<?=isset($default['INSTANSI'])? $default['INSTANSI'] : ""?>">
               </div>
               <div class="form-group">
                 <label>Agroekosistem</label>
-                <input type="text" class="form-control" name="AGROEKOSISTEM">
+                <input type="text" class="form-control" name="AGROEKOSISTEM" value="<?=isset($default['AGROEKOSISTEM'])? $default['AGROEKOSISTEM'] : ""?>">
               </div>
               <div class="form-group">
                 <label>Deskripsi</label>
-                <input type="text" class="form-control" name="DESKRIPSI">
+                <input type="text" class="form-control" name="DESKRIPSI" value="<?=isset($default['DESKRIPSI'])? $default['DESKRIPSI'] : ""?>">
               </div>
                <div class="form-group">
                 <label>Upload Gambar</label> <!-- gambar nanti aja -->
-                <input type="file" name="GAMBAR" onchange="readURL(this);" />
+                <input type="file" name="GAMBAR" onchange="readURL(this);" / value="<?=isset($default['GAMBAR'])? $default['GAMBAR'] : ""?>">
                 <img id="blah" src="http://placehold.it/180" alt="your image" />
               </div> 
                   
           </div>
           <div class="modal-footer">
             <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
-            <input type="submit" class="btn btn-success" value="Tambah">
+            <!-- <input type="submit" class="btn btn-success" value="Tambah"> -->
+
+            
+            <!-- <button name="tombol_submit" class="btn btn-primary" type="submit" class="btn btn-success">
+              Simpan
+              <?php echo anchor('crud/tambah/'); ?> 
+
+            </button>
+ -->
+            <?php echo anchor('crud/tambah/','<input type="button" name="tombol_submit" class="btn btn-danger" value="AAAA">'); ?> 
+
           </div>
         </form>
       </div>

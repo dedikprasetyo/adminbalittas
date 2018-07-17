@@ -1,5 +1,4 @@
 <?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Crud extends CI_Controller{
  
@@ -10,6 +9,10 @@ class Crud extends CI_Controller{
 	}
  
 	function index(){
+
+
+		$this->load->model("m_data");
+
 		$data['jarak_pagar'] = $this->m_data->tampil_data()->result();
 		$this->load->view('v_admin',$data);
 		// $this->load->view('v_tampil',$data);
@@ -17,40 +20,40 @@ class Crud extends CI_Controller{
 
 
 	//2 nambah
-	function tambah(){
-		$this->load->view('v_admin');
-	}
+	// function tambah(){
+	// 	$this->load->view('v_admin');
+	// }
 	
-	function tambah_aksi(){ //jarak_pagar
-		$ID_DESKRIPSI_UMUM = '1';
-		$NAMA_JARAK_PAGAR = $this->input->post('NAMA_JARAK_PAGAR');
-		$KOMODITAS = $this->input->post('KOMODITAS');
-		$TAHUN_PELEPASAN = $this->input->post('TAHUN_PELEPASAN');
-		$KARAKTERISTIK = $this->input->post('KARAKTERISTIK');
-		$STATUS = $this->input->post('STATUS');
-		$INSTANSI = $this->input->post('INSTANSI');
-		$AGROEKOSISTEM = $this->input->post('AGROEKOSISTEM');
-		$DESKRIPSI = $this->input->post('DESKRIPSI');
-		$GAMBAR = $this->input->post('GAMBAR');
+	// function tambah_aksi(){ //jarak_pagar
+	// 	$ID_DESKRIPSI_UMUM = '1';
+	// 	$NAMA_JARAK_PAGAR = $this->input->post('NAMA_JARAK_PAGAR');
+	// 	$KOMODITAS = $this->input->post('KOMODITAS');
+	// 	$TAHUN_PELEPASAN = $this->input->post('TAHUN_PELEPASAN');
+	// 	$KARAKTERISTIK = $this->input->post('KARAKTERISTIK');
+	// 	$STATUS = $this->input->post('STATUS');
+	// 	$INSTANSI = $this->input->post('INSTANSI');
+	// 	$AGROEKOSISTEM = $this->input->post('AGROEKOSISTEM');
+	// 	$DESKRIPSI = $this->input->post('DESKRIPSI');
+	// 	$GAMBAR = $this->input->post('GAMBAR');
 
  
-		$data = array(
-			'ID_JARAK_PAGAR' => '0',
-			'ID_DESKRIPSI_UMUM' => '1',
-			'NAMA_JARAK_PAGAR' => $NAMA_JARAK_PAGAR,
-			'KOMODITAS' => $KOMODITAS,
-			'TAHUN_PELEPASAN' => $TAHUN_PELEPASAN,
-			'KARAKTERISTIK' => $KARAKTERISTIK,
-			'STATUS' => $STATUS,
-			'INSTANSI' => $INSTANSI,
-			'AGROEKOSISTEM' => $AGROEKOSISTEM,
-			'DESKRIPSI' => $DESKRIPSI,
-			'GAMBAR' => $GAMBAR
-			);
+	// 	$data = array(
+	// 		'ID_JARAK_PAGAR' => '0',
+	// 		'ID_DESKRIPSI_UMUM' => '1',
+	// 		'NAMA_JARAK_PAGAR' => $NAMA_JARAK_PAGAR,
+	// 		'KOMODITAS' => $KOMODITAS,
+	// 		'TAHUN_PELEPASAN' => $TAHUN_PELEPASAN,
+	// 		'KARAKTERISTIK' => $KARAKTERISTIK,
+	// 		'STATUS' => $STATUS,
+	// 		'INSTANSI' => $INSTANSI,
+	// 		'AGROEKOSISTEM' => $AGROEKOSISTEM,
+	// 		'DESKRIPSI' => $DESKRIPSI,
+	// 		'GAMBAR' => $GAMBAR
+	// 		);
 
-		$this->m_data->input_data($data,'jarak_pagar');
-		redirect('http://localhost/adminbalittas');
-	}
+	// 	$this->m_data->input_data($data,'jarak_pagar');
+	// 	redirect('http://localhost/adminbalittas');
+	// }
 
 	//3 hapus
 	function hapus($ID_JARAK_PAGAR){
@@ -59,4 +62,16 @@ class Crud extends CI_Controller{
 		redirect('http://localhost/adminbalittas');
 	}
 
+	function tambah(){
+		$this->load->model("m_data");
+		// $data['tipe'] = "Add";
+
+		if(isset($_POST['tombol_submit'])){
+			//proses simpan dilakukan
+			$this->m_data->simpan_data($_POST);
+			redirect('http://localhost/adminbalittas');
+		}
+
+		$this->load->view("v_admin",$data);
+	}
 }
