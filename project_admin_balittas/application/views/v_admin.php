@@ -7,6 +7,7 @@
     <title>Admin Balittas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<<<<<<< HEAD
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -15,6 +16,16 @@
     <link href="<?php echo base_url(); ?>/assets/css/styleadmin.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/assets/css/simple-sidebar.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>/assets/img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
+=======
+    <link rel="stylesheet" href="<?php echo base_url()?>/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="<?php echo base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>/assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>/assets/css/styleadmin.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>/assets/css/simple-sidebar.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>/assets/img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
+>>>>>>> 894c43880c54cde82c0c0b6deb976345bfba4dfb
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </head>
   <body>
@@ -2834,10 +2845,23 @@
           </div>
     </div>
 </footer>
+<<<<<<< HEAD
     <script src="<?php echo base_url(); ?>/assets/js/jquery-3.3.1.min.js"></script> 
     <script src="<?php echo base_url(); ?>/assets/js/jquery.easing.1.3.js"></script> 
     <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/script.js"></script>
     <script src="<?php echo base_url(); ?>/assets/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+=======
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="<?php echo base_url()?>/assets/js/jquery-3.3.1.min.js"></script> 
+    <script src="<?php echo base_url()?>/assets/js/jquery.easing.1.3.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js"></script>
+
+    <script src="<?php echo base_url()?>/assets/js/script.js"></script>
+    <script src="<?php echo base_url()?>/assets/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+>>>>>>> 894c43880c54cde82c0c0b6deb976345bfba4dfb
   </body>
 </html>
