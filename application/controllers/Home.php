@@ -3,7 +3,7 @@
 	{		
 		public function index()
 		{
-			$this->load->view('HalamanUtama');
+			$this->load->view('HalamanUtamaSerat');
 		}	
 		
 

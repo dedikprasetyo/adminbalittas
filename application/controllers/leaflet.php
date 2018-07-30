@@ -3,7 +3,7 @@
 	{
 		
 		public function index(){
-			$this->load->view('HalamanDetailLeaflet');
+			$this->load->view('DetailLeafletSerat');
 		}
 	} 
 ?>

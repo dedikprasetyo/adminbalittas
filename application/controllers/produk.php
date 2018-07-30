@@ -2,7 +2,7 @@
 	class produk extends CI_Controller{
 		
 		public function produk1(){
-			$this->load->view('HalamanProduk1');
+			$this->load->view('ProdukSerat');
 		}
 
 		public function produk2(){
