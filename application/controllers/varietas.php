@@ -56,5 +56,9 @@
 		public function detailWijen(){
 			$this->load->view('DetailWijen');
 		}
+
+		public function detailSisal(){
+			$this->load->view('DetailSisal');
+		}
 	}
  ?>

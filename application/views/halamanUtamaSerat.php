@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="bootstrap/css/balittas.css">
 		<link rel="stylesheet" href="bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
-		<!-- <link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon"> -->
+		<link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -32,32 +32,25 @@
 				    </div>			
 				    <div class="collapse navbar-collapse">			    
 					    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;margin-right: 75px;">
-					      	<a href="halamanUtama.html" class="glyphicon glyphicon-home dropbtnHeader" style="text-decoration-line: none;font-size: 14px;"></a>
+					      	<a href="#home" class="glyphicon glyphicon-home dropbtnHeader halaman" style="text-decoration-line: none;font-size: 14px;"></a>
 					      	<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Tanaman Serat <span class="caret"></div>
-							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -35px;">
+							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px 6px;">
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-6 col-lg-6">
-								  				<a href="#varietas" class="halaman" style="margin-top: 10px;">Jarak Pagar</a>	
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Jarak Kepyar</a>
+							          			<a href="#varietas" class="halaman" style="margin-top: 10px;">Kapas</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#">Kapas</a>
+							          			<a href="#kapuk" class="halaman">Kapuk</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#">Kapuk</a>
-							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#" style="margin-bottom: 10px;">Kenaf</a>
+							          			<a href="#kenaf" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
 								  			</div>
 								  			<div class="col-sm-6 col-lg-6">
-								  				<a href="#" style="margin-top:10px;">Rami</a>	
+								  				<a href="#rami" class="halaman" style="margin-top:10px;">Rami</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Rosela</a>	
+								  				<a href="#rosela" class="halaman">Rosela</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Tebu</a>
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#wijen" class="halaman">Wijen</a>
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+								  				<a href="#rosela" class="halaman">Sisal</a>	
 								  			</div>
 								  		</div>
 								  	</div>							  	
@@ -65,7 +58,7 @@
 							</div>
 							<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Budidaya Tanaman Serat <span class="caret"></div>
-							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -126px;">
+							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -134px;">
 								  	<div class="container-fluid">		
 							          	<a href="#" style="margin-top: 10px; margin-bottom: 10px;">Masing - masing Komoditas</a>					    
 								  	</div>
@@ -73,17 +66,17 @@
 							</div>
 							<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Produk <span class="caret"></div>
-							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -338px;">
+							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -348px;">
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-12 col-lg-12">
 								  				<a href="<?php echo base_url('produk/produk1')?>" style="margin-top: 10px;">Benih</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#produk" class="halaman">Alat dan Mesin</a>
+								  				<a href="<?php echo base_url('produk/produk2') ?>" class="halaman">Alat dan Mesin</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#">Formula</a>
+							          			<a href="<?php echo base_url('produk/produk3') ?>">Formula</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#" style="margin-bottom: 10px;">Produk Hilir</a>
+							          			<a href="<?php echo base_url('produk/produk4') ?>" style="margin-bottom: 10px;">Produk Hilir</a>
 								  			</div>
 								  		</div>							  		
 								  	</div>							  								          
@@ -147,39 +140,9 @@
 					  	<li><a href="#">Pictures</a></li>
 					  	<li class="active">Vacation</li> 
 					</ul>
-				<h3 class="text-left" style="color:black; font-family: Minion Pro">Varietas Terbaru Jarak Pagar</h3>
+				<h3 class="text-left" style="color:black; font-family: Minion Pro">Varietas Terbaru</h3>
 				<hr style="border-color: grey; margin-top: -8px;">
 				<div class="row">
-					<div class="col-xs-12 col-sm-4 col-lg-4"> 
-						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
-							<a href="<?php echo base_url('varietas/detailVarietas') ?>" style="text-decoration-line: none;">
-								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
-								<span class="label label-success"><p class="glyphicon glyphicon-calendar"></p> 3 Juli 2017</span>
-								<span class="label label-warning"><p class="glyphicon glyphicon-time"></p> 14:00</span>	
-								<h4 style="color:#fece00;">Jarak Pagar</h4>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
-							<br>							
-							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailJarakPagar') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
-							</div>
-						</div>						
-					</div>
-					<div class="col-xs-12 col-sm-4 col-lg-4"> 
-						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
-							<a href="" style="text-decoration-line: none;">
-								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
-								<span class="label label-success"><p class="glyphicon glyphicon-calendar"></p> 3 Juli 2017</span>
-								<span class="label label-warning"><p class="glyphicon glyphicon-time"></p> 14:00</span>	
-								<h4 style="color:#fece00;">Jarak Kepyar</h4>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
-							<br>							
-							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailJarakKepyar') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
-							</div>
-						</div>						
-					</div>
 					<div class="col-xs-12 col-sm-4 col-lg-4"> 
 						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
 							<a href="" style="text-decoration-line: none;">
@@ -195,7 +158,7 @@
 							</div>
 						</div>						
 					</div>
-					<div class="col-xs-12 col-sm-4 col-lg-4"> 
+					<div class="col-xs-12 col-sm-4 col-lg-4" id="kapuk"> 
 						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
 							<a href="" style="text-decoration-line: none;">
 								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
@@ -210,7 +173,7 @@
 							</div>
 						</div>						
 					</div>
-					<div class="col-xs-12 col-sm-4 col-lg-4"> 
+					<div class="col-xs-12 col-sm-4 col-lg-4" id="kenaf"> 
 						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
 							<a href="" style="text-decoration-line: none;">
 								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
@@ -225,7 +188,7 @@
 							</div>
 						</div>						
 					</div>
-					<div class="col-xs-12 col-sm-4 col-lg-4"> 
+					<div class="col-xs-12 col-sm-4 col-lg-4" id="rami"> 
 						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
 							<a href="" style="text-decoration-line: none;">
 								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
@@ -240,7 +203,7 @@
 							</div>
 						</div>						
 					</div>
-					<div class="col-xs-12 col-sm-4 col-lg-4"> 
+					<div class="col-xs-12 col-sm-4 col-lg-4" id="rosela"> 
 						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
 							<a href="" style="text-decoration-line: none;">
 								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
@@ -255,33 +218,18 @@
 							</div>
 						</div>						
 					</div>
-					<div class="col-xs-12 col-sm-4 col-lg-4"> 
+					<div class="col-xs-12 col-sm-4 col-lg-4" id="tebu"> 
 						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
 							<a href="" style="text-decoration-line: none;">
 								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
 								<span class="label label-success"><p class="glyphicon glyphicon-calendar"></p> 3 Juli 2017</span>
 								<span class="label label-warning"><p class="glyphicon glyphicon-time"></p> 14:00</span>	
-								<h4 style="color:#fece00;">Tebu</h4>
+								<h4 style="color:#fece00;">Sisal</h4>
 							</a>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
 							<br>							
 							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
 								<a href="<?php echo base_url('varietas/detailTebu') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
-							</div>
-						</div>						
-					</div>
-					<div class="col-xs-12 col-sm-4 col-lg-4" id="wijen"> 
-						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
-							<a href="" style="text-decoration-line: none;">
-								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
-								<span class="label label-success"><p class="glyphicon glyphicon-calendar"></p> 3 Juli 2017</span>
-								<span class="label label-warning"><p class="glyphicon glyphicon-time"></p> 14:00</span>	
-								<h4 style="color:#fece00;">Wijen</h4>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
-							<br>							
-							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailWijen') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 							</div>
 						</div>						
 					</div>

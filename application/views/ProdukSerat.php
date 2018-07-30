@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="<?php echo base_url()?>bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="<?php echo base_url()?>bootstrap/css/balittas.css">
 		<link rel="stylesheet" href="<?php echo base_url() ?>bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -20,7 +21,7 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top navbarHover">
 				<div class="container-fluid">
 				    <div class="navbar-header" style="margin-top: 5px; margin-bottom: 3px;">						    
-				      <a href=""><img src="<?php echo base_url()?>item img/logoBalittas2.png" style="width:280px;margin-top: -18px;margin-bottom: -6px;margin-left: 5px;"></a>
+				      <a href="<?php echo base_url('Home') ?>"><img src="<?php echo base_url() ?>item img/logoBalittas2.png" style="width:280px;margin-top: -18px;margin-bottom: -6px;margin-left: 5px;"></a>
 				      <button type="botton" class="navbar-toggle" data-toggle="collapse" data-target="#main" style="margin-top: 10px;">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -29,32 +30,25 @@
 				    </div>			
 				    <div class="collapse navbar-collapse">			    
 					    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;margin-right: 75px;">
-					      	<a href="halamanUtama.html" class="glyphicon glyphicon-home dropbtnHeader" style="text-decoration-line: none;font-size: 14px;"></a>
+					      	<a href="#home" class="glyphicon glyphicon-home dropbtnHeader halaman" style="text-decoration-line: none;font-size: 14px;"></a>
 					      	<div class="dropdownHeader">
-							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Varietas <span class="caret"></div>
-							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -35px;">
+							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Tanaman Serat <span class="caret"></div>
+							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px 6px;">
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-6 col-lg-6">
-								  				<a href="#" style="margin-top: 10px;">Jarak Pagar</a>	
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Jarak Kepyar</a>
+							          			<a href="<?php echo base_url('varietas/detailKapas') ?>" class="halaman" style="margin-top: 10px;">Kapas</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#">Kapas</a>
+							          			<a href="<?php echo base_url('varietas/detailKapuk') ?>" class="halaman">Kapuk</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#">Kapuk</a>
-							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#" style="margin-bottom: 10px;">Kenaf</a>
+							          			<a href="<?php echo base_url('varietas/detailKenaf') ?>" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
 								  			</div>
 								  			<div class="col-sm-6 col-lg-6">
-								  				<a href="#" style="margin-top:10px;">Rami</a>	
+								  				<a href="<?php echo base_url('varietas/detailRami') ?>" class="halaman" style="margin-top:10px;">Rami</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Rosela</a>	
+								  				<a href="<?php echo base_url('varietas/detailRosela') ?>" class="halaman">Rosela</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Tebu</a>
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Wijen</a>
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+								  				<a href="<?php echo base_url('varietas/detailSisal') ?>" class="halaman">Sisal</a>	
 								  			</div>
 								  		</div>
 								  	</div>							  	
@@ -62,7 +56,7 @@
 							</div>
 							<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Budidaya Tanaman Serat <span class="caret"></div>
-							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -126px;">
+							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -134px;">
 								  	<div class="container-fluid">		
 							          	<a href="#" style="margin-top: 10px; margin-bottom: 10px;">Masing - masing Komoditas</a>					    
 								  	</div>
@@ -70,17 +64,17 @@
 							</div>
 							<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Produk <span class="caret"></div>
-							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -338px;">
+							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -348px;">
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-12 col-lg-12">
-								  				<a href="#" style="margin-top: 10px;">Benih</a>	
+								  				<a href="<?php echo base_url('produk/produk1')?>" style="margin-top: 10px;">Benih</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Alat dan Mesin</a>
+								  				<a href="<?php echo base_url('produk/produk2')?>" class="halaman">Alat dan Mesin</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#">Formula</a>
+							          			<a href="<?php echo base_url('produk/produk3')?>">Formula</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#" style="margin-bottom: 10px;">Produk Hilir</a>
+							          			<a href="<?php echo base_url('produk/produk4')?>" style="margin-bottom: 10px;">Produk Hilir</a>
 								  			</div>
 								  		</div>							  		
 								  	</div>							  								          
@@ -124,7 +118,7 @@
 					    </ul>				    
 				    </div>
 				</div>
-			</nav>			
+			</nav>				
 				
 			<!-- </div> -->
 			<!-- gambar tengah -->			
@@ -137,11 +131,11 @@
 				    <p>Lorem ipsum..</p>
 			  	</div> -->
 			<!-- </div>	 -->
-			<div class="containerImg">
+			<div class="containerImg" id="home">
 				<img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
 			 	<div class="contentImg text-center">
-				    <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Produk</h1>
-				    <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Produk</h1>			    
+				    <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Benih</h1>
+				    <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Benih</h1>			    
 			  	</div>
 			</div>	
 			
@@ -335,25 +329,25 @@
 						<div class="col-sm-4 col-lg-4 batasfooter">
 							<h3 style="margin-top: 0px; font-family: Minion Pro;">Sosial Media</h3>
 							<hr style="margin-top: 0px; margin-bottom: 13px; border-color: #fece00;">
-							<div class="row">
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" style="margin: 0px -7px 9px 0px;">
-									<a href="" ><i class="fa fa-facebook-square" aria-hidden="true" style="font-size:50px;"></i>
+							<div class="row" style="margin: 2px; margin-left: -3px;" >
+								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" ">
+									<a href="" ><i class="fa fa-facebook-square" aria-hidden="true" style="font-size:45px;"></i>
 										<!-- <img src="item img/fbb.png" class="icon-sosmed img-rounded" alt="Cinque Terre" width="50" height="50"> -->
 									</a>
 								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" style="margin: 0px -7px 9px 0px;">
+								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" >
 									<a href="">
-										<i class="fa fa-twitter-square" aria-hidden="true" style="font-size:50px;"></i>
+										<i class="fa fa-twitter-square" aria-hidden="true" style="font-size:45px;"></i>
 									</a>
 								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" style="margin: 0px -7px 9px 0px;">
+								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" >
 									<a href=""  >
-										<i class="fa fa-youtube-square" aria-hidden="true" style="font-size:50px;"></i>
+										<i class="fa fa-youtube-square" aria-hidden="true" style="font-size:45px;"></i>
 									</a>
 								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" style="margin: -3px -7px 9px 0px;">
+								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" style="margin-top: -3px;">
 									<a href=""  >
-										<i class="fa fa-instagram" aria-hidden="true" style="font-size:50px;"></i>
+										<i class="fa fa-instagram" aria-hidden="true" style="font-size:45px;"></i>
 									</a>
 								</div>
 							</div>
@@ -397,4 +391,11 @@
 				</div>
 			</div>
 	</footer>
+	<script src="<?php echo base_url() ?>bootstrap/js/bootstrap.min.js"></script>
+	 <script src="<?php echo base_url() ?>bootstrap/js/jquery-3.3.1.min.js"></script> 
+    <script src="<?php echo base_url() ?>bootstrap/js/jquery.easing.1.3.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   
+
+    <script src="<?php echo base_url() ?>bootstrap/js/script.js"></script>
 </html>

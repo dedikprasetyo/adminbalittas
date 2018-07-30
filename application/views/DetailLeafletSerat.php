@@ -25,7 +25,7 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top navbarHover">
 				<div class="container-fluid">
 				    <div class="navbar-header" style="margin-top: 5px; margin-bottom: 3px;">						    
-				      <a href=""><img src="item img/logoBalittas2.png" style="width:280px;margin-top: -18px;margin-bottom: -6px;margin-left: 5px;"></a>
+				      <a href="#home" class="halaman"><img src="item img/logoBalittas2.png" style="width:280px;margin-top: -18px;margin-bottom: -6px;margin-left: 5px;"></a>
 				      <button type="botton" class="navbar-toggle" data-toggle="collapse" data-target="#main" style="margin-top: 10px;">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -34,16 +34,16 @@
 				    </div>			
 				    <div class="collapse navbar-collapse">			    
 					    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;margin-right: 75px;">
-					      	<a href="halamanUtama.html" class="glyphicon glyphicon-home dropbtnHeader" style="text-decoration-line: none;font-size: 14px;"></a>
+					      	<a href="<?php echo base_url('Home') ?>" class="glyphicon glyphicon-home dropbtnHeader" style="text-decoration-line: none;font-size: 14px;"></a>
 					      	<div class="dropdownHeader">
-							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Varietas <span class="caret"></div>
-							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -35px;">
+							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Leaflet Serat<span class="caret"></div>
+							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -55px; min-width: 350px;">
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-6 col-lg-6">
-								  				<a href="#" style="margin-top: 10px;">Jarak Pagar</a>	
+								  				<a href="#Jarakpagar" class="halaman" style="margin-top: 10px;">Jarak Pagar</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Jarak Kepyar</a>
+								  				<a href="#Jarakkepyar" class="halaman">Jarak Kepyar</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 							          			<a href="#">Kapas</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
@@ -56,32 +56,32 @@
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 								  				<a href="#">Rosela</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Tebu</a>
+								  				<a href="#Tebu" class="halaman">Tebu</a>
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Wijen</a>
+								  				<a href="#wijen" class="halaman">Wijen</a>
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 								  			</div>
 								  		</div>
 								  	</div>							  	
 							  	</div>
 							</div>
-							<div class="dropdownHeader">
+							<!-- <div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Budidaya Tanaman Serat <span class="caret"></div>
 							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -126px;">
 								  	<div class="container-fluid">		
 							          	<a href="#" style="margin-top: 10px; margin-bottom: 10px;">Masing - masing Komoditas</a>					    
 								  	</div>
 							  	</div>
-							</div>
+							</div> -->
 							<div class="dropdownHeader">
-							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Produk <span class="caret"></div>
-							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -338px;">
+							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Leaflet Produk <span class="caret"></div>
+							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -175px; min-width: 350px;">
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-12 col-lg-12">
 								  				<a href="#" style="margin-top: 10px;">Benih</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Alat dan Mesin</a>
+								  				<a href="#alsin" class="halaman">Alat dan Mesin</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 							          			<a href="#">Formula</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
@@ -131,7 +131,7 @@
 				</div>
 			</nav>	
 			<!-- Gambar tengah -->									 
-			<div class="containerImg">
+			<div class="containerImg" id="home">
 				<img src="item img/tembakauHeader.jpg" alt="" style="width: 100%;">
 			 	<div class="contentImg text-center">
 				    <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Detail Leaflet</h1>
@@ -219,6 +219,13 @@
 							</div>						
 						</div>
 					</div>
+					<ul class="pager" >
+						<li><a href=""><</a></li>
+						<li><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">></a></li>
+					</ul>
 
 					<div class="row" id="Jarakpagar" style="background-color: #eee;  margin-top:20px;">
 							<div class="col-sm-3 col-lg-12">
@@ -253,6 +260,13 @@
 							</div>						
 						</div>
 					</div>
+					<ul class="pager" >
+						<li><a href=""><</a></li>
+						<li><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">></a></li>
+					</ul>
 
 					<div class="row" id="Jarakkepyar"  style="background-color: #eee;  margin-top:20px;">
 						<div class="col-sm-3 col-lg-12">
@@ -287,6 +301,13 @@
 							</div>						
 						</div>
 						</div>
+						<ul class="pager" >
+						<li><a href=""><</a></li>
+						<li><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">></a></li>
+						</ul>
 
 						<div class="row" id="wijen"  style="background-color: #eee;  margin-top:20px;">
 						<div class="col-sm-3 col-lg-12">
@@ -339,6 +360,13 @@
 							</div>				
 						</div>
 						</div>
+						<ul class="pager" >
+						<li><a href=""><</a></li>
+						<li><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">></a></li>
+						</ul>
 
 						<div class="row" id="alsin"  style="background-color: #eee; margin-top:20px;">
 						<div class="col-sm-3 col-lg-12">
@@ -382,7 +410,6 @@
 							</div>				
 						</div>
 					</div>
-
 						<ul class="pager" >
 						<li><a href=""><</a></li>
 						<li><a href="">1</a></li>
@@ -659,6 +686,13 @@
 				</div>
 			</div>
 	</footer>
+	<script src="<?php echo base_url() ?>bootstrap/js/bootstrap.min.js"></script>
+	 <script src="<?php echo base_url() ?>bootstrap/js/jquery-3.3.1.min.js"></script> 
+    <script src="<?php echo base_url() ?>bootstrap/js/jquery.easing.1.3.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   
+
+    <script src="<?php echo base_url() ?>bootstrap/js/script.js"></script>
 	
 </html>
 
