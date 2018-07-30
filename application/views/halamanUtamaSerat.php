@@ -124,7 +124,7 @@
 			<!-- gambar tengah -->			
 			<div class="containerImg text-center" id="home">
 				<video autoplay muted loop style="width: 100%">
-					<source src="item img/RoselaSeratFix.mp4" type="video/mp4">
+					<source src="item img/SeratRoselaFixNew.mp4" type="video/mp4">
 				</video>	
 			</div>					
 		</header>
