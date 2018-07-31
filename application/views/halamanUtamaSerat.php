@@ -30,9 +30,9 @@
 							<span class="icon-bar"></span>
 						</button>
 				    </div>			
-				    <div class="collapse navbar-collapse">			    
+				    <div class="collapse navbar-collapse no-touch">			    
 					    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;margin-right: 75px;">
-					      	<a href="#home" class="glyphicon glyphicon-home dropbtnHeader halaman" style="text-decoration-line: none;font-size: 14px;"></a>
+					      <a href="#home" class="halaman" style="text-decoration-line: none;font-size: 14px;"><i style="font-size:14px; color:white;" class="glyphicon glyphicon-home "></i></a>
 					      	<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Tanaman Serat <span class="caret"></div>
 							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px 6px;">
@@ -229,7 +229,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
 							<br>							
 							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailTebu') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+								<a href="<?php echo base_url('varietas/detailSisal') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 							</div>
 						</div>						
 					</div>

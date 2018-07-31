@@ -376,3 +376,7 @@
     background: white;
     color:#fece00;
 }
+
+.no-touch .glyphicon-home:hover{
+  color:#fece00!important;
+}
