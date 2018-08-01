@@ -15,13 +15,13 @@
 =======
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/font-awesome-4.7.0/css/font-awesome.min.css">
 >>>>>>> 9cc032552218c44c134ee71bfe1470ef8e502bcf
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="<?php echo base_url();?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/styleadmin.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/simple-sidebar.css" rel="stylesheet">
-    <link href="<?php echo base_url() ?>/assets/img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
+    <link href="<?php echo base_url() ?>/assets/img/Logo-Kementerian-Pertanian.png" rel="shortcut icon"> -->
 <<<<<<< HEAD
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
