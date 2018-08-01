@@ -7,7 +7,6 @@
     <title>Admin Balittas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<<<<<<< HEAD
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +15,6 @@
     <link href="<?php echo base_url(); ?>/assets/css/styleadmin.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/assets/css/simple-sidebar.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>/assets/img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
-=======
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="<?php echo base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +23,6 @@
     <link href="<?php echo base_url()?>/assets/css/styleadmin.css" rel="stylesheet">
     <link href="<?php echo base_url()?>/assets/css/simple-sidebar.css" rel="stylesheet">
     <link href="<?php echo base_url()?>/assets/img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
->>>>>>> 894c43880c54cde82c0c0b6deb976345bfba4dfb
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </head>
   <body>
@@ -43,43 +40,45 @@
               <span class="icon-bar"></span>
             </button>
         </div>
+        
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
-          <ul class="nav navbar-nav navbar-right" >
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Varietas <span class="caret"></span></a>
-              <ul class="dropdown-menu" style="margin:-5px 0px 0px 0px; width:280px; background-color:#fece00;">
-                <div class="container-fluid">
-                  <div class="col-sm-6 col-lg-6">
-                    <li><a href="#Welcome" class="halaman">Tembakau</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                    <li><a href="#JarakPagar" class="halaman">Jarak Pagar</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                    <li><a href="#JarakKepyar" class="halaman">Jarak Kepyar</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                    <li><a href="#Kapas" class="halaman">Kapas</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                    <li><a href="#Kapuk" class="halaman">Kapuk</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                  </div>
-                  <div class="col-sm-6 col-lg-6">
-                    <li><a href="#Kenaf" class="halaman">Kenaf</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                    <li><a href="#Rami" class="halaman">Rami</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                    <li><a href="#Rosela" class="halaman">Rosela</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                    <li><a href="#Tebu" class="halaman">Tebu</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                    <li><a href="#Wijen" class="halaman">Wijen</a></li>
-                    <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                  </div>
-                </div>
-              </ul>
-            </li>
-            <li> <a href="#login" data-toggle="modal" data-target="#login-modal" class="halaman">Welcome Admin</a></li>
-            <li> <a href="index.html#layanan" class="halaman">Logout</a></li>
-          </ul>
-        </div> 
+        <ul class="nav navbar-nav navbar-right" >
+             <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Varietas <span class="caret"></span></a>
+                      <ul class="dropdown-menu" style="margin:-5px 0px 0px 0px; width:280px; background-color:#fece00;">
+                        <div class="container-fluid">
+                            <div class="col-sm-6 col-lg-6">
+                           <li><a href="<?php echo base_url();?>c_data/tembakau" class="halaman">Tembakau</a></li>
+                            <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                            <li><a href="#JarakPagar" class="halaman">Jarak Pagar</a></li>
+                            <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                            <li><a href="#JarakKepyar" class="halaman">Jarak Kepyar</a></li>
+                            <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                            <li><a href="#Kapas" class="halaman">Kapas</a></li>
+                            <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                            <li><a href="#Kapuk" class="halaman">Kapuk</a></li>
+                            <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                        </div>
+                            <div class="col-sm-6 col-lg-6">
+                          <li><a href="#Kenaf" class="halaman">Kenaf</a></li>
+                           <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                          <li><a href="#Rami" class="halaman">Rami</a></li>
+                          <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                          <li><a href="#Rosela" class="halaman">Rosela</a></li>
+                          <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                          <li><a href="#Tebu" class="halaman">Tebu</a></li>
+                          <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                          <li><a href="#Wijen" class="halaman">Wijen</a></li>
+                          <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
+                        </div>
+                            </div>
+                      </ul>
+                  </li>
+                    <li> <a href="#login" data-toggle="modal" data-target="#login-modal" class="halaman">Welcome Admin</a></li>
+                    <li> <a href="index.html#layanan" class="halaman">Logout</a></li>
+      </ul>
+    </div> 
+    
         <div class="collapse navbar-collapse" id="bar"  style="margin-top:5px; margin-left: -60px; margin-right: -60px; border:0;" >
           <ul class="nav navbar-nav navbar-right hidden-md hidden-lg" style="background-color:rgba(28,69,26,0.95);">
             <li class="dropdown">
@@ -104,6 +103,111 @@
       </div>
     </nav>  
   </header>
+
+
+  <section class="Deskripsi" id="Deskripsi" style="padding-top: 2px; margin-top: 100px;">
+    <div class="container">
+      <div class="table table-wrapper" >
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6 ">
+              <h2>Data <b>Deskripsi</b></h2>
+            </div>
+            <div class="col-sm-6 ">
+                <a href="#tambahdeskripsi" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i> <span>Tambah Data</span></a>            
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead style="font-size: 0.9em;">
+              <tr>
+                <th>No</th>
+                <th>Nama Serat</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                $no = 1;
+                foreach($serat as $row) {
+                  $deskripsi_cut = "";
+                  if (strlen($row['deskripsi_serat']) != 0){
+                    $deskripsi_cut = substr($row['deskripsi_serat'], 0, 500) . ' ...';
+                  }
+              ?>
+              <tr style="font-size: 0.9em;">
+                <td><?php echo $no++ ?></td>
+                <td><?php echo "$row[nama_serat]" ?></td>
+                <td><?php echo "$deskripsi_cut" ?></td>
+                <td>
+                  <a href='c_data/ubah/<?php  echo "$row[id_serat]" ?>' class="edit" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                  <a href="#hapusdeskripsi" class="delete" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                  </td>
+                </tr>
+              <?php
+                }
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="Deskripsi" id="Deskripsi" style="padding-top: 2px; margin-top: 100px;">
+    <div class="container">
+      <div class="table table-wrapper" >
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6 ">
+              <h2>Data <b>Deskripsi</b></h2>
+            </div>
+            <div class="col-sm-6 ">
+                <a href="#tambahdeskripsi" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i> <span>Tambah Data</span></a>            
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead style="font-size: 0.9em;">
+              <tr>
+                <th>No</th>
+                <th>Nama Serat</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                $no = 1;
+                foreach($serat as $row) {
+                  $deskripsi_cut = "";
+                  if (strlen($row['deskripsi_serat']) != 0){
+                    $deskripsi_cut = substr($row['deskripsi_serat'], 0, 500) . ' ...';
+                  }
+              ?>
+              <tr style="font-size: 0.9em;">
+                <td><?php echo $no++ ?></td>
+                <td><?php echo "$row[nama_serat]" ?></td>
+                <td><?php echo "$deskripsi_cut" ?></td>
+                <td>
+                  <a href='c_data/ubah/<?php  echo "$row[id_serat]" ?>' class="edit" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                  <a href="#hapusdeskripsi" class="delete" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                  </td>
+                </tr>
+              <?php
+                }
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="jarakpagar" id="JarakPagar" style="padding-top: 2px; margin-top: 100px;">
     <div class="container">
       <div class="col-md-12">
@@ -178,8 +282,10 @@
         </div>
       </div>      
     </div>
-    </section>
-    <section class="JarakKepyar" id="JarakKepyar">
+  </section>
+  
+
+  <section class="JarakKepyar" id="JarakKepyar">
                   <div class="container">
                     <div class="col-md-12">
                        <div class="table table-wrapper">
@@ -2845,13 +2951,11 @@
           </div>
     </div>
 </footer>
-<<<<<<< HEAD
     <script src="<?php echo base_url(); ?>/assets/js/jquery-3.3.1.min.js"></script> 
     <script src="<?php echo base_url(); ?>/assets/js/jquery.easing.1.3.js"></script> 
     <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/script.js"></script>
     <script src="<?php echo base_url(); ?>/assets/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-=======
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<?php echo base_url()?>/assets/js/jquery-3.3.1.min.js"></script> 
@@ -2861,7 +2965,5 @@
 
     <script src="<?php echo base_url()?>/assets/js/script.js"></script>
     <script src="<?php echo base_url()?>/assets/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
->>>>>>> 894c43880c54cde82c0c0b6deb976345bfba4dfb
   </body>
 </html>
