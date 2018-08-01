@@ -377,8 +377,6 @@
     color:#fece00;
 }
 
-.jumbotron img{
-  width: 200px;
-  border: 5px solid purple;
-  box-shadow: 10px 5px 10px rgba(0,0,0,0.5);
+.no-touch .glyphicon-home:hover{
+  color:#fece00!important;
 }

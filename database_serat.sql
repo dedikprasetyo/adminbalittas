@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2018 at 12:35 PM
+-- Generation Time: Jul 30, 2018 at 10:44 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -2047,36 +2047,36 @@ DELIMITER ;
 CREATE TABLE `leaflet` (
   `id_leaflet` char(5) NOT NULL,
   `nama_leaflet` varchar(100) DEFAULT NULL,
-  `jenis` varchar(100) NOT NULL
+  `id_jenis` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `leaflet`
 --
 
-INSERT INTO `leaflet` (`id_leaflet`, `nama_leaflet`, `jenis`) VALUES
-('L0001', 'Populasi Komposit IP-3', 'Jarak Pagar\r\n'),
-('L0002', 'Jarak Pagar (Jatropha curcas L.) Potensi dan Pengembangan', 'Jarak Pagar\r\n'),
-('L0003', 'Populasi Komposit Jarak Pagar (Jatropha curcas L.) IP-2P, IP-2M, IP-2', 'Jarak Pagar\r\n'),
-('L0004', 'Varietas Unggul Baru POJ 2878 Agribun Kerinci', 'Tebu\r\n'),
-('L0005', 'Pengendalian Serangga Hama Pada Tanaman Tebu', 'Tebu\r\n'),
-('L0006', 'Kebuthan Air Tanaman Tebu', 'Tebu\r\n'),
-('L0007', 'Penataan Varietas Tebu', 'Tebu\r\n'),
-('L0008', 'Rawat Ratoon Tebu Di Lahan Kering', 'Tebu\r\n'),
-('L0009', 'Teknologi Produksi Benih Tebu', 'Tebu\r\n'),
-('L0010', 'Tebang Muat Angkut Tebu', 'Tebu\r\n'),
-('L0011', 'Varietas Wijen Unggul Baru Winas 1 Dan Winas 2 Sesuai Untuk Lahan Sawah Sesudah Padi', 'Wijen\r\n'),
-('L0012', 'Budi Daya Wijen Di Lahan Kering Dan Sawah', 'Wijen\r\n'),
-('L0013', 'Varietas Unggul Baru Untuk Pengembangan Wijen Di Indonesia', 'Wijen\r\n'),
-('L0014', 'Mengenal Penyakit Wijen Dan Pengendaliannya', 'Wijen\r\n'),
-('L0015', 'Hama Penting Tanaman Wijen Dan Pengendaliannya', 'Wijen\r\n'),
-('L0016', 'Teknik Budidaya Jarak Kepyar', 'Jarak Kepyar\r\n'),
-('L0017', 'Jarak Dan Kegunaannya', 'Jarak Kepyar\r\n'),
-('L0018', 'Varietas Unggul Jarak Dan Wijen', 'Jarak Kepyar\r\n'),
-('L0019', 'Teknik Pembibitan Tebu Bud Chips', 'Alat dan Mesin\r\n'),
-('L0020', 'Alat Dan Mesin Perajang Daun Tembakau', 'Alat dan Mesin\r\n'),
-('L0021', 'Mesin Pemecah Buah Jarak Pagar', 'Alat dan Mesin\r\n'),
-('L0022', 'Alat Pengupas Buah Jarak', 'Alat dan Mesin\r\n');
+INSERT INTO `leaflet` (`id_leaflet`, `nama_leaflet`, `id_jenis`) VALUES
+('L0001', 'Populasi Komposit IP-3', 'JL001'),
+('L0002', 'Jarak Pagar (Jatropha curcas L.) Potensi dan Pengembangan', 'JL001'),
+('L0003', 'Populasi Komposit Jarak Pagar (Jatropha curcas L.) IP-2P, IP-2M, IP-2', 'JL001'),
+('L0004', 'Varietas Unggul Baru POJ 2878 Agribun Kerinci', 'JL002'),
+('L0005', 'Pengendalian Serangga Hama Pada Tanaman Tebu', 'JL002'),
+('L0006', 'Kebuthan Air Tanaman Tebu', 'JL002'),
+('L0007', 'Penataan Varietas Tebu', 'JL002'),
+('L0008', 'Rawat Ratoon Tebu Di Lahan Kering', 'JL002'),
+('L0009', 'Teknologi Produksi Benih Tebu', 'JL002'),
+('L0010', 'Tebang Muat Angkut Tebu', 'JL002'),
+('L0011', 'Varietas Wijen Unggul Baru Winas 1 Dan Winas 2 Sesuai Untuk Lahan Sawah Sesudah Padi', 'JL003'),
+('L0012', 'Budi Daya Wijen Di Lahan Kering Dan Sawah', 'JL003'),
+('L0013', 'Varietas Unggul Baru Untuk Pengembangan Wijen Di Indonesia', 'JL003'),
+('L0014', 'Mengenal Penyakit Wijen Dan Pengendaliannya', 'JL003'),
+('L0015', 'Hama Penting Tanaman Wijen Dan Pengendaliannya', 'JL003'),
+('L0016', 'Teknik Budidaya Jarak Kepyar', 'JL004'),
+('L0017', 'Jarak Dan Kegunaannya', 'JL004'),
+('L0018', 'Varietas Unggul Jarak Dan Wijen', 'JL004'),
+('L0019', 'Teknik Pembibitan Tebu Bud Chips', 'JL005'),
+('L0020', 'Alat Dan Mesin Perajang Daun Tembakau', 'JL005'),
+('L0021', 'Mesin Pemecah Buah Jarak Pagar', 'JL005'),
+('L0022', 'Alat Pengupas Buah Jarak', 'JL005');
 
 --
 -- Triggers `leaflet`
@@ -2349,7 +2349,8 @@ ALTER TABLE `jenis_produk`
 -- Indexes for table `leaflet`
 --
 ALTER TABLE `leaflet`
-  ADD PRIMARY KEY (`id_leaflet`);
+  ADD PRIMARY KEY (`id_leaflet`),
+  ADD KEY `id_jenis` (`id_jenis`);
 
 --
 -- Indexes for table `produk`
@@ -2393,6 +2394,12 @@ ALTER TABLE `detail_varietas`
 --
 ALTER TABLE `gambar_leaflet`
   ADD CONSTRAINT `gambar_leaflet_ibfk_1` FOREIGN KEY (`id_leaflet`) REFERENCES `leaflet` (`id_leaflet`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `leaflet`
+--
+ALTER TABLE `leaflet`
+  ADD CONSTRAINT `leaflet_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_leaflet` (`id_jenis`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `produk`

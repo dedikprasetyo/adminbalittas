@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="<?php echo base_url() ?>bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="<?php echo base_url() ?>bootstrap/css/balittas.css">
 		<link rel="stylesheet" href="<?php echo base_url() ?>bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -21,41 +22,34 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top navbarHover">
 				<div class="container-fluid">
 				    <div class="navbar-header" style="margin-top: 5px; margin-bottom: 3px;">						    
-				      <a href=""><img src="<?php echo base_url() ?>item img/logoBalittas2.png" style="width:280px;margin-top: -18px;margin-bottom: -6px;margin-left: 5px;"></a>
+				      <a href="<?php echo base_url('Home') ?>"><img src="<?php echo base_url() ?>item img/logoBalittas2.png" style="width:280px;margin-top: -18px;margin-bottom: -6px;margin-left: 5px;"></a>
 				      <button type="botton" class="navbar-toggle" data-toggle="collapse" data-target="#main" style="margin-top: 10px;">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
 				    </div>			
-				    <div class="collapse navbar-collapse">			    
+				    <div class="collapse navbar-collapse no-touch">			    
 					    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;margin-right: 75px;">
-					      	<a href="halamanUtama.html" class="glyphicon glyphicon-home dropbtnHeader" style="text-decoration-line: none;font-size: 14px;"></a>
+					    <a href="#home" class="halaman" style="text-decoration-line: none;font-size: 14px;"><i style="font-size:14px; color:white;" class="glyphicon glyphicon-home "></i></a>
 					      	<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Varietas <span class="caret"></div>
 							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -35px;">
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-6 col-lg-6">
-								  				<a href="#" style="margin-top: 10px;">Jarak Pagar</a>	
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Jarak Kepyar</a>
+							          			<a href="<?php echo base_url('varietas/detailKapas') ?>" class="halaman" style="margin-top: 10px;">Kapas</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#">Kapas</a>
+							          			<a href="<?php echo base_url('varietas/detailKapuk') ?>" class="halaman">Kapuk</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#">Kapuk</a>
-							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#" style="margin-bottom: 10px;">Kenaf</a>
+							          			<a href="<?php echo base_url('varietas/detailKenaf') ?>" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
 								  			</div>
 								  			<div class="col-sm-6 col-lg-6">
-								  				<a href="#" style="margin-top:10px;">Rami</a>	
+								  				<a href="<?php echo base_url('varietas/detailRami') ?>" class="halaman" style="margin-top:10px;">Rami</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Rosela</a>	
+								  				<a href="<?php echo base_url('varietas/detailRosela') ?>" class="halaman">Rosela</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Tebu</a>
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Wijen</a>
-								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+								  				<a href="<?php echo base_url('varietas/detailSisal') ?>" class="halaman">Sisal</a>	
 								  			</div>
 								  		</div>
 								  	</div>							  	
@@ -128,7 +122,7 @@
 			</nav>	
 			<!-- gambar tengah -->
 			<!-- <div style="height: 50px; background-color: red;"></div> -->
-			<div class="containerImg">
+			<div class="containerImg" id="home">
 				<img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
 			 	<div class="contentImg text-center">
 				    <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Detail Varietas</h1>
@@ -431,7 +425,7 @@
 								</div>
 							</div>
 							<br>
-						</div>							
+						</div>						
 						<div class="col-sm-4 col-lg-4 batasfooter">
 							<div class="row">
 								<div class="col-xs-9 col-sm-9 col-lg-9">
@@ -470,4 +464,11 @@
 				</div>
 			</div>
 	</footer>
+	<script src="<?php echo base_url() ?>bootstrap/js/bootstrap.min.js"></script>
+	 <script src="<?php echo base_url() ?>bootstrap/js/jquery-3.3.1.min.js"></script> 
+    <script src="<?php echo base_url() ?>bootstrap/js/jquery.easing.1.3.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   
+
+    <script src="<?php echo base_url() ?>bootstrap/js/script.js"></script>
 </html>
