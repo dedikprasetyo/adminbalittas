@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 Class M_data extends CI_Model{
+	public function load_deskripsi(){
+		$dbserat = $this->load->database('DBserat',TRUE);
+		$sql = $dbserat->query("SELECT `nama_serat`, `deskripsi_serat` FROM `serat`;");
+		return $sql->result_array();
+	}
+
 
 	public function load_jarakpagar(){
 		$sql = $this->db->query("SELECT * FROM jarak_pagar");

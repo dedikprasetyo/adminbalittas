@@ -39,18 +39,18 @@
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-6 col-lg-6">
-							          			<a href="#varietas" class="halaman" style="margin-top: 10px;">Kapas</a>
+							          			<a href="#1" class="halaman" style="margin-top: 10px;">Kapas</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#kapuk" class="halaman">Kapuk</a>
+							          			<a href="#2" class="halaman">Kapuk</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          			<a href="#kenaf" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
+							          			<a href="#3" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
 								  			</div>
 								  			<div class="col-sm-6 col-lg-6">
-								  				<a href="#rami" class="halaman" style="margin-top:10px;">Rami</a>	
+								  				<a href="#4" class="halaman" style="margin-top:10px;">Rami</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#rosela" class="halaman">Rosela</a>	
+								  				<a href="#5" class="halaman">Rosela</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#rosela" class="halaman">Sisal</a>	
+								  				<a href="#6" class="halaman">Sisal</a>	
 								  			</div>
 								  		</div>
 								  	</div>							  	
@@ -143,22 +143,37 @@
 				<h3 class="text-left" style="color:black; font-family: Minion Pro">Varietas Terbaru</h3>
 				<hr style="border-color: grey; margin-top: -8px;">
 				<div class="row">
-					<div class="col-xs-12 col-sm-4 col-lg-4"> 
-						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
+					<?php 
+						$no = 1;
+						foreach ($serat as $row) {
+							$deskripsi = "";
+					 ?>
+
+					<div class="col-xs-12 col-sm-4 col-lg-4" > 
+						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);" id="<?php echo $no++ ?>">
 							<a href="" style="text-decoration-line: none;">
-								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
-								<span class="label label-success"><p class="glyphicon glyphicon-calendar"></p> 3 Juli 2017</span>
-								<span class="label label-warning"><p class="glyphicon glyphicon-time"></p> 14:00</span>	
-								<h4 style="color:#fece00;">Kapas</h4>
+								<img src="<?php echo base_url() ?>item img/serat/<?php echo $row->gambar; ?>" alt="" style="width: 100%;">
+								<h4 style="color:#fece00;"><?php echo $row->nama_serat; ?></h4>
 							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
+							<?php 
+								if (!empty($row->deskripsi_serat)) {
+									$deskripsi = substr($row->deskripsi_serat, 0, 50)." [..]";
+									echo "<p>$deskripsi</p>";
+								} else {
+									$deskripsi = "(Belum ada deskripsi)";
+									echo "<p style=\"font-style: italic;\">$deskripsi</p><br>";
+								}
+							 ?>
 							<br>							
 							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
 								<a href="<?php echo base_url('varietas/detailKapas')?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 							</div>
 						</div>						
 					</div>
-					<div class="col-xs-12 col-sm-4 col-lg-4" id="kapuk"> 
+					<?php
+						}
+					?>
+					<!-- <div class="col-xs-12 col-sm-4 col-lg-4" id="kapuk"> 
 						<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
 							<a href="" style="text-decoration-line: none;">
 								<img src="item img/tembakau.jpg" alt="" style="width: 100%;">
@@ -169,7 +184,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
 							<br>							
 							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailkapuk') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+								<a href="<?php //echo base_url('varietas/detailkapuk') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 							</div>
 						</div>						
 					</div>
@@ -184,7 +199,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
 							<br>							
 							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailKenaf') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+								<a href="<?php //echo base_url('varietas/detailKenaf') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 							</div>
 						</div>						
 					</div>
@@ -199,7 +214,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
 							<br>							
 							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailRami') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+								<a href="<?php //echo base_url('varietas/detailRami') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 							</div>
 						</div>						
 					</div>
@@ -214,7 +229,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
 							<br>							
 							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailRosela') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+								<a href="<?php //echo base_url('varietas/detailRosela') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 							</div>
 						</div>						
 					</div>
@@ -229,18 +244,12 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, nisi. ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quaerat!</p>
 							<br>							
 							<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-								<a href="<?php echo base_url('varietas/detailSisal') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+								<a href="<?php //echo base_url('varietas/detailSisal') ?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 							</div>
 						</div>						
-					</div>
+					</div> -->
 				</div>
-					<ul class="pager" >
-						<li><a href=""><</a></li>
-						<li><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">></a></li>
-					</ul>
+					
 					<br>
 				</div>				
 				<div class="col-sm-3 col-lg-3">
@@ -444,8 +453,8 @@
 			</div>
 			<!-- <hr> -->
 		</div>
-			</section>
-			<br><br><br><br>
+			</section> 
+			<!-- <br><br><br><br> -->
 			<!-- Produk -->
 			<section class="produk" id="produk">
 				<div class="container-fluid" style="background-color: rgba(28,69,26,0.8);">
@@ -461,7 +470,7 @@
 					    		<img src="item img/hazelnutWh.png" style="width: 40%" col="g">
 					    		<img src="item img/hazelnutY.png" style="width: 40%; display:none;" col="b">
 					    		<br>
-								<h4>Benih</h4>
+								<h4>Benih</h4><br><br>
 					    	</div>
 					    </a>
 				    </div>
@@ -471,7 +480,7 @@
 					    		<img src="item img/toolsWh.png" style="width: 40%" col="g">
 					    		<img src="item img/toolsY.png" style="width: 40%; display:none;" col="b">
 					    		<br>
-								<h4>Alat & Mesin</h4>
+								<h4>Alat & Mesin</h4><br><br>
 					    	</div>
 					    </a>
 				    </div>
@@ -481,7 +490,7 @@
 					    		<img src="item img/flaskWh.png" style="width: 40%" col="g">
 					    		<img src="item img/flaskY.png" style="width: 40%; display:none;" col="b">
 					    		<br>
-								<h4>Formula</h4>
+								<h4>Formula</h4><br><br>
 					    	</div>
 					    </a>
 				    </div>
@@ -491,7 +500,7 @@
 					    		<img src="item img/pipeWh.png" style="width: 40%" col="g">
 					    		<img src="item img/pipeY.png" style="width: 40%; display:none;" col="b">
 					    		<br>
-								<h4>Produk Hilir</h4>
+								<h4>Produk Hilir</h4><br><br>
 					    	</div>
 					    </a>
 				    </div>
@@ -537,7 +546,7 @@
 		    </div>
 		</div>
 	</body>
-	<br><br><br><br><br><br>
+	<!-- <br><br><br> -->
 	<footer>
 		<div class="container-fluid" style="background-color: rgba(28,69,26,1);">
 				<div class="container" style="margin-top: 20px; color:white;">
@@ -621,7 +630,7 @@
 							<h3 style="margin-top: 0px; font-family: Minion Pro;">Sosial Media</h3>
 							<hr style="margin-top: 0px; margin-bottom: 13px; border-color: #fece00;">
 							<div class="row" style="margin: 2px; margin-left: -3px;" >
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" ">
+								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch">
 									<a href="" ><i class="fa fa-facebook-square" aria-hidden="true" style="font-size:45px;"></i>
 										<!-- <img src="item img/fbb.png" class="icon-sosmed img-rounded" alt="Cinque Terre" width="50" height="50"> -->
 									</a>

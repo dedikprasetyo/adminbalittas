@@ -2,8 +2,10 @@
 Class C_data extends CI_Controller{
 	public function index(){
 		$this->load->model("m_data");
-		$data['jarak_pagar'] = $this->m_data->load_jarakpagar();
-		$this->load->view("v_admin",$data);
+		$data['serat'] = $this->m_data->load_deskripsi();
+		// $data['jarak_pagar'] = $this->m_data->load_jarakpagar();
+		$this->load->view("v_admin_serat",$data);
+		// $this->load->view("v_admin",$data);
 		
 	}
 	public function tambah(){
