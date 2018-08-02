@@ -7,12 +7,14 @@
             $this->load->database();
             // $this->load->library('pagination');
             $this->load->model('m_serat');
+            $this->load->model('m_leaflet');
 		}
 		public function index()
 		{
+			$data['subLeaflet'] = $this->m_leaflet->selectLeafletTerbaru();
 
 			$data['serat'] = $this->m_serat->selectSerat();
- 
+
             //Membuat link
             // $str_links = $this->pagination->create_links();
             // $data['links'] = explode('&nbsp;',$str_links );

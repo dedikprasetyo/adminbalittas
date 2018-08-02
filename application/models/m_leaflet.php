@@ -1,5 +1,5 @@
 <?php 
-	class M_leaflet extends CI_Model
+	class m_leaflet extends CI_Model
 	{
 		
 		public function getleaflet($id){
@@ -35,5 +35,14 @@
 			// $hasil = $sql->result_array();
 			// return $hasil[0]->id_jenis_leaflet;
 		}
+
+		function selectLeafletTerbaru() {
+        	$query = $this->db->limit(8);
+	        $query = $this->db->select('leaflet.nama_leaflet, gambar_leaflet.file');
+	        $query = $this->db->from('leaflet');        	
+        	$query = $this->db->join('gambar_leaflet', 'leaflet.id_leaflet = gambar_leaflet.id_leaflet');
+	        $query = $this->db->get();
+	        return $query->result();	
+        }
 	} 
 ?>
