@@ -252,3 +252,101 @@ $(function() {
         reader.readAsDataURL(file);
     });  
 });
+
+//tambahdataKapas
+            var i = 5;            
+            
+            function additem() {
+//                menentukan target append
+                var itemlist = document.getElementById('itemlist');
+                
+//                membuat element
+                var row = document.createElement('tr');
+                var jenis = document.createElement('td');
+                var jumlah = document.createElement('td');
+                var aksi = document.createElement('td');
+
+//                meng append element
+                itemlist.appendChild(row);
+                row.appendChild(jenis);
+                row.appendChild(jumlah);
+                row.appendChild(aksi);
+                          
+
+//                membuat element input
+                var jenis_input = document.createElement('input');
+                jenis_input.setAttribute('name', 'atribut'+ i);
+                jenis_input.setAttribute('type', 'text');
+                jenis_input.setAttribute('style', 'margin-top : 10px;width: 224px;height: 35px;');
+
+                var jumlah_input = document.createElement('input');
+                jumlah_input.setAttribute('name', 'value'+ i);
+                jumlah_input.setAttribute('type', 'text');
+                jumlah_input.setAttribute('style', 'margin : 10px 10px 0px 10px;width: 224px;height: 35px;');
+
+
+                var hapus = document.createElement('span');
+
+//                meng append element input
+                jenis.appendChild(jenis_input);                
+                jumlah.appendChild(jumlah_input);
+                aksi.appendChild(hapus);
+
+                hapus.innerHTML = '<button class="btn btn-small btn-default" style="margin-top:10px;width: 5px;height: 35px;"><i class="fa fa-trash 0"></i></button>';
+//                membuat aksi delete element
+                hapus.onclick = function () {
+                    row.parentNode.removeChild(row);
+                };
+
+                i++;
+                document.getElementById('temp').value = i;
+            }
+
+//tambahdataKapuk
+            var i = 5;            
+            
+            function additem() {
+//                menentukan target append
+                var itemlist = document.getElementById('itemlist2');
+                
+//                membuat element
+                var row = document.createElement('tr');
+                var jenis = document.createElement('td');
+                var jumlah = document.createElement('td');
+                var aksi = document.createElement('td');
+
+//                meng append element
+                itemlist.appendChild(row);
+                row.appendChild(jenis);
+                row.appendChild(jumlah);
+                row.appendChild(aksi);
+                          
+
+//                membuat element input
+                var jenis_input = document.createElement('input');
+                jenis_input.setAttribute('name', 'atribut'+ i);
+                jenis_input.setAttribute('type', 'text');
+                jenis_input.setAttribute('style', 'margin-top : 10px;width: 224px;height: 35px;');
+
+                var jumlah_input = document.createElement('input');
+                jumlah_input.setAttribute('name', 'value'+ i);
+                jumlah_input.setAttribute('type', 'text');
+                jumlah_input.setAttribute('style', 'margin : 10px 10px 0px 10px;width: 224px;height: 35px;');
+
+
+                var hapus = document.createElement('span');
+
+//                meng append element input
+                jenis.appendChild(jenis_input);                
+                jumlah.appendChild(jumlah_input);
+                aksi.appendChild(hapus);
+
+                hapus.innerHTML = '<button class="btn btn-small btn-default" style="margin-top:10px;width: 5px;height: 35px;"><i class="fa fa-trash 0"></i></button>';
+//                membuat aksi delete element
+                hapus.onclick = function () {
+                    row.parentNode.removeChild(row);
+                };
+
+                i++;
+                document.getElementById('temp2').value = i;
+            }
