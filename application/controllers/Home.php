@@ -8,6 +8,7 @@
             // $this->load->library('pagination');
             $this->load->model('m_serat');
             $this->load->model('m_leaflet');
+            $this->load->model('m_varietas');
 		}
 		public function index()
 		{

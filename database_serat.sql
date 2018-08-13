@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2018 at 10:44 AM
+-- Generation Time: Aug 09, 2018 at 07:01 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -280,6 +280,52 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `benih`
+--
+
+CREATE TABLE `benih` (
+  `id_serat` char(5) NOT NULL,
+  `nama_benih` varchar(255) NOT NULL,
+  `id_benih` char(5) NOT NULL,
+  `stok_sampai` date NOT NULL,
+  `jumlah_stok` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `benih`
+--
+
+INSERT INTO `benih` (`id_serat`, `nama_benih`, `id_benih`, `stok_sampai`, `jumlah_stok`) VALUES
+('S0004', 'KR 6', 'B0001', '0000-00-00', 0),
+('S0004', 'KR 9', 'B0002', '0000-00-00', 0),
+('S0004', 'KR 11', 'B0003', '0000-00-00', 0),
+('S0004', 'KR 12', 'B0004', '0000-00-00', 0),
+('S0004', 'KR 14', 'B0005', '0000-00-00', 0),
+('S0004', 'KR 15', 'B0006', '0000-00-00', 0),
+('S0006', 'Roselindo 1', 'B0007', '0000-00-00', 0),
+('S0006', 'Roselindo 2', 'B0008', '0000-00-00', 0),
+('S0006', 'Roselindo 3', 'B0009', '0000-00-00', 0),
+('S0006', 'Roselindo 4', 'B0010', '0000-00-00', 0),
+('S0006', 'ASB 81', 'B0011', '0000-00-00', 0),
+('S0002', 'ISA 205 A', 'B0012', '0000-00-00', 0),
+('S0002', 'Kanesia 1', 'B0013', '0000-00-00', 0),
+('S0002', 'Kanesia 2', 'B0014', '0000-00-00', 0),
+('S0002', 'Kanesia 3', 'B0015', '0000-00-00', 0),
+('S0002', 'Kanesia 5', 'B0016', '0000-00-00', 0),
+('S0002', 'Kanesia 7', 'B0017', '0000-00-00', 0),
+('S0002', 'Kanesia 8', 'B0018', '0000-00-00', 0),
+('S0002', 'Kanesia 9', 'B0019', '0000-00-00', 0),
+('S0002', 'Kanesia 10', 'B0020', '0000-00-00', 0),
+('S0002', 'Kanesia 11', 'B0021', '0000-00-00', 0),
+('S0002', 'Kanesia 12', 'B0022', '0000-00-00', 0),
+('S0002', 'Kanesia 13', 'B0023', '0000-00-00', 0),
+('S0002', 'Kanesia 14', 'B0024', '0000-00-00', 0),
+('S0002', 'Kanesia 15', 'B0025', '0000-00-00', 0),
+('S0002', 'LRA 5166', 'B0026', '0000-00-00', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `budidaya`
 --
 
@@ -288,15 +334,8 @@ CREATE TABLE `budidaya` (
   `id_budidaya` char(5) NOT NULL,
   `nama_budidaya` varchar(255) NOT NULL,
   `deskripsi_budidaya` text NOT NULL,
-  `file_gambar` varchar(255) NOT NULL
+  `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `budidaya`
---
-
-INSERT INTO `budidaya` (`id_serat`, `id_budidaya`, `nama_budidaya`, `deskripsi_budidaya`, `file_gambar`) VALUES
-('S0001', 'B0001', 'Percobaan Budidaya', 'ini hanya coba2', 'coba.jpg');
 
 --
 -- Triggers `budidaya`
@@ -336,31 +375,6 @@ CREATE TABLE `detail_varietas` (
 --
 
 INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
-('V0001', 'A0102', 'Jatropha curcas L.'),
-('V0001', 'A0168', '2008'),
-('V0001', 'A0069', 'Penyemaian 1.5-2 bulan, mulai panen ±4 bulan setelah tanam, jumlah buah rata -rata 9 buah/tandan, jumlah tandan pada tahun pertama berkisar 45 tandan/pohon, jumlah total buah/pohon berkisar 400-450 buah, potensi produksi 1.9 ton/ha. Kandungan minyak is 34'),
-('V0001', 'A0165', 'Komersial'),
-('V0001', 'A0044', 'Balai Penelitian Tanaman Pemanis dan Serat'),
-('V0002', 'A0003', 'untuk daerah kering'),
-('V0002', 'A0004', 'Hasil seleksi rekuren pada populasi IP-2A'),
-('V0002', 'A0031', 'Agak tebal, hijau tua, tulang daun menjari, agak membulat, pinggir daun berlekuk dangkal, sedikit bergelombang, panjang/lebar daun 20/16 cm.'),
-('V0002', 'A0121', '18 - 23 cm.'),
-('V0002', 'A0022', 'Persemaian 6 minggu, Mulai berbunga 6 minggu setelah transplanting, Mulaipanen 13 minggu setelah transplanting.'),
-('V0002', 'A0057', 'rata-rata 50 malai'),
-('V0002', 'A0049', '10 (1-12)'),
-('V0002', 'A0050', '500-570 buah '),
-('V0002', 'A0017', '650 gram (pada kadar air 7%)'),
-('V0002', 'A0137', '2,0 - 2,5 ton/ha/tahun-1, 5,0 - 6,0 ton/ha/tahun-3, 8,0 - 8,5 ton/ha/tahun-4'),
-('V0002', 'A0063', '35 % (dengan oil-expeller 10 HP)'),
-('V0002', 'A0079', 'Lahan kering dataran rendah beriklim kering'),
-('V0003', 'A0102', 'Jatropha curcas L.'),
-('V0003', 'A0168', '2008'),
-('V0003', 'A0069', 'Mulai berbunga pada ± 4 bulan setelah tanam (5 bulan setelah persemaian), jumlah buah 2-12 buah/tandan, jumlah buah 250 buah/pohon, potensi produksi 1.7 - 2.0 ton/ha/tahun (pada tahun pertama) and 6.6 - 7.5 ton/ha/tahun (pada tahun ke empat), 31-32% kandu'),
-('V0003', 'A0165', 'Komersial'),
-('V0003', 'A0044', 'Balai Penelitian Tanaman Pemanis dan Serat'),
-('V0004', 'A0168', '2009'),
-('V0004', 'A0069', 'Mulai berbunga pada ± 3 bulan setelah tanam (4 bulan setelah persemaian), jumlah buah 2-12 buah/tandan; jumlah tandan 250 tandan/pohon, jumlah buah per pohon lebih dari 600, Potensi produksi 2.5 to 2.75 ton/ha/tahun (pada tahun pertama) dan 7.5 - 9.0 ton/'),
-('V0004', 'A0165', 'Komersial'),
 ('V0005', 'A0032', 'ISA 205 A merupakan varietas introduksi berasal dari Institut de Recherches du coton et des Textiles Exotiques (IRCT) Perancis; menjadi koleksi plasma nurfah Balai Penelitian Tanaman Tembakau dan Serat (Balittas) pada tahun 1986.'),
 ('V0005', 'A0168', '2003'),
 ('V0005', 'A0114', 'KI.339'),
@@ -1431,8 +1445,7 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0038', 'A0205', 'Hijau'),
 ('V0038', 'A0195', 'Hijau'),
 ('V0038', 'A0193', 'Abu-abu'),
-('V0038', 'A0170', '278-420 cm');
-INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
+('V0038', 'A0170', '278-420 cm'),
 ('V0038', 'A0033', '1,60-3,20 cm'),
 ('V0038', 'A0128', 'Rudimeter (siwilan) banyak'),
 ('V0038', 'A0009', 'Menjari'),
@@ -1480,7 +1493,8 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0039', 'A0103', 'Sedikit'),
 ('V0039', 'A0072', 'Halus'),
 ('V0039', 'A0161', '5,5-6,5%'),
-('V0039', 'A0088', 'Rentan terhadap Nematoda paru akar (Meloidogyne sp), moderat rentan terhadap Jassi (Amrasca biguttula)'),
+('V0039', 'A0088', 'Rentan terhadap Nematoda paru akar (Meloidogyne sp), moderat rentan terhadap Jassi (Amrasca biguttula)');
+INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
 ('V0039', 'A0082', 'Toleran terhadap genangan, toleran terhadap kekeringan,  kurang peka terhadap fotoperiode'),
 ('V0039', 'A0142', '2,56-4,07 ton/ha'),
 ('V0039', 'A0124', 'Sujindro, Rully Dyah Purwati, Rr. Sri Hartati, Bambang Heliyanto, Marjani, Untung Setyo-Budi, Gembong Dalmadiyo, Sri Handayani dan Adji Sastrosupadi'),
@@ -1825,86 +1839,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0049', 'A0083', 'Peka'),
 ('V0049', 'A0001', 'Luas'),
 ('V0049', 'A0124', 'U. Setyo Budi, Marjani, Sri Hartati, Rully Dyah Purwati'),
-('V0050', 'A0046', 'Wijen Putih'),
-('V0050', 'A0043', 'Bercabang banyak'),
-('V0050', 'A0183', '90-110 hari'),
-('V0050', 'A0059', '8'),
-('V0050', 'A0137', '1-1,6 ton/ha'),
-('V0050', 'A0163', 'Monokultur/tumpangsari'),
-('V0050', 'A0001', 'Lahan kering/sawah di Jatim, Jateng, NTB, dan Sulsel'),
-('V0050', 'A0093', 'Agak tahan'),
-('V0050', 'A0084', 'Agak tahan'),
-('V0050', 'A0094', 'Agak tahan'),
-('V0050', 'A0095', 'Agak tahan'),
-('V0050', 'A0097', 'Agak tahan'),
-('V0051', 'A0046', 'Wijen Putih'),
-('V0051', 'A0043', 'Tidak Bercabang'),
-('V0051', 'A0183', '75-100 hari'),
-('V0051', 'A0059', '4'),
-('V0051', 'A0137', '0,8-1,4 ton/ha'),
-('V0051', 'A0163', 'Monukultur/tumpangsari'),
-('V0051', 'A0001', 'Lahan kering di NTB, dan Sulsel'),
-('V0051', 'A0095', 'Tahan'),
-('V0051', 'A0097', 'Agak tahan'),
-('V0052', 'A0046', 'Wijen hitam kecoklatan'),
-('V0052', 'A0043', 'Bercabang banyak'),
-('V0052', 'A0183', '85-101 hari'),
-('V0052', 'A0059', '4'),
-('V0052', 'A0137', '0,9-1.3 ton/ha'),
-('V0052', 'A0163', 'Monokultur/tumpangsari'),
-('V0052', 'A0001', 'Lahan kering pada awal musim hujan'),
-('V0052', 'A0093', 'Agak tahan'),
-('V0052', 'A0084', 'Agak tahan'),
-('V0052', 'A0095', 'Agak tahan'),
-('V0052', 'A0097', 'Agak tahan'),
-('V0053', 'A0046', 'Wijen Putih'),
-('V0053', 'A0043', 'Bercabang banyak'),
-('V0053', 'A0183', '75-85 hari'),
-('V0053', 'A0059', '8'),
-('V0053', 'A0137', '0,9-1.4 ton/ha'),
-('V0053', 'A0163', 'Monokultur/tumpangsari'),
-('V0053', 'A0001', 'Lahan sawah sesudah padi atau tembakau'),
-('V0053', 'A0093', 'Agak tahan'),
-('V0053', 'A0084', 'Tahan'),
-('V0053', 'A0094', 'Agak tahan'),
-('V0053', 'A0095', 'Agak tahan'),
-('V0053', 'A0097', 'Agak tahan'),
-('V0054', 'A0191', 'Kemerahan'),
-('V0054', 'A0212', 'Kemerahan'),
-('V0054', 'A0193', 'Coklat dengan bintik kekuningan'),
-('V0054', 'A0033', '2,0-2,5 cm'),
-('V0054', 'A0170', '200-280 cm'),
-('V0054', 'A0183', '100 hari'),
-('V0054', 'A0060', '10-20 tandan'),
-('V0054', 'A0051', '75-100 buah'),
-('V0054', 'A0137', '3.200 kg/ha'),
-('V0054', 'A0014', '40 gram'),
-('V0054', 'A0152', 'Mudah pecah'),
-('V0054', 'A0063', '55-57%'),
-('V0055', 'A0191', 'Hijau'),
-('V0055', 'A0212', 'Hijau keputihan'),
-('V0055', 'A0193', 'Coklat dengan bintik keputihan'),
-('V0055', 'A0033', '3,0-4,0 cm'),
-('V0055', 'A0170', '200-250 cm'),
-('V0055', 'A0183', '105 hari'),
-('V0055', 'A0060', '10-15 tandan'),
-('V0055', 'A0051', '60-80 buah'),
-('V0055', 'A0137', '2.600 kg/ha'),
-('V0055', 'A0014', '36 gram'),
-('V0055', 'A0152', 'agak sulit pecah'),
-('V0055', 'A0063', '48-52%'),
-('V0056', 'A0191', 'Hijau'),
-('V0056', 'A0212', 'Hijau keputihan'),
-('V0056', 'A0193', 'coklat tua dengan bintik kekuningan'),
-('V0056', 'A0033', '3,8-5,0 cm'),
-('V0056', 'A0170', '300-350 cm'),
-('V0056', 'A0183', '105 hari'),
-('V0056', 'A0060', '10-23 tandan'),
-('V0056', 'A0051', '20-100 buah'),
-('V0056', 'A0137', '2.500 kg/ha'),
-('V0056', 'A0014', '34 gram'),
-('V0056', 'A0152', 'mudah pecah'),
-('V0056', 'A0063', '51-54%'),
 ('V0057', 'A0046', 'Sisal (Agave Sisalana)'),
 ('V0057', 'A0004', 'Introduksi dari Tiongkok'),
 ('V0057', 'A0175', 'Hibrida'),
@@ -1933,6 +1867,834 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0057', 'A0123', 'Untung Setyo-Budi, Marjani, Rully Dyah Purwati, dan Mala Murianingrum'),
 ('V0057', 'A0125', 'Budi Santoso, Titiek Yulianti, Cece Suhara, dan Emy Sulistyowati'),
 ('V0057', 'A0122', 'Soedomo (PT. Sumbawa Bangkit Sejahtera)');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `distribusi_benih`
+--
+
+CREATE TABLE `distribusi_benih` (
+  `id_benih` char(5) NOT NULL,
+  `id_distribusi` char(5) NOT NULL,
+  `tanggal` date NOT NULL,
+  `tahun_panen` varchar(255) NOT NULL,
+  `kelas_benih` varchar(10) NOT NULL,
+  `jumlah_kg` double NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `distribusi_benih`
+--
+
+INSERT INTO `distribusi_benih` (`id_benih`, `id_distribusi`, `tanggal`, `tahun_panen`, `kelas_benih`, `jumlah_kg`, `keterangan`) VALUES
+('B0001', 'D0001', '2016-01-29', 'Sumberrejo 2013', 'Dasar', 0.6, 'BBP2TP Surabaya'),
+('B0002', 'D0002', '2016-01-29', 'Sumberrejo 2017', 'Dasar', 0.6, ''),
+('B0002', 'D0003', '2016-01-29', 'Sumberrejo 2013', 'Dasar', 0.6, ''),
+('B0003', 'D0004', '2016-01-29', 'Sumberrejo 2013', 'Dasar', 0.8, ''),
+('B0003', 'D0005', '2016-01-29', 'Sumberrejo 2014', 'Dasar', 0.8, ''),
+('B0004', 'D0006', '2016-01-29', 'Sumberrejo 2007', 'Dasar', 0.6, ''),
+('B0004', 'D0007', '2016-01-29', 'Sumberrejo 2012', 'Dasar', 0.6, ''),
+('B0005', 'D0008', '2016-01-29', 'Sumberrejo 2007', 'Dasar', 0.6, ''),
+('B0005', 'D0009', '2016-01-29', 'Sumberrejo 2008', 'Dasar', 0.6, ''),
+('B0005', 'D0010', '2016-01-29', 'Sumberrejo 2013', 'Dasar', 0.6, ''),
+('B0001', 'D0011', '2016-01-29', 'Sumberrejo 2013', 'Dasar', 0.3, 'Laboratorium Benih'),
+('B0002', 'D0012', '2016-01-29', 'Sumberrejo 2007', 'Dasar', 0.2, ''),
+('B0002', 'D0013', '2016-01-29', 'Sumberrejo 2013', 'Dasar', 0.2, ''),
+('B0003', 'D0014', '2016-01-29', 'Sumberrejo 2013', 'Dasar', 0.2, ''),
+('B0003', 'D0015', '2016-01-29', 'Sumberrejo 2014', 'Dasar', 0.2, ''),
+('B0004', 'D0016', '2016-01-29', 'Sumberrejo 2007', 'Dasar', 0.2, ''),
+('B0004', 'D0017', '2016-01-29', 'Sumberrejo 2012', 'Dasar', 0.2, ''),
+('B0005', 'D0018', '2016-01-29', 'Sumberrejo 2007', 'Dasar', 0.2, ''),
+('B0005', 'D0019', '2016-01-29', 'Sumberrejo 2008', 'Dasar', 0.2, ''),
+('B0005', 'D0020', '2016-01-29', 'Sumberrejo 2013', 'Dasar', 0.2, ''),
+('B0003', 'D0021', '2016-02-12', 'Sumberrejo 2013', 'Dasar', 5, 'Rozah Jakarta Timur'),
+('B0004', 'D0022', '2016-02-12', 'Sumberrejo 2012', 'Dasar', 5, ''),
+('B0002', 'D0023', '2016-02-24', 'Sumberrejo 2012', 'Dasar', 0.1, 'SMK Pertanian Temanggung'),
+('B0003', 'D0024', '2016-03-03', 'Sumberrejo 2013', 'Dasar', 103.32, 'KPRI Budikarti u-Jayapura'),
+('B0003', 'D0025', '2016-03-03', 'Sumberrejo 2014', 'Dasar', 81.68, ''),
+('B0004', 'D0026', '2016-03-03', 'Sumberrejo 2007', 'Dasar', 1.035, ''),
+('B0004', 'D0027', '2016-03-03', 'Sumberrejo 2012', 'Dasar', 28.965, ''),
+('B0005', 'D0028', '2016-03-03', 'Sumberrejo 2007', 'Dasar', 49.59, ''),
+('B0005', 'D0029', '2016-03-03', 'Sumberrejo 2008', 'Dasar', 7.695, ''),
+('B0005', 'D0030', '2016-03-03', 'Sumberrejo 2013', 'Dasar', 127.715, ''),
+('B0001', 'D0031', '2016-03-11', 'Sumberrejo 2013', 'Dasar', 0.5, 'Syaiful Jasit'),
+('B0002', 'D0032', '2016-03-11', 'Sumberrejo 2007', 'Dasar', 0.5, ''),
+('B0003', 'D0033', '2016-03-11', 'Sumberrejo 2014', 'Dasar', 0.5, ''),
+('B0005', 'D0034', '2016-03-28', 'Sumberrejo 2008', 'Dasar', 1.885, 'Sucipto KP. Sumberrejo'),
+('B0003', 'D0035', '2016-03-30', 'Sumberrejo 2013', 'Dasar', 5, 'Junadi Palembang'),
+('B0004', 'D0036', '2016-04-27', 'Sumberrejo 2012', 'Dasar', 0.05, 'Drs. Mardjani Pemuliaan'),
+('B0003', 'D0037', '2016-05-02', 'Sumberrejo 2014', 'Dasar', 2, 'KPRI Budikarti u-Samarinda'),
+('B0003', 'D0038', '2016-05-02', 'Sumberrejo 2014', 'Dasar', 0.05, 'Tunik KP. Karangploso'),
+('B0003', 'D0039', '2016-08-01', 'Sumberrejo 2014', 'Dasar', 1, 'BBPPTP Surabaya'),
+('B0003', 'D0040', '2016-08-04', 'Sumberrejo 2014', 'Dasar', 5, 'Syaiful Bahri Jaslit'),
+('B0003', 'D0041', '2016-08-22', 'Sumberrejo 2014', 'Dasar', 1, 'Ir. Untung S Malang'),
+('B0003', 'D0042', '2015-05-01', 'Sumberrejo 2013', 'Dasar', 25, 'KPRI Budikarti u- Riau'),
+('B0002', 'D0043', '2015-01-26', 'Sumberrejo 2012', 'Dasar', 1, 'Ir. Siwi S Pemuliaan'),
+('B0003', 'D0044', '2015-01-26', 'Sumberrejo 2014', 'Dasar', 0.1, 'Ir. Siwi S Pemuliaan'),
+('B0002', 'D0045', '2015-01-28', 'Sumberrejo 2007', 'Dasar', 0.1, 'Supriyono Balittas'),
+('B0002', 'D0046', '2015-02-09', 'Sumberrejo 2007', 'Dasar', 1, 'KPRI Budikarti u- Medan'),
+('B0003', 'D0047', '2015-02-09', 'Sumberrejo 2013', 'Dasar', 1, ''),
+('B0004', 'D0048', '2015-02-09', 'Sumberrejo 2012', 'Dasar', 3.5, ''),
+('B0005', 'D0049', '2015-02-09', 'Sumberrejo 2013', 'Dasar', 1, ''),
+('B0002', 'D0050', '2015-02-27', 'Sumberrejo 2007', 'Dasar', 0.5, 'Fanny Sukma Gresik'),
+('B0002', 'D0051', '2015-03-12', 'Sumberrejo 2012', 'Dasar', 100, 'Dewi Anggraini Jawa Tengah'),
+('B0002', 'D0052', '2015-05-07', 'Sumberrejo 2007', 'Dasar', 1.5, 'Mala M. Pemuliaan'),
+('B0003', 'D0053', '2015-05-07', 'Sumberrejo 2013', 'Dasar', 3, ''),
+('B0004', 'D0054', '2015-05-07', 'Sumberrejo 2007', 'Dasar', 1.5, ''),
+('B0005', 'D0055', '2015-05-07', 'Sumberrejo 2007', 'Dasar', 1.5, ''),
+('B0001', 'D0056', '2015-05-06', 'Sumberrejo 2013', 'Dasar', 1.5, 'KPRI Budikarti u- Pekanbaru'),
+('B0002', 'D0057', '2015-05-06', 'Sumberrejo 2007', 'Dasar', 1.5, ''),
+('B0003', 'D0058', '2015-05-06', 'Sumberrejo 2013', 'Dasar', 1.5, ''),
+('B0004', 'D0059', '2015-05-06', 'Sumberrejo 2007', 'Dasar', 1.5, ''),
+('B0005', 'D0060', '2015-05-06', 'Sumberrejo 2007', 'Dasar', 1.5, ''),
+('B0001', 'D0061', '2015-06-08', 'Sumberrejo 2013', 'Dasar', 0.5, 'BBP2TP Surabaya'),
+('B0002', 'D0062', '2015-06-08', 'Sumberrejo 2007', 'Dasar', 0.5, ''),
+('B0002', 'D0063', '2015-06-08', 'Sumberrejo 2013', 'Dasar', 0.5, ''),
+('B0003', 'D0064', '2015-06-08', 'Sumberrejo 2013', 'Dasar', 0.7, ''),
+('B0003', 'D0065', '2015-06-08', 'Sumberrejo 2014', 'Dasar', 0.5, ''),
+('B0004', 'D0066', '2015-06-08', 'Sumberrejo 2007', 'Dasar', 0.3, ''),
+('B0004', 'D0067', '2015-06-08', 'Sumberrejo 2012', 'Dasar', 0.5, ''),
+('B0005', 'D0068', '2015-06-08', 'Sumberrejo 2007', 'Dasar', 0.5, ''),
+('B0005', 'D0069', '2015-06-08', 'Sumberrejo 2008', 'Dasar', 0.3, ''),
+('B0005', 'D0070', '2015-06-08', 'Sumberrejo 2013', 'Dasar', 0.5, ''),
+('B0001', 'D0071', '2015-06-08', 'Sumberrejo 2013', 'Dasar', 0.5, 'Laboratorium Benih'),
+('B0002', 'D0072', '2015-06-08', 'Sumberrejo 2007', 'Dasar', 0.5, ''),
+('B0002', 'D0073', '2015-06-08', 'Sumberrejo 2013', 'Dasar', 0.5, ''),
+('B0003', 'D0074', '2015-06-08', 'Sumberrejo 2013', 'Dasar', 0.5, ''),
+('B0003', 'D0075', '2015-06-08', 'Sumberrejo 2014', 'Dasar', 0.5, ''),
+('B0004', 'D0076', '2015-06-08', 'Sumberrejo 2007', 'Dasar', 0.3, ''),
+('B0004', 'D0077', '2015-06-08', 'Sumberrejo 2012', 'Dasar', 0.5, ''),
+('B0005', 'D0078', '2015-06-08', 'Sumberrejo 2007', 'Dasar', 0.5, ''),
+('B0005', 'D0079', '2015-06-08', 'Sumberrejo 2008', 'Dasar', 0.3, ''),
+('B0005', 'D0080', '2015-06-08', 'Sumberrejo 2013', 'Dasar', 0.5, ''),
+('B0004', 'D0081', '2015-06-22', 'Sumberrejo 2012', 'Dasar', 7.5, 'Misnen Cirebon'),
+('B0005', 'D0082', '2015-07-10', 'Sumberrejo 2007', 'Dasar', 30, 'KPRI Budikarti u- Bogor'),
+('B0004', 'D0083', '2015-07-15', 'Sumberrejo 2012', 'Dasar', 5, 'KPRI Budikarti u- Sulawesi Selatan'),
+('B0003', 'D0084', '2015-08-20', 'Sumberrejo 2014', 'Dasar', 0.25, 'Lukman ITS Surabaya'),
+('B0004', 'D0085', '2015-08-20', 'Sumberrejo 2007', 'Dasar', 0.25, ''),
+('B0005', 'D0086', '2015-11-04', 'Sumberrejo 2007', 'Dasar', 2, 'Henokh Imanuel  Malang'),
+('B0003', 'D0087', '2015-11-12', 'Sumberrejo 2013', 'Dasar', 0.05, 'Ir. Untung S. Pemuliaan'),
+('B0005', 'D0088', '2015-11-19', 'Sumberrejo 2007', 'Dasar', 30, 'Ari PT. Retota Sakti Magelang'),
+('B0004', 'D0089', '2015-11-24', 'Sumberrejo 2007', 'Dasar', 0.1, 'Ir. Sadta Yoga KP. Sumberejo'),
+('B0002', 'D0090', '2014-01-06', 'Sumberrejo 2007', 'Dasar', 2, 'Dedy Dwi P. Bogor'),
+('B0003', 'D0091', '2014-01-06', 'Sumberrejo 2011', 'Dasar', 2, ''),
+('B0004', 'D0092', '2014-01-06', 'Sumberrejo 2007', 'Dasar', 2, ''),
+('B0005', 'D0093', '2014-01-06', 'Sumberrejo 2007', 'Dasar', 2, ''),
+('B0003', 'D0094', '2014-01-06', 'Sumberrejo 2011', 'Dasar', 0.25, 'Neny Vilanti Yogyakarta'),
+('B0003', 'D0095', '2014-02-27', 'Sumberrejo 2011', 'Dasar', 3, 'Mala M Pemuliaan'),
+('B0002', 'D0096', '2014-03-24', 'Sumberrejo 2007', 'Dasar', 0.25, 'Eko Hadi Politeknik Negeri Jember'),
+('B0005', 'D0097', '2014-03-24', 'Sumberrejo 2007', 'Dasar', 0.25, ''),
+('B0005', 'D0098', '2014-04-21', 'Sumberrejo 2013', 'Dasar', 5, 'Yusnu H Jaspen'),
+('B0003', 'D0099', '2014-04-28', 'Sumberrejo 2011', 'Dasar', 3, 'Mala M Pemuliaan'),
+('B0003', 'D0100', '2014-04-14', 'Sumberrejo 2013', 'Dasar', 10, 'KPRI Budikarti Malang'),
+('B0003', 'D0101', '2014-06-26', 'Sumberrejo 2013', 'Dasar', 0.2, 'Evi Susanti UIN Malang'),
+('B0002', 'D0102', '2014-07-18', 'Sumberrejo 2007', 'Dasar', 1, 'KPRI Budikarti Malang'),
+('B0003', 'D0103', '2014-07-18', 'Sumberrejo 2013', 'Dasar', 1, ''),
+('B0004', 'D0104', '2014-07-18', 'Sumberrejo 2007', 'Dasar', 1, ''),
+('B0005', 'D0105', '2014-07-18', 'Sumberrejo 2007', 'Dasar', 1, ''),
+('B0003', 'D0106', '2014-07-22', 'Sumberrejo 2013', 'Dasar', 0.1, 'Evi Susanti UIN Malang'),
+('B0004', 'D0107', '2014-08-08', 'Sumberrejo 2007', 'Dasar', 0.005, 'Suhadi.SP KP. Karangploso'),
+('B0005', 'D0108', '2014-08-08', 'Sumberrejo 2008', 'Dasar', 0.005, ''),
+('B0005', 'D0109', '2014-08-18', 'Sumberrejo 2008', 'Dasar', 0.1, 'Ir. Sigid Jember'),
+('B0003', 'D0110', '2014-08-25', 'Sumberrejo 2013', 'Dasar', 5, 'KPRI Budikarti Malang'),
+('B0004', 'D0111', '2014-10-10', 'Sumberrejo 2012', 'Dasar', 10, 'CV. Korin Satria Bali'),
+('B0005', 'D0112', '2014-10-10', 'Sumberrejo 2013', 'Dasar', 10, ''),
+('B0002', 'D0113', '2014-10-13', 'Sumberrejo 2012', 'Dasar', 1, 'KPRI Budikarti Malang u- Tangerang'),
+('B0005', 'D0114', '2014-10-13', 'Sumberrejo 2007', 'Dasar', 1, ''),
+('B0002', 'D0115', '2014-11-04', 'Sumberrejo 2007', 'Dasar', 15, 'Thomson Situbondo'),
+('B0002', 'D0116', '2014-11-05', 'Sumberrejo 2007', 'Dasar', 10, 'Thomson Situbondo'),
+('B0001', 'D0117', '2014-11-28', 'Sumberrejo 2013', 'Dasar', 1.1, 'BBP2TP Surabaya'),
+('B0002', 'D0118', '2014-11-28', 'Sumberrejo 2007', 'Dasar', 1.1, ''),
+('B0002', 'D0119', '2014-11-28', 'Sumberrejo 2012', 'Dasar', 1.1, ''),
+('B0003', 'D0120', '2014-11-28', 'Sumberrejo 2013', 'Dasar', 1.1, ''),
+('B0004', 'D0121', '2014-11-28', 'Sumberrejo 2007', 'Dasar', 1.1, ''),
+('B0004', 'D0122', '2014-11-28', 'Sumberrejo 2012', 'Dasar', 1.1, ''),
+('B0005', 'D0123', '2014-11-28', 'Sumberrejo 2007', 'Dasar', 1.1, ''),
+('B0005', 'D0124', '2014-11-28', 'Sumberrejo 2008', 'Dasar', 1.1, ''),
+('B0001', 'D0125', '2014-12-28', 'Sumberrejo 2013', 'Dasar', 0.1, 'Laboratorium Benih Balittas'),
+('B0002', 'D0126', '2014-12-28', 'Sumberrejo 2007', 'Dasar', 0.1, ''),
+('B0002', 'D0127', '2014-12-28', 'Sumberrejo 2012', 'Dasar', 0.1, ''),
+('B0003', 'D0128', '2014-12-28', 'Sumberrejo 2013', 'Dasar', 0.1, ''),
+('B0004', 'D0129', '2014-12-28', 'Sumberrejo 2007', 'Dasar', 0.1, ''),
+('B0004', 'D0130', '2014-12-28', 'Sumberrejo 2012', 'Dasar', 0.1, ''),
+('B0005', 'D0131', '2014-12-28', 'Sumberrejo 2007', 'Dasar', 0.1, ''),
+('B0005', 'D0132', '2014-12-28', 'Sumberrejo 2008', 'Dasar', 0.1, ''),
+('B0002', 'D0133', '2014-12-18', 'Sumberrejo 2007', 'Dasar', 15, 'KPRI Budikarti u- Jakarta'),
+('B0004', 'D0134', '2013-03-19', 'Sumberrejo 2007', 'Dasar', 1, 'KPRI Budikarti u- Banda Aceh'),
+('B0001', 'D0135', '2013-04-10', 'Sumberrejo 2002', 'Dasar', 2, 'KPRI Budikarti u- Tangerang'),
+('B0002', 'D0136', '2013-04-10', 'Sumberrejo 2007', 'Dasar', 2, 'KPRI Budikarti u- Tangerang'),
+('B0003', 'D0137', '2013-04-10', 'Sumberrejo 2007', 'Dasar', 2, 'KPRI Budikarti u- Tangerang'),
+('B0004', 'D0138', '2013-04-10', 'Sumberrejo 2007', 'Dasar', 2, 'KPRI Budikarti u- Tangerang'),
+('B0005', 'D0139', '2013-04-10', 'Sumberrejo 2007', 'Dasar', 2, 'KPRI Budikarti u- Tangerang'),
+('B0003', 'D0140', '2013-04-15', 'Sumberrejo 2011', 'Dasar', 30, 'PT. Gan Malang'),
+('B0003', 'D0141', '2013-06-19', 'Sumberrejo 2011', 'Dasar', 1, 'ArifSetyo Bojonegoro'),
+('B0003', 'D0142', '2013-07-17', 'Sumberrejo 2011', 'Dasar', 20, 'Arief Jakarta'),
+('B0003', 'D0143', '2013-07-17', 'Sumberrejo 2011', 'Dasar', 150, 'Arief Jakarta'),
+('B0005', 'D0144', '2013-07-17', 'Sumberrejo 2008', 'Dasar', 230, 'Arief Jakarta'),
+('B0004', 'D0145', '2013-09-17', 'Sumberrejo 2012', 'Dasar', 0.5, 'Siswanto PT. Makmur Persada Malang'),
+('B0004', 'D0146', '2013-10-17', 'Sumberrejo 2012', 'Dasar', 5, 'Ketut Suryadi Bali'),
+('B0004', 'D0147', '2013-11-20', 'Sumberrejo 2012', 'Dasar', 300, 'Dhany AR Lumajang'),
+('B0001', 'D0148', '2012-03-14', 'Sumberrejo 2002', 'Pokok', 0.25, 'Eko H Poltek Negeri Jember'),
+('B0003', 'D0149', '2012-05-11', 'Sumberrejo 2007', 'Pokok', 5, 'Indrayanto Semarang'),
+('B0005', 'D0150', '2012-05-11', 'Sumberrejo 2007', 'Pokok', 5, ''),
+('B0002', 'D0151', '2012-07-26', 'Sumberrejo 2007', 'Pokok', 2, 'Wakimo Papua'),
+('B0004', 'D0152', '2012-07-26', 'Sumberrejo 2007', 'Pokok', 2, ''),
+('B0005', 'D0153', '2012-07-26', 'Sumberrejo 2007', 'Pokok', 2, ''),
+('B0005', 'D0154', '2012-09-10', 'Sumberrejo 2007', 'Pokok', 10, 'Dr. Siswanto Puslibangbun Bogor'),
+('B0005', 'D0155', '2012-11-21', 'Sumberrejo 2007', 'Pokok', 15, 'Slamet B Kalimantan Utara'),
+('B0003', 'D0156', '2012-11-29', 'Sumberrejo 2007', 'Pokok', 2, 'KPRI Budikarti Malang'),
+('B0003', 'D0157', '2011-02-18', 'Asembagus 2004', '', 3, 'IskandarBPTP Banda Aceh'),
+('B0003', 'D0158', '2011-03-07', 'Asembagus 2004', '', 0.2, 'Pameran Balai'),
+('B0001', 'D0159', '2011-03-17', 'Sumberejo 2002', '', 0.25, 'Poltek Negeri Jmeber'),
+('B0002', 'D0160', '2011-03-17', 'Sumberejo 2002', '', 0.25, ''),
+('B0003', 'D0161', '2011-03-17', 'Asembagus 2004', '', 0.25, ''),
+('B0004', 'D0162', '2011-03-17', 'Sumberejo 2007', '', 0.25, ''),
+('B0006', 'D0163', '2011-04-11', 'Sumberejo 2008', '', 50, 'PT. GAN Malang'),
+('B0003', 'D0164', '2011-05-06', 'Asembagus 2004', '', 2, 'Teguh LIPI Bogor'),
+('B0003', 'D0165', '2011-05-20', 'Sumberejo 2007', '', 5, 'Puslitbangbun Bogor'),
+('B0003', 'D0166', '2011-08-03', 'Sumberejo 2007', '', 10, ''),
+('B0001', 'D0167', '2011-10-31', 'Sumberejo 2002', '', 0.5, 'Yohanes mojokerto'),
+('B0002', 'D0168', '2011-10-31', 'Sumberejo 2007', '', 0.5, ''),
+('B0003', 'D0169', '2011-10-31', 'Sumberejo 2007', '', 0.5, ''),
+('B0004', 'D0170', '2011-10-31', 'Sumberejo 2007', '', 0.5, ''),
+('B0005', 'D0171', '2011-10-31', 'Sumberejo 2007', '', 0.5, ''),
+('B0003', 'D0172', '2011-12-13', 'Sumberejo 2007', '', 5, 'Puslitbangbun Bogor'),
+('B0008', 'D0173', '2016-05-01', 'Sumberejo 2014', 'Dasar', 0.25, 'Yoga Yogi Malang'),
+('B0007', 'D0174', '2016-01-27', 'Sumberejo 2014', 'Dasar', 0.1, 'Tomi Firmansyah Malang'),
+('B0007', 'D0175', '2016-01-29', 'Sumberejo 2014', 'Dasar', 0.6, 'BBP2TP Surabaya'),
+('B0007', 'D0176', '2016-01-29', 'Sumberejo 2015', 'Dasar', 1.4, ''),
+('B0008', 'D0177', '2016-01-29', 'Sumberejo 2014', 'Dasar', 0.6, ''),
+('B0008', 'D0178', '2016-01-29', 'Sumberejo 2015', 'Dasar', 0.6, ''),
+('B0009', 'D0179', '2016-01-29', 'Sumberejo 2014', 'Dasar', 0.6, ''),
+('B0010', 'D0180', '2016-01-29', 'Sumberejo 2014', 'Dasar', 0.6, ''),
+('B0007', 'D0181', '2016-01-29', 'Sumberejo 2014', 'Dasar', 0.2, 'Laboratorium Benih'),
+('B0007', 'D0182', '2016-01-29', 'Sumberejo 2015', 'Dasar', 0.2, ''),
+('B0008', 'D0183', '2016-01-29', 'Sumberejo 2014', 'Dasar', 0.2, ''),
+('B0008', 'D0184', '2016-01-29', 'Sumberejo 2015', 'Dasar', 0.2, ''),
+('B0009', 'D0185', '2016-01-29', 'Sumberejo 2014', 'Dasar', 0.2, ''),
+('B0010', 'D0186', '2016-01-29', 'Sumberejo 2014', 'Dasar', 0.2, ''),
+('B0007', 'D0187', '2016-12-02', 'Sumberejo 2014', 'Dasar', 0.5, 'Yusnu H. Jaslit'),
+('B0008', 'D0188', '2016-12-02', 'Sumberejo 2014', 'Dasar', 0.5, ''),
+('B0009', 'D0189', '2016-12-02', 'Sumberejo 2014', 'Dasar', 0.5, ''),
+('B0010', 'D0190', '2016-12-02', 'Sumberejo 2014', 'Dasar', 0.5, ''),
+('B0008', 'D0191', '2016-02-17', 'Sumberejo 2014', 'Dasar', 0.5, 'Mutia Sumatera Utara'),
+('B0007', 'D0192', '2016-02-24', 'Sumberejo 2014', 'Dasar', 0.1, 'SMK Pertanian Temanggung'),
+('B0008', 'D0193', '2016-02-24', 'Sumberejo 2014', 'Dasar', 0.1, ''),
+('B0009', 'D0194', '2016-02-24', 'Sumberejo 2014', 'Dasar', 0.1, ''),
+('B0010', 'D0195', '2016-02-24', 'Sumberejo 2014', 'Dasar', 0.1, ''),
+('B0007', 'D0196', '2016-03-01', 'Sumberejo 2014', 'Dasar', 0.5, 'Adri Jusf NTT'),
+('B0008', 'D0197', '2016-03-04', 'Sumberejo 2014', 'Dasar', 1, 'Sumito Kediri'),
+('B0007', 'D0198', '2016-03-04', 'Sumberejo 2014', 'Dasar', 1, 'Syaripudin Malang'),
+('B0007', 'D0199', '2016-03-10', 'Sumberejo 2014', 'Dasar', 0.5, 'Eko Hadi Poltek Jember'),
+('B0007', 'D0200', '2016-04-04', 'Sumberejo 2014', 'Dasar', 0.01, 'Drs. Mardjani Pemuliaan'),
+('B0008', 'D0201', '2016-04-04', 'Sumberejo 2014', 'Dasar', 0.01, ''),
+('B0009', 'D0202', '2016-04-04', 'Sumberejo 2014', 'Dasar', 0.01, ''),
+('B0010', 'D0203', '2016-04-04', 'Sumberejo 2014', 'Dasar', 0.01, ''),
+('B0008', 'D0204', '2016-04-11', 'Sumberejo 2014', 'Dasar', 5, 'Agus Budiono Bojonegoro'),
+('B0007', 'D0205', '2016-05-09', 'Sumberrejo 2014', 'Dasar', 0.5, 'KPRI Budikarti u-Jember'),
+('B0008', 'D0206', '2016-05-09', 'Sumberrejo 2014', 'Dasar', 0.5, ''),
+('B0007', 'D0207', '2016-06-06', 'Sumberrejo 2014', 'Dasar', 0.5, 'Hidayat Jember'),
+('B0008', 'D0208', '2016-06-06', 'Sumberrejo 2014', 'Dasar', 0.5, ''),
+('B0007', 'D0209', '2016-07-11', 'Sumberrejo 2014', 'Dasar', 1, 'KP. Muktiharjo'),
+('B0008', 'D0210', '2016-07-11', 'Sumberrejo 2014', 'Dasar', 1, ''),
+('B0008', 'D0211', '2016-08-03', 'Sumberejo 2014', 'Dasar', 0.8, 'Syaiful Bahri Jaslit'),
+('B0010', 'D0212', '2016-08-03', 'Sumberejo 2014', 'Dasar', 0.8, ''),
+('B0007', 'D0213', '2016-08-03', 'Sumberejo 2014', 'Dasar', 2, 'Syaiful Bahri Jaslit'),
+('B0008', 'D0214', '2016-08-03', 'Sumberejo 2014', 'Dasar', 2, ''),
+('B0007', 'D0215', '2016-08-15', 'Sumberejo 2014', 'Dasar', 1, 'BBTP Aceh'),
+('B0008', 'D0216', '2015-02-01', 'Sumberejo 2014', 'Dasar', 0.25, 'Heri Istiana KP. Karangploso'),
+('B0008', 'D0217', '2015-02-01', 'Sumberejo 2014', 'Dasar', 0.5, 'M. Rifa\'I. SO KP. Asembagus'),
+('B0007', 'D0218', '2015-02-24', 'Sumberejo 2014', 'Dasar', 1, 'Arief Malang'),
+('B0007', 'D0219', '2015-02-27', 'Sumberejo 2014', 'Dasar', 0.25, 'Fanny Sukma Gresik'),
+('B0008', 'D0220', '2015-02-27', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0007', 'D0221', '2015-03-09', 'Sumberejo 2014', 'Dasar', 0.25, 'Parwito Bengkulu'),
+('B0008', 'D0222', '2015-03-09', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0009', 'D0223', '2015-03-09', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0010', 'D0224', '2015-03-09', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0008', 'D0225', '2015-03-31', 'Sumberejo 2014', 'Dasar', 3, 'Sadta Yoga. SP KP. Sumberrejo'),
+('B0008', 'D0226', '2015-04-04', 'Sumberejo 2014', 'Dasar', 3, 'Ir. Sadta Yoga KP. Sumberrejo'),
+('B0008', 'D0227', '2015-04-22', 'Sumberejo 2014', 'Dasar', 0.25, 'Roni S. Malang'),
+('B0007', 'D0228', '2015-04-22', 'Sumberejo 2014', 'Dasar', 0.25, 'Chandra M. Malang'),
+('B0007', 'D0229', '2015-05-13', 'Sumberejo 2014', 'Dasar', 0.25, 'BPTP Kaltim Barat'),
+('B0008', 'D0230', '2015-05-13', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0009', 'D0231', '2015-05-13', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0010', 'D0232', '2015-05-13', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0007', 'D0233', '2015-06-08', 'Sumberejo 2014', 'Dasar', 0.4, 'BBP2TP Surabaya'),
+('B0008', 'D0234', '2015-06-08', 'Sumberejo 2014', 'Dasar', 0.4, ''),
+('B0009', 'D0235', '2015-06-08', 'Sumberejo 2014', 'Dasar', 0.4, ''),
+('B0010', 'D0236', '2015-06-08', 'Sumberejo 2014', 'Dasar', 0.4, ''),
+('B0007', 'D0237', '2015-06-08', 'Sumberejo 2014', 'Dasar', 0.4, 'Laboratorium Benih'),
+('B0008', 'D0238', '2015-06-08', 'Sumberejo 2014', 'Dasar', 0.4, ''),
+('B0009', 'D0239', '2015-06-08', 'Sumberejo 2014', 'Dasar', 0.4, ''),
+('B0010', 'D0240', '2015-06-08', 'Sumberejo 2014', 'Dasar', 0.4, ''),
+('B0007', 'D0241', '2015-09-01', 'Sumberejo 2014', 'Dasar', 2, 'Yusnu H. Jaslit'),
+('B0008', 'D0242', '2015-09-01', 'Sumberejo 2014', 'Dasar', 2, ''),
+('B0007', 'D0243', '2015-09-09', 'Sumberejo 2014', 'Dasar', 2, 'Sajim Lendri Bogor'),
+('B0010', 'D0244', '2015-10-05', 'Sumberejo 2014', 'Dasar', 1, 'Sarah Fayus Malang'),
+('B0007', 'D0245', '2015-10-09', 'Sumberejo 2014', 'Dasar', 0.5, 'Arif Yuwono Malang'),
+('B0008', 'D0246', '2015-10-09', 'Sumberejo 2014', 'Dasar', 0.5, ''),
+('B0008', 'D0247', '2015-10-30', 'Sumberejo 2014', 'Dasar', 0.25, 'Roni S. Malang'),
+('B0007', 'D0248', '2015-11-24', 'Sumberrejo 2014', 'Dasar', 1, 'Stephania Malang'),
+('B0007', 'D0249', '2015-11-24', 'Sumberrejo 2014', 'Dasar', 0.1, ''),
+('B0008', 'D0250', '2015-11-24', 'Sumberrejo 2014', 'Dasar', 0.1, 'Ir. Sadta Yoga KP. Sumberrejo'),
+('B0007', 'D0251', '2015-12-15', 'Sumberejo 2014', 'Dasar', 0.05, 'Budi Subroto SST Malang'),
+('B0008', 'D0252', '2015-12-15', 'Sumberejo 2014', 'Dasar', 0.05, ''),
+('B0009', 'D0253', '2015-12-15', 'Sumberejo 2014', 'Dasar', 0.05, ''),
+('B0010', 'D0254', '2015-12-15', 'Sumberejo 2014', 'Dasar', 0.05, ''),
+('B0007', 'D0255', '2015-12-18', 'Sumberejo 2014', 'Dasar', 0.1, 'Likah Susanti Malang'),
+('B0008', 'D0256', '2015-12-18', 'Sumberejo 2014', 'Dasar', 0.1, ''),
+('B0009', 'D0257', '2015-12-18', 'Sumberejo 2014', 'Dasar', 0.1, ''),
+('B0010', 'D0258', '2015-12-18', 'Sumberejo 2014', 'Dasar', 0.1, ''),
+('B0007', 'D0259', '2015-12-22', 'Sumberejo 2014', 'Dasar', 0.1, 'Heri Istiana KP. Karangploso'),
+('B0011', 'D0260', '2015-02-09', 'Asembagus 2013', 'Pokok', 0.01, 'M. Sohri KP. Karangploso'),
+('B0011', 'D0261', '2015-10-03', 'Asembagus 2013', 'Pokok', 1, 'Sri Mulyani Pemuliaan'),
+('B0011', 'D0262', '2015-03-18', 'Asembagus 2013', 'Pokok', 10, 'KPRI Budikarti u-NTT'),
+('B0011', 'D0263', '2015-04-23', 'Asembagus 2013', 'Pokok', 10, 'Riski H. Yogyakarta'),
+('B0011', 'D0264', '2015-04-29', 'Asembagus 2013', 'Pokok', 5, 'Saiful Bahri Jaslit'),
+('B0011', 'D0265', '2015-05-15', 'Asembagus 2013', 'Pokok', 100, 'KPRI Budikarti u-Sumba'),
+('B0011', 'D0266', '2015-12-18', 'Asembagus 2012', 'Pokok', 0.5, 'BBP2TP Surabaya'),
+('B0011', 'D0267', '2015-12-18', 'Asembagus 2013', 'Pokok', 0.5, ''),
+('B0011', 'D0268', '2015-12-18', 'Asembagus 2012', 'Pokok', 0.5, 'Laboratorium Benih'),
+('B0011', 'D0269', '2015-12-18', 'Asembagus 2013', 'Pokok', 0.5, ''),
+('B0011', 'D0270', '2015-12-22', 'Asembagus 2013', 'Pokok', 100, 'KPRI Budikarti Malang'),
+('B0011', 'D0271', '2015-07-02', 'Asembagus 2013', 'Pokok', 0.05, 'Hadi S. Pemuliaan'),
+('B0011', 'D0272', '2015-09-01', 'Asembagus 2012', 'Pokok', 5, 'Yusnu H. Jaslit'),
+('B0011', 'D0273', '2015-09-07', 'Asembagus 2015', 'Pokok', 0.5, 'Laboratorium Benih'),
+('B0011', 'D0274', '2015-09-22', 'Asembagus 2015', 'Pokok', 0.5, 'Laboratorium Benih'),
+('B0011', 'D0275', '2015-09-22', 'Asembagus 2013', 'Pokok', 15, 'Aditya Dwi Malang'),
+('B0011', 'D0276', '2015-10-02', 'Asembagus 2012', 'Pokok', 1, 'Puspita Malang'),
+('B0011', 'D0277', '2015-11-04', 'Asembagus 2015', 'Pokok', 0.5, 'UPBS'),
+('B0011', 'D0278', '2015-11-06', 'Asembagus 2012', 'Pokok', 20, 'PT. Palma Waingapu'),
+('B0011', 'D0279', '2015-11-24', 'Asembagus 2012', 'Pokok', 0.1, 'Ir. Sadta Yoga KP. Sumberrejo'),
+('B0011', 'D0280', '2015-12-02', 'Asembagus 2012', 'Pokok', 0.1, 'Heri Istiana KP. Karangploso'),
+('B0010', 'D0281', '2014-08-18', 'Sumberejo 2014', 'Dasar', 0.1, 'Ir. Sigid Jember'),
+('B0007', 'D0282', '2014-10-13', 'Sumberejo 2014', 'Dasar', 0.25, 'Endah Malang'),
+('B0007', 'D0283', '2014-10-23', 'Sumberejo 2014', 'Dasar', 12, 'KPRI Budikarti u-Distanhut Kab. Bintan'),
+('B0007', 'D0284', '2014-10-23', 'Sumberejo 2014', 'Dasar', 1, 'Khamim Tohari Nganjuk'),
+('B0007', 'D0285', '2014-11-04', 'Sumberejo 2014', 'Dasar', 1, 'Khamim Tohari Nganjuk'),
+('B0008', 'D0286', '2014-11-05', 'Sumberejo 2014', 'Dasar', 1, 'Sumarto Malang'),
+('B0009', 'D0287', '2014-11-05', 'Sumberejo 2014', 'Dasar', 0.5, 'Faradila Poltek Pertanian Samarinda'),
+('B0010', 'D0288', '2014-11-05', 'Sumberejo 2014', 'Dasar', 0.5, ''),
+('B0007', 'D0289', '2014-11-26', 'Sumberejo 2014', 'Dasar', 0.25, 'Tantang Kusdinar Bandung'),
+('B0008', 'D0290', '2014-11-26', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0009', 'D0291', '2014-11-26', 'Sumberejo 2014', 'Dasar', 0.25, ''),
+('B0010', 'D0292', '2014-11-28', 'Sumberejo 2014', 'Dasar', 1.1, 'BBP2TP Surabaya'),
+('B0007', 'D0293', '2014-11-28', 'Sumberejo 2014', 'Dasar', 1.1, ''),
+('B0008', 'D0294', '2014-11-28', 'Sumberejo 2014', 'Dasar', 1.1, ''),
+('B0009', 'D0295', '2014-11-28', 'Sumberejo 2014', 'Dasar', 1.1, ''),
+('B0010', 'D0296', '2014-11-28', 'Sumberejo 2014', 'Dasar', 0.5, 'Laboratorium Benih Balittas'),
+('B0007', 'D0297', '2014-11-28', 'Sumberejo 2014', 'Dasar', 0.5, ''),
+('B0008', 'D0298', '2014-11-28', 'Sumberejo 2014', 'Dasar', 0.5, ''),
+('B0009', 'D0299', '2014-11-28', 'Sumberejo 2014', 'Dasar', 0.5, ''),
+('B0007', 'D0300', '2014-12-09', 'Sumberejo 2014', 'Dasar', 2, 'Arief Rachman Kediri'),
+('B0008', 'D0301', '2014-12-09', 'Sumberejo 2014', 'Dasar', 3, ''),
+('B0007', 'D0302', '2014-12-15', 'Sumberejo 2014', 'Dasar', 1, 'Ir. Untung S. Pemuliaan'),
+('B0025', 'D0303', '2016-05-01', 'Asembagus 2012', 'Pokok', 0.5, 'Heri Prabowo Malang'),
+('B0024', 'D0304', '2016-01-28', 'Asembagus 2012', 'Pokok', 3.5, 'Suhadi Pemuliaan '),
+('B0018', 'D0305', '2016-01-16', 'Asembagus 2014', 'Pokok', 1, 'BBP2TP Surabaya'),
+('B0018', 'D0306', '2016-01-16', 'Asembagus 2015', 'Dasar', 0.9, ''),
+('B0018', 'D0307', '2016-01-16', 'Asembagus 2015', 'Pokok', 1, ''),
+('B0020', 'D0308', '2016-01-16', 'Asembagus 2011', 'Dasar', 0.8, ''),
+('B0020', 'D0309', '2016-01-16', 'Asembagus 2012', 'Dasar', 0.8, ''),
+('B0020', 'D0310', '2016-01-16', 'Karangploso 2014', 'Dasar', 0.8, ''),
+('B0020', 'D0311', '2016-01-16', 'Karangploso 2014', 'Pokok', 1, ''),
+('B0020', 'D0312', '2016-01-16', 'Asembagus 2014', 'Pokok', 0.8, ''),
+('B0020', 'D0313', '2016-01-16', 'Asembagus 2015', 'Dasar', 1, ''),
+('B0020', 'D0314', '2016-01-16', 'Asembagus 2015', 'Pokok', 0.8, ''),
+('B0021', 'D0315', '2016-01-16', 'Asembagus 2014', 'Pokok', 0.8, ''),
+('B0022', 'D0316', '2016-01-16', 'Asembagus 2008', 'Dasar', 0.8, ''),
+('B0023', 'D0317', '2016-01-16', 'Asembagus 2012', 'Pokok', 0.8, ''),
+('B0023', 'D0318', '2016-01-16', 'Asembagus 2014', 'Dasar', 1.5, ''),
+('B0023', 'D0319', '2016-01-16', 'Asembagus 2014', 'Pokok', 0.9, ''),
+('B0024', 'D0320', '2016-01-16', 'Asembagus 2012', 'Pokok', 0.8, ''),
+('B0024', 'D0321', '2016-01-16', 'Asembagus 2015', 'Pokok', 1, ''),
+('B0025', 'D0322', '2016-01-16', 'Asembagus 2012', 'Dasar', 0.8, ''),
+('B0025', 'D0323', '2016-01-16', 'Asembagus 2012', 'Pokok', 0.8, ''),
+('B0025', 'D0324', '2016-01-16', 'Asembagus 2015', 'Pokok', 1, ''),
+('B0012', 'D0325', '2016-01-16', 'Asembagus 2012', 'Pokok', 1, ''),
+('B0018', 'D0326', '2016-01-29', 'Asembagus 2014', 'Dasar', 0.2, 'Laboratorium Benih'),
+('B0018', 'D0327', '2016-01-29', 'Asembagus 2015', 'Dasar', 0.2, ''),
+('B0018', 'D0328', '2016-01-29', 'Asembagus 2015', 'Dasar', 0.2, ''),
+('B0020', 'D0329', '2016-01-29', 'Asembagus 2011', 'Dasar', 0.2, ''),
+('B0020', 'D0330', '2016-01-29', 'Asembagus 2012', 'Dasar', 0.2, ''),
+('B0020', 'D0331', '2016-01-29', 'Karangploso 2014', 'Dasar', 0.2, ''),
+('B0020', 'D0332', '2016-01-29', 'Karangploso 2014', 'Pokok', 0.2, ''),
+('B0020', 'D0333', '2016-01-29', 'Asembagus 2014', 'Pokok', 0.2, ''),
+('B0020', 'D0334', '2016-01-29', 'Asembagus 2015', 'Dasar', 0.2, ''),
+('B0020', 'D0335', '2016-01-29', 'Asembagus 2015', 'Pokok', 0.2, ''),
+('B0021', 'D0336', '2016-01-29', 'Asembagus 2014', 'Pokok', 0.2, ''),
+('B0022', 'D0337', '2016-01-29', 'Asembagus 2008', 'Dasar', 0.2, ''),
+('B0023', 'D0338', '2016-01-29', 'Asembagus 2012', 'Pokok', 0.2, ''),
+('B0023', 'D0339', '2016-01-29', 'Asembagus 2014', 'Dasar', 0.2, ''),
+('B0023', 'D0340', '2016-01-29', 'Asembagus 2014', 'Pokok', 0.2, ''),
+('B0024', 'D0341', '2016-01-29', 'Asembagus 2012', 'Pokok', 0.2, ''),
+('B0024', 'D0342', '2016-01-29', 'Asembagus 2015', 'Pokok', 0.2, ''),
+('B0025', 'D0343', '2016-01-29', 'Asembagus 2012', 'Dasar', 0.2, ''),
+('B0025', 'D0344', '2016-01-29', 'Asembagus 2012', 'Pokok', 0.2, ''),
+('B0025', 'D0345', '2016-01-29', 'Asembagus 2015', 'Pokok', 0.2, ''),
+('B0012', 'D0346', '2016-01-29', 'Asembagus 2012', 'Pokok', 0.2, ''),
+('B0020', 'D0347', '2016-02-03', 'Karangploso 2014', 'Pokok', 5, 'Minal Malang'),
+('B0018', 'D0348', '2016-02-12', 'Asembagus 2015', 'Pokok', 50, 'Haryanto Lamongan'),
+('B0020', 'D0349', '2016-02-24', 'Karangploso 2014', 'Pokok', 120, 'KPRI Budikarti u-Sidoarjo'),
+('B0018', 'D0350', '2016-02-24', 'Asembagus 2014', 'Pokok', 0.1, 'SMK Pertanian Tumenggung'),
+('B0018', 'D0351', '2016-02-25', 'Asembagus 2015', 'Dasar', 0.1, 'UPBS u- Lab. Benih'),
+('B0018', 'D0352', '2016-02-25', 'Asembagus 2015', 'Pokok', 0.1, ''),
+('B0020', 'D0353', '2016-02-25', 'Asembagus 2015', 'Dasar', 0.1, ''),
+('B0020', 'D0354', '2016-02-25', 'Asembagus 2015', 'Pokok', 0.1, ''),
+('B0024', 'D0355', '2016-02-25', 'Asembagus 2015', 'Pokok', 0.1, ''),
+('B0025', 'D0356', '2016-02-25', 'Asembagus 2015', 'Pokok', 0.1, ''),
+('B0012', 'D0357', '2016-02-25', 'Asembagus 2015', 'Pokok', 0.1, ''),
+('B0020', 'D0358', '2016-03-10', 'Asembagus 2014', 'Pokok', 0.5, 'Eko Hadi Poltek Jember'),
+('B0021', 'D0359', '2016-03-10', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0022', 'D0360', '2016-03-10', 'Asembagus 2008', 'Dasar', 0.5, ''),
+('B0023', 'D0361', '2016-03-10', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0024', 'D0362', '2016-03-10', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0025', 'D0363', '2016-03-10', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0018', 'D0364', '2016-03-14', 'Asembagus 2014', 'Pokok', 2, 'PR. Sukun Kudus'),
+('B0018', 'D0365', '2016-03-28', 'Asembagus 2015', 'Dasar', 20, 'Sucipto KP. Sumberrejo'),
+('B0020', 'D0366', '2016-03-28', 'Asembagus 2014', 'Dasar', 10, ''),
+('B0020', 'D0367', '2016-03-31', 'Asembagus 2015', 'Pokok', 0.25, 'BBP2TP Surabaya'),
+('B0020', 'D0368', '2016-04-01', 'Karangploso 2014', 'Pokok', 3, 'KPRI Budikarti u-IPB'),
+('B0025', 'D0369', '2016-04-06', 'Asembagus 2012', 'Pokok', 5, 'Yusnu H. Jaslit'),
+('B0020', 'D0370', '2016-04-19', 'Asembagus 2014', 'Pokok', 56.44, 'KPRI Budikarti u- Makassar'),
+('B0020', 'D0371', '2016-04-19', 'Asembagus 2015', 'Pokok', 38.56, ''),
+('B0018', 'D0372', '2016-04-06', 'Asembagus 2014', 'Pokok', 0.1, 'Impron KP. Karangploso'),
+('B0023', 'D0373', '2016-04-06', 'Asembagus 2012', 'Pokok', 0.1, ''),
+('B0025', 'D0374', '2016-04-06', 'Asembagus 2012', 'Pokok', 0.1, ''),
+('B0020', 'D0375', '2016-04-18', 'Asembagus 2015', 'Dasar', 4, 'Ir. Sadta Yoga KP. Sumberrejo'),
+('B0020', 'D0376', '2016-04-27', 'Asembagus 2015', 'Pokok', 0.05, 'Drs. Mardjani Pemuliaan'),
+('B0020', 'D0377', '2016-05-11', 'Karangploso 2014', 'Pokok', 125, 'KPRI Budikarti u-Sulsel'),
+('B0018', 'D0378', '2016-05-20', 'Asembagus 2015', 'Pokok', 2, 'Dr. Agung Jember'),
+('B0020', 'D0379', '2016-05-20', 'Asembagus 2014', 'Pokok', 1.95, ''),
+('B0020', 'D0380', '2016-05-20', 'Asembagus 2015', 'Pokok', 0.05, ''),
+('B0023', 'D0381', '2016-05-20', 'Asembagus 2014', 'Pokok', 2, ''),
+('B0018', 'D0382', '2016-05-20', 'Asembagus 2015', 'Dasar', 2.5, 'Ir. Sadta Yoga KP. Sumberrejo'),
+('B0018', 'D0383', '2016-06-20', 'Asembagus 2014', 'Pokok', 0.1, 'KP. Karangploso'),
+('B0020', 'D0384', '2016-06-20', 'Asembagus 2015', 'Pokok', 0.1, ''),
+('B0025', 'D0385', '2016-06-20', 'Asembagus 2015', 'Dasar', 0.1, ''),
+('B0020', 'D0386', '2016-08-01', 'Asembagus 2015', 'Pokok', 6, 'BBPPTP Surabaya'),
+('B0018', 'D0387', '2016-08-03', 'Asembagus 2014', 'Pokok', 0.4, 'Syaiful Bahri Jaslit'),
+('B0020', 'D0388', '2016-08-03', 'Asembagus 2015', 'Pokok', 0.4, ''),
+('B0021', 'D0389', '2016-08-03', 'Asembagus 2014', 'Pokok', 0.4, ''),
+('B0023', 'D0390', '2016-08-03', 'Asembagus 2012', 'Pokok', 0.4, ''),
+('B0024', 'D0391', '2016-08-03', 'Asembagus 2012', 'Pokok', 0.4, ''),
+('B0025', 'D0392', '2016-08-03', 'Asembagus 2012', 'Pokok', 0.4, ''),
+('B0020', 'D0393', '2016-08-04', 'Asembagus 2015', 'Pokok', 5, 'Syaiful Bahri Jaslit'),
+('B0018', 'D0394', '2016-08-26', 'Asembagus 2015', 'Pokok', 33, 'BBPPTP Surabaya'),
+('B0007', 'D0395', '2016-09-07', 'Sumberejo 2016', 'Dasar', 0.45, 'Reno Budi Disbun Prov. Sumbar'),
+('B0008', 'D0396', '2016-09-07', 'Sumberejo 2016', 'Dasar', 0.45, ''),
+('B0020', 'D0397', '2015-01-26', 'Asembagus 2012', 'Pokok', 2, 'Ir. Siwi S Pemuliaan'),
+('B0020', 'D0398', '2015-02-02', 'Asembagus 2014', 'Pokok', 0.25, 'Mulyadi Malang'),
+('B0018', 'D0399', '2015-02-04', 'Asembagus 2012', 'Dasar', 1, 'M. Rifa\'I KP. Asembagus'),
+('B0018', 'D0400', '2015-02-04', 'Asembagus 2012', 'Pokok', 2, 'M. Rifa\'I KP. Asembagus'),
+('B0018', 'D0401', '2015-02-04', 'Pasirian 2014', 'Pokok', 18, 'M. Rifa\'I KP. Asembagus'),
+('B0020', 'D0402', '2015-02-04', 'Asembagus 2011', 'Dasar', 1, 'M. Rifa\'I KP. Asembagus'),
+('B0020', 'D0403', '2015-02-04', 'Asembagus 2012', 'Pokok', 4.25, 'M. Rifa\'I KP. Asembagus'),
+('B0020', 'D0404', '2015-02-04', 'Karangploso 2014', 'Pokok', 5.75, 'M. Rifa\'I KP. Asembagus'),
+('B0024', 'D0405', '2015-02-04', 'Asembagus 2012', 'Pokok', 5, 'M. Rifa\'I KP. Asembagus'),
+('B0025', 'D0406', '2015-02-04', 'Asembagus 2012', 'Pokok', 2.5, 'M. Rifa\'I KP. Asembagus'),
+('B0012', 'D0407', '2015-02-04', 'Asembagus 2012', 'Pokok', 2.5, 'M. Rifa\'I KP. Asembagus'),
+('B0018', 'D0408', '2015-02-05', 'Asembagus 2013', 'Dasar', 34.1, 'Berita acara penghapusan'),
+('B0018', 'D0409', '2015-02-05', 'Asembagus 2013', 'Pokok', 71.8, 'Berita acara penghapusan'),
+('B0020', 'D0410', '2015-02-05', 'Asembagus 2013', 'Dasar', 13.6, 'Berita acara penghapusan'),
+('B0020', 'D0411', '2015-02-05', 'Asembagus 2013', 'Pokok', 189.8, 'Berita acara penghapusan'),
+('B0023', 'D0412', '2015-02-05', 'Asembagus 2012', 'Dasar', 31.9, 'Berita acara penghapusan'),
+('B0023', 'D0413', '2015-02-05', 'Asembagus 2013', 'Dasar', 9.4, 'Berita acara penghapusan'),
+('B0023', 'D0414', '2015-02-05', 'Asembagus 2013', 'Pokok', 50.5, 'Berita acara penghapusan'),
+('B0024', 'D0415', '2015-02-05', 'Asembagus 2013', 'Dasar', 0.8, 'Berita acara penghapusan'),
+('B0024', 'D0416', '2015-02-05', 'Asembagus 2013', 'Pokok', 7.4, 'Berita acara penghapusan'),
+('B0025', 'D0417', '2015-02-05', 'Asembagus 2013', 'Dasar', 3.3, 'Berita acara penghapusan'),
+('B0025', 'D0418', '2015-02-05', 'Asembagus 2013', 'Pokok', 15.3, 'Berita acara penghapusan'),
+('B0012', 'D0419', '2015-02-05', 'Asembagus 2013', 'Dasar', 55.5, 'Berita acara penghapusan'),
+('B0012', 'D0420', '2015-02-05', 'Asembagus 2013', 'Pokok', 28.3, 'Berita acara penghapusan'),
+('B0018', 'D0421', '2015-02-09', 'Asembagus 2010', 'Dasar', 0.01, 'M. Sohri KP. Karangploso'),
+('B0020', 'D0422', '2015-02-09', 'Karangploso 2014', 'Pokok', 0.01, 'M. Sohri KP. Karangploso'),
+('B0023', 'D0423', '2015-02-09', 'Asembagus 2012', 'Pokok', 0.01, 'M. Sohri KP. Karangploso'),
+('B0024', 'D0424', '2015-02-09', 'Asembagus 2012', 'Pokok', 0.01, 'M. Sohri KP. Karangploso'),
+('B0018', 'D0425', '2015-02-13', 'Pasirin 2014', 'Pokok', 45, 'PR. Sukun Kudus'),
+('B0012', 'D0426', '2015-02-13', 'Asembagus 2012', 'Pokok', 25, ''),
+('B0023', 'D0427', '2015-02-17', 'Asembagus 2014', 'Dasar', 0.2, 'Ir. Siwi S Pemuliaan'),
+('B0023', 'D0428', '2015-02-17', 'Asembagus 2014', 'Pokok', 0.2, 'Ir. Siwi S Pemuliaan'),
+('B0018', 'D0429', '2015-02-18', 'Pasirin 2014', 'Pokok', 50, 'KPRI Budikarti u- Mataram NTB'),
+('B0020', 'D0430', '2015-02-18', 'Asembagus 2014', 'Pokok', 50, ''),
+('B0020', 'D0431', '2015-02-15', 'Asembagus 2014', 'Pokok', 0.5, 'Fanny Sukma Gresik'),
+('B0025', 'D0432', '2015-03-02', 'Asembagus 2014', 'Dasar', 3, 'M. Rifa\'I KP. Asembagus'),
+('B0018', 'D0433', '2015-03-04', 'Pasirin 2014', 'Pokok', 15, 'Nurindah, Ph.D Balittas'),
+('B0020', 'D0434', '2015-03-04', 'Asembagus 2014', 'Pokok', 15, ''),
+('B0020', 'D0435', '2015-03-13', 'Asembagus 2014', 'Pokok', 0.5, 'Eko Hadi Poltek Jember'),
+('B0023', 'D0436', '2015-03-13', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0025', 'D0437', '2015-03-13', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0020', 'D0438', '2015-03-24', 'Asembagus 2014', 'Pokok', 10, 'Sri Rahayu BBP2TP Surabaya'),
+('B0020', 'D0439', '2015-03-25', 'Asembagus 2014', 'Pokok', 30, 'KPRI Budikarti u- Mataram NTB'),
+('B0020', 'D0440', '2015-03-31', 'Karangploso 2014', 'Dasar', 0.5, 'Sri Mulyani Pemuliaan'),
+('B0020', 'D0441', '2015-03-31', 'Karangploso 2014', 'Dasar', 10, 'Sadta Yoga, SP KP. Sumberrejo'),
+('B0020', 'D0442', '2015-04-04', 'Karangploso 2014', 'Pokok', 10, 'Ir. Sadta Yoga KP. Sumberrejo'),
+('B0020', 'D0443', '2015-04-16', 'Karangploso 2014', 'Pokok', 375, 'KPRI Budikarti u- Makasar'),
+('B0020', 'D0444', '2015-04-22', 'Karangploso 2014', 'Pokok', 40, 'KPRI Budikarti u- Mataram NTB'),
+('B0020', 'D0445', '2015-05-05', 'Karangploso 2014', 'Pokok', 40, 'KPRI Budikarti Malang'),
+('B0020', 'D0446', '2015-05-07', 'Karangploso 2014', 'Pokok', 225, 'KPRI Budikarti u- Makasar'),
+('B0025', 'D0447', '2015-05-20', 'Asembagus 2012', 'Pokok', 2, 'Heri Wisnu PR. Sukun Kudus'),
+('B0020', 'D0448', '2015-05-21', 'Karangploso 2014', 'Pokok', 50, 'Yonas Kai Flores'),
+('B0025', 'D0449', '2015-05-28', 'Asembagus 2012', 'Pokok', 0.1, 'Ir. Siwi S Pemuliaan'),
+('B0025', 'D0450', '2015-06-02', 'Asembagus 2012', 'Pokok', 3, 'M. Rifa\'I KP. Asembagus'),
+('B0018', 'D0451', '2015-06-08', 'Asembagus 2012', 'Dasar', 0.3, 'BBP2TP Surabaya'),
+('B0018', 'D0452', '2015-06-08', 'Pasirin 2014', 'Pokok', 0.3, ''),
+('B0020', 'D0453', '2015-06-08', 'Asembagus 2011', 'Dasar', 0.3, ''),
+('B0020', 'D0454', '2015-06-08', 'Asembagus 2012', 'Dasar', 0.4, ''),
+('B0020', 'D0455', '2015-06-08', 'Karangploso 2014', 'Dasar', 0.5, ''),
+('B0020', 'D0456', '2015-06-08', 'Karangploso 2014', 'Pokok', 0.6, ''),
+('B0020', 'D0457', '2015-06-08', 'Asembagus 2014', 'Pokok', 0.3, ''),
+('B0021', 'D0458', '2015-06-08', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0022', 'D0459', '2015-06-08', 'Asembagus 2008', 'Dasar', 0.3, ''),
+('B0023', 'D0460', '2015-06-08', 'Asembagus 2012', 'Pokok', 0.3, ''),
+('B0023', 'D0461', '2015-06-08', 'Asembagus 2014', 'Dasar', 0.4, ''),
+('B0023', 'D0462', '2015-06-08', 'Asembagus 2014', 'Pokok', 0.7, ''),
+('B0024', 'D0463', '2015-06-08', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0025', 'D0464', '2015-06-08', 'Asembagus 2012', 'Dasar', 0.4, ''),
+('B0025', 'D0465', '2015-06-08', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0012', 'D0466', '2015-06-08', 'Asembagus 2012', 'Pokok', 0.3, ''),
+('B0018', 'D0467', '2015-06-08', 'Asembagus 2012', 'Dasar', 0.3, 'Laboratorium Benih'),
+('B0018', 'D0468', '2015-06-08', 'Pasirin 2014', 'Pokok', 0.3, ''),
+('B0020', 'D0469', '2015-06-08', 'Asembagus 2011', 'Dasar', 0.3, ''),
+('B0020', 'D0470', '2015-06-08', 'Asembagus 2012', 'Dasar', 0.4, ''),
+('B0020', 'D0471', '2015-06-08', 'Karangploso 2014', 'Dasar', 0.5, ''),
+('B0020', 'D0472', '2015-06-08', 'Karangploso 2014', 'Pokok', 0.5, ''),
+('B0020', 'D0473', '2015-06-08', 'Asembagus 2014', 'Pokok', 0.3, ''),
+('B0021', 'D0474', '2015-06-08', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0022', 'D0475', '2015-06-08', 'Asembagus 2008', 'Dasar', 0.3, ''),
+('B0023', 'D0476', '2015-06-08', 'Asembagus 2012', 'Pokok', 0.3, ''),
+('B0023', 'D0477', '2015-06-08', 'Asembagus 2014', 'Dasar', 0.4, ''),
+('B0023', 'D0478', '2015-06-08', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0024', 'D0479', '2015-06-08', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0025', 'D0480', '2015-06-08', 'Asembagus 2012', 'Dasar', 0.4, ''),
+('B0025', 'D0481', '2015-06-08', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0012', 'D0482', '2015-06-08', 'Asembagus 2012', 'Pokok', 0.3, ''),
+('B0023', 'D0483', '2015-09-04', 'Asembagus 2014', 'Pokok', 0.1, 'Laboratorium Benih'),
+('B0023', 'D0484', '2015-10-02', 'Asembagus 2012', 'Pokok', 1, 'Sarah Fayrus Malang'),
+('B0018', 'D0485', '2015-11-09', 'Pasirin 2014', 'Pokok', 0.5, 'Poltek Negeri Jember'),
+('B0020', 'D0486', '2015-11-09', 'Karangploso 2014', 'Pokok', 0.5, ''),
+('B0021', 'D0487', '2015-11-09', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0023', 'D0488', '2015-11-09', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0025', 'D0489', '2015-11-09', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0020', 'D0490', '2015-11-24', 'Asembagus 2014', 'Pokok', 0.1, 'Ir. Sadta Yoga KP. Sumberrejo'),
+('B0022', 'D0491', '2015-11-27', 'Asembagus 2008', 'Pokok', 0.5, 'Munif Malang'),
+('B0012', 'D0492', '2015-12-04', 'Asembagus 2015', 'Pokok', 0.5, 'Laboratorium Benih'),
+('B0020', 'D0493', '2015-12-04', 'Asembagus 2015', 'Pokok', 0.5, ''),
+('B0024', 'D0494', '2015-12-04', 'Asembagus 2015', 'Pokok', 0.5, ''),
+('B0018', 'D0495', '2015-12-22', 'Asembagus 2014', 'Pokok', 0.1, 'Heri Istana KP. Karangploso'),
+('B0025', 'D0496', '2014-06-01', 'Asembagus 2012', 'Pokok', 1, 'Rully Dyah Pemuliaan'),
+('B0018', 'D0497', '2014-01-27', 'Asembagus 2013', 'Dasar', 10, 'Ir. Siwi S Pemuliaan'),
+('B0020', 'D0498', '2014-01-27', 'Asembagus 2011', 'Dasar', 6, ''),
+('B0020', 'D0499', '2014-01-27', 'Asembagus 2012', 'Pokok', 1.5, ''),
+('B0023', 'D0500', '2014-01-27', 'Asembagus 2012', 'Dasar', 12, ''),
+('B0020', 'D0501', '2014-11-02', 'Asembagus 2012', 'Pokok', 5, 'Program SBH u-NTT'),
+('B0022', 'D0502', '2014-11-02', 'Asembagus 2008', 'Dasar', 5, ''),
+('B0023', 'D0503', '2014-11-02', 'Asembagus 2012', 'Pokok', 5, ''),
+('B0024', 'D0504', '2014-11-02', 'Asembagus 2012', 'Pokok', 5, ''),
+('B0025', 'D0505', '2014-11-02', 'Asembagus 2012', 'Pokok', 5, ''),
+('B0020', 'D0506', '2014-11-02', 'Asembagus 2012', 'Pokok', 15, 'Prof. Dr. Ir. Nuridah Balittas'),
+('B0023', 'D0507', '2014-11-02', 'Asembagus 2012', 'Pokok', 10, ''),
+('B0020', 'D0508', '2014-10-03', 'Asembagus 2011', 'Dasar', 5, 'Ir. Siwi S Pemuliaan'),
+('B0020', 'D0509', '2014-03-24', 'Asembagus 2012', 'Pokok', 0.5, 'Eko Hadi Poltek Negeri Jember'),
+('B0023', 'D0510', '2014-03-24', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0024', 'D0511', '2014-03-24', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0025', 'D0512', '2014-03-24', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0020', 'D0513', '2014-04-02', 'Asembagus 2012', 'Pokok', 1, 'Edo EI PT. Agri Makmur Pertiwi Kediri'),
+('B0015', 'D0514', '2014-04-02', 'Asembagus 2012', 'Pokok', 1, ''),
+('B0020', 'D0515', '2014-04-07', 'Asembagus 2012', 'Pokok', 75, 'KPRI Budikarti u-Makasar'),
+('B0023', 'D0516', '2014-04-07', 'Asembagus 2012', 'Pokok', 50, ''),
+('B0023', 'D0517', '2014-04-10', 'Asembagus 2012', 'Pokok', 3, 'Drs. Dwi Adi S.MP Balittas'),
+('B0020', 'D0518', '2014-04-14', 'Asembagus 2012', 'Pokok', 225, 'KPRI Budikarti u-Makasar'),
+('B0023', 'D0519', '2014-04-16', 'Asembagus 2012', 'Pokok', 3, 'Sagiman Kalimantan Barat'),
+('B0025', 'D0520', '2014-04-16', 'Asembagus 2012', 'Pokok', 3, ''),
+('B0020', 'D0521', '2014-04-21', 'Asembagus 2013', 'Pokok', 5, 'Yusnu H Jaspen'),
+('B0025', 'D0522', '2014-04-21', 'Asembagus 2012', 'Pokok', 5, ''),
+('B0024', 'D0523', '2014-06-09', 'Asembagus 2012', 'Pokok', 7, 'Disbun Sumba Timur NTT'),
+('B0025', 'D0524', '2014-06-09', 'Asembagus 2012', 'Pokok', 7, ''),
+('B0024', 'D0525', '2014-08-18', 'Asembagus 2012', 'Pokok', 0.1, 'Ir. Sigid Jember'),
+('B0023', 'D0526', '2014-08-22', 'Asembagus 2012', 'Pokok', 0.25, 'Ristatina PVT Jakarta Selatan'),
+('B0024', 'D0527', '2014-08-22', 'Asembagus 2012', 'Pokok', 0.25, ''),
+('B0025', 'D0528', '2014-08-22', 'Asembagus 2012', 'Pokok', 0.25, ''),
+('B0020', 'D0529', '2014-09-02', 'Asembagus 2011', 'Dasar', 0.1, 'Dwithree Universitas Brawijaya'),
+('B0020', 'D0530', '2014-09-02', 'Asembagus 2012', 'Pokok', 0.1, ''),
+('B0020', 'D0531', '2014-09-02', 'Asembagus 2013', 'Dasar', 0.1, ''),
+('B0018', 'D0532', '2014-09-16', 'Asembagus 2012', 'Pokok', 1, 'Titik Yulian Entomologi'),
+('B0018', 'D0533', '2014-09-17', 'Asembagus 2013', 'Pokok', 0.1, 'Dwithree Universitas Brawijaya'),
+('B0020', 'D0534', '2014-09-17', 'Asembagus 2013', 'Pokok', 0.1, ''),
+('B0023', 'D0535', '2014-09-17', 'Asembagus 2012', 'Dasar', 0.1, ''),
+('B0023', 'D0536', '2014-09-17', 'Asembagus 2013', 'Pokok', 0.1, ''),
+('B0024', 'D0537', '2014-09-17', 'Asembagus 2012', 'Pokok', 0.1, ''),
+('B0024', 'D0538', '2014-09-17', 'Asembagus 2013', 'Pokok', 0.1, ''),
+('B0025', 'D0539', '2014-09-17', 'Asembagus 2012', 'Pokok', 0.1, ''),
+('B0025', 'D0540', '2014-09-17', 'Asembagus 2013', 'Pokok', 0.1, ''),
+('B0012', 'D0541', '2014-09-17', 'Asembagus 2012', 'Pokok', 0.1, ''),
+('B0012', 'D0542', '2014-09-17', 'Asembagus 2013', 'Pokok', 0.1, ''),
+('B0018', 'D0543', '2014-09-26', 'Asembagus 2013', 'Pokok', 0.5, 'Akbar Saitamana UNBRAW Malang'),
+('B0020', 'D0544', '2014-09-26', 'Asembagus 2013', 'Pokok', 0.5, ''),
+('B0023', 'D0545', '2014-09-26', 'Asembagus 2013', 'Pokok', 0.5, ''),
+('B0018', 'D0546', '2014-10-22', 'Asembagus 2013', 'Pokok', 0.2, 'Akbar Saitamana UNBRAW Malang'),
+('B0020', 'D0547', '2014-10-22', 'Asembagus 2012', 'Pokok', 0.2, ''),
+('B0023', 'D0548', '2014-10-22', 'Asembagus 2012', 'Pokok', 0.2, ''),
+('B0018', 'D0549', '2014-11-20', 'Asembagus 2012', '', 1, 'Dwithree Universitas Brawijaya'),
+('B0020', 'D0550', '2014-11-20', 'Asembagus 2012', '', 7, ''),
+('B0023', 'D0551', '2014-11-20', 'Asembagus 2012', '', 5, ''),
+('B0024', 'D0552', '2014-11-20', 'Asembagus 2012', '', 3, ''),
+('B0025', 'D0553', '2014-11-20', 'Asembagus 2012', '', 3, ''),
+('B0012', 'D0554', '2014-11-20', 'Asembagus 2012', '', 1, ''),
+('B0018', 'D0555', '2014-11-28', 'Asembagus 2012', 'Dasar', 1.1, 'BBP2TP Surabaya'),
+('B0020', 'D0556', '2014-11-28', 'Asembagus 2011', 'Dasar', 1.1, ''),
+('B0020', 'D0557', '2014-11-28', 'Asembagus 2012', 'Dasar', 1.1, ''),
+('B0020', 'D0558', '2014-11-28', 'Asembagus 2012', 'Pokok', 1.1, ''),
+('B0020', 'D0559', '2014-11-28', 'Asembagus 2014', 'Dasar', 1.2, ''),
+('B0020', 'D0560', '2014-11-28', 'Asembagus 2014', 'Pokok', 1.3, ''),
+('B0020', 'D0561', '2014-11-28', 'Asembagus 2014', 'Pokok', 1.1, ''),
+('B0021', 'D0562', '2014-11-28', 'Asembagus 2014', 'Pokok', 1.1, ''),
+('B0022', 'D0563', '2014-11-28', 'Asembagus 2008', 'Dasar', 1.1, ''),
+('B0023', 'D0564', '2014-11-28', 'Asembagus 2012', 'Pokok', 1.1, ''),
+('B0023', 'D0565', '2014-11-28', 'Asembagus 2014', 'Dasar', 1.1, ''),
+('B0023', 'D0566', '2014-11-28', 'Asembagus 2014', 'Pokok', 1.2, ''),
+('B0024', 'D0567', '2014-11-28', 'Asembagus 2012', 'Pokok', 1.2, ''),
+('B0025', 'D0568', '2014-11-28', 'Asembagus 2012', 'Dasar', 1.1, ''),
+('B0025', 'D0569', '2014-11-28', 'Asembagus 2012', 'Pokok', 1.1, ''),
+('B0012', 'D0570', '2014-11-28', 'Asembagus 2012', 'Pokok', 1.1, ''),
+('B0018', 'D0571', '2014-11-28', 'Asembagus 2012', 'Dasar', 0.5, 'Laboratorium Benih Balittas'),
+('B0020', 'D0572', '2014-11-29', 'Asembagus 2011', 'Dasar', 0.5, ''),
+('B0020', 'D0573', '2014-11-30', 'Asembagus 2012', 'Dasar', 0.5, ''),
+('B0020', 'D0574', '2014-12-01', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0020', 'D0575', '2014-12-02', 'Asembagus 2014', 'Dasar', 0.5, ''),
+('B0020', 'D0576', '2014-12-03', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0020', 'D0577', '2014-12-04', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0021', 'D0578', '2014-12-05', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0022', 'D0579', '2014-12-06', 'Asembagus 2008', 'Dasar', 0.5, ''),
+('B0023', 'D0580', '2014-11-28', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0023', 'D0581', '2014-11-29', 'Asembagus 2014', 'Dasar', 0.5, ''),
+('B0023', 'D0582', '2014-11-30', 'Asembagus 2014', 'Pokok', 0.5, ''),
+('B0024', 'D0583', '2014-12-01', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0025', 'D0584', '2014-12-02', 'Asembagus 2012', 'Dasar', 0.5, ''),
+('B0025', 'D0585', '2014-12-03', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0012', 'D0586', '2014-12-04', 'Asembagus 2012', 'Pokok', 0.5, ''),
+('B0020', 'D0587', '2014-12-03', 'Asembagus 2012', 'Pokok', 1, 'Denih Wahyudin Kediri'),
+('B0020', 'D0588', '2014-12-05', 'Asembagus 2012', 'Pokok', 0.1, 'M. Rifa\'I KP. Asembagus'),
+('B0018', 'D0589', '2014-12-08', 'Asembagus 2012', 'Pokok', 1, 'Martinus CV. Citra Tani NTT'),
+('B0018', 'D0590', '2014-12-15', 'Pasirian 2014', 'Pokok', 240, 'Disbun NTT'),
+('B0025', 'D0591', '2014-12-17', 'Asembagus 2012', 'Pokok', 0.3, 'Suhadi Pemuliaan'),
+('B0020', 'D0592', '2014-12-19', 'Asembagus 2011', 'Pokok', 1, 'Dwithree Universitas Brawijaya'),
+('B0020', 'D0593', '2014-12-19', 'Asembagus 2012', 'Pokok', 1, ''),
+('B0020', 'D0594', '2014-12-19', 'Asembagus 2013', 'Pokok', 1, ''),
+('B0020', 'D0595', '2014-12-19', 'Asembagus 2014', 'Pokok', 1, ''),
+('B0023', 'D0596', '2014-12-19', 'Asembagus 2012', 'Pokok', 1, ''),
+('B0023', 'D0597', '2014-12-19', 'Asembagus 2013', 'Pokok', 1, ''),
+('B0023', 'D0598', '2014-12-19', 'Asembagus 2014', 'Pokok', 1, ''),
+('B0024', 'D0599', '2014-12-19', 'Asembagus 2012', 'Pokok', 1, ''),
+('B0024', 'D0600', '2014-12-19', 'Asembagus 2013', 'Pokok', 1, ''),
+('B0025', 'D0601', '2014-12-19', 'Asembagus 2012', 'Pokok', 1, ''),
+('B0025', 'D0602', '2014-12-19', 'Asembagus 2013', 'Pokok', 1, ''),
+('B0012', 'D0603', '2014-12-19', 'Asembagus 2013', 'Pokok', 1, ''),
+('B0018', 'D0604', '2014-12-30', 'Asembagus 2014', 'Pokok', 0.1, ''),
+('B0020', 'D0605', '2014-12-30', 'Asembagus 2014', 'Pokok', 0.1, ''),
+('B0020', 'D0606', '2014-12-30', 'Karangploso 2014', 'Pokok', 0.1, ''),
+('B0020', 'D0607', '2014-12-30', 'Karangploso 2014', 'Dasar', 0.1, ''),
+('B0021', 'D0608', '2014-12-30', 'Asembagus 2014', 'Pokok', 0.1, ''),
+('B0023', 'D0609', '2014-12-30', 'Asembagus 2014', 'Dasar', 0.1, ''),
+('B0023', 'D0610', '2014-12-30', 'Asembagus 2014', 'Pokok', 0.1, ''),
+('B0012', 'D0611', '2014-12-30', 'Asembagus 2012', 'Pokok', 0.1, ''),
+('B0018', 'D0612', '2013-01-09', 'Asembagus 2012', 'Pokok', 25, 'PT. Nusafarm Situbondo '),
+('B0018', 'D0613', '2013-01-09', 'Asembagus 2012', 'Pokok', 25, ''),
+('B0024', 'D0614', '2013-01-09', 'Asembagus 2012', 'Pokok', 25, ''),
+('B0025', 'D0615', '2013-01-09', 'Asembagus 2012', 'Pokok', 25, ''),
+('B0018', 'D0616', '2013-01-28', 'Asembagus 2012', 'Pokok', 6, 'Bambang P BBP2TP Surabaya'),
+('B0018', 'D0617', '2013-01-30', 'Asembagus 2012', 'Pokok', 21, 'Y. Octavianus Kadisbun Sumba Barat Daya'),
+('B0018', 'D0618', '2013-02-27', 'Asembagus 2012', 'Pokok', 40, 'Dishutbun Prov. NTB'),
+('B0020', 'D0619', '2013-02-27', 'Asembagus 2012', 'Pokok', 60, ''),
+('B0023', 'D0620', '2013-02-27', 'Asembagus 2012', 'Pokok', 60, ''),
+('B0024', 'D0621', '2013-02-27', 'Asembagus 2012', 'Pokok', 36, ''),
+('B0018', 'D0622', '2013-03-01', 'Asembagus 2012', 'Pokok', 21, 'Yulius H Moto Kupang'),
+('B0020', 'D0623', '2013-03-01', 'Asembagus 2012', 'Pokok', 49, ''),
+('B0020', 'D0624', '2013-03-13', 'Asembagus 2012', 'Pokok', 7, 'Ayulia BBP2TP Surabaya'),
+('B0018', 'D0625', '2013-03-19', 'Asembagus 2012', 'Pokok', 42, 'UD. PENI Kulon Progo DIY'),
+('B0020', 'D0626', '2013-03-19', 'Asembagus 2012', 'Pokok', 42, ''),
+('B0018', 'D0627', '2013-03-27', 'Asembagus 2012', 'Pokok', 80, 'PT. Nusafarm Situbondo'),
+('B0024', 'D0628', '2013-03-27', 'Asembagus 2012', 'Pokok', 10, ''),
+('B0024', 'D0629', '2013-04-12', 'Asembagus 2012', 'Pokok', 10, 'BPTP NTB'),
+('B0018', 'D0630', '2013-04-22', 'Asembagus 2012', 'Pokok', 5, 'BPTP NTB'),
+('B0023', 'D0631', '2013-04-22', 'Asembagus 2012', 'Pokok', 15, ''),
+('B0024', 'D0632', '2013-04-22', 'Asembagus 2012', 'Pokok', 15, ''),
+('B0023', 'D0633', '2013-04-24', 'Asembagus 2012', 'Pokok', 84, 'Ir. Hamdani Nuntung Disbun Sulsul'),
+('B0023', 'D0634', '2013-04-24', 'Asembagus 2012', 'Pokok', 108, ''),
+('B0024', 'D0635', '2013-04-24', 'Asembagus 2012', 'Pokok', 78, ''),
+('B0025', 'D0636', '2013-04-24', 'Asembagus 2012', 'Pokok', 126, ''),
+('B0024', 'D0637', '2013-04-12', 'Asembagus 2012', 'Pokok', 10, 'BPTP NTB'),
+('B0018', 'D0638', '2013-04-22', 'Asembagus 2012', 'Pokok', 5, 'BPTP NTB'),
+('B0023', 'D0639', '2013-04-22', 'Asembagus 2012', 'Pokok', 15, ''),
+('B0024', 'D0640', '2013-04-22', 'Asembagus 2012', 'Pokok', 15, ''),
+('B0023', 'D0641', '2013-05-15', 'Asembagus 2012', 'Pokok', 10, 'Disbun Prov. Sulawesi Selatan'),
+('B0025', 'D0642', '2013-05-21', 'Asembagus 2012', 'Pokok', 14, 'Disbun Prov. Sulawesi Selatan'),
+('B0018', 'D0643', '2013-05-28', 'Asembagus 2012', 'Pokok', 105, 'Disbun Prov. Bali'),
+('B0024', 'D0644', '2013-06-12', 'Asembagus 2012', 'Pokok', 19, 'Ir. Hamdani Nuntung Disbun Prov. Sulsel'),
+('B0020', 'D0645', '2013-06-21', 'Asembagus 2012', 'Pokok', 10, 'Fajarudin Disbun NTB');
+INSERT INTO `distribusi_benih` (`id_benih`, `id_distribusi`, `tanggal`, `tahun_panen`, `kelas_benih`, `jumlah_kg`, `keterangan`) VALUES
+('B0020', 'D0646', '2013-09-26', 'Asembagus 2012', 'Pokok', 0.25, 'Arachis R. Univ. Brawijaya Malang'),
+('B0025', 'D0647', '2013-09-26', 'Asembagus 2012', 'Pokok', 0.25, ''),
+('B0020', 'D0648', '2013-10-01', 'Asembagus 2012', 'Pokok', 1, 'Eko Hadi Politeknik Negeri Jember'),
+('B0025', 'D0649', '2013-10-01', 'Asembagus 2012', 'Pokok', 1, ''),
+('B0020', 'D0650', '2013-10-02', 'Asembagus 2012', 'Pokok', 0.25, 'Isa Apri Universitas Brawijaya Malang'),
+('B0025', 'D0651', '2013-10-02', 'Asembagus 2012', 'Pokok', 0.25, ''),
+('B0020', 'D0652', '2013-10-11', 'Asembagus 2012', 'Pokok', 1, 'KPRI Budikarti Malang u-Bogor'),
+('B0020', 'D0653', '2013-11-08', 'Asembagus 2012', 'Pokok', 2, 'SMK-PPN Sembawa Palembang'),
+('B0018', 'D0654', '2012-01-25', 'Asembagus 2010', 'Dasar', 10, 'PR. Sukun Kudus'),
+('B0021', 'D0655', '2012-01-25', 'Asembagus 2010', 'Dasar', 25, ''),
+('B0024', 'D0656', '2012-01-25', 'Asembagus 2009', 'Dasar', 25, ''),
+('B0012', 'D0657', '2012-01-25', 'Asembagus 2006', 'Dasar', 10, ''),
+('B0020', 'D0658', '2012-03-14', 'Asembagus 2009', 'Dasar', 0.25, 'Eko H Poltek Negeri Jember'),
+('B0021', 'D0659', '2012-03-14', 'Asembagus 2010', 'Dasar', 0.25, ''),
+('B0022', 'D0660', '2012-03-14', 'Sumberejo 2008', 'Dasar', 0.25, ''),
+('B0023', 'D0661', '2012-03-14', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0024', 'D0662', '2012-03-14', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0025', 'D0663', '2012-03-14', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0020', 'D0664', '2012-03-28', 'Asembagus 2009', 'Dasar', 10, 'PT. Nusafarm Situbundo'),
+('B0020', 'D0665', '2012-03-28', 'Karangploso 2010', 'Dasar', 40, ''),
+('B0020', 'D0666', '2012-03-28', 'Asembagus 2011', 'Dasar', 20, ''),
+('B0021', 'D0667', '2012-03-28', 'Asembagus 2011', 'Dasar', 10, ''),
+('B0020', 'D0668', '2012-04-02', 'Asembagus 2011', 'Dasar', 60, 'PR. Sukun NTB'),
+('B0021', 'D0669', '2012-04-02', 'Asembagus 2011', 'Dasar', 10, ''),
+('B0022', 'D0670', '2012-04-02', 'Asembagus 2011', 'Dasar', 10, ''),
+('B0017', 'D0671', '2012-05-28', 'Asembagus 2007', 'Dasar', 10, 'Prabowo Malang'),
+('B0021', 'D0672', '2012-07-27', 'Asembagus 2011', 'Dasar', 10, 'Sholeh Malang'),
+('B0018', 'D0673', '2012-10-25', 'Asembagus 2011', 'Dasar', 3, 'PR. Sukun NTB'),
+('B0020', 'D0674', '2012-10-25', 'Asembagus 2011', 'Dasar', 1, ''),
+('B0021', 'D0675', '2012-10-25', 'Asembagus 2011', 'Dasar', 1, ''),
+('B0022', 'D0676', '2012-10-25', 'Asembagus 2008', 'Dasar', 1, ''),
+('B0018', 'D0677', '2012-11-05', 'Asembagus 2011', 'Dasar', 1, 'Tomi Rinaldi Depok'),
+('B0018', 'D0678', '2012-11-21', 'Asembagus 2012', 'Dasar', 20, 'KPRI Budikarti Malang'),
+('B0018', 'D0679', '2011-01-05', 'Asembagus 2005', 'Pokok', 20, 'PT. AAI Waingapu'),
+('B0021', 'D0680', '2011-01-13', 'Sumberejo 2008', 'Dasar', 12, 'PR. Sukun Kudus'),
+('B0023', 'D0681', '2011-01-13', 'Sumberejo 2008', 'Dasar', 12, ''),
+('B0025', 'D0682', '2011-01-13', 'Asembagus 2009', 'Dasar', 12, ''),
+('B0018', 'D0683', '2011-01-13', 'Asembagus 2005', 'Pokok', 85, 'PR. Sukun Kudus'),
+('B0018', 'D0684', '2011-01-13', 'Mojosari 2007', 'Pokok', 95, ''),
+('B0021', 'D0685', '2011-01-13', 'Asembagus 2007', 'Dasar', 36.1, ''),
+('B0021', 'D0686', '2011-01-13', 'Sumberejo 2008', 'Dasar', 5.4, ''),
+('B0021', 'D0687', '2011-01-13', 'Asembagus 2010', 'Dasar', 18.5, ''),
+('B0022', 'D0688', '2011-01-13', 'Asembagus 2007', 'Dasar', 21.3, ''),
+('B0022', 'D0689', '2011-01-13', 'Sumberejo 2008', 'Dasar', 8.7, ''),
+('B0018', 'D0690', '2011-01-21', 'Mojosari 2007', 'Dasar', 15, 'PT. Nusafarm'),
+('B0023', 'D0691', '2011-02-10', 'Asembagus 2009', 'Dasar', 0.5, 'Dyah Eka Malang'),
+('B0020', 'D0692', '2011-02-14', 'Karangploso 2010', 'Dasar', 20, 'Kamiyo. Dishutbun Kab. Pacitan'),
+('B0023', 'D0693', '2011-02-14', 'Asembagus 2010', 'Dasar', 20, ''),
+('B0025', 'D0694', '2011-02-14', 'Karangploso 2010', 'Dasar', 30, ''),
+('B0019', 'D0695', '2011-02-21', 'Karangploso 1999', 'Dasar', 10, 'Disbun Lamongan'),
+('B0020', 'D0696', '2011-02-21', 'Karangploso 2010', 'Dasar', 10, ''),
+('B0021', 'D0697', '2011-02-21', 'Asembagus 2010', 'Dasar', 10, ''),
+('B0022', 'D0698', '2011-02-21', 'Asembagus 2010', 'Dasar', 10, ''),
+('B0023', 'D0699', '2011-02-21', 'Asembagus 2010', 'Dasar', 10, ''),
+('B0024', 'D0700', '2011-02-21', 'Asembagus 2010', 'Dasar', 10, ''),
+('B0025', 'D0701', '2011-02-21', 'Karangploso 2010', 'Dasar', 10, ''),
+('B0020', 'D0702', '2011-02-22', 'Karangploso 2010', 'Dasar', 5, 'PR. Sukun Kudus'),
+('B0023', 'D0703', '2011-02-22', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0018', 'D0704', '2011-02-23', 'Asembagus 2010', 'Dasar', 10, 'Disbun Banyuwangi'),
+('B0019', 'D0705', '2011-02-23', 'Karangploso 1999', 'Dasar', 5, ''),
+('B0020', 'D0706', '2011-02-23', 'Karangploso 2010', 'Dasar', 5, ''),
+('B0021', 'D0707', '2011-02-23', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0022', 'D0708', '2011-02-23', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0023', 'D0709', '2011-02-23', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0024', 'D0710', '2011-02-23', 'Asembagus 2010', 'Dasar', 10, ''),
+('B0025', 'D0711', '2011-02-23', 'Karangploso 2010', 'Dasar', 5, ''),
+('B0019', 'D0712', '2011-02-24', 'Karangploso 1999', 'Dasar', 5, 'BPTP Mataram NTB'),
+('B0020', 'D0713', '2011-02-24', 'Karangploso 2010', 'Dasar', 5, ''),
+('B0021', 'D0714', '2011-02-24', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0022', 'D0715', '2011-02-24', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0023', 'D0716', '2011-02-24', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0024', 'D0717', '2011-02-24', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0025', 'D0718', '2011-02-24', 'Karangploso 2010', 'Dasar', 2, ''),
+('B0020', 'D0719', '2011-02-28', 'Karangploso 2010', 'Dasar', 4, 'PT. Nusafarm Jateng'),
+('B0021', 'D0720', '2011-02-28', 'Asembagus 2010', 'Dasar', 4, ''),
+('B0022', 'D0721', '2011-02-28', 'Asembagus 2010', 'Dasar', 2, ''),
+('B0023', 'D0722', '2011-02-28', 'Asembagus 2010', 'Dasar', 2, ''),
+('B0024', 'D0723', '2011-02-28', 'Asembagus 2010', 'Dasar', 2, ''),
+('B0025', 'D0724', '2011-02-28', 'Karangploso 2010', 'Dasar', 2, ''),
+('B0020', 'D0725', '2011-03-04', 'Karangploso 2010', 'Dasar', 30, 'Dishutbun Pacitan'),
+('B0023', 'D0726', '2011-03-04', 'Asembagus 2010', 'Dasar', 20, ''),
+('B0025', 'D0727', '2011-03-04', 'Karangploso 2010', 'Dasar', 20, ''),
+('B0018', 'D0728', '2011-03-17', 'Mojosari 2007', 'Dasar', 0.25, 'Poltek Negeri Jember'),
+('B0019', 'D0729', '2011-03-17', 'Karangploso 1999', 'Dasar', 0.25, ''),
+('B0020', 'D0730', '2011-03-17', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0021', 'D0731', '2011-03-17', 'Asembagus 2010', 'Dasar', 0.25, ''),
+('B0022', 'D0732', '2011-03-17', 'Asembagus 2008', 'Dasar', 0.25, ''),
+('B0023', 'D0733', '2011-03-17', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0024', 'D0734', '2011-03-17', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0025', 'D0735', '2011-03-17', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0024', 'D0736', '2011-03-23', 'Asembagus 2009', 'Dasar', 15, 'PT. Nusafarm'),
+('B0018', 'D0737', '2011-03-25', 'Mojosari 2007', 'Dasar', 10, 'PT. AAI Waingapu'),
+('B0018', 'D0738', '2011-03-25', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0018', 'D0739', '2011-03-28', 'Asembagus 2010', 'Dasar', 2, 'Disbun Makasar Sulsel'),
+('B0020', 'D0740', '2011-03-28', 'Asembagus 2009', 'Dasar', 5, ''),
+('B0021', 'D0741', '2011-03-28', 'Asembagus 2011', 'Dasar', 5, ''),
+('B0022', 'D0742', '2011-03-28', 'Asembagus 2008', 'Dasar', 5, ''),
+('B0023', 'D0743', '2011-03-28', 'Asembagus 2009', 'Dasar', 5, ''),
+('B0024', 'D0744', '2011-03-28', 'Asembagus 2009', 'Dasar', 5, ''),
+('B0025', 'D0745', '2011-03-28', 'Asembagus 2010', 'Dasar', 5, ''),
+('B0013', 'D0746', '2011-03-31', 'Mojosari 2002', 'Dasar', 0.25, 'Dede Nuraida UM'),
+('B0014', 'D0747', '2011-03-31', 'Mojosari 2002', 'Dasar', 0.25, ''),
+('B0015', 'D0748', '2011-03-31', 'Sumberejo 1999', 'Dasar', 0.25, ''),
+('B0016', 'D0749', '2011-03-31', 'Karangploso 1999', 'Dasar', 0.25, ''),
+('B0017', 'D0750', '2011-03-31', 'Asembagus 2006', 'Dasar', 0.25, ''),
+('B0018', 'D0751', '2011-03-31', 'Mojosari 2007', 'Dasar', 0.25, ''),
+('B0019', 'D0752', '2011-03-31', 'Karangploso 1999', 'Dasar', 0.25, ''),
+('B0020', 'D0753', '2011-03-31', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0021', 'D0754', '2011-03-31', 'Asembagus 2011', 'Dasar', 0.25, ''),
+('B0022', 'D0755', '2011-03-31', 'Asembagus 2008', 'Dasar', 0.25, ''),
+('B0023', 'D0756', '2011-03-31', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0024', 'D0757', '2011-03-31', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0025', 'D0758', '2011-03-31', 'Asembagus 2009', 'Dasar', 0.25, ''),
+('B0012', 'D0759', '2011-03-31', 'Asembagus 2006', 'Dasar', 0.25, ''),
+('B0026', 'D0760', '2011-03-31', 'Sumberejo 2003', 'Dasar', 0.25, ''),
+('B0022', 'D0761', '2011-04-04', 'Sumberejo 2008', 'Dasar', 1, 'Chairil Anwar Malang'),
+('B0023', 'D0762', '2011-04-04', 'Asembagus 2009', 'Dasar', 1, ''),
+('B0024', 'D0763', '2011-04-04', 'Asembagus 2009', 'Dasar', 1, ''),
+('B0018', 'D0764', '2011-04-05', 'Asembagus 2010', 'Dasar', 15, 'PT. Nusafarm'),
+('B0024', 'D0765', '2011-04-13', 'Asembagus 2010', 'Dasar', 1, 'Dzaakiyatul H UIN Malang'),
+('B0019', 'D0766', '2011-04-15', 'Karangploso 1999', 'Dasar', 5, 'PT. Nusafarm Situbondo'),
+('B0024', 'D0767', '2011-04-15', 'Asembagus 10', 'Dasar', 5, ''),
+('B0025', 'D0768', '2011-04-15', 'Asembagus 2011', 'Dasar', 5, ''),
+('B0018', 'D0769', '2011-04-18', 'Mojosari 2007', 'Pokok', 30, 'PR. Sukun Kudus (NTB)'),
+('B0021', 'D0770', '2011-04-18', 'Asembagus 2010', 'Dasar', 30, ''),
+('B0022', 'D0771', '2011-04-18', 'Asembagus 2010', 'Dasar', 30, ''),
+('B0020', 'D0772', '2011-04-18', 'Karangploso 2010', 'Dasar', 210, 'PR. Sukun Kudus'),
+('B0021', 'D0773', '2011-04-18', 'Asembagus 2010', 'Dasar', 30, ''),
+('B0023', 'D0774', '2011-04-18', 'Asembagus 2011', 'Dasar', 80, ''),
+('B0024', 'D0775', '2011-04-18', 'Asembagus 2012', 'Dasar', 300, ''),
+('B0025', 'D0776', '2011-04-18', 'Karangploso 2010', 'Dasar', 80, ''),
+('B0023', 'D0777', '2011-04-19', 'Asembagus 2009', 'Dasar', 20, 'PT. Syngenta Cikampek'),
+('B0013', 'D0778', '2011-04-19', 'Mojosari 2002', 'Dasae', 1, 'Dede N Univ Negeri Malang'),
+('B0014', 'D0779', '2011-04-19', 'Mojosari 2003', 'Dasar', 1, ''),
+('B0015', 'D0780', '2011-04-19', 'Sumberejo 2003', 'Dasar', 1, ''),
+('B0016', 'D0781', '2011-04-19', 'Karangploso 1999', 'Dasar', 1, ''),
+('B0019', 'D0782', '2011-04-19', 'Karangploso 2000', 'Dasar', 1, ''),
+('B0024', 'D0783', '2011-09-12', 'Asembagus 2009', 'Dasar', 0.5, 'BBP2TP Surabaya'),
+('B0025', 'D0784', '2011-09-12', 'Asembagus 2009', 'Dasar', 0.5, ''),
+('B0018', 'D0785', '2011-09-12', 'Mojosari 2007', 'Pokok', 1.5, 'Yeti BPTP medan'),
+('B0018', 'D0786', '2011-10-06', 'Asembagus 2010', 'Dasar', 50, 'PT. AAI Waingapu NTT'),
+('B0017', 'D0787', '2011-11-11', 'Asembagus 2007', 'Dasar', 1, 'Dr. Ir. Taryono, MSc UGM'),
+('B0018', 'D0788', '2011-11-11', 'Mojosari 2007', 'Pokok', 1, ''),
+('B0017', 'D0789', '2011-12-07', 'Asembagus 2006', 'Dasar', 2, 'Gowa Jeneponto'),
+('B0018', 'D0790', '2011-12-07', 'Asembagus 2010', 'Dasar', 2, ''),
+('B0020', 'D0791', '2011-12-07', 'Asembagus 2009', 'Dasar', 2, ''),
+('B0021', 'D0792', '2011-12-07', 'Asembagus 2010', 'Dasar', 2, ''),
+('B0022', 'D0793', '2011-12-07', 'Sumberejo 2008', 'Dasar', 2, ''),
+('B0023', 'D0794', '2011-12-07', 'Asembagus 2009', 'Dasar', 2, ''),
+('B0024', 'D0795', '2011-12-07', 'Asembagus 2009', 'Dasar', 2, ''),
+('B0025', 'D0796', '2011-12-07', 'Asembagus 2009', 'Dasar', 2, ''),
+('B0018', 'D0797', '2011-12-08', 'Asembagus 2010', 'Dasar', 15, 'PT. Nusafarm Situbondo'),
+('B0025', 'D0798', '2011-12-08', 'Karangploso 2010', 'Dasar', 40, ''),
+('B0018', 'D0799', '2011-12-09', 'Asembagus 2007', 'Pokok', 1, 'Lilik H Batan'),
+('B0020', 'D0800', '2011-12-09', 'Asembagus 2009', 'Dasar', 1, ''),
+('B0021', 'D0801', '2011-12-09', 'Asembagus 2010', 'Dasar', 1, ''),
+('B0022', 'D0802', '2011-12-09', 'Sumberejo 2008', 'Dasar', 1, ''),
+('B0023', 'D0803', '2011-12-09', 'Asembagus 2009', 'Dasar', 1, ''),
+('B0024', 'D0804', '2011-12-09', 'Asembagus 2009', 'Dasar', 1, ''),
+('B0025', 'D0805', '2011-12-09', 'Asembagus 2009', 'Dasar', 1, '');
 
 -- --------------------------------------------------------
 
@@ -1999,39 +2761,38 @@ INSERT INTO `gambar_leaflet` (`id_leaflet`, `id_gambar`, `file`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_produk`
+-- Table structure for table `jenis_leaflet`
 --
 
-CREATE TABLE `jenis_produk` (
-  `id_jenis` char(5) NOT NULL,
+CREATE TABLE `jenis_leaflet` (
+  `id_jenis_leaflet` char(5) NOT NULL,
   `nama_jenis` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jenis_produk`
+-- Dumping data for table `jenis_leaflet`
 --
 
-INSERT INTO `jenis_produk` (`id_jenis`, `nama_jenis`) VALUES
-('J0001', 'Benih'),
-('J0002', 'Alat dan Mesin'),
-('J0003', 'Formula'),
-('J0004', 'Produk Hilir');
+INSERT INTO `jenis_leaflet` (`id_jenis_leaflet`, `nama_jenis`) VALUES
+('JL001', 'Jarak Pagar'),
+('JL002', 'Tebu'),
+('JL003', 'Wijen'),
+('JL004', 'Jarak Kepyar'),
+('JL005', 'Alat dan Mesin');
 
 --
--- Triggers `jenis_produk`
+-- Triggers `jenis_leaflet`
 --
 DELIMITER $$
-CREATE TRIGGER `tr_id_jenis_produk` BEFORE INSERT ON `jenis_produk` FOR EACH ROW BEGIN
-SET @hitung = CONVERT((RIGHT((SELECT `id_jenis` FROM `jenis_produk` ORDER by `id_jenis` DESC LIMIT 1), 4)), UNSIGNED) + 1;
+CREATE TRIGGER `tr_id_jenis_leaflet` BEFORE INSERT ON `jenis_leaflet` FOR EACH ROW BEGIN
+SET @hitung = CONVERT((RIGHT((SELECT `id_jenis_leaflet` FROM `jenis_leaflet` ORDER by `id_jenis_leaflet` DESC LIMIT 1), 4)), UNSIGNED) + 1;
 if (@hitung > 1) THEN
 if (@hitung < 10) THEN 
-SET new.`id_jenis` = concat('J000',@hitung);
+SET new.`id_jenis_leaflet` = concat('JL00',@hitung);
 ELSEIF (@hitung < 100) THEN
-SET new.`id_jenis` = concat('J00',@hitung);
-ELSEIF (@hitung < 1000) THEN
-SET new.`id_jenis` = concat('J0',@hitung);
+SET new.`id_jenis_leaflet` = concat('JL0',@hitung);
 ELSE
-SET new.`id_jenis` = concat('J',@hitung);
+SET new.`id_jenis_leaflet` = concat('JL',@hitung);
 END IF;
 END IF;
 END
@@ -2047,14 +2808,14 @@ DELIMITER ;
 CREATE TABLE `leaflet` (
   `id_leaflet` char(5) NOT NULL,
   `nama_leaflet` varchar(100) DEFAULT NULL,
-  `id_jenis` char(5) NOT NULL
+  `id_jenis_leaflet` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `leaflet`
 --
 
-INSERT INTO `leaflet` (`id_leaflet`, `nama_leaflet`, `id_jenis`) VALUES
+INSERT INTO `leaflet` (`id_leaflet`, `nama_leaflet`, `id_jenis_leaflet`) VALUES
 ('L0001', 'Populasi Komposit IP-3', 'JL001'),
 ('L0002', 'Jarak Pagar (Jatropha curcas L.) Potensi dan Pengembangan', 'JL001'),
 ('L0003', 'Populasi Komposit Jarak Pagar (Jatropha curcas L.) IP-2P, IP-2M, IP-2', 'JL001'),
@@ -2102,65 +2863,27 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk`
---
-
-CREATE TABLE `produk` (
-  `id_produk` char(5) NOT NULL,
-  `id_jenis` char(5) NOT NULL,
-  `nama_produk` varchar(255) NOT NULL,
-  `deskripsi_produk` text NOT NULL,
-  `file_gambar` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Triggers `produk`
---
-DELIMITER $$
-CREATE TRIGGER `tr_id_produk` BEFORE INSERT ON `produk` FOR EACH ROW BEGIN
-SET @hitung = CONVERT((RIGHT((SELECT `id_produk` FROM `produk` ORDER by `id_produk` DESC LIMIT 1), 4)), UNSIGNED) + 1;
-if (@hitung > 1) THEN
-if (@hitung < 10) THEN 
-SET new.`id_produk` = concat('P000',@hitung);
-ELSEIF (@hitung < 100) THEN
-SET new.`id_produk` = concat('P00',@hitung);
-ELSEIF (@hitung < 1000) THEN
-SET new.`id_produk` = concat('P0',@hitung);
-ELSE
-SET new.`id_produk` = concat('P',@hitung);
-END IF;
-END IF;
-END
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `serat`
 --
 
 CREATE TABLE `serat` (
   `id_serat` char(5) NOT NULL,
   `nama_serat` varchar(100) NOT NULL,
-  `deskripsi_serat` text
+  `deskripsi_serat` text,
+  `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `serat`
 --
 
-INSERT INTO `serat` (`id_serat`, `nama_serat`, `deskripsi_serat`) VALUES
-('S0001', 'Jarak Pagar', 'Salah satu sumber energi yang bisa diperbarui adalah Jarak Pagar. Jatropha curcas L yang dapat diproses menjadi biodiesel. Pengembangan Jarak Pagar diharapkan akan membuka kesempatan kerja, menumbuhkan agro-industri di pedesaan, meningkatkan pemanfaatan lahan-lahan kosong yang akan meningkatkan pendapatan petani serta mengurangi emisi karbon monoksida (Kyoto-protocol).\nPengembangan Jarak Pagar tentu harus didukung oleh ketersediaan bahan tanaman berkualitas. Hasil seleksi rekuren pada populasi IP2-A di Asembagus, Situbondo, Jawa Timur, dengan standar produksi 500 kapsul/tanaman/tahun pada tahun-I, telah menhasilkan IP3-A dengan perkiraan produktivitas 2,2-2,5 ton biji kering/ha pada tahun-I.\nPada kondisi hujan yang optimal (1200-1500 mm/tahun) serta ketersediaan hara cukup, populasi IP3-A mampu menghasilkan 5-6 ton/ha pada tahun-III atau 8-9 ton/ha pada tahun-IV sampai tanaman berumur 30 tahun. kandungan minyak berkisar 33-36% yang bervariasi menurut musim panen. Tanaman dapat dipanen dua kali dalam setahun; tanaman sangat rentan di daerah kering dengan curah hujan kurang dari 500 mm/tahun atau daerah basah dengan curah hujan diatas 2500 mm/tahun. Tanaman Jarak Pagar yang sedang berbunga sangat sensitif terhadap hujan berintensitas tinggi\n'),
-('S0002', 'Kapas', 'Sebagai negara produsen tekstil No. 5 di dunia, volume ekspor industri tekstil dan produk tekstil (TPT) Indonesia pada tahun 2005 mencapai US$8,59 miliar dan mampu menyerap tenaga kerja mencapai 1,7 juta orang, belum termasuk tenaga kerja yang diserap dalam sektor pertanian dan perdagangan. Serat kapas merupakan bahan baku utama dari industri TPT. Kebutuhan akan serat kapas pada 2004/2005 berkisar 510 ribu ton yang diprediksi akan meningkat menjadi 688 ribu ton pada 2010. Produksi serat kapas dalam negeri hanya berkisar 1,600â€“2,500 ribu ton atau kurang dari 0,5% kebutuhan nasional. Sampai dengan tahun 2025, agribisnis kapas diharapkan dapat memberikan kontribusi pada industri TPT sekitar 30% dari kebutuhan bahan baku kapas saat ini. Tantangan yang dihadapi oleh pengembangan kapas In-donesia cukup kompleks, berawal dari ketidaktersediaan benih bermutu sampai dengan kelangkaan modal petani. Ketersediaan sumber daya alam terutama lahan kering masih cukup luas di luar Jawa, seperti Sulawesi Selatan, Nusa Tenggara Barat, dan Nusa Tenggara Timur yang memberikan peluang bagi pengembangan kapas nasional. Oleh karena itu, komoditas kapas merupakan salah satu komoditas yang diprioritaskan untuk dikembangkan dalam mendukung revitalisasi perkebunan. \nSalah satu aspek intensifikasi adalah varietas unggul, karena varietas unggul merupakan komponen teknologi yang paling mudah diadopsi oleh petani. Balittas telah melepas 15 seri varietas Kapas Indonesia (Kanesia); enam diantaranya dilepas pada tahun 2006/2007 yaitu Kanesia 10, Kanesia 11, Kanesia 12, Kanesia 13, Kanesia 14, dan Kanesia 15. Kanesia 8 merupakan varietas unggul kapas yang telah digunakan dalam pengembangan kapas nasional dengan potensi produksi 1,85â€“2,73 ton kapas berbiji/ha dan persen serat 33,3â€“38,7%. Varietas-varietas baru tersebut memiliki potensi produksi 17â€“22% lebih tinggi dibanding Kanesia 8, dan tingkat ketahanan yang moderat terhadap salah satu hama utama kapas, Amrasca biguttulla, serta mutu serat yang tidak berbeda dengan Kanesia 8. Kanesia 14 dan Kanesia 15 memiliki daya adaptasi yang lebih besar terhadap keterbatasan air dibandingkan varietas-varietas lainnya, sehing-ga kedua varietas tersebut lebih sesuai untuk dikembangkan pada daerah-daerah tadah hujan. \nPenggunaan varietas-varietas unggul kapas dalam pengembangan dengan luas areal yang diperkirakan mencapai 10.000 hektar dan dengan produktivitas pada tingkat petani mencapai 1,5 ton/ha (50â€“70% dari potensi produksi), maka produksi kapas nasional akan meningkat 9.000 ton kapas berbiji atau 3.000 ton serat kapas yang setara dengan US$4,2 juta (dengan harga serat rata-rata US$1,4/kg serat). Manfaat tersebut akan meningkat lebih tinggi apabila luas areal kapas mampu mencapai target pengembangan kapas nasional yaitu sekitar 70.000 ha pada 2010.'),
-('S0003', 'Kapuk', 'Sejak tahun 1928 sampai sekarang Indonesia masih merupakan negara pengekspor kapuk, tetapi jumlahnya terus menurun. Pada 1936/1937 Indonesia merupakan negara pengekspor terbesar di dunia, jumlahnya mencapai 28.400 ton serat atau sekitar 85% kebutuhan serat kapuk dunia. Pada tahun 2003 ekspor serat kapuk menurun menjadi 1.496 ton serat. Penurunan ekspor kapuk antara lain disebabkan banyaknya kapuk tua yang tidak produktif, penebangan kapuk tanpa diimbangi peremajaan, meningkatnya penggunaan serat kapuk dalam negeri, dan persaingan dengan bahan sintetis seperti karet busa. Selain itu penurunan ekspor kapuk Indonesia disebabkan kalah bersaing dalam harga dengan Thailand yang lebih murah. Untuk meningkatkan ekspor serat kapuk antara lain dengan meningkatkan produktivitas dan tetap mempertahankan kualitas serat kapuk yang baik. Varietas unggul yang telah dilepas Balittas untuk mendukung pengembangan kapuk ada-lah Muktiharjo 1 (MH 1) , Muktiharjo 2 (MH 2), dan Togo B dari tipe Karibea yang dilepas pada tahun 2006 dan sesuai untuk usaha tani monokultur, serta Muktiharjo 3 (MH 3) dan Muktiharjo 4 (MH 4) dari tipe yang sama yang sesuai untuk program penghijauan dan konservasi lahan yang dilepas pada tahun 2007.'),
-('S0004', 'Kenaf', 'Kenaf (Hibiscus cannabinus L) sudah lama dibudidayakan di Indonesia dan pada tahun 1986/1987 mencapai luas 26.000 ha yang tersebar di Lampung, Jawa Barat, Jawa Tengah, Jawa Timur, dan Kalimantan Selatan. Kenaf memiliki keunggulan beradaptasi luas pada berbagai kondisi lahan dan memiliki toleransi yang tinggi terhadap kondisi cekaman abiotik seperti: genangan air, kekeringan, dan pH tanah yang rendah (masam). Kenaf merupakan tanaman hari pendek berumur 100â€“140 hari, dikembangkan dengan benih. \nHampir semua bagian tanaman dapat digunakan untuk bahan baku berbagai industri. Daun kenaf mengandung protein kasar 24% sangat baik untuk pakan ternak unggas dan ruminansia. Biji kenaf mengandung lemak 20% bagus untuk minyak goreng karena banyak mengandung asam lemak tidak jenuh (Oleat dan Linoleat). Kayu kenaf sangat baik sebagai bahan baku industri particle board untuk berbagai keperluan seperti furnitur, pintu, jendela, kusen, pelapis dinding rumah, dll. Serat kenaf banyak digunakan sebagai bahan baku berbagai industri seperti: fibre board, geo-textile, soil remediation, pulp dan kertas, tekstil, karpet, kerajinan tangan, dll. Fibre board dari serat kenaf saat ini digunakan sebagai bahan untuk interior mobil seperti langit-langit, pintu, dushboard, dll. Selain itu, fibre board juga banyak digunakan pada industri eletronik untuk casing TV, radio, tape, dll. Juga untuk perumahan sebagai pelapis dinding rumah, peredam suara, dll. Geotextile, fibredrain banyak digunakan oleh para kontraktor pada pembangunan bandara, jembatan, pertambangan, dll. sebagai ba-han untuk pencegahan longsornya tanah dan penyerapan air tanah. Soil remediation menggu-nakan serat kenaf adalah untuk memperbaiki kondisi kesuburan tanah terutama pada bekas pertambangan sebagai usaha reklamasi. Serat kenaf juga digunakan sebagai bahan suplemen dalam pembuatan tekstil yang diblending dengan serat kapas dan poliester. Pulp dari kenaf digunakan untuk industri kertas. \nPengembangan tanaman kenaf diprioritaskan pada lahan bonorowo (lahan banjir) yang tidak sesuai untuk tanaman lain pada waktu banjir. Dengan menyempitnya areal bonorowo (akibat dari perbaikan jaringan irigasi), tanaman kenaf mulai dikembangkan pada daerah lahan masam di daerah Kalimantan Timur dan lahan kering di Jawa. Pengembangan tanaman kenaf diprioritaskan pada lahan sawah irigasi terbatas dan lahan podsolik merah kuning (PMK). Kendala yang dihadapi untuk pengembangan komoditas tersebut adalah masih rendahnya produktivitas di tingkat petani, dan sulitnya proses penyeratan.\nVarietas unggul kenaf yang telah dihasilkan Balittas adalah KR 11 untuk lahan bonorowo; KR 14 dan KR 15 untuk lahan podsolik merah kuning (PMK); dan KR 9 dan KR 12 untuk lahan kering. Varietasâ€“varietas tersebut dapat ditanam sembarang waktu karena kurang terpengaruh oleh fotoperiodisitas. Pengembangan kenaf adalah di Jawa (Barat, Tengah, Timur), Lampung, Riau, Sulawesi Selatan, dan Kalimantan (Selatan, Timur, Tengah, dan Barat). \nPenggunaan varietas unggul kenaf dapat meningkatkan pendapatan petani hingga 25â€“ 35%. Selain itu, tanaman kenaf dapat digunakan untuk memberdayakan lahan kritis, seperti lahan masam (PMK dan gambut). Kenaf dapat ditanam secara tumpang sari dengan jagung lokal atau P7. Penggunaan varietas unggul kenaf di daerah yang berpotensi untuk pengembangan akan menghasilkan produksi 2â€“3 ton serat/tahun dan meningkatkan pendapatan petani sebesar Rp2.000.000,00 per musim.'),
-('S0005', 'Rami', 'Rami semula dikembangkan di daerah dataran tinggi walaupun sebenarnya rami juga dapat dikembangkan di dataran rendah terutama yang memiliki fasilitas pengairan. Kendala pe-ngembangan rami adalah panjangnya rantai proses penyeratan sampai menjadi serat siap pintal. Proses yang panjang ini menyebabkan rami bukan sebagai â€œcash cropâ€, walaupun harga serat rami lebih tinggi dari harga serat kapas. Sebagai salah satu penghasil serat alami, rami merupakan komoditas yang perlu dikembangkan. Komoditas ini, selain menghasilkan serat alami yang bermutu tinggi, juga mempunyai hasil samping yang bernilai ekonomi, seperti kompos limbah dekortikasi dan daun rami untuk campuran pakan ternak. \nVarietas baru Ramindo 1, dengan nama lama Pujon 10, sudah sejak lama dikembangkan petani/pengusaha dan sudah terbukti keunggulannya baik di masyarakat maupun hasil penelitian. Ramindo 1 memberikan produktivitas serat yang tinggi (2â€“2,7 ton/ha/tahun) dengan kualitas serat yang cukup baik, serta memiliki daya adaptasi yang luas, sehingga klon ini sesuai untuk dikembangkan di dataran rendah, sedang hingga tinggi. \nLimbah dekortikasi (penyeratan) dapat diolah menjadi pupuk organik yang sangat halus dengan kandungan: Organik 20,13%; N total 2,15%; C/N ratio 3,01%; bahan organik 34,83%; P2O5 1,47%; K2O 2,76%; CaO 3,73%; MgO 2,22%; S 0,13%; dan KTK 65,56 me/100 g pupuk organik. Teknik pengomposan dapat dilakukan secara sederhana, yaitu dengan mencampurkan dedak, sedikit gula pasir, EM-4, dan disiram air secukupnya. Selain itu, sisa dekortikasi banyak mengandung kayu, dan seratnya baik untuk bahan baku pulp/kertas. \nDaun rami (40% dari bobot brangkasan segar) mengandung protein sekitar 24%, sangat baik untuk sumber protein ternak dan unggas. Setelah diproses menjadi tepung dapat dimanfaatkan untuk campuran konsentrat berbagai pakan ternak. Pakan ternak dari daun rami mengandung sekitar: 10% air; 1,05â€“1,75% lisin; 0,14â€“0,73% methionin; dan 0,18â€“0,31% triptophan. Selain itu mengandung karotin (provitamin A) dan riboflavin (vitamin B2) masing-masing 13,3 dan 0,74 mg tiap 100 g bahan keringnya. \nPenggunaan varietas unggul Ramindo 1 dengan pemberian paket pupuk lengkap (orga-nik, N, P, K dan ZPT+ PPC) dapat meningkatkan hasil serat sampai dengan 58â€“60%.'),
-('S0006', 'Rosela', ''),
-('S0007', 'Tebu', 'Tebu merupakan komoditas utama yang dapat digunakan sebagai bahan baku gula. Dalam rangka pemenuhan kebutuhan gula nasional, akselerasi peningkatan produksi gula dirancang dalam tiga tahap pendekatan sasaran, yaitu:\n\n1. Kecukupan kebutuhan gula untuk konsumsi masyarakat (2006-2009),\n2. Terpenuhinya kebutuhan gula untuk konsumsi dan industri (2010-2014), dan\n3. Pengembangan produk samping berbasis bahan baku tebu (2015-2025).\n\nUntuk memperkuat pencapaian sasaran terpenuhinya kebutuhan untuk konsumsi dan industri, perlu implementasi program intensifikasi untuk meningkatkan produksi dan rendemen gula. Program ekstensifikasi pengembangan tebu membutuhkan areal seluas 430.000 hat dan hal ini perlu didukung dengan pemetaan areal dan varietas unggul yang sesuai\n\nTidak ada artikel di dalam kategori ini. Jika sub-kategori tampil di halaman ini, maka mungkin mengandung artikel-artikel.'),
-('S0008', 'Wijen', ''),
-('S0009', 'Jarak Kepyar', ''),
-('S0010', 'Sisal', '');
+INSERT INTO `serat` (`id_serat`, `nama_serat`, `deskripsi_serat`, `gambar`) VALUES
+('S0002', 'Kapas', 'Sebagai negara produsen tekstil No. 5 di dunia, volume ekspor industri tekstil dan produk tekstil (TPT) Indonesia pada tahun 2005 mencapai US$8,59 miliar dan mampu menyerap tenaga kerja mencapai 1,7 juta orang, belum termasuk tenaga kerja yang diserap dalam sektor pertanian dan perdagangan. Serat kapas merupakan bahan baku utama dari industri TPT. Kebutuhan akan serat kapas pada 2004/2005 berkisar 510 ribu ton yang diprediksi akan meningkat menjadi 688 ribu ton pada 2010. Produksi serat kapas dalam negeri hanya berkisar 1,600â€“2,500 ribu ton atau kurang dari 0,5% kebutuhan nasional. Sampai dengan tahun 2025, agribisnis kapas diharapkan dapat memberikan kontribusi pada industri TPT sekitar 30% dari kebutuhan bahan baku kapas saat ini. Tantangan yang dihadapi oleh pengembangan kapas In-donesia cukup kompleks, berawal dari ketidaktersediaan benih bermutu sampai dengan kelangkaan modal petani. Ketersediaan sumber daya alam terutama lahan kering masih cukup luas di luar Jawa, seperti Sulawesi Selatan, Nusa Tenggara Barat, dan Nusa Tenggara Timur yang memberikan peluang bagi pengembangan kapas nasional. Oleh karena itu, komoditas kapas merupakan salah satu komoditas yang diprioritaskan untuk dikembangkan dalam mendukung revitalisasi perkebunan. \nSalah satu aspek intensifikasi adalah varietas unggul, karena varietas unggul merupakan komponen teknologi yang paling mudah diadopsi oleh petani. Balittas telah melepas 15 seri varietas Kapas Indonesia (Kanesia); enam diantaranya dilepas pada tahun 2006/2007 yaitu Kanesia 10, Kanesia 11, Kanesia 12, Kanesia 13, Kanesia 14, dan Kanesia 15. Kanesia 8 merupakan varietas unggul kapas yang telah digunakan dalam pengembangan kapas nasional dengan potensi produksi 1,85â€“2,73 ton kapas berbiji/ha dan persen serat 33,3â€“38,7%. Varietas-varietas baru tersebut memiliki potensi produksi 17â€“22% lebih tinggi dibanding Kanesia 8, dan tingkat ketahanan yang moderat terhadap salah satu hama utama kapas, Amrasca biguttulla, serta mutu serat yang tidak berbeda dengan Kanesia 8. Kanesia 14 dan Kanesia 15 memiliki daya adaptasi yang lebih besar terhadap keterbatasan air dibandingkan varietas-varietas lainnya, sehing-ga kedua varietas tersebut lebih sesuai untuk dikembangkan pada daerah-daerah tadah hujan. \nPenggunaan varietas-varietas unggul kapas dalam pengembangan dengan luas areal yang diperkirakan mencapai 10.000 hektar dan dengan produktivitas pada tingkat petani mencapai 1,5 ton/ha (50â€“70% dari potensi produksi), maka produksi kapas nasional akan meningkat 9.000 ton kapas berbiji atau 3.000 ton serat kapas yang setara dengan US$4,2 juta (dengan harga serat rata-rata US$1,4/kg serat). Manfaat tersebut akan meningkat lebih tinggi apabila luas areal kapas mampu mencapai target pengembangan kapas nasional yaitu sekitar 70.000 ha pada 2010.', 'kapas.JPG'),
+('S0003', 'Kapuk', 'Sejak tahun 1928 sampai sekarang Indonesia masih merupakan negara pengekspor kapuk, tetapi jumlahnya terus menurun. Pada 1936/1937 Indonesia merupakan negara pengekspor terbesar di dunia, jumlahnya mencapai 28.400 ton serat atau sekitar 85% kebutuhan serat kapuk dunia. Pada tahun 2003 ekspor serat kapuk menurun menjadi 1.496 ton serat. Penurunan ekspor kapuk antara lain disebabkan banyaknya kapuk tua yang tidak produktif, penebangan kapuk tanpa diimbangi peremajaan, meningkatnya penggunaan serat kapuk dalam negeri, dan persaingan dengan bahan sintetis seperti karet busa. Selain itu penurunan ekspor kapuk Indonesia disebabkan kalah bersaing dalam harga dengan Thailand yang lebih murah. Untuk meningkatkan ekspor serat kapuk antara lain dengan meningkatkan produktivitas dan tetap mempertahankan kualitas serat kapuk yang baik. Varietas unggul yang telah dilepas Balittas untuk mendukung pengembangan kapuk ada-lah Muktiharjo 1 (MH 1) , Muktiharjo 2 (MH 2), dan Togo B dari tipe Karibea yang dilepas pada tahun 2006 dan sesuai untuk usaha tani monokultur, serta Muktiharjo 3 (MH 3) dan Muktiharjo 4 (MH 4) dari tipe yang sama yang sesuai untuk program penghijauan dan konservasi lahan yang dilepas pada tahun 2007.', 'kapuk.jpeg'),
+('S0004', 'Kenaf', 'Kenaf (Hibiscus cannabinus L) sudah lama dibudidayakan di Indonesia dan pada tahun 1986/1987 mencapai luas 26.000 ha yang tersebar di Lampung, Jawa Barat, Jawa Tengah, Jawa Timur, dan Kalimantan Selatan. Kenaf memiliki keunggulan beradaptasi luas pada berbagai kondisi lahan dan memiliki toleransi yang tinggi terhadap kondisi cekaman abiotik seperti: genangan air, kekeringan, dan pH tanah yang rendah (masam). Kenaf merupakan tanaman hari pendek berumur 100â€“140 hari, dikembangkan dengan benih. \nHampir semua bagian tanaman dapat digunakan untuk bahan baku berbagai industri. Daun kenaf mengandung protein kasar 24% sangat baik untuk pakan ternak unggas dan ruminansia. Biji kenaf mengandung lemak 20% bagus untuk minyak goreng karena banyak mengandung asam lemak tidak jenuh (Oleat dan Linoleat). Kayu kenaf sangat baik sebagai bahan baku industri particle board untuk berbagai keperluan seperti furnitur, pintu, jendela, kusen, pelapis dinding rumah, dll. Serat kenaf banyak digunakan sebagai bahan baku berbagai industri seperti: fibre board, geo-textile, soil remediation, pulp dan kertas, tekstil, karpet, kerajinan tangan, dll. Fibre board dari serat kenaf saat ini digunakan sebagai bahan untuk interior mobil seperti langit-langit, pintu, dushboard, dll. Selain itu, fibre board juga banyak digunakan pada industri eletronik untuk casing TV, radio, tape, dll. Juga untuk perumahan sebagai pelapis dinding rumah, peredam suara, dll. Geotextile, fibredrain banyak digunakan oleh para kontraktor pada pembangunan bandara, jembatan, pertambangan, dll. sebagai ba-han untuk pencegahan longsornya tanah dan penyerapan air tanah. Soil remediation menggu-nakan serat kenaf adalah untuk memperbaiki kondisi kesuburan tanah terutama pada bekas pertambangan sebagai usaha reklamasi. Serat kenaf juga digunakan sebagai bahan suplemen dalam pembuatan tekstil yang diblending dengan serat kapas dan poliester. Pulp dari kenaf digunakan untuk industri kertas. \nPengembangan tanaman kenaf diprioritaskan pada lahan bonorowo (lahan banjir) yang tidak sesuai untuk tanaman lain pada waktu banjir. Dengan menyempitnya areal bonorowo (akibat dari perbaikan jaringan irigasi), tanaman kenaf mulai dikembangkan pada daerah lahan masam di daerah Kalimantan Timur dan lahan kering di Jawa. Pengembangan tanaman kenaf diprioritaskan pada lahan sawah irigasi terbatas dan lahan podsolik merah kuning (PMK). Kendala yang dihadapi untuk pengembangan komoditas tersebut adalah masih rendahnya produktivitas di tingkat petani, dan sulitnya proses penyeratan.\nVarietas unggul kenaf yang telah dihasilkan Balittas adalah KR 11 untuk lahan bonorowo; KR 14 dan KR 15 untuk lahan podsolik merah kuning (PMK); dan KR 9 dan KR 12 untuk lahan kering. Varietasâ€“varietas tersebut dapat ditanam sembarang waktu karena kurang terpengaruh oleh fotoperiodisitas. Pengembangan kenaf adalah di Jawa (Barat, Tengah, Timur), Lampung, Riau, Sulawesi Selatan, dan Kalimantan (Selatan, Timur, Tengah, dan Barat). \nPenggunaan varietas unggul kenaf dapat meningkatkan pendapatan petani hingga 25â€“ 35%. Selain itu, tanaman kenaf dapat digunakan untuk memberdayakan lahan kritis, seperti lahan masam (PMK dan gambut). Kenaf dapat ditanam secara tumpang sari dengan jagung lokal atau P7. Penggunaan varietas unggul kenaf di daerah yang berpotensi untuk pengembangan akan menghasilkan produksi 2â€“3 ton serat/tahun dan meningkatkan pendapatan petani sebesar Rp2.000.000,00 per musim.', 'kenaf.jpeg'),
+('S0005', 'Rami', 'Rami semula dikembangkan di daerah dataran tinggi walaupun sebenarnya rami juga dapat dikembangkan di dataran rendah terutama yang memiliki fasilitas pengairan. Kendala pe-ngembangan rami adalah panjangnya rantai proses penyeratan sampai menjadi serat siap pintal. Proses yang panjang ini menyebabkan rami bukan sebagai â€œcash cropâ€, walaupun harga serat rami lebih tinggi dari harga serat kapas. Sebagai salah satu penghasil serat alami, rami merupakan komoditas yang perlu dikembangkan. Komoditas ini, selain menghasilkan serat alami yang bermutu tinggi, juga mempunyai hasil samping yang bernilai ekonomi, seperti kompos limbah dekortikasi dan daun rami untuk campuran pakan ternak. \nVarietas baru Ramindo 1, dengan nama lama Pujon 10, sudah sejak lama dikembangkan petani/pengusaha dan sudah terbukti keunggulannya baik di masyarakat maupun hasil penelitian. Ramindo 1 memberikan produktivitas serat yang tinggi (2â€“2,7 ton/ha/tahun) dengan kualitas serat yang cukup baik, serta memiliki daya adaptasi yang luas, sehingga klon ini sesuai untuk dikembangkan di dataran rendah, sedang hingga tinggi. \nLimbah dekortikasi (penyeratan) dapat diolah menjadi pupuk organik yang sangat halus dengan kandungan: Organik 20,13%; N total 2,15%; C/N ratio 3,01%; bahan organik 34,83%; P2O5 1,47%; K2O 2,76%; CaO 3,73%; MgO 2,22%; S 0,13%; dan KTK 65,56 me/100 g pupuk organik. Teknik pengomposan dapat dilakukan secara sederhana, yaitu dengan mencampurkan dedak, sedikit gula pasir, EM-4, dan disiram air secukupnya. Selain itu, sisa dekortikasi banyak mengandung kayu, dan seratnya baik untuk bahan baku pulp/kertas. \nDaun rami (40% dari bobot brangkasan segar) mengandung protein sekitar 24%, sangat baik untuk sumber protein ternak dan unggas. Setelah diproses menjadi tepung dapat dimanfaatkan untuk campuran konsentrat berbagai pakan ternak. Pakan ternak dari daun rami mengandung sekitar: 10% air; 1,05â€“1,75% lisin; 0,14â€“0,73% methionin; dan 0,18â€“0,31% triptophan. Selain itu mengandung karotin (provitamin A) dan riboflavin (vitamin B2) masing-masing 13,3 dan 0,74 mg tiap 100 g bahan keringnya. \nPenggunaan varietas unggul Ramindo 1 dengan pemberian paket pupuk lengkap (orga-nik, N, P, K dan ZPT+ PPC) dapat meningkatkan hasil serat sampai dengan 58â€“60%.', 'rami.jpeg'),
+('S0006', 'Rosela', '', 'rosela.PNG'),
+('S0010', 'Sisal', '', 'sisal.jpg');
 
 --
 -- Triggers `serat`
@@ -2205,10 +2928,6 @@ CREATE TABLE `varietas` (
 --
 
 INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pelepasan`, `tanggal_upload`, `waktu_upload`, `file_SK`, `file_gambar`) VALUES
-('S0001', 'V0001', 'IP-2A', '2014-01-29', '2014-01-29', '08:00:00', '', ''),
-('S0001', 'V0002', 'IP-3A', '2014-01-29', '2014-01-29', '08:00:00', '', 'ip3a.jpeg'),
-('S0001', 'V0003', 'IP-2M', '2014-01-29', '2014-01-29', '08:00:00', '', ''),
-('S0001', 'V0004', 'IP-3M', '2014-01-29', '2014-01-29', '08:00:00', '', ''),
 ('S0002', 'V0005', 'ISA 205 A', '2015-08-05', '2014-01-29', '08:00:00', 'Kapas - ISA 205 A.pdf', 'isa 205 a.jpg'),
 ('S0002', 'V0006', 'Kanesia 1', '1990-08-16', '2018-07-26', '08:00:00', 'Kapas - Kanesia 1.pdf', ''),
 ('S0002', 'V0007', 'Kanesia 2', '1990-08-16', '2018-07-26', '08:00:00', 'Kapas - Kanesia 2.pdf', ''),
@@ -2254,13 +2973,6 @@ INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pel
 ('S0006', 'V0047', 'Roselindo 2', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 2.pdf', 'Roselindo-2.1.png'),
 ('S0006', 'V0048', 'Roselindo 3', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 3.pdf', 'Roselindo-3.1.jpg'),
 ('S0006', 'V0049', 'Roselindo 4', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 4.pdf', 'Roselindo-4.1.jpg'),
-('S0008', 'V0050', 'Sumberrejo 1 (Sbr 1)', '2014-01-29', '2014-01-29', '08:00:00', '', 'sbr1.jpeg'),
-('S0008', 'V0051', 'Sumberrejo 2 (Sbr 2)', '2014-01-29', '2014-01-29', '08:00:00', '', 'sbr2.jpg'),
-('S0008', 'V0052', 'Sumberrejo 3 (Sbr 3)', '2014-01-29', '2014-01-29', '08:00:00', '', 'sbr3.jpeg'),
-('S0008', 'V0053', 'Sumberrejo 4 (Sbr 4)', '2014-01-29', '2014-01-29', '08:00:00', '', 'sbr4.jpeg'),
-('S0009', 'V0054', 'Asembagus 22 (Asb 22)', '2014-01-29', '2014-01-29', '08:00:00', '', 'asb22.jpeg'),
-('S0009', 'V0055', 'Asembagus 60 (Asb 60)', '2014-01-29', '2014-01-29', '08:00:00', '', 'asb60.jpeg'),
-('S0009', 'V0056', 'Asembagus 81 (Asb 81)', '2014-01-29', '2014-01-29', '08:00:00', '', 'asb81.jpeg'),
 ('S0010', 'V0057', 'H 11648', '2017-02-14', '2018-07-26', '08:00:00', 'SISAL - H 11648.pdf', 'sisal.jpg');
 
 --
@@ -2284,30 +2996,6 @@ END
 $$
 DELIMITER ;
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `varietas_jarak_pagar`
--- (See below for the actual view)
---
-CREATE TABLE `varietas_jarak_pagar` (
-`nama_varietas` varchar(100)
-,`tanggal_pelepasan` date
-,`tanggal_upload` date
-,`waktu_upload` time
-,`file_SK` varchar(255)
-,`file_gambar` varchar(255)
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `varietas_jarak_pagar`
---
-DROP TABLE IF EXISTS `varietas_jarak_pagar`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `varietas_jarak_pagar`  AS  select `varietas`.`nama_varietas` AS `nama_varietas`,`varietas`.`tanggal_pelepasan` AS `tanggal_pelepasan`,`varietas`.`tanggal_upload` AS `tanggal_upload`,`varietas`.`waktu_upload` AS `waktu_upload`,`varietas`.`file_SK` AS `file_SK`,`varietas`.`file_gambar` AS `file_gambar` from (`varietas` join `serat` on((`varietas`.`id_serat` = `serat`.`id_serat`))) where (`serat`.`nama_serat` = 'Jarak Pagar') ;
-
 --
 -- Indexes for dumped tables
 --
@@ -2317,6 +3005,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `atribut`
   ADD PRIMARY KEY (`id_atribut`);
+
+--
+-- Indexes for table `benih`
+--
+ALTER TABLE `benih`
+  ADD PRIMARY KEY (`id_benih`),
+  ADD KEY `id_serat` (`id_serat`);
 
 --
 -- Indexes for table `budidaya`
@@ -2333,6 +3028,13 @@ ALTER TABLE `detail_varietas`
   ADD KEY `id_atribut` (`id_atribut`);
 
 --
+-- Indexes for table `distribusi_benih`
+--
+ALTER TABLE `distribusi_benih`
+  ADD PRIMARY KEY (`id_distribusi`),
+  ADD KEY `id_benih` (`id_benih`);
+
+--
 -- Indexes for table `gambar_leaflet`
 --
 ALTER TABLE `gambar_leaflet`
@@ -2340,24 +3042,17 @@ ALTER TABLE `gambar_leaflet`
   ADD KEY `id_leaflet` (`id_leaflet`);
 
 --
--- Indexes for table `jenis_produk`
+-- Indexes for table `jenis_leaflet`
 --
-ALTER TABLE `jenis_produk`
-  ADD PRIMARY KEY (`id_jenis`);
+ALTER TABLE `jenis_leaflet`
+  ADD PRIMARY KEY (`id_jenis_leaflet`);
 
 --
 -- Indexes for table `leaflet`
 --
 ALTER TABLE `leaflet`
   ADD PRIMARY KEY (`id_leaflet`),
-  ADD KEY `id_jenis` (`id_jenis`);
-
---
--- Indexes for table `produk`
---
-ALTER TABLE `produk`
-  ADD PRIMARY KEY (`id_produk`),
-  ADD KEY `id_jenis` (`id_jenis`);
+  ADD KEY `id_jenis` (`id_jenis_leaflet`);
 
 --
 -- Indexes for table `serat`
@@ -2377,6 +3072,12 @@ ALTER TABLE `varietas`
 --
 
 --
+-- Constraints for table `benih`
+--
+ALTER TABLE `benih`
+  ADD CONSTRAINT `benih_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `budidaya`
 --
 ALTER TABLE `budidaya`
@@ -2390,6 +3091,12 @@ ALTER TABLE `detail_varietas`
   ADD CONSTRAINT `detail_varietas_ibfk_2` FOREIGN KEY (`id_atribut`) REFERENCES `atribut` (`id_atribut`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `distribusi_benih`
+--
+ALTER TABLE `distribusi_benih`
+  ADD CONSTRAINT `distribusi_benih_ibfk_1` FOREIGN KEY (`id_benih`) REFERENCES `benih` (`id_benih`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `gambar_leaflet`
 --
 ALTER TABLE `gambar_leaflet`
@@ -2399,13 +3106,7 @@ ALTER TABLE `gambar_leaflet`
 -- Constraints for table `leaflet`
 --
 ALTER TABLE `leaflet`
-  ADD CONSTRAINT `leaflet_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_leaflet` (`id_jenis`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `produk`
---
-ALTER TABLE `produk`
-  ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_produk` (`id_jenis`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `leaflet_ibfk_2` FOREIGN KEY (`id_jenis_leaflet`) REFERENCES `jenis_leaflet` (`id_jenis_leaflet`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `varietas`

@@ -147,7 +147,7 @@
 
 						<div class="col-xs-12 col-sm-4 col-lg-4" > 
 							<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);" id="<?php echo $no++ ?>">
-								<a href="" style="text-decoration-line: none;">
+								<a href="<?php echo base_url('varietas/detail/').urlencode(strtolower($row->nama_serat));?>" style="text-decoration-line: none;">
 									<img src="<?php echo base_url() ?>item img/serat/<?php echo $row->gambar; ?>" alt="" style="width: 100%;">
 									<h4 style="color:#fece00;"><?php echo $row->nama_serat; ?></h4>
 								</a>
@@ -162,7 +162,7 @@
 								 ?>
 								<br>							
 								<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-									<a href="<?php echo base_url('varietas/detailKapas')?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+									<a href="<?php echo base_url('varietas/detail/').urlencode(strtolower($row->nama_serat));?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
 								</div>
 							</div>						
 						</div>
@@ -621,7 +621,5 @@
 	 <script src="<?php echo base_url() ?>bootstrap/js/jquery-3.3.1.min.js"></script> 
     <script src="<?php echo base_url() ?>bootstrap/js/jquery.easing.1.3.js"></script> 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-   
-
     <script src="<?php echo base_url() ?>bootstrap/js/script.js"></script>
 </html>

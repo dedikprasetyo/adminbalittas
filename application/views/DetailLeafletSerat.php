@@ -462,7 +462,44 @@
 					</div>
 					<h3 class="text-left" style="color:black;font-family: Monion pro">Varietas Terbaru</h3>
 					<hr style="border-color: grey;margin-top: -5px;">
+					<?php foreach($varietas as $varside)
+						{
+							$deskripsi="";
+					 ?>
 					<div style="margin-top: -5px;">
+						<a href="<?php echo base_url('varietas/spesifikasiVarietas/').urlencode(strtolower($varside->nama_varietas));?>" style="color:black;text-decoration-line: none;">
+							<p style="color:rgb(242,97,5);font-size: 15px;margin-bottom: 5px;"><?php echo $varside->nama_varietas; ?></p>
+							<div class="row">
+								<div class="col-xs-5 col-sm-5 col-lg-5">
+									<?php 
+										if(empty($varside->file_gambar)){
+									 ?>
+									 <img src="<?php echo base_url() ?>item img/gambar/Edited/serat.jpg ?>" alt="" style="width: 115px;">
+									 <?php
+									} else{?>
+										<img src="<?php echo base_url() ?>item img/gambar/Edited/<?php echo $varside->file_gambar; ?>" alt="" style="width: 115px;">
+									 <?php } ?>
+								</div>
+								<div class="col-xs-7 col-sm-7 col-lg-7">
+									<?php 
+										if(!empty($varside->deskripsi_varietas)){
+											$deskripsi=substr($varside->deskripsi_varietas, 0,80)." [..]";
+											echo "<p style=\"margin-top: -5px;\">$deskripsi</p>";
+										}else{
+											$deskripsi="(Belum memiliki deksripsi mengenai masing - masing varietas tersebut)";
+											echo "<p style=\"margin-top: -5px;\">$deskripsi</p>";
+										}
+									 ?>
+									 <!-- <p style="margin-top: -5px;"><?php echo $varside->deskripsi_varietas;?></p> -->
+								</div>		
+							</div>
+						</a>
+					</div>
+					<?php 
+						}
+					 ?>
+
+					<!-- <div style="margin-top: -5px;">
 						<a href="" style="color:black;text-decoration-line: none;">
 							<p style="color:rgb(242,97,5);font-size: 15px;margin-bottom: 5px;">VARIETAS NC 471</p>
 							<div class="row">
@@ -530,7 +567,7 @@
 								</div>		
 							</div>
 						</a>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -568,157 +605,6 @@
 
 	</body>
 	<br><br><br><br>
-	<footer>
-		<div class="container-fluid" style="background-color: rgba(28,69,26,1);">
-				<div class="container" style="margin-top: 20px; color:white;">
-					<div class="col-sm-3 col-lg-3">
-						<!-- <div class="row">
-							<div class="col-xs-2 col-sm-2 col-lg-2">
-								<img src="item img/Logo-Kementerian-Pertanian.png" style="width: 270%;">
-							</div>
-							<div class="col-xs-10 col-sm-10 col-lg-10">
-								<p style="margin-left: 7px;margin-top: 5px;">Balai Penelitian Tanaman Pemanis dan Serat</p>
-							</div>
-						</div>-->
-						<img src="item img/logoBalittas2.png" style="width: 110%;margin:-27px 0px -8px -32px;">				
-						<table style="color:white;"">
-							<tbody>
-								<tr>
-									<td class="glyphicon glyphicon-map-marker">&nbsp</td>
-									<td>Jalan. Raya Karangploso, Kotak Pos 199, Malang, Jawa timur, Indonesia</td>
-								</tr>
-								<tr>
-									<td class="glyphicon glyphicon-envelope">&nbsp</td>
-									<td>balittas@litbang.pertanian.go.id</td>
-								</tr>
-								<tr>
-									<td class="glyphicon glyphicon-envelope">&nbsp</td>
-									<td>balittas.malang@gmail.com</td>
-								</tr>
-								<tr>
-									<td class="glyphicon glyphicon-earphone">&nbsp</td>
-									<td>Telepon : (0341) 491447</td>
-								</tr>
-								<tr>
-									<td class="glyphicon glyphicon-print">&nbsp</td>
-									<td>Fax : (0341) 485 121</td>
-								</tr>
-							</tbody>
-						</table>
-						<br>
-					</div>
-					<div class="col-sm-9 col-lg-9">
-						<div class="col-sm-4 col-lg-4 batasfooter">
-							<h3 style="margin-top: 0px; font-family: Minion Pro;">Link Terkait</h3>
-							<hr style="margin-top: 0px; margin-bottom: 10px; border-color: #fece00;">							
-							<table>
-								<tbody>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Kementrian Pertanian</td>
-										</tr>
-									</a>	
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Badan Litbang Pertanian</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">UPT Badan Litbang Pertanian</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Pustaka Balitbangtan</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Pusat Unggulan Iptek Tanaman Serat</td>
-										</tr>
-									</a>								
-								</tbody>
-							</table>
-							<br>														
-						</div>
-						<div class="col-sm-4 col-lg-4 batasfooter">
-							<h3 style="margin-top: 0px; font-family: Minion Pro;">Sosial Media</h3>
-							<hr style="margin-top: 0px; margin-bottom: 13px; border-color: #fece00;">
-							<div class="row" style="margin: 2px; margin-left: -3px;" >
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" ">
-									<a href="" ><i class="fa fa-facebook-square" aria-hidden="true" style="font-size:45px;"></i>
-										<!-- <img src="item img/fbb.png" class="icon-sosmed img-rounded" alt="Cinque Terre" width="50" height="50"> -->
-									</a>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" >
-									<a href="">
-										<i class="fa fa-twitter-square" aria-hidden="true" style="font-size:45px;"></i>
-									</a>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" >
-									<a href=""  >
-										<i class="fa fa-youtube-square" aria-hidden="true" style="font-size:45px;"></i>
-									</a>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" style="margin-top: -3px;">
-									<a href=""  >
-										<i class="fa fa-instagram" aria-hidden="true" style="font-size:45px;"></i>
-									</a>
-								</div>
-							</div>
-							<br>
-						</div>						
-						<div class="col-sm-4 col-lg-4 batasfooter">
-							<div class="row">
-								<div class="col-xs-9 col-sm-9 col-lg-9">
-									<p style="margin-top: 5px;">Pengunjung Hari Ini</p>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 5px;">10</p>
-								</div>								
-							</div>
-							<hr style="border-style: dashed; margin-top: 1px;margin-bottom: 10px; border-color: #fece00;">
-							<div class="row">
-								<div class="col-xs-9 col-sm-9 col-lg-9">
-									<p style="margin-top: 2px;">Pengunjung Bulan Ini</p>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 2px;">10</p>
-								</div>								
-							</div>															
-							<hr style="border-style: dashed; margin-top: 0px;margin-bottom: 10px; border-color: #fece00;">
-							<div class="row">
-								<div class="col-xs-9 col-sm-9 col-lg-9">
-									<p style="margin-top: 2px;">Total Pengunjung</p>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 2px;">10</p>
-								</div>								
-							</div>		
-						</div>
-					</div>
-				</div>
-				<br><br><br>				
-			</div>
-			<div class="container-fluid text-center" style="color:white;background-color: black;">
-				<div style=" margin-top: 10px;">
-					<p style="font-family: calibri"><span class="glyphicon glyphicon-copyright-mark"></span> 2018 All Reserved Design By BALITTAS</p>
-				</div>
-			</div>
-	</footer>
-	<script src="<?php echo base_url() ?>bootstrap/js/bootstrap.min.js"></script>
-	 <script src="<?php echo base_url() ?>bootstrap/js/jquery-3.3.1.min.js"></script> 
-    <script src="<?php echo base_url() ?>bootstrap/js/jquery.easing.1.3.js"></script> 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-   
-
-    <script src="<?php echo base_url() ?>bootstrap/js/script.js"></script>
 	
 </html>
 

@@ -252,3 +252,4 @@ $(function() {
         reader.readAsDataURL(file);
     });  
 });
+
