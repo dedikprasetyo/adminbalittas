@@ -66,7 +66,7 @@ class M_varietas extends CI_Model{
 	}
 
 	 function selectVarietasOnSide(){
-        	$data=$this->db->query("SELECT * From varietas LIMIT 41");
+        	$data=$this->db->query("SELECT * From varietas ORDER BY tanggal_upload DESC  LIMIT 41");
         	return $data->result();
 
         	// $query = $this->db->limit(8);
