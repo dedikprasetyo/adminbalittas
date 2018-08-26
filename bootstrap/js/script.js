@@ -13,7 +13,7 @@ $('.halaman').on('click', function(e){
 
 	//pindah scroll
 	$('html, body').animate({
-		scrollTop: elemenTujuan.offset().top - 74 //jarak buat atas dari masing2 fitur
+		scrollTop: elemenTujuan.offset().top - 70 //jarak buat atas dari masing2 fitur
 	}, 1200, "easeInOutExpo"); //satuan milisecond
 	e.preventDefault();
 
@@ -23,7 +23,7 @@ $('.halaman').on('click', function(e){
 $(window).scroll(function(){
 	var wScroll = $(this).scrollTop();
 
-$('.jumbotron img').css({
+$('.jumbotron Img').css({
 	'transform' : 'translate(0px, '+ wScroll/4 +'%)'
 });
 
@@ -253,3 +253,4 @@ $(function() {
     });  
 });
 
+//scrolltop

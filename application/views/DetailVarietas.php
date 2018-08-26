@@ -13,16 +13,17 @@
 		<link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 	</head>
 	<body>
 		<!-- CONTENT -->
 		<div class="container">
 			<ul class="breadcrumb" style="margin-bottom: 0px;margin-top: 15px;">
-				<li>Beranda</li>
-				<li>Berita</li>
+				<li><a href="<?php echo base_url() ?>">Beranda</a></li>
+				<li><a href="<?php echo base_url() ?>#serat">Tanaman Serat</a></li>
+				<li class="active">Masing - Masing Varietas</li>
 			</ul>
 			<div class="row">
 				<div class="col-sm-9 col-lg-9">
@@ -37,10 +38,10 @@
 									<br>
 									<h4 style="color:rgb(242,97,5);font-size: 24px;"><?php echo $value->nama_serat; ?></h4>
 									<p style="text-indent: 0.5in; text-align: justify;"><?php echo $value->deskripsi_serat; ?></p>
-									
+									<!-- 
 									<br>
 									<p><b>Catatan:</b></p>
-									<p>Surat Keputusan Pelepasan <b><?php echo $value->nama_serat; ?></b> dapat diunduh <a href="" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+									<p>Surat Keputusan Pelepasan <b><?php echo $value->nama_serat; ?></b> dapat diunduh <a href="" style="text-decoration-line: none"><b>di sini</b></a>.</p> -->
 									</div>
 									<br>
 									<br>
@@ -105,6 +106,12 @@
 						 ?>		
 					</div>
 
+					<ul class="pager" >
+						<?php foreach($link as $pagination) {
+							echo "<li>". $pagination."</li>";
+						}?>
+					</ul>
+
 					
 				</div>
 				<div class="col-sm-3 col-lg-3">
@@ -126,7 +133,7 @@
 					<a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;"><h3 class="text-left" style="color:black;">Leaflet</h3></a>
 					<hr style="border-color: black">
 						
-					<?php 
+						<?php 
 							$ganjil = true;
 							foreach ($subleaflet as $leafletSide) {
 								if ($ganjil) {
@@ -222,4 +229,5 @@
 		</div>
 	</body>
 	<br><br>
+	
 </html>

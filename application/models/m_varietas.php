@@ -3,9 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_varietas extends CI_Model{
 
-	public function getSerat($id){
-		$data=$this->db->query("SELECT * FROM serat 
-								WHERE id_serat =  "."'".$id."'");
+	public function getJumlahBaris($id){
+		$data=$this->db->query("SELECT * FROM varietas WHERE id_serat = '$id'");
+		return $data->num_rows();
+	}
+
+	public function getVarietasByPagination($id, $perpage, $start){
+		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas
+								FROM varietas n
+								WHERE n.id_serat = '$id' LIMIT $perpage OFFSET $start");
 		return $data->result();
 	}
 
@@ -18,6 +24,12 @@ class M_varietas extends CI_Model{
 
 	}
 
+	public function getSerat($id){
+		$data=$this->db->query("SELECT * FROM serat 
+								WHERE id_serat =  "."'".$id."'");
+		return $data->result();
+	}
+
 	public function selectIdVarietas($namaVarietas){
 		$data=$this->db->query("SELECT n.id_varietas
 								FROM varietas n 
@@ -28,13 +40,13 @@ class M_varietas extends CI_Model{
 
 	public function getVarietas($id){
 		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas
-								FROM varietas n 
+								FROM varietas n
 								WHERE n.id_serat = "."'".$id."'");
 		return $data->result();
 	}
 
-	public function getVarietasSendiri($id){
-		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas
+	public function getVarietasSpesifikasi($id){
+		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas, n.file_SK
 								FROM varietas n 
 								WHERE n.id_varietas = "."'".$id."'");
 		return $data->result();
@@ -45,9 +57,6 @@ class M_varietas extends CI_Model{
 	// 							WHERE nama_serat= "."'".$namaSerat."'");
 	// 	return $data->result();
 	// }
-
-	
-
 	public function getSpesifikasiVarietas($namavarietas){
 		$data=$this->db->query("SELECT v.nama_varietas, a.nama_atribut, det.detail_value 
 								FROM varietas v 
@@ -66,34 +75,9 @@ class M_varietas extends CI_Model{
 	}
 
 	 function selectVarietasOnSide(){
-        	$data=$this->db->query("SELECT * From varietas ORDER BY tanggal_upload DESC  LIMIT 41");
+        	$data=$this->db->query("SELECT * From varietas ORDER BY tanggal_upload DESC  LIMIT 42");
         	return $data->result();
-
-        	// $query = $this->db->limit(8);
-	        // $query = $this->db->select('*');
-	        // $query = $this->db->from('varietas');        
-	        // $query = $this->db->get();
-	        // return $query->result();	
         }
-	// 	public function getVarietas(){
-	// 	$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar
-	// 							FROM varietas n 
-	// 							WHERE n.id_serat = 'S0002'");
-	// 	return $data->result();
-	// }
-
-
-	// 	public function selectAll(){
-	// 	$data=$this->db->query("SELECT * FROM varietas");
-	// 	return $data->result();
-	// }
-
-	// public function getVarietas($tabel){
-	// 	$res=$this->db->get($tabel);
-	// 	return $res->result_array();
-	// }
-
-
 
 }
 ?>

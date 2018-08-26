@@ -2,6 +2,25 @@
 	min-height:469px;
 }
 
+.table-responsive{
+			max-height: 450px;
+			color:green;
+	}
+
+.page
+{	 
+	min-height:  200px;
+}
+
+/*.jumbotron{
+	height:370px;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: 0 20px;
+	color: #eaeaea;
+	overFlow:hidden;
+}*/
+
 /*h4{
 	border-bottom:1px solid #1c1c1c;
 	width:235px;

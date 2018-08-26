@@ -13,9 +13,9 @@
 		<link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 	</head>
 <body>
 <footer>
@@ -154,11 +154,37 @@
 				</div>
 			</div>
 	</footer>
+
 </body>
+<script>
+		function hvr(dom, action)
+		{
+		    if (action == 'in')
+		    {
+		        $(dom).find("[col=g]").css("display", "none");
+		        $(dom).find("[col=b]").css("display", "block");
+		    }
+
+		    else
+		    {
+		        $(dom).find("[col=b]").css("display", "none");
+		        $(dom).find("[col=g]").css("display", "block");
+		    }
+		}
+
+		//JS for scroll to top
+		$(window).scroll(function() {
+		    if ($(this).scrollTop() > 50 ) {
+		        $('.scrolltop:hidden').stop(true, true).fadeIn();
+		    } else {
+		        $('.scrolltop').stop(true, true).fadeOut();
+		    }
+		});
+		$(function(){$(".scroll").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"1000");return false})})
+	</script>
 
 	 <script src="<?php echo base_url() ?>bootstrap/js/bootstrap.min.js"></script>
 	 <script src="<?php echo base_url() ?>bootstrap/js/jquery-3.3.1.min.js"></script> 
     <script src="<?php echo base_url() ?>bootstrap/js/jquery.easing.1.3.js"></script> 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url() ?>bootstrap/js/script.js"></script>
 </html>

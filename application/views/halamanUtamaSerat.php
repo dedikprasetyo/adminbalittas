@@ -10,9 +10,9 @@
 		<link rel="stylesheet" href="bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 	</head>
 	<body>
 		<div class="thetop"></div>
@@ -31,7 +31,7 @@
 				    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;margin-right: 75px;">
 			        <a href="#home" class="halaman" style="text-decoration-line: none;font-size: 14px;"><i style="font-size:14px; color:white;" class="glyphicon glyphicon-home "></i></a>
 				   	<div class="dropdownHeader">
-					  	<div class="dropbtnHeader" style="font-family: Minion Pro">Tanaman Serat <span class="caret"></div>
+					  	<div class="dropbtnHeader" style="font-family: Minion Pro"><a href="#tanamanserat" class="halaman no-touch" style="color:white; text-decoration: none;">Tanaman Serat</a> <span class="caret"></div>
 						<div class="dropdownHeader-content" style="margin: 0px 0px 0px 9px;">
 						  	<div class="container-fluid">
 						  		<div class="row">
@@ -54,26 +54,26 @@
 						</div>
 					</div>
 					<div class="dropdownHeader">
-					  	<div class="dropbtnHeader" style="font-family: Minion Pro">Budidaya Tanaman Serat <span class="caret"></div>
+					  	<div class="dropbtnHeader" style="font-family: Minion Pro"><a href="#budidaya" class="halaman no-touch" style="color:white; text-decoration: none;">Budidaya Tanaman Serat</a> <span class="caret"></div>
 						<div class="dropdownHeader-content" style="margin: 0px 0px 0px -133px;">
 						  	<div class="container-fluid">		
-						       	<a href="#" style="margin-top: 10px; margin-bottom: 10px;">Masing - masing Komoditas</a>					    
+						       	<a href="#budidaya" class="halaman" style="margin-top: 10px; margin-bottom: 10px;">Monograf masing - masing Komoditas</a>					    
 						  	</div>
 						</div>
 					</div>
 					<div class="dropdownHeader">
-					  	<div class="dropbtnHeader" style="font-family: Minion Pro">Produk <span class="caret"></div>
+					  	<div class="dropbtnHeader" style="font-family: Minion Pro"><a href="#produk" class="halaman no-touch" style="color:white; text-decoration: none;">Produk</a> <span class="caret"></div>
 					 	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -348px;">
 						  	<div class="container-fluid">
 						  		<div class="row">
 						  			<div class="col-sm-12 col-lg-12">
-						  				<a href="<?php echo base_url('produk/produk1')?>" style="margin-top: 10px;">Benih</a>	
+						  				<a href="#produk" class="halaman" style="margin-top: 10px;">Benih</a>	
 						  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 						  				<a href="<?php echo base_url('produk/produk2') ?>" class="halaman">Alat dan Mesin</a>
 						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-						       			<a href="<?php echo base_url('produk/produk3') ?>">Formula</a>
+						       			<a href="<?php echo base_url('produk/produk3') ?>">Formula (Coming Soon)</a>
 						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-						       			<a href="<?php echo base_url('produk/produk4') ?>" style="margin-bottom: 10px;">Produk Hilir</a>
+						       			<a href="<?php echo base_url('produk/produk4') ?>" style="margin-bottom: 10px;">Produk Hilir (Coming Soon)</a>
 							  		</div>
 							  	</div>							  		
 						    </div>							  								          
@@ -81,36 +81,33 @@
 					</div>					      			      
 					</ul>				    
 				</div>
-				<div class="collapse navbar-collapse" id="main">			    
+				<div class="collapse navbar-collapse no-touch" id="main">			    
 				    <ul class="nav navbar-nav navbar-right hidden-md hidden-lg" style="margin-top: 8px;margin-right: 75px;">
-				      	<a href="<?php echo base_url() ?>" class="glyphicon glyphicon-home dropbtnHeader" style="text-decoration-line: none;font-size: 14px;margin-left: 8px;"></a>
+				      	 <a href="#home" class="halaman" style="text-decoration-line: none;font-size: 14px; margin-left: 15px;"><i style="font-size:14px; color:white;" class="glyphicon glyphicon-home "></i></a>
 					    <li class="dropdown">
-					       	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Varietas <span class="caret"></span></a>
+					       	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Tanaman Serat <span class="caret"></span></a>
 						    <ul class="dropdown-menu">
-						      	<li><a href="<?php echo base_url() ?>varietas/jenisAsal">Jarak Pagar</a></li>
-					        	<li><a href="<?php echo base_url() ?>varietas/jenisKegunaan">Jarak Kepyar</a></li>
-					          	<li><a href="<?php echo base_url() ?>varietas/jenisWaktu">Kapas</a></li>
-					          	<li><a href="<?php echo base_url() ?>varietas/jenisDaerah">Kapuk</a></li>
-					          	<li><a href="<?php echo base_url() ?>varietas/jenisProsesing">Kenaf</a></li>
-					          	<li><a href="<?php echo base_url() ?>varietas/jenisProsesing">Rami</a></li>
-					          	<li><a href="<?php echo base_url() ?>varietas/jenisProsesing">Rosela</a></li>
-					          	<li><a href="<?php echo base_url() ?>varietas/jenisProsesing">Tebu</a></li>
-					          	<li><a href="<?php echo base_url() ?>varietas/jenisProsesing">Wijen</a></li>
+					          	<li><a href="<?php echo base_url() ?>varietas/detail/kapas">Kapas</a></li>
+					          	<li><a href="<?php echo base_url() ?>varietas/detail/kapuk">Kapuk</a></li>
+					          	<li><a href="<?php echo base_url() ?>varietas/detail/kenaf">Kenaf</a></li>
+					          	<li><a href="<?php echo base_url() ?>varietas/detail/rami">Rami</a></li>
+					          	<li><a href="<?php echo base_url() ?>varietas/detail/rosela">Rosela</a></li>
+					          	<li><a href="<?php echo base_url() ?>varietas/detail/sisal">Sisal</a></li>
 					       	</ul>
 				      	</li>
 				      	<li class="dropdown">
 				        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Budidaya Tanaman Serat<span class="caret"></span></a>
 					        <ul class="dropdown-menu">
-					        	<li><a href="<?php echo base_url() ?>produk/produk1">Masing-masing Komoditas</a></li>
+					        	<li><a href="#budidaya" class="halaman">Masing-masing Komoditas</a></li>
 					       	</ul>
 				      	</li>
 				      	<li class="dropdown">
 				        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Produk<span class="caret"></span></a>
 					        <ul class="dropdown-menu">
-					        	<li><a href="<?php echo base_url() ?>teknologibudidaya/penangkaranBenih">Benih</a></li>
+					        	<li><a href="#produk" class="halaman">Benih</a></li>
 					          	<li><a href="<?php echo base_url() ?>teknologibudidaya/pesemaian">Alat dan Mesin</a></li>
-					          	<li><a href="<?php echo base_url() ?>teknologibudidaya/pemupukan">Formula</a></li>
-					          	<li><a href="<?php echo base_url() ?>teknologibudidaya/bebasChlor">Produk Hilir</a></li>
+					          	<li><a href="<?php echo base_url() ?>teknologibudidaya/pemupukan">Formula (Coming Soon)</a></li>
+					          	<li><a href="<?php echo base_url() ?>teknologibudidaya/bebasChlor">Produk Hilir (Coming Soon)</a></li>
 					       	</ul>
 				      	</li>				      	
 					</ul>				    
@@ -123,18 +120,14 @@
 					<source src="item img/SeratRoselaFixNew.mp4" type="video/mp4">
 				</video>	
 			</div>					
-		</header>
-		<br>
+		</header>  
 		<!-- content -->
-		<section class="varietas" id="varietas">
+		<section class="tanamanserat" id="tanamanserat" style="background-color: #eee; padding-top: 0px;">
 			<div class="container">
-				<div class="row">		
+				<div class="row">		 
 					<div class="col-sm-9 col-lg-9">
 					    <ul class="breadcrumb" style="margin: -6px 0px -10px -15px;">
-						  	<li><a href="#">Home</a></li>
-						  	<li><a href="#">Private</a></li>
-						  	<li><a href="#">Pictures</a></li>
-						  	<li class="active">Vacation</li> 
+						  	<li class="active">Home</li> 
 						</ul>
 					<h3 class="text-left" style="color:black; font-family: Minion Pro">Tanaman Serat</h3>
 					<hr style="border-color: grey; margin-top: -8px;">
@@ -210,21 +203,73 @@
 					</div>
 				</div>
 			</div>
+			<br>
 		</section>
 		<!-- akhir div container atas -->
 
 		<!-- Budidaya Tanaman Serat -->
-		<section class="budidaya" id="budidaya">
+		<section class="budidaya" id="budidaya" style="padding-top: 30px;">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-3 col-lg-3">
 						<h3 class="text-center" style="color:black;margin-top: 0px;font-family: Minion Pro;">Budidaya Tanaman Serat</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, quae iure blanditiis veniam adipisci, facilis ab necessitatibus! Reiciendis, praesentium, accusamus.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, quae iure blanditiis veniam adipisci, facilis ab necessitatibus! Reiciendis, praesentium, accusamus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque laboriosam facilis consectetur ad asperiores architecto aliquid omnis eius, nisi aspernatur, amet illo doloribus inventore dolor quibusdam dignissimos aperiam quisquam officia?</p>
 					</div>
 					<div class="col-sm-9 col-lg-9">
 						<div class="row">
-							<div class="col-sm-4 col-lg-4">
-							 	<a href="<?php echo base_url('teknologibudidaya/penangkaranBenih'); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
+							<?php foreach($monograf as $mono) 
+								{
+							?>
+								<div class="col-xs-12 col-sm-6 col-lg-6">
+							 	<a href="<?php echo base_url('budidaya/budidayatanamanserat/').urlencode(strtolower($mono->nama_monograf)); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
+							 		<h4 style="font-family: Minion Pro; font-size: 1.2em;"><?php echo $mono->nama_monograf;?></h4>
+									<!-- <hr style="margin:-6px 0px 5px 0px; border-color: orange; width:60%;">
+									<div class="overlayhr"></div> -->
+							 		<p> <div class="thumbnail" style="background-color: white; border-style: none; float:left; margin-right:15px;">
+							 			<?php 
+							 				if(empty($mono->gambar)){
+							 			 ?>
+								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:100px; height:150px;"  >
+										<img src="<?php echo base_url() ?>item img/monograf/monograf.jpg" class="imageZoom">
+										<div class="itemZoom-overlay top"></div>
+										</div>
+										<?php } else{ ?>
+										<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:100px;"  >
+										<img src="<?php echo base_url() ?>item img/monograf/<?php echo $mono->gambar; ?>" class="imageZoom">
+										<div class="itemZoom-overlay top"></div>
+										</div>
+										<?php 
+											}
+										 ?>
+										<span style="margin-left: 10px;" class="label label-success"><p style="margin-top: 10px;" class="glyphicon glyphicon-calendar"></p> <?php echo $mono->tanggal; ?></span>
+							 		</div><p style="color:black; text-align: justify;"><?php echo substr($mono->deskripsi_monograf,0,250)." [..]"; ?></p></p>
+							 	</a>
+							 		
+							</div>
+
+							<?php 
+								}
+							 ?>
+							 
+							 <!-- <div class="col-sm-8 col-lg-8">
+							 	<a href="" style="text-decoration-line: none;" class="teknologiBudidaya">
+							 		<h4 style="font-family: Minion Pro;">Penangkaran Benih </h4>
+									<hr style="margin:-6px 0px 5px 0px; border-color: orange; width:60%;">
+									<div class="overlayhr"></div>
+							 		<div class="thumbnail" style="background-color: white; border-style: none; ">
+								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:350px;"  >
+										<img src="item img/tembakau.jpg" class="imageZoom">
+										<div class="itemZoom-overlay top"></div>
+										</div>
+										<div class="col-sm-8 col-sm-push-8" style="margin-top:-190px;">
+											<p style="color:black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure inventore nisi quo, praesentium aspernatur deleniti.</p>
+										</div>
+							 		</div>
+							 	</a>
+							</div> -->
+
+							<!-- <div class="col-sm-4 col-lg-4">
+							 	<a href="<?php //echo base_url('teknologibudidaya/penangkaranBenih'); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
 							 		<div class="thumbnail" style="background-color: white; border-style: none">
 								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
 											<img src="item img/tembakau.jpg" class="imageZoom" >
@@ -348,7 +393,7 @@
 										<p style="color:black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure inventore nisi quo, praesentium aspernatur deleniti.</p>
 							 		</div>
 							 	</a>
-							</div>
+							</div> -->
 						</div>
 					</div>				
 				</div>
@@ -356,48 +401,48 @@
 		</section> 
 		
 		<!-- Produk -->
-		<section class="produk" id="produk">
-			<div class="container-fluid" style="background-color: rgba(28,69,26,0.8);">
+		<section class="produk" id="produk" style="background-color: #eee;">
+			<div class="container-fluid" >
 				<div class="container">
 				<!-- Produk -->
-					<h3 class="text-center" style="color:white;font-family: Minion Pro;">Produk</h3>
-					<p class="text-center" style="color: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo aut magni perferendis repellat rerum assumenda, facere. Alias deserunt pariatur magnam rerum quod voluptates, quidem id labore quam. Illum nemo minus repellat veritatis aliquid, consequatur, dolorem, laborum magnam voluptatibus consequuntur voluptate tempora! Vel, odio. Corporis nam maiores nemo, dicta temporibus et.</p>
+					<h3 class="text-center" style="color:black;font-family: Minion Pro;">Produk</h3>
+					<p class="text-center" style="color: black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo aut magni perferendis repellat rerum assumenda, facere. Alias deserunt pariatur magnam rerum quod voluptates, quidem id labore quam. Illum nemo minus repellat veritatis aliquid, consequatur, dolorem, laborum magnam voluptatibus consequuntur voluptate tempora! Vel, odio. Corporis nam maiores nemo, dicta temporibus et.</p>
 					<br><br>
-					<div class="row">
-					    <div class="col-sm-3 col-lg-3">
-						    <a href="<?php echo base_url() ?>produk/produk1" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
+					<div class="row text-center">
+					    <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">
+						    <a href="<?php echo base_url('produk/benih') ?>" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
 						    	<div class="thumbnail text-center produk" style="background-color: rgba(28,69,26,0); border-style: none;" >
-						    		<img src="item img/hazelnutWh.png" style="width: 40%" col="g">
+						    		<img src="item img/hazelnut.png" style="width: 40%;" col="g">
 						    		<img src="item img/hazelnutY.png" style="width: 40%; display:none;" col="b">
 						    		<br>
 									<h4>Benih</h4><br><br>
 						    	</div>
 						    </a>
 					    </div>
-					    <div class="col-sm-3 col-lg-3">
+					    <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">
 						    <a href="<?php echo base_url() ?>produk/produk2" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
 						    	<div class="thumbnail text-center produk" style="background-color: rgba(28,69,26,0); border-style: none">
-						    		<img src="item img/toolsWh.png" style="width: 40%" col="g">
+						    		<img src="item img/tools.png" style="width: 40%" col="g">
 						    		<img src="item img/toolsY.png" style="width: 40%; display:none;" col="b">
 						    		<br>
 									<h4>Alat & Mesin</h4><br><br>
 						    	</div>
 						    </a>
 					    </div>
-					    <div class="col-sm-3 col-lg-3">
+					    <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">
 						    <a href="<?php echo base_url() ?>produk/produk1" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
 						    	<div class="thumbnail text-center produk" style="background-color: rgba(28,69,26,0); border-style: none">
-						    		<img src="item img/flaskWh.png" style="width: 40%" col="g">
+						    		<img src="item img/flask.png" style="width: 40%" col="g">
 						    		<img src="item img/flaskY.png" style="width: 40%; display:none;" col="b">
 						    		<br>
 									<h4>Formula</h4><br><br>
 						    	</div>
 						    </a>
 					    </div>
-					    <div class="col-sm-3 col-lg-3">
+					    <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">
 						    <a href="<?php echo base_url() ?>produk/produk2" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
 						    	<div class="thumbnail text-center produk" style="background-color: rgba(28,69,26,0); border-style: none">
-						    		<img src="item img/pipeWh.png" style="width: 40%" col="g">
+						    		<img src="item img/pipe.png" style="width: 40%" col="g">
 						    		<img src="item img/pipeY.png" style="width: 40%; display:none;" col="b">
 						    		<br>
 									<h4>Produk Hilir</h4><br><br>
@@ -447,179 +492,9 @@
 		</div>
 	</body>
 	<!-- <br><br><br> -->
-	<footer>
-		<div class="container-fluid" style="background-color: rgba(28,69,26,1);">
-				<div class="container" style="margin-top: 20px; color:white;">
-					<div class="col-sm-3 col-lg-3">
-						<!-- <div class="row">
-							<div class="col-xs-2 col-sm-2 col-lg-2">
-								<img src="item img/Logo-Kementerian-Pertanian.png" style="width: 270%;">
-							</div>
-							<div class="col-xs-10 col-sm-10 col-lg-10">
-								<p style="margin-left: 7px;margin-top: 5px;">Balai Penelitian Tanaman Pemanis dan Serat</p>
-							</div>
-						</div>-->
-						<img src="item img/logoBalittas2.png" style="width: 110%;margin:-27px 0px -8px -32px;">				
-						<table>
-							<tbody>
-								<tr>
-									<td class="glyphicon glyphicon-map-marker">&nbsp</td>
-									<td>Jalan. Raya Karangploso, Kotak Pos 199, Malang, Jawa timur, Indonesia</td>
-								</tr>
-								<tr>
-									<td class="glyphicon glyphicon-envelope">&nbsp</td>
-									<td>balittas@litbang.pertanian.go.id</td>
-								</tr>
-								<tr>
-									<td class="glyphicon glyphicon-envelope">&nbsp</td>
-									<td>balittas.malang@gmail.com</td>
-								</tr>
-								<tr>
-									<td class="glyphicon glyphicon-earphone">&nbsp</td>
-									<td>Telepon : (0341) 491447</td>
-								</tr>
-								<tr>
-									<td class="glyphicon glyphicon-print">&nbsp</td>
-									<td>Fax : (0341) 485 121</td>
-								</tr>
-							</tbody>
-						</table>
-						<br>
-					</div>
-					<div class="col-sm-9 col-lg-9">
-						<div class="col-sm-4 col-lg-4 batasfooter">
-							<h3 style="margin-top: 0px; font-family: Minion Pro;">Link Terkait</h3>
-							<hr style="margin-top: 0px; margin-bottom: 10px; border-color: #fece00;">							
-							<table>
-								<tbody>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Kementrian Pertanian</td>
-										</tr>
-									</a>	
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Badan Litbang Pertanian</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">UPT Badan Litbang Pertanian</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Pustaka Balitbangtan</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Pusat Unggulan Iptek Tanaman Serat</td>
-										</tr>
-									</a>								
-								</tbody>
-							</table>
-							<br>														
-						</div>
-						<div class="col-sm-4 col-lg-4 batasfooter">
-							<h3 style="margin-top: 0px; font-family: Minion Pro;">Sosial Media</h3>
-							<hr style="margin-top: 0px; margin-bottom: 13px; border-color: #fece00;">
-							<div class="row" style="margin: 2px; margin-left: -3px;" >
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch">
-									<a href="" ><i class="fa fa-facebook-square" aria-hidden="true" style="font-size:45px;"></i>
-										<!-- <img src="item img/fbb.png" class="icon-sosmed img-rounded" alt="Cinque Terre" width="50" height="50"> -->
-									</a>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" >
-									<a href="">
-										<i class="fa fa-twitter-square" aria-hidden="true" style="font-size:45px;"></i>
-									</a>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" >
-									<a href=""  >
-										<i class="fa fa-youtube-square" aria-hidden="true" style="font-size:45px;"></i>
-									</a>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" style="margin-top: -3px;">
-									<a href=""  >
-										<i class="fa fa-instagram" aria-hidden="true" style="font-size:45px;"></i>
-									</a>
-								</div>
-							</div>
-							<br>
-						</div>						
-						<div class="col-sm-4 col-lg-4 batasfooter">
-							<div class="row">
-								<div class="col-xs-9 col-sm-9 col-lg-9">
-									<p style="margin-top: 5px;">Pengunjung Hari Ini</p>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 5px;">10</p>
-								</div>								
-							</div>
-							<hr style="border-style: dashed; margin-top: 1px;margin-bottom: 10px; border-color: #fece00;">
-							<div class="row">
-								<div class="col-xs-9 col-sm-9 col-lg-9">
-									<p style="margin-top: 2px;">Pengunjung Bulan Ini</p>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 2px;">10</p>
-								</div>								
-							</div>															
-							<hr style="border-style: dashed; margin-top: 0px;margin-bottom: 10px; border-color: #fece00;">
-							<div class="row">
-								<div class="col-xs-9 col-sm-9 col-lg-9">
-									<p style="margin-top: 2px;">Total Pengunjung</p>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 2px;">10</p>
-								</div>								
-							</div>		
-						</div>
-					</div>
-				</div>
-				<br><br><br>				
-			</div>
-			<div class="container-fluid text-center" style="color:white;background-color: black;">
-				<div style=" margin-top: 10px;">
-					<p style="font-family: calibri"><span class="glyphicon glyphicon-copyright-mark"></span> 2018 All Reserved Design By BALITTAS</p>
-				</div>
-			</div>
-	</footer>
-	<script>
-		function hvr(dom, action)
-		{
-		    if (action == 'in')
-		    {
-		        $(dom).find("[col=g]").css("display", "none");
-		        $(dom).find("[col=b]").css("display", "block");
-		    }
-
-		    else
-		    {
-		        $(dom).find("[col=b]").css("display", "none");
-		        $(dom).find("[col=g]").css("display", "block");
-		    }
-		}
-
-		//JS for scroll to top
-		$(window).scroll(function() {
-		    if ($(this).scrollTop() > 50 ) {
-		        $('.scrolltop:hidden').stop(true, true).fadeIn();
-		    } else {
-		        $('.scrolltop').stop(true, true).fadeOut();
-		    }
-		});
-		$(function(){$(".scroll").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"1000");return false})})
-	</script>
+	
 	 <script src="<?php echo base_url() ?>bootstrap/js/bootstrap.min.js"></script>
 	 <script src="<?php echo base_url() ?>bootstrap/js/jquery-3.3.1.min.js"></script> 
     <script src="<?php echo base_url() ?>bootstrap/js/jquery.easing.1.3.js"></script> 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url() ?>bootstrap/js/script.js"></script>
 </html>

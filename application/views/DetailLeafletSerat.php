@@ -137,10 +137,8 @@
 		<!-- CONTENT -->
 		<div class="container">
 			<ul class="breadcrumb" style="margin-bottom: 0px;margin-top: 15px;">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Private</a></li>
-				<li><a href="#">Pictures</a></li>
-				<li class="active">Vacation</li>
+				<li><a href="<?php echo base_url() ?>">Beranda</a></li>
+				<li class="active">Leaflet</li>
 			</ul>
 			<div class="row">
 				<div class="col-sm-9 col-lg-9">

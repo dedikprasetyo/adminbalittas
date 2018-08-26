@@ -9,12 +9,12 @@ class Serat extends CI_Controller{
 			$this->load->model('m_serat');
 		}
 
-	public function detailSerat($namaSerat){
-		$data['serat']=$this->m_serat->selectIdBynamaSerat(urldecode($namaSerat));
-		$this->load->view('Header');
-		$this->load->view('DetailKapas2', $data);
-		$this->load->view('Footer');
-	}
+	// public function detailSerat($namaSerat){
+	// 	$data['serat']=$this->m_serat->selectIdBynamaSerat(urldecode($namaSerat));
+	// 	$this->load->view('Header');
+	// 	$this->load->view('DetailKapas2', $data);
+	// 	$this->load->view('Footer');
+	// }
 }
 
  ?>

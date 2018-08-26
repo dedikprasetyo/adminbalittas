@@ -22,8 +22,9 @@
 		<!-- CONTENT -->
 		<div class="container">
 			<ul class="breadcrumb" style="margin-bottom: 0px;margin-top: 15px;">
-				<li>Beranda</li>
-				<li>Berita</li>
+				<li><a href="<?php echo base_url() ?>">Beranda</a></li>
+				<li><a href="<?php echo base_url() ?>#serat">Tanaman Serat</a></li>
+				<li class="active">Detail Varietas</li>
 			</ul>
 			<div class="row">
 				<div class="col-sm-9 col-lg-9">
@@ -65,13 +66,13 @@
 													<?php 
 														if(empty($value->detail_value)){
 															$count-=1;
-															echo "<td></td>";
-															echo "<td style=\"font-weight: bold; font-style: italic;\">".$value->nama_atribut."</td>";
-															echo "<td>".$value->detail_value."</td>";
+															echo '<td></td>';
+															echo '<td style="font-weight: bold; font-style: italic;">'.$value->nama_atribut.'</td>';
+															echo '<td style="text-align:center;">'.$value->detail_value.'</td>';
 														}else{
-															echo "<td>".$count."</td>";
-															echo "<td>".$value->nama_atribut."</td>";
-															echo "<td>".$value->detail_value."</td>";
+															echo '<td style="text-align:center;">'.$count.'</td>';
+															echo '<td style="font-weight: bold; font-style: italic; text-align:center;">'.$value->nama_atribut.'</td>';
+															echo '<td style="text-align:center;">'.$value->detail_value.'</td>';
 														}
 													 ?>
 												</tr>
@@ -81,7 +82,8 @@
 											</tbody>
 										</table>
 									<p><b>Catatan:</b></p>
-									<p>Surat Keputusan Pelepasan <b><?php echo $name->nama_varietas; ?></b> dapat diunduh <a href="" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+									<p>Surat Keputusan Pelepasan <b><?php echo $name->nama_varietas; ?></b> dapat diunduh <a href="<?php echo base_url() ?>file/SK/<?php echo $name->file_SK; ?>" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+									
 									</div>
 									<br>
 									<br>
@@ -214,7 +216,7 @@
 							 </div>
 						</form>						
 					</div>
-					<a href="" style="text-decoration-line:none;"><h3 class="text-left" style="color:black;">Leaflet</h3></a>
+					<a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;"><h3 class="text-left" style="color:black;">Leaflet</h3></a>
 					<hr style="border-color: black">
 						
 					

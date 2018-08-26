@@ -30,7 +30,7 @@
     color: #fece00;
 }
 .produk {
-    color: white;
+    color: black;
 }
 .leafletImg {
     cursor: pointer;
@@ -379,4 +379,27 @@
 
 .no-touch .glyphicon-home:hover{
   color:#fece00!important;
+}
+
+.no-touch .dropbtnHeader a:hover{
+    color:#fece00!important;
+}
+
+.no-touch .produk:hover{
+  color:#fece00;
+}
+
+.no-touch .produk img:hover{
+  transform:rotate(-15deg);
+  border-radius: 20%;
+  transition: 1s;
+}
+
+.mroduk{
+  padding-top: 60px;
+  margin:0px;
+  box-shadow: 5px 0px 0px 0px rgb(64,97,80);
+  background-color: rgb(140,162,136);
+  border-radius: 40px;
+  /*max-width: 265px;*/
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2018 at 07:01 AM
+-- Generation Time: Aug 10, 2018 at 09:25 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -69,7 +69,6 @@ INSERT INTO `atribut` (`nama_atribut`, `id_atribut`) VALUES
 ('Bulu daun 25 mm kuadrat', 'A0029'),
 ('Catatan', 'A0030'),
 ('Daun', 'A0031'),
-('Deskripsi', 'A0032'),
 ('Diameter Batang', 'A0033'),
 ('Diameter Buah', 'A0034'),
 ('Diameter Kapsul', 'A0035'),
@@ -323,6 +322,27 @@ INSERT INTO `benih` (`id_serat`, `nama_benih`, `id_benih`, `stok_sampai`, `jumla
 ('S0002', 'Kanesia 15', 'B0025', '0000-00-00', 0),
 ('S0002', 'LRA 5166', 'B0026', '0000-00-00', 0);
 
+--
+-- Triggers `benih`
+--
+DELIMITER $$
+CREATE TRIGGER `tr_id_benih` BEFORE INSERT ON `benih` FOR EACH ROW BEGIN
+SET @hitung = CONVERT((RIGHT((SELECT `id_benih` FROM `benih` ORDER by `id_benih` DESC LIMIT 1), 4)), UNSIGNED) + 1;
+if (@hitung > 1) THEN
+if (@hitung < 10) THEN 
+SET new.`id_benih` = concat('B000',@hitung);
+ELSEIF (@hitung < 100) THEN
+SET new.`id_benih` = concat('B00',@hitung);
+ELSEIF (@hitung < 1000) THEN
+SET new.`id_benih` = concat('B0',@hitung);
+ELSE
+SET new.`id_benih` = concat('B',@hitung);
+END IF;
+END IF;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -375,7 +395,6 @@ CREATE TABLE `detail_varietas` (
 --
 
 INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
-('V0005', 'A0032', 'ISA 205 A merupakan varietas introduksi berasal dari Institut de Recherches du coton et des Textiles Exotiques (IRCT) Perancis; menjadi koleksi plasma nurfah Balai Penelitian Tanaman Tembakau dan Serat (Balittas) pada tahun 1986.'),
 ('V0005', 'A0168', '2003'),
 ('V0005', 'A0114', 'KI.339'),
 ('V0005', 'A0111', 'ISA 205 A'),
@@ -627,7 +646,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0012', 'A0095', 'Tahan'),
 ('V0012', 'A0098', 'Agak Tahan'),
 ('V0012', 'A0124', 'Hasnam, Siwi Sumartini, Emy Sulistyowati, IGAA Indrayani, Nildar Ibrahim, dan Kristamtini.'),
-('V0013', 'A0032', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokul'),
 ('V0013', 'A0113', '88003/16/2'),
 ('V0013', 'A0004', 'Hasil persilangan DPL Acala 90X LRA 5166 yang diikuti dengan seleksi individu, seleksi famili dan seleksi individu dalam famili'),
 ('V0013', 'A0168', '2003'),
@@ -667,7 +685,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0013', 'A0187', 'Kanesia 8'),
 ('V0013', 'A0165', 'Komersial'),
 ('V0013', 'A0044', 'Balai Penelitian Tanaman Tembakau dan Serat'),
-('V0014', 'A0032', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokul'),
 ('V0014', 'A0113', '92016/6'),
 ('V0014', 'A0004', 'Hasil persilangan DPL Acala 90 X SRT -1 yang diikuti dengan seleksi individu, seleksi famili dan seleksi individu dalam famili'),
 ('V0014', 'A0168', '2003'),
@@ -707,7 +724,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0014', 'A0187', 'Kanesia 9'),
 ('V0014', 'A0165', 'Komersial'),
 ('V0014', 'A0044', 'Balai Penelitian Tanaman Tembakau dan Serat'),
-('V0015', 'A0032', 'Kanesia 10 menunjukkan produktivitas yang lebih tinggi, memiliki potensi produksi lebih dari 3 ton kapas berbiji, juga beberapa keunggulan lain. Varietas Kanesia 10 menunjukkan indeks stabilitas Â± 1, yang artinya bahwa varietas ini mampu beradaptasi seca'),
 ('V0015', 'A0113', '98017/2'),
 ('V0015', 'A0004', 'Hasil persilangan antara LRA 5166 X SRT -1 yang diikuti dengan seleksi individu dan seleksi galur'),
 ('V0015', 'A0168', '2007'),
@@ -743,7 +759,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0015', 'A0187', 'Kanesia 9'),
 ('V0015', 'A0165', 'Sosialisasi kepada petani Permohonan hak PVT'),
 ('V0015', 'A0044', 'Balai Penelitian Tanaman Tembakau dan Serat'),
-('V0016', 'A0032', 'Kanesia 11 menunjukkan produktivitas yang lebih tinggi, yaitu memiliki potensi produksi lebih dari 3 ton kapas berbiji, juga beberapa keunggulan lain. Varietas ini menunjukkan indeks stabilitas Â± 1, yang artinya bahwa varietas Kanesia 11 mampu beradaptas'),
 ('V0016', 'A0113', '98021/2'),
 ('V0016', 'A0004', 'Hasil persilangan antara Tashkent 2 x Pusa 1 yang diikuti dengan seleksi individu dan seleksi galur'),
 ('V0016', 'A0164', 'Gossypium hirsutum L'),
@@ -771,7 +786,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0016', 'A0150', '2.039,2 kg kapas berbiji'),
 ('V0016', 'A0080', 'Toleran'),
 ('V0016', 'A0124', 'Emy Sulistyowati, Hasnam, Siwi Sumartini, Hadi Sudarmo, IGAA Indrayani, dan Cece Suhara'),
-('V0017', 'A0032', 'Kanesia 12 menunjukkan produktivitas yang lebih tinggi, yaitu memiliki potensi produksi lebih dari 3 ton kapas berbiji, juga beberapa keunggulan lain. Varie-tas-varietas tersebut menunjukkan indeks stabilitas Â± 1, yang artinya bahwa varietas Kanesia 12 m'),
 ('V0017', 'A0113', '97023/8'),
 ('V0017', 'A0004', 'Hasil persilangan antara Pusa 1 Deltapine 5690 yang diikuti dengan seleksi individu dan seleksi galur'),
 ('V0017', 'A0164', 'Gossypium hirsutum L'),
@@ -799,7 +813,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0017', 'A0150', '2.001,9 kg kapas berbiji'),
 ('V0017', 'A0080', 'Toleran'),
 ('V0017', 'A0124', 'Emy Sulistyowati, Hasnam, Siwi Sumartini, Hadi Sudarmo, IGAA Indrayani, dan Cece Suhara'),
-('V0018', 'A0032', 'Kanesia 13 menunjukkan produktivitas yang lebih tinggi , yaitu memiliki potensi produksi lebih dari 3 ton kapas berbiji, juga beberapa keunggulan lain. Kanesia 13 menunjukkan indeks stabilitas Â± 1, yang artinya varietas ini mampu beradaptasi secara luas '),
 ('V0018', 'A0113', '98030/10'),
 ('V0018', 'A0004', 'Hasil persilangan antara Deltapine Acala 90 x Tashkent yang diikuti dengan seleksi individu dan seleksi galur'),
 ('V0018', 'A0164', 'Gossypium hirsutum L'),
@@ -827,7 +840,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0018', 'A0150', '1.961,9 kg kapas berbiji'),
 ('V0018', 'A0080', 'Toleran'),
 ('V0018', 'A0124', 'Emy Sulistyowati, Hasnam, Siwi Sumartini, Hadi Sudarmo, IGAA Indrayani, dan Cece Suhara'),
-('V0019', 'A0032', 'Kanesia 14 berasal dari hasil persilangan antara (Reba B-50 X Reba BTK 12-Thailand) dan (MCU9 X Auburn 200). Kanesia 14 yang dilepas pada tahun 2007 merupakan varietas kapas yang mempunyai keunggulan berupa toleransi terhadap keterbatasan keterse-diaan ai'),
 ('V0019', 'A0113', '(135x182)(351x268)9'),
 ('V0019', 'A0004', 'Hasil persilangan antara Reba B 50 dan Reba BTK 12 Thailand dengan MCU 9 dan Auburn 200 yang diikuti dengan seleksi individu dan seleksi galur'),
 ('V0019', 'A0164', 'Gossypium hirsutum L'),
@@ -863,7 +875,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0019', 'A0089', 'Tahan'),
 ('V0019', 'A0080', 'Tahan'),
 ('V0019', 'A0124', 'Siwi Sumartini, Emy Sulistyowati, Hasnam, Hadi Sudarmo'),
-('V0020', 'A0032', 'Kanesia 15 berasal dari hasil persilangan antara ISA 205 A dengan ALA 73-2M. Kanesia 15 yang dilepas pada tahun 2007 merupakan varietas kapas yang mempunyai keunggulan berupa toleransi terhadap keterbatasan keterse-diaan air atau tahan terhadap kekeringan'),
 ('V0020', 'A0113', '(339x448)2'),
 ('V0020', 'A0004', 'Hasil persilangan antara ISA 205 A dengan ALA 73-2M yang diikuti dengan seleksi individu dan seleksi galur'),
 ('V0020', 'A0164', 'Gossypium hirsutum L'),
@@ -1104,7 +1115,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0025', 'A0080', 'Agak tahan'),
 ('V0025', 'A0124', 'E.Sulistyowati, Hasnam, S.Sumartini, Abdurrakhman dan F.T Kadarwati'),
 ('V0025', 'A0169', 'Suhadi, Samsul Arif, M.Rifai SP'),
-('V0026', 'A0032', 'Varietas kapuk hibrida MH 1 merupakan varietas hibrida hasil persilangan dua tipe kapuk yaitu tipe Indica dengan Karibea antara tiga tetua, yaitu (Randu Kuning x Bondowoso) x Congo atau disingkat (RKxBW)C. Varietas ini membentuk pohon-pohon yang tumbuh ku'),
 ('V0026', 'A0168', '2007'),
 ('V0026', 'A0004', 'Persilangan antara Randu Kuning x Bondowoso x Congo'),
 ('V0026', 'A0164', 'Ceiba petandra Gaertn'),
@@ -1135,7 +1145,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0026', 'A0124', 'Moch. Sahid, Marjani, dan Hadi Sudarmo'),
 ('V0026', 'A0169', 'Kuswono, OMJ Fachrudin, dan Sadta Yoga'),
 ('V0026', 'A0044', 'Balai Penelitian Tanaman Tembakau dan Serat'),
-('V0027', 'A0032', 'Varietas kapuk hibrida MH 2 merupakan varietas kapuk hibrida hasil persilangan tiga te-tua yaitu (Ruezen Randu x Bondowoso) x Congo yang disingkat dengan (RRxBW)C. Varietas ka-puk hibrida MH 2 pada umur 6 tahun, 12 tahun, dan 40 tahun masing-masing produk'),
 ('V0027', 'A0168', '2007'),
 ('V0027', 'A0004', 'Persilangan antara Reuzen Randu x Bondowoso x Congo'),
 ('V0027', 'A0164', 'Ceiba petandra Gaertn'),
@@ -1166,7 +1175,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0027', 'A0124', 'Buadi, Moch Sahid dan Marjani'),
 ('V0027', 'A0169', 'Sri Eko Susilowati, Pramono, dan Sdja Yoga'),
 ('V0027', 'A0044', 'Balai Penelitian Tanaman Tembakau dan Serat'),
-('V0028', 'A0032', 'Varietas kapuk hibrida MH 3 merupakan hasil persilangan antara klon Congo 2 (tipe Kari-bea) dengan klon lokal Lanang (tipe Indika). Klon Congo merupakan klon introduksi dari Congo, Afrika, yang produksinya mencapai 2.500 - 3.000 gelondong/pohon. Klon Lana'),
 ('V0028', 'A0168', '2007'),
 ('V0028', 'A0174', 'Karibea'),
 ('V0028', 'A0142', '2.400 gelondong/pohon/tahun'),
@@ -1178,7 +1186,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0028', 'A0165', 'Komersial'),
 ('V0028', 'A0124', 'Moch. Sahid, Bambang Heliyanto, dan Emy Sulityowati'),
 ('V0028', 'A0044', 'Balai Penelitian Tanaman Tembakau dan Serat'),
-('V0029', 'A0032', 'Varietas kapuk MH 4 merupakan hasil persilangan antara klon Seluwok Sawangan 29 (SS 29) yang merupakan klon lokal (tipe Indika), dengan klon Congo (C, tipe Karibea) merupakan klon introduksi dari Congo, Afrika, yang produksinya mencapai 2.500-3.000 gelond'),
 ('V0029', 'A0168', '2007'),
 ('V0029', 'A0174', 'Karibea'),
 ('V0029', 'A0142', '2.200 gelondong/pohon/tahun'),
@@ -1190,7 +1197,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0029', 'A0165', 'Komersial'),
 ('V0029', 'A0124', 'Moch. Sahid, Bambang Heliyanto, dan Emy Sulistyowati'),
 ('V0029', 'A0044', 'Balai Penelitian Tanaman Tembakau dan Serat'),
-('V0030', 'A0032', 'Varietas Togo B merupakan hasil seleksi dari varietas introduksi Togo yang berasal dari Togo di Afrika. Varietas ini menunjukkan potensi hasil gelondong yang tinggi dengan jumlah gelondong 41.428 gelondong/ha atau 2.551 gelondong/pohon pada umur 40 tahun.'),
 ('V0030', 'A0168', '2007'),
 ('V0030', 'A0004', 'Seleksi Individu dari Klon Togo yang diintroduksi dari Afrika'),
 ('V0030', 'A0164', 'Ceiba petandra Gaertn'),
@@ -1220,7 +1226,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0030', 'A0124', 'Marjani, Moch. Sahid, dan Hadi Sudarmo'),
 ('V0030', 'A0169', 'Machmud Saleh, Soemardjo, Suwono, dan Karwo'),
 ('V0030', 'A0044', 'Balai Penelitian Tanaman Pemanis dan Serat'),
-('V0031', 'A0032', 'Persilangan klon Lanang x Congo yang dilakukan pada sekitar tahun 1920-an dilanjutkan dengan penanaman benih hasil persilangan dan evaluasi klon hibrida. Di antara klon-klon hibrida yang diseleksi, maka terpilihlah individu nomor 31 yang menunjukkan keung'),
 ('V0031', 'A0168', '2009'),
 ('V0031', 'A0174', 'Karibea '),
 ('V0031', 'A0142', '2000-3000 gelondong/pohon/tahun'),
@@ -1232,7 +1237,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0031', 'A0165', 'Komersial'),
 ('V0031', 'A0124', 'Emy Sulistyowati dan Deciyanto Soetopo'),
 ('V0031', 'A0044', 'Balai Penelitian Tanaman Tembakau dan Serat'),
-('V0032', 'A0032', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH '),
 ('V0032', 'A0113', '85-9-66-2'),
 ('V0032', 'A0004', 'Hasil persilangan antara Hc 48 dengan G4'),
 ('V0032', 'A0164', 'Hibiscus cannabinus L'),
@@ -1264,7 +1268,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0032', 'A0082', 'Tahan terhadap kekeringan, Moderat tahan Alumunium pada pH rendah'),
 ('V0032', 'A0124', 'Sujindro, Rully Dyah Purwati, Rr. Sri Hartati, Bambang Heliyanto, Marjani, Untung Setyo-Budi, Gembong Dalmadiyo, Sri Handayani dan Adji Sastrosupadi'),
 ('V0032', 'A0169', 'Subur Wahyudi, Sumanto, Dudut Sunardi'),
-('V0033', 'A0032', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH '),
 ('V0033', 'A0113', '85-9-66-I BB'),
 ('V0033', 'A0004', 'Hasil persilangan antara Hc 48 dengan G4'),
 ('V0033', 'A0164', 'Hibiscus cannabinus L'),
@@ -1430,7 +1433,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0037', 'A0082', 'Toleran terhadap gangguan dan kekeringan, kurang peka terhadap fotoperiode'),
 ('V0037', 'A0142', '2,75-4,20 ton/ha'),
 ('V0037', 'A0124', 'Sujindro, R.D. Purwati, Rr. Sri Hartati, B.Heliyanto, Marjani, U.Setyo-Budi, Gembong D., Sri Handayani dan Adji Sastrosupadi'),
-('V0038', 'A0032', 'Meskipun kenaf termasuk tanaman hari pendek, namun Balittas telah menghasilkan va-rietas unggul yang kurang peka terhadap fotoperiode yaitu KR 11, sehingga varietas KR 11 ini dapat ditanam kapan saja dengan syarat kebutuhan air terpenuhi selama masa pertu'),
 ('V0038', 'A0113', 'Hc 85-9-66-1'),
 ('V0038', 'A0004', 'Persilangan Hc 48 x G4, Th 1985'),
 ('V0038', 'A0153', 'Seleksi pedigree'),
@@ -1493,8 +1495,7 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0039', 'A0103', 'Sedikit'),
 ('V0039', 'A0072', 'Halus'),
 ('V0039', 'A0161', '5,5-6,5%'),
-('V0039', 'A0088', 'Rentan terhadap Nematoda paru akar (Meloidogyne sp), moderat rentan terhadap Jassi (Amrasca biguttula)');
-INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
+('V0039', 'A0088', 'Rentan terhadap Nematoda paru akar (Meloidogyne sp), moderat rentan terhadap Jassi (Amrasca biguttula)'),
 ('V0039', 'A0082', 'Toleran terhadap genangan, toleran terhadap kekeringan,  kurang peka terhadap fotoperiode'),
 ('V0039', 'A0142', '2,56-4,07 ton/ha'),
 ('V0039', 'A0124', 'Sujindro, Rully Dyah Purwati, Rr. Sri Hartati, Bambang Heliyanto, Marjani, Untung Setyo-Budi, Gembong Dalmadiyo, Sri Handayani dan Adji Sastrosupadi'),
@@ -1609,7 +1610,8 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0043', 'A0215', 'Hijau'),
 ('V0043', 'A0213', 'Hijau'),
 ('V0043', 'A0196', 'Kuning krem'),
-('V0043', 'A0205', 'Hijau'),
+('V0043', 'A0205', 'Hijau');
+INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
 ('V0043', 'A0195', 'Hijau'),
 ('V0043', 'A0193', 'Abu-abu'),
 ('V0043', 'A0017', '22,1 - 26,3 gram'),
@@ -1666,7 +1668,6 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0044', 'A0125', 'Mala Murianingrum, Titiek Yulianti, Dwi Adi Sunarto, Budi Santoso, Moch.Machfud'),
 ('V0044', 'A0169', 'Dudut Sunardi, Sadta Yoga, Priyono, Sucipto'),
 ('V0044', 'A0122', 'Badan Penelitian dan Pengembangan Pertanian dan Toyota Boshoku Carporation Japan'),
-('V0045', 'A0032', 'Rami semula dikembangkan di daerah dataran tinggi walaupun sebenarnya rami juga da-pat dikembangkan di dataran rendah terutama yang memiliki fasilitas pengairan. Kendala pe-ngembangan rami adalah panjangnya rantai proses penyeratan sampai menjadi serat si'),
 ('V0045', 'A0004', 'Pujon, Malang, Jawa Timur'),
 ('V0045', 'A0164', 'Boehmeria nivea'),
 ('V0045', 'A0191', 'Hijau'),
@@ -2696,6 +2697,27 @@ INSERT INTO `distribusi_benih` (`id_benih`, `id_distribusi`, `tanggal`, `tahun_p
 ('B0024', 'D0804', '2011-12-09', 'Asembagus 2009', 'Dasar', 1, ''),
 ('B0025', 'D0805', '2011-12-09', 'Asembagus 2009', 'Dasar', 1, '');
 
+--
+-- Triggers `distribusi_benih`
+--
+DELIMITER $$
+CREATE TRIGGER `tr_distribusi_benih` BEFORE INSERT ON `distribusi_benih` FOR EACH ROW BEGIN
+SET @hitung = CONVERT((RIGHT((SELECT `id_distribusi` FROM `distribusi_benih` ORDER by `id_distribusi` DESC LIMIT 1), 4)), UNSIGNED) + 1;
+if (@hitung > 1) THEN
+if (@hitung < 10) THEN 
+SET new.`id_distribusi` = concat('D000',@hitung);
+ELSEIF (@hitung < 100) THEN
+SET new.`id_distribusi` = concat('D00',@hitung);
+ELSEIF (@hitung < 1000) THEN
+SET new.`id_distribusi` = concat('D0',@hitung);
+ELSE
+SET new.`id_distribusi` = concat('D',@hitung);
+END IF;
+END IF;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -2757,6 +2779,27 @@ INSERT INTO `gambar_leaflet` (`id_leaflet`, `id_gambar`, `file`) VALUES
 ('L0021', 'IMG0042', 'mesin pemecah2.jpg'),
 ('L0022', 'IMG0043', 'alat pengupas.jpg'),
 ('L0022', 'IMG0044', 'alat pengupas2.jpg');
+
+--
+-- Triggers `gambar_leaflet`
+--
+DELIMITER $$
+CREATE TRIGGER `tr_gambar_leaflet` BEFORE INSERT ON `gambar_leaflet` FOR EACH ROW BEGIN
+SET @hitung = CONVERT((RIGHT((SELECT `id_gambar` FROM `gambar_leaflet` ORDER by `id_gambar` DESC LIMIT 1), 4)), UNSIGNED) + 1;
+if (@hitung > 1) THEN
+if (@hitung < 10) THEN 
+SET new.`id_gambar` = concat('IMG000',@hitung);
+ELSEIF (@hitung < 100) THEN
+SET new.`id_gambar` = concat('IMG00',@hitung);
+ELSEIF (@hitung < 1000) THEN
+SET new.`id_gambar` = concat('IMG0',@hitung);
+ELSE
+SET new.`id_gambar` = concat('IMG',@hitung);
+END IF;
+END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -2920,60 +2963,61 @@ CREATE TABLE `varietas` (
   `tanggal_upload` date DEFAULT NULL,
   `waktu_upload` time NOT NULL,
   `file_SK` varchar(255) DEFAULT NULL,
-  `file_gambar` varchar(255) DEFAULT NULL
+  `file_gambar` varchar(255) DEFAULT NULL,
+  `deskripsi_varietas` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `varietas`
 --
 
-INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pelepasan`, `tanggal_upload`, `waktu_upload`, `file_SK`, `file_gambar`) VALUES
-('S0002', 'V0005', 'ISA 205 A', '2015-08-05', '2014-01-29', '08:00:00', 'Kapas - ISA 205 A.pdf', 'isa 205 a.jpg'),
-('S0002', 'V0006', 'Kanesia 1', '1990-08-16', '2018-07-26', '08:00:00', 'Kapas - Kanesia 1.pdf', ''),
-('S0002', 'V0007', 'Kanesia 2', '1990-08-16', '2018-07-26', '08:00:00', 'Kapas - Kanesia 2.pdf', ''),
-('S0002', 'V0008', 'Kanesia 3', '1993-07-02', '2018-07-26', '08:00:00', 'Kapas - Kanesia 3.pdf', ''),
-('S0002', 'V0009', 'Kanesia 4', '1993-06-25', '2018-07-26', '08:00:00', 'Kapas - Kanesia 4.pdf', ''),
-('S0002', 'V0010', 'Kanesia 5', '1993-07-02', '2018-07-26', '08:00:00', 'Kapas - Kanesia 5.pdf', ''),
-('S0002', 'V0011', 'Kanesia 6', '1993-07-02', '2018-07-26', '08:00:00', 'Kapas - Kanesia 6.pdf', ''),
-('S0002', 'V0012', 'Kanesia 7', '1998-10-09', '2018-07-26', '08:00:00', 'Kapas - Kanesia 7.pdf', ''),
-('S0002', 'V0013', 'Kanesia 8', '2003-08-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 8.pdf', 'k8.jpg'),
-('S0002', 'V0014', 'Kanesia 9', '2003-08-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 9.pdf', 'k9.jpg'),
-('S0002', 'V0015', 'Kanesia 10', '2007-02-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 10.pdf', 'k10.jpg'),
-('S0002', 'V0016', 'Kanesia 11', '2007-02-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 11.pdf', 'k11.jpg'),
-('S0002', 'V0017', 'Kanesia 12', '2007-02-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 12.pdf', 'k12.jpg'),
-('S0002', 'V0018', 'Kanesia 13', '2007-02-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 13.pdf', 'k13.jpg'),
-('S0002', 'V0019', 'Kanesia 14', '2007-09-05', '2014-01-29', '08:00:00', 'Kapas - Kanesia 14.pdf', 'k14.jpg'),
-('S0002', 'V0020', 'Kanesia 15', '2007-09-06', '2014-01-29', '08:00:00', 'Kapas - Kanesia 15.pdf', 'k15.jpg'),
-('S0002', 'V0021', ' Kanesia 16', '2014-07-18', '2018-07-26', '08:00:00', 'SK pelepasan var. kapas agri kanesia 16.pdf', 'KANESIA 16.JPG'),
-('S0002', 'V0022', 'Kanesia 17', '2014-07-18', '2018-07-26', '08:00:00', 'SK pelepasan Var. kapas agri kanesia 17.pdf', 'KANESIA 17.JPG'),
-('S0002', 'V0023', 'Kanesia 18', '2014-07-18', '2018-07-26', '08:00:00', 'SK pelepasan Var. kapas  agri Kanesia 18.pdf', 'KANESIA 18.JPG'),
-('S0002', 'V0024', 'Kanesia 19', '2014-07-18', '2018-07-26', '08:00:00', 'SK pelepasan var. kanesia 19.pdf', 'KANESIA 19.JPG'),
-('S0002', 'V0025', 'Kanesia 20', '2014-07-18', '2018-07-26', '08:00:00', 'SK. pelepasan var. kapas agri kanesia 20.pdf', 'KANESIA 20.JPG'),
-('S0003', 'V0026', 'Muktihardjo 1 (MH 1)', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - MH1.pdf', 'mh1.jpg'),
-('S0003', 'V0027', 'Muktihardjo 2 (MH 2)', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - MH2.pdf', 'mh2.jpg'),
-('S0003', 'V0028', 'Muktihardjo 3 (MH 3)', '2014-01-29', '2014-01-29', '08:00:00', '', 'mh3.jpeg'),
-('S0003', 'V0029', 'Muktihardjo 4 (MH 4)', '2014-01-29', '2014-01-29', '08:00:00', '', 'mh4.jpeg'),
-('S0003', 'V0030', 'Tobo B', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - TOGO B.pdf', 'togo b.jpeg'),
-('S0003', 'V0031', 'LC31', '2014-01-29', '2014-01-29', '08:00:00', '', 'lc31.jpeg'),
-('S0004', 'V0032', 'Karangploso 14 (KR 14)', '2007-02-20', '2014-01-29', '08:00:00', 'Kenaf - KR 14.pdf', 'kr14.jpeg'),
-('S0004', 'V0033', 'Karangploso 15 (KR 15)', '2007-02-20', '2014-01-29', '08:00:00', 'Kenaf - KR 15.pdf', 'kr15.jpeg'),
-('S0004', 'V0034', 'Karangploso 2 (KR 2)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC 33.pdf', ''),
-('S0004', 'V0035', 'HC 48', '1995-01-16', '2018-07-26', '08:00:00', 'Kenaf - HC 48.pdf', ''),
-('S0004', 'V0036', 'Karangploso 3 (KR 3)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC 62.pdf', ''),
-('S0004', 'V0037', 'Karangploso 9 (KR 9)', '2001-02-08', '2018-07-26', '08:00:00', 'Kenaf - HC 85-9-40-1.pdf', ''),
-('S0004', 'V0038', 'Karangploso 11 (KR 11)', '2001-02-08', '2014-01-29', '08:00:00', 'Kenaf - HC 85-9-66-1.pdf', 'kr11.jpeg'),
-('S0004', 'V0039', 'Karangploso 12 (KR 12)', '2001-02-08', '2018-07-26', '08:00:00', 'Kenaf - HC 85-9-75.pdf', ''),
-('S0004', 'V0040', 'Karangploso 6 (KR 6)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC Cuba 108 II.pdf', ''),
-('S0004', 'V0041', 'Karangploso 4 (KR 4)', '1995-01-16', '2018-07-26', '08:00:00', 'Kenaf - HC G4.pdf', ''),
-('S0004', 'V0042', 'Karangploso 5 (KR 5)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC G45.pdf', ''),
-('S0004', 'V0043', 'Kenafindo 1 Agribun', '2017-02-14', '2018-07-26', '08:00:00', 'KENAFINDO-1.pdf', ''),
-('S0004', 'V0044', 'Kenafindo 2 Agribun', '2017-02-14', '2018-07-26', '08:00:00', 'KENAFINDO-2.pdf', ''),
-('S0005', 'V0045', 'Ramindo 1', '2007-02-20', '2014-01-29', '08:00:00', 'Rami - RAMINDO -1.pdf', 'ramindo1a.jpeg'),
-('S0006', 'V0046', 'Roselindo 1', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 1.pdf', 'Roselindo-1.1.png'),
-('S0006', 'V0047', 'Roselindo 2', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 2.pdf', 'Roselindo-2.1.png'),
-('S0006', 'V0048', 'Roselindo 3', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 3.pdf', 'Roselindo-3.1.jpg'),
-('S0006', 'V0049', 'Roselindo 4', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 4.pdf', 'Roselindo-4.1.jpg'),
-('S0010', 'V0057', 'H 11648', '2017-02-14', '2018-07-26', '08:00:00', 'SISAL - H 11648.pdf', 'sisal.jpg');
+INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pelepasan`, `tanggal_upload`, `waktu_upload`, `file_SK`, `file_gambar`, `deskripsi_varietas`) VALUES
+('S0002', 'V0005', 'ISA 205 A', '2015-08-05', '2014-01-29', '08:00:00', 'Kapas - ISA 205 A.pdf', 'isa 205 a.jpg', 'ISA 205 A merupakan varietas introduksi berasal dari Institut de Recherches du coton et des Textiles Exotiques (IRCT) Perancis; menjadi koleksi plasma nurfah Balai Penelitian Tanaman Tembakau dan Serat (Balittas) pada tahun 1986.\r\n'),
+('S0002', 'V0006', 'Kanesia 1', '1990-08-16', '2018-07-26', '08:00:00', 'Kapas - Kanesia 1.pdf', '', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0007', 'Kanesia 2', '1990-08-16', '2018-07-26', '08:00:00', 'Kapas - Kanesia 2.pdf', '', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0008', 'Kanesia 3', '1993-07-02', '2018-07-26', '08:00:00', 'Kapas - Kanesia 3.pdf', '', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0009', 'Kanesia 4', '1993-06-25', '2018-07-26', '08:00:00', 'Kapas - Kanesia 4.pdf', '', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0010', 'Kanesia 5', '1993-07-02', '2018-07-26', '08:00:00', 'Kapas - Kanesia 5.pdf', '', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0011', 'Kanesia 6', '1993-07-02', '2018-07-26', '08:00:00', 'Kapas - Kanesia 6.pdf', '', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0012', 'Kanesia 7', '1998-10-09', '2018-07-26', '08:00:00', 'Kapas - Kanesia 7.pdf', '', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0013', 'Kanesia 8', '2003-08-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 8.pdf', 'k8.jpg', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0014', 'Kanesia 9', '2003-08-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 9.pdf', 'k9.jpg', 'KANESIA atau Kapas Indonesia adalah varietas unggul kapas hasil program pemuliaan tanaman kapas pada Balai Penelitian Tanaman Tembakau dan Serat. Perakitan varietas KANESIA ditujukan untuk memperbaiki produktivitas kapas baik pada usaha tani kapas monokultur maupun tumpang sari dengan palawija dan untuk memenuhi standar kualitas serat yang diinginkan oleh industri tekstil di Indonesia. Sampai dengan tahun 2006, telah dilepas 9 varietas baru seri KANESIA, yaitu Kanesia 1-9. Adapun varietas yang saat ini digunakan dalam pengembangan kapas adalah Kanesia 7, 8, dan 9.\r\n'),
+('S0002', 'V0015', 'Kanesia 10', '2007-02-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 10.pdf', 'k10.jpg', 'Kanesia 10 menunjukkan produktivitas yang lebih tinggi, memiliki potensi produksi lebih dari 3 ton kapas berbiji, juga beberapa keunggulan lain. Varietas Kanesia 10 menunjukkan indeks stabilitas Â± 1, yang artinya bahwa varietas ini mampu beradaptasi secara luas di berbagai areal pengembangan. Kemajuan yang cukup berarti dicapai pada kandungan serat pada varietas Kanesia 10. Kandungan seratnya 27,2% dan 8,11% lebih tinggi dibandingkan Kanesia 8. Karakteristik mutu serat Kanesia 10 sesuai dengan kebutuhan industri tekstil nasional yaitu panjang serat 26,92â€“29,34 mm, kekuatan 27,13â€“29,50 g/tex, dan keseragaman serat 83,3â€“84,6%. Walaupun demikian, kehalusan serat masih belum sepenuhnya memenuhi kriteria yang diharapkan oleh industri tekstil, yaitu 3,5-4,5 mic, walaupun beberapa pabrik masih menggunakan serat dengan kehalusan > 4,5 mic. Varietas Kanesia 10 sesuai untuk daerah Jatim, Jateng, NTB, Sulsel, DIY, Bali, dan NTT.\r\n\r\n'),
+('S0002', 'V0016', 'Kanesia 11', '2007-02-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 11.pdf', 'k11.jpg', 'Kanesia 11 menunjukkan produktivitas yang lebih tinggi, yaitu memiliki potensi produksi lebih dari 3 ton kapas berbiji, juga beberapa keunggulan lain. Varietas ini menunjukkan indeks stabilitas Â± 1, yang artinya bahwa varietas Kanesia 11 mampu beradaptasi secara luas di berbagai areal pengembangan. Kemajuan yang cukup berarti dicapai pada kandungan serat pada varietas Kanesia 11. Kandungan seratÂ  varietas iniÂ  8,11% lebih tinggi diban-dingkan Kanesia 8. Karakteristik mutu seratÂ  Kanesia 11 sesuai dengan kebutuhan industri tekstil nasional yaitu panjang serat 26,92â€“29,34 mm, kekuatan 27,13â€“29,50 g/tex, dan keseragaman serat 83,3â€“84,6%. Walaupun demikian, kehalusan serat masih belum sepe-nuhnya memenuhi kriteria yang diharapkan oleh industri tekstil, yaitu 3,5-4,5 mic, walaupun beberapa pabrik masih menggunakan serat dengan kehalusan > 4,5 mic. Varietas Kanesia 11 sesuai untuk daerah Jatim, Jateng, NTB, Sulsel, DIY, Bali, dan NTT.\r\n'),
+('S0002', 'V0017', 'Kanesia 12', '2007-02-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 12.pdf', 'k12.jpg', 'Kanesia 12 menunjukkan produktivitas yang lebih tinggi, yaitu memiliki potensi produksi lebih dari 3 ton kapas berbiji, juga beberapa keunggulan lain. Varie-tas-varietas tersebut menunjukkan indeks stabilitas Â± 1, yang artinya bahwa varietas Kanesia 12 mampu beradaptasi secara luas di berbagai areal pengembangan. Varietas Kanesia 12 sesuai untuk daerah Jatim, Jateng, NTB, Sulsel, DIY, Bali, dan NTT.\r\n'),
+('S0002', 'V0018', 'Kanesia 13', '2007-02-20', '2014-01-29', '08:00:00', 'Kapas - Kanesia 13.pdf', 'k13.jpg', 'Kanesia 13 menunjukkan produktivitas yang lebih tinggi , yaitu memiliki potensi produksi lebih dari 3 ton kapas berbiji, juga beberapa keunggulan lain. Kanesia 13 menunjukkan indeks stabilitas Â± 1, yang artinya varietas ini mampu beradaptasi secara luas di berbagai areal pengembangan. Kanesia 13 sesuai untuk daerah Jatim, Jateng, NTB, Sulsel, DIY, Bali, dan NTT.\r\n'),
+('S0002', 'V0019', 'Kanesia 14', '2007-09-05', '2014-01-29', '08:00:00', 'Kapas - Kanesia 14.pdf', 'k14.jpg', 'Kanesia 14 berasal dari hasil persilangan antara (Reba B-50 X Reba BTK 12-Thailand) dan (MCU9 X Auburn 200). Kanesia 14 yang dilepas pada tahun 2007 merupakan varietas kapas yang mempunyai keunggulan berupa toleransi terhadap keterbatasan keterse-diaan air atau tahan terhadap kekeringan, sehingga varietas Kanesia 14 lebih sesuai untuk dikembangkan pada daerah-daerah tadah hujan, varietas ini juga mempunyai ketahanan moderat terhadap wereng kapas Amrasca biguttulla. Dengan mempertimbangkan adanya korelasi antara kekeringan dan tingkat serangan hama A. biguttula pada daerah-daerah pengembangan kapas yang masih didominasi oleh lahan kering, maka disarankan untuk melakukan perlakuan benih menggunakan imidachloprit dengan dosis 10 mg/kg benih sebelum tanam. Kanesia 14 yang toleran terhadap kekeringan memberikan sumbangan yang sangat berarti, yaitu meningkatnya perolehan serat serta kenaikan efisiensi pemintalan akibat bertambahnya kekuatan dan panjang serat. Kanesia 14sesuai untuk daerah pengembangan di Jatim, NTB, dan Sulsel.\r\n'),
+('S0002', 'V0020', 'Kanesia 15', '2007-09-06', '2014-01-29', '08:00:00', 'Kapas - Kanesia 15.pdf', 'k15.jpg', 'Kanesia 15 berasal dari hasil persilangan antara ISA 205 A dengan ALA 73-2M. Kanesia 15 yang dilepas pada tahun 2007 merupakan varietas kapas yang mempunyai keunggulan berupa toleransi terhadap keterbatasan keterse-diaan air atau tahan terhadap kekeringan, sehingga varietas Kanesia 15 lebih sesuai untuk dikembangkan pada daerah-daerah tadah hujan, varietas ini juga mempunyai ketahanan moderat terhadap wereng kapas Amrasca biguttulla. Dengan mempertimbangkan adanya korelasi antara kekeringan dan tingkat serangan hama A. biguttula pada daerah-daerah pengembangan kapas yang masih didominasi oleh lahan kering, maka disarankan untuk melakukan perlakuan benih menggunakan imidachloprit dengan dosis 10 mg/kg benih sebelum tanam. Kanesia 15 yang toleran terhadap kekeringan memberikan sumbangan yang sangat berarti, yaitu meningkatnya perolehan serat serta kenaikan efisiensi pemintalan akibat bertambahnya kekuatan dan panjang serat. Kanesia 15 sesuai untuk daerah pengembangan di Jatim, NTB, dan Sulsel. \r\n\"\r\n'),
+('S0002', 'V0021', ' Kanesia 16', '2014-07-18', '2018-07-26', '08:00:00', 'SK pelepasan var. kapas agri kanesia 16.pdf', 'KANESIA 16.JPG', ''),
+('S0002', 'V0022', 'Kanesia 17', '2014-07-18', '2018-07-26', '08:00:00', 'SK pelepasan Var. kapas agri kanesia 17.pdf', 'KANESIA 17.JPG', ''),
+('S0002', 'V0023', 'Kanesia 18', '2014-07-18', '2018-07-26', '08:00:00', 'SK pelepasan Var. kapas  agri Kanesia 18.pdf', 'KANESIA 18.JPG', ''),
+('S0002', 'V0024', 'Kanesia 19', '2014-07-18', '2018-07-26', '08:00:00', 'SK pelepasan var. kanesia 19.pdf', 'KANESIA 19.JPG', ''),
+('S0002', 'V0025', 'Kanesia 20', '2014-07-18', '2018-07-26', '08:00:00', 'SK. pelepasan var. kapas agri kanesia 20.pdf', 'KANESIA 20.JPG', ''),
+('S0003', 'V0026', 'Muktihardjo 1 (MH 1)', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - MH1.pdf', 'mh1.jpg', 'Varietas kapuk hibrida MH 1 merupakan varietas hibrida hasil persilangan dua tipe kapuk yaitu tipe Indica dengan Karibea antara tiga tetua, yaitu (Randu Kuning x Bondowoso) x Congo atau disingkat (RKxBW)C. Varietas ini membentuk pohon-pohon yang tumbuh kuat, yang mempunyai sifat yang berbeda dengan induknya. Pohon tersebut lebih tahan terhadap kekeringan dibanding klon Jawa. Seratnya berwarna putih, tidak pecah di pohon, jumlah gelondong dan produksinya lebih banyak dibanding kapuk Jawa. Produksi varietas kapuk hibrida MH 1 pada umur 6 tahun, 12 tahun, dan 40 tahun masing-masing 427 gelondong/pohon, 1.038 gelon-dong/pohon, dan 2.881 gelondong/pohon Produktivitas pada umur 40 tahun tersebut mencapai 50.856 gelondong/ha, setara dengan 483 kg serat/ha atau 9,85 kg serat/pohon. \r\n'),
+('S0003', 'V0027', 'Muktihardjo 2 (MH 2)', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - MH2.pdf', 'mh2.jpg', 'Varietas kapuk hibrida MH 2 merupakan varietas kapuk hibrida hasil persilangan tiga te-tua yaitu (Ruezen Randu x Bondowoso) x Congo yang disingkat dengan (RRxBW)C. Varietas ka-puk hibrida MH 2 pada umur 6 tahun, 12 tahun, dan 40 tahun masing-masing produksinya 331 gelondong/pohon, 868 gelondong/pohon, dan 2.011 gelondong/pohon. Pohon yang telah ber-umur cukup lanjut yaitu lebih dari 40 tahun mampu menghasilkan 42.532 gelondong/ha atau 2.011 gelondong/pohon, setara dengan 335 kg serat/ha atau 6,84 kg serat/ pohon. Varietas ini membentuk pohon-pohon yang tumbuh kuat, yang mempunyai sifat yang berbeda dengan in-duknya. Pohon tersebut lebih tahan terhadap kekeringan dibanding klon Jawa. Seratnya ber-warna putih mengkilat, tidak pecah di pohon, jumlah gelondong dan produksinya lebih banyak dibanding kapuk Jawa.\r\n'),
+('S0003', 'V0028', 'Muktihardjo 3 (MH 3)', '2014-01-29', '2014-01-29', '08:00:00', '', 'mh3.jpeg', 'Varietas kapuk hibrida MH 3 merupakan hasil persilangan antara klon Congo 2 (tipe Kari-bea) dengan klon lokal Lanang (tipe Indika). Klon Congo merupakan klon introduksi dari Congo, Afrika, yang produksinya mencapai 2.500 - 3.000 gelondong/pohon. Klon Lanang merupakan klon lokal yang mempunyai kelebihan warna serat putih mengkilat, tetapi produksinya rendah yaitu sekitar 750 gelondong/pohon. Varietas MH 3 produksinya dapat mencapai 2.400 gelon-dong/pohon yang lebih tinggi 18% - 20% dibanding MH 1 dan 27% - 30% dibanding MH2 yang sudah dilepas. Hasil seratnya berwarna putih mengkilat yang sangat disukai petani dan eksportir kare-na sesuai dengan kualitas Java Kapok. Pengembangannya disarankan secara okulasi karena, perkembangan melalui biji akan mengalami segrgasi.\r\n'),
+('S0003', 'V0029', 'Muktihardjo 4 (MH 4)', '2014-01-29', '2014-01-29', '08:00:00', '', 'mh4.jpeg', 'Varietas kapuk MH 4 merupakan hasil persilangan antara klon Seluwok Sawangan 29 (SS 29) yang merupakan klon lokal (tipe Indika), dengan klon Congo (C, tipe Karibea) merupakan klon introduksi dari Congo, Afrika, yang produksinya mencapai 2.500-3.000 gelondong/pohon, tetapi warna serat abu-abu kecokelatan. Klon SS 29 mempunyai kelebihan warna serat putih mengkilat, tetapi produksinya rendah yaitu sekitar 600-750 gelondong/pohon. MH 4 produksi-nya dapat mencapai 2.200 gelondong/pohon, lebih tinggi 11â€“13 % dibanding MH 1 dan 18%-25% dibanding MH 2. Hasil seratnya berwarna putih mengkilat yang sangat disukai petani dan eksportir, karena sesuai dengan kualitas â€œJava Kapok.\r\n'),
+('S0003', 'V0030', 'Tobo B', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - TOGO B.pdf', 'togo b.jpeg', 'Varietas Togo B merupakan hasil seleksi dari varietas introduksi Togo yang berasal dari Togo di Afrika. Varietas ini menunjukkan potensi hasil gelondong yang tinggi dengan jumlah gelondong 41.428 gelondong/ha atau 2.551 gelondong/pohon pada umur 40 tahun. Ketika masih muda (12 tahun), varietas ini sudah mampu menghasilkan 845 gelondong/pohon. Serat yang dihasilkan oleh Togo B putih mengkilat, dan buahnya tidak pecah di pohon. Dengan habitus pohon yang kokoh, Togo-B digunakan dalam program konservasi lahan dan sebagai batang bawah dalam penyediaan bibit kapuk secara okulasi. Dengan habitus pohon yang kokoh, Togo-B digunakan dalam program konservasi lahan dan sebagai batang bawah dalam penyediaan bibit kapuk secara okulasi. \r\n'),
+('S0003', 'V0031', 'LC31', '2014-01-29', '2014-01-29', '08:00:00', '', 'lc31.jpeg', 'Persilangan klon Lanang x Congo yang dilakukan pada sekitar tahun 1920-an dilanjutkan dengan penanaman benih hasil persilangan dan evaluasi klon hibrida. Di antara klon-klon hibrida yang diseleksi, maka terpilihlah individu nomor 31 yang menunjukkan keunggulan dibandingkan klon hibrida lainnya dan klon terpilih tersebut mulai diperbanyak dan ditanam oleh manajemen perkebunan pada saat itu. Keunikan varietas kapuk LC 31 adalah pembentukan cabang pertama yang rendah antara 20 cm-100 cm diatas permukaan tanah.\r\n'),
+('S0004', 'V0032', 'Karangploso 14 (KR 14)', '2007-02-20', '2014-01-29', '08:00:00', 'Kenaf - KR 14.pdf', 'kr14.jpeg', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH rendah, kahat unsur hara, dan kandungan Al dan Fe tinggi. Lahan PMK di Kalimantan tersedia cukup luas yang berpotensi untuk pengembangan kenaf. Pemberdayaan lahan PMK di Kalimantan untuk pengembangan kenaf di samping memenuhi serat kenaf dalam negeri juga akan ber-dampak pada peningkatan pendapatan petani dan pendapatan asli daerah. Untuk mendukung pengembangan kenaf di lahan PMK Balittas telah menghasilkan dua varietas unggul yang telah dilepas berdasarkan SK. Mentan No. 133/Kpts/SR.120/2/2007 dan 134/Kpts/SR.120/2/2007 sebagai varietas unggul baru dengan nama Karangploso 14 (KR 14) dan Karangploso 15 (KR 15).\r\n'),
+('S0004', 'V0033', 'Karangploso 15 (KR 15)', '2007-02-20', '2014-01-29', '08:00:00', 'Kenaf - KR 15.pdf', 'kr15.jpeg', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH rendah, kahat unsur hara, dan kandungan Al dan Fe tinggi. Lahan PMK di Kalimantan tersedia cukup luas yang berpotensi untuk pengembangan kenaf. Pemberdayaan lahan PMK di Kalimantan untuk pengembangan kenaf di samping memenuhi serat kenaf dalam negeri juga akan ber-dampak pada peningkatan pendapatan petani dan pendapatan asli daerah. Untuk mendukung pengembangan kenaf di lahan PMK Balittas telah menghasilkan dua varietas unggul yang telah dilepas berdasarkan SK. Mentan No. 133/Kpts/SR.120/2/2007 dan 134/Kpts/SR.120/2/2007 sebagai varietas unggul baru dengan nama Karangploso 14 (KR 14) dan Karangploso 15 (KR 15).\r\n'),
+('S0004', 'V0034', 'Karangploso 2 (KR 2)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC 33.pdf', '', ''),
+('S0004', 'V0035', 'HC 48', '1995-01-16', '2018-07-26', '08:00:00', 'Kenaf - HC 48.pdf', '', ''),
+('S0004', 'V0036', 'Karangploso 3 (KR 3)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC 62.pdf', '', ''),
+('S0004', 'V0037', 'Karangploso 9 (KR 9)', '2001-02-08', '2018-07-26', '08:00:00', 'Kenaf - HC 85-9-40-1.pdf', '', ''),
+('S0004', 'V0038', 'Karangploso 11 (KR 11)', '2001-02-08', '2014-01-29', '08:00:00', 'Kenaf - HC 85-9-66-1.pdf', 'kr11.jpeg', 'Meskipun kenaf termasuk tanaman hari pendek, namun Balittas telah menghasilkan va-rietas unggul yang kurang peka terhadap fotoperiode yaitu KR 11, sehingga varietas KR 11 ini dapat ditanam kapan saja dengan syarat kebutuhan air terpenuhi selama masa pertumbuhan-nya. KR 11 merupakan hasil persilangan Hc 48 x Hc G4 pada tahun 1985. Varietas ini dilepas pada tahun 2001 oleh Menteri Pertanian dengan Surat Keputusan No. 111/Kpts/TP.240/2/2001, tanggal 8 Februari 2001.\r\n'),
+('S0004', 'V0039', 'Karangploso 12 (KR 12)', '2001-02-08', '2018-07-26', '08:00:00', 'Kenaf - HC 85-9-75.pdf', '', ''),
+('S0004', 'V0040', 'Karangploso 6 (KR 6)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC Cuba 108 II.pdf', '', ''),
+('S0004', 'V0041', 'Karangploso 4 (KR 4)', '1995-01-16', '2018-07-26', '08:00:00', 'Kenaf - HC G4.pdf', '', ''),
+('S0004', 'V0042', 'Karangploso 5 (KR 5)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC G45.pdf', '', ''),
+('S0004', 'V0043', 'Kenafindo 1 Agribun', '2017-02-14', '2018-07-26', '08:00:00', 'KENAFINDO-1.pdf', '', ''),
+('S0004', 'V0044', 'Kenafindo 2 Agribun', '2017-02-14', '2018-07-26', '08:00:00', 'KENAFINDO-2.pdf', '', ''),
+('S0005', 'V0045', 'Ramindo 1', '2007-02-20', '2014-01-29', '08:00:00', 'Rami - RAMINDO -1.pdf', 'ramindo1a.jpeg', 'Rami semula dikembangkan di daerah dataran tinggi walaupun sebenarnya rami juga dapat dikembangkan di dataran rendah terutama yang memiliki fasilitas pengairan. Kendala pengembangan rami adalah panjangnya rantai proses penyeratan sampai menjadi serat siap pintal. Proses yang panjang ini menyebabkan rami bukan sebagai cash crop, walaupun harga serat rami lebih tinggi dari harga serat kapas. Sebagai salah satu penghasil serat alami, rami merupakan komoditas yang perlu dikembangkan. Komoditas ini, selain menghasilkan serat alami yang bermutu tinggi, juga mempunyai hasil samping yang bernilai ekonomi, seperti kompos limbah dekortikasi dan daun rami untuk campuran pakan ternak. Varietas baru Ramindo 1, dengan nama lama Pujon 10, sudah sejak lama dikembangkan petani/pengusaha dan sudah terbukti keunggulannya baik di masyarakat maupun hasil penelitian. Ramindo 1 memberikan produktivitas serat yang tinggi (2-2,7 ton/ha/tahun) dengan kualitas serat yang cukup baik, serta memiliki daya adaptasi yang luas, sehingga klon ini sesuai untuk dikembangkan di dataran rendah, sedang hingga tinggi. Limbah dekortikasi (penyeratan) dapat diolah menjadi pupuk organik yang sangat halus dengan kandungan: Organik 20,13%; N total 2,15%; C/N ratio 3,01%; bahan organik 34,83%; P2O5 1,47%; K2O 2,76%; CaO 3,73%; MgO 2,22%; S 0,13%; dan KTK 65,56 me/100 g pupuk organik. Teknik pengomposan dapat dilakukan secara sederhana, yaitu dengan mencampurkan dedak, sedikit gula pasir, EM-4, dan disiram air secukupnya. Selain itu, sisa dekortikasi banyak mengandung kayu, dan seratnya baik untuk bahan baku pulp/kertas. Daun rami (40% dari bobot brangkasan segar) mengandung protein sekitar 24%, sangat baik untuk sumber protein ternak dan unggas. Setelah diproses menjadi tepung dapat diman-faatkan untuk campuran konsentrat berbagai pakan ternak. Pakan ternak dari daun rami mengandung sekitar: 10% air; 1,05-1,75% lisin; 0,14-0,73% methionin; dan 0,18-0,31% triptophan. Selain itu mengandung karotin (provitamin A) dan riboflavin (vitamin B2) masing-masing 13,3 dan 0,74 mg tiap 100 g bahan keringnya. Penggunaan varietas unggul Ramindo 1 dengan pemberian paket pupuk lengkap (organik, N, P, K dan ZPT+ PPC) dapat meningkatkan hasil serat sampai dengan 58-60%.\r\n'),
+('S0006', 'V0046', 'Roselindo 1', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 1.pdf', 'Roselindo-1.1.png', ''),
+('S0006', 'V0047', 'Roselindo 2', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 2.pdf', 'Roselindo-2.1.png', ''),
+('S0006', 'V0048', 'Roselindo 3', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 3.pdf', 'Roselindo-3.1.jpg', ''),
+('S0006', 'V0049', 'Roselindo 4', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 4.pdf', 'Roselindo-4.1.jpg', ''),
+('S0010', 'V0057', 'H 11648', '2017-02-14', '2018-07-26', '08:00:00', 'SISAL - H 11648.pdf', 'sisal.jpg', '');
 
 --
 -- Triggers `varietas`
