@@ -124,7 +124,11 @@
                   <td><?php echo "$deskripsi_cut"; ?></td>
                   <td><?php echo "$row[gambar]"; ?></td>
                   <td>
-                    <a href="#editserat" class="edit" onclick="modal_edit_serat('<?php echo $row['id_serat']; ?>','<?php echo $row['nama_serat']; ?>','<?php echo $row['deskripsi_serat']; ?>','<?php echo $row['gambar']; ?>');"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+
+
+                    <a href="#tomboleditserat" class="edit" onclick="modal_edit_serat('<?php echo $row['id_serat']; ?>','<?php echo $row['nama_serat']; ?>','<?php echo $row['deskripsi_serat']; ?>','<?php echo $row['gambar']; ?>');"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+
+
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_serat('<?php echo $row['id_serat']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>          
                   </td>
                 </tr>
@@ -184,7 +188,7 @@
     </div>
 
     <!-- Edit Modal HTML Serat-->
-    <div id="editserat" class="modal fade">
+    <div id="tomboleditserat" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -207,14 +211,14 @@
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
-                  <input type="text" id="editserat" class="form-control image-preview-filename" disabled="disabled">   
+                  <input type="text" id="editseratimg" class="form-control image-preview-filename" disabled="disabled">   
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;" onclick="document.getElementById('editgambarserat').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default"> 
                       <span class="glyphicon glyphicon-remove"></span> Clear
                     </button>                                    
                     <div class="btn btn-default image-preview-input">                                        
                       <span class="image-preview-input-title">Pilih File</span>
-                      <input type="file" id="editgambarserat" name="editgambarserat" style="width:100px" onchange="document.getElementById('editserat').value=this.value" accept="image/png, image/jpeg, image/gif" >    
+                      <input type="file" id="editgambarserat" name="editgambarserat" style="width:100px" onchange="document.getElementById('editseratimg').value=this.value" accept="image/png, image/jpeg, image/gif" >    
                     </div>
                   </span>
                 </div>
@@ -231,11 +235,11 @@
     <script>
         function modal_edit_serat(idSerat,namaSerat,editdeskripsi,editserat)
         {
-          $('#editserat').modal('show', {backdrop: 'static'});          
+          $('#tomboleditserat').modal('show', {backdrop: 'static'});          
           document.getElementById('idSerat').value = idSerat;
           document.getElementById('namaSerat').value = namaSerat;         
           document.getElementById('editdeskripsi').value = editdeskripsi;    
-          document.getElementById('editserat').value = editserat;    
+          document.getElementById('editseratimg').value = editserat;    
         }
     </script>
 
@@ -403,7 +407,180 @@
       </div>
     </section>
 
-    <footer>
+    <!-- Data Budidaya   -->
+    <section class="budidaya" id="budidaya" style="padding-top: 0px; margin-top: -100px;">
+      <div class="container">
+        <div class="table table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2>Data <b>Monograf Budidaya Tanaman Serat</b></h2>
+              </div>
+              <div class="col-sm-6">
+                <a href="#tambahbudidaya" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive" style="margin: 30px 0px;">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>                                
+                  <th>No</th>
+                  <th>Nama Monograf</th>                                
+                  <th>Spesifikasi</th>                              
+                  <th>Deskripsi</th>                              
+                  <th>File Gambar</th>
+                  <th>Tanggal Upload</th>                                
+                  <th>Aksi</th>                              
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                  $no = 1;                                          
+                  foreach ($monograf as $row) {    
+                ?>
+                <tr >
+                  <td><?php echo $no; ?></td>                                
+                  <td><?php echo "$row[nama_monograf]"; ?></td>                              
+                  <td>
+                    <a href="#spesifikasi" style="font-weight: unset;" onclick="">                        
+                      <button class="btn btn-warning">Spesifikasi</button>
+                    </a>
+                  </td>       
+                  <td><?php echo "$row[deskripsi_monograf]"; ?></td>                         
+                  <td><?php echo "$row[gambar]"; ?></td>
+                  <td><?php echo "$row[tanggal]"; ?></td>
+                  <td>
+                    <a href="#editvarietas" class="editvarietas" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                  </td>
+                </tr>
+                <?php                                 
+                    $no++;
+                  }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Benih   -->
+    <section class="benih" id="benih" style="padding-top: 0px; margin-top: -100px;">
+      <div class="container">
+        <div class="table table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2>Data <b>Benih</b></h2>
+              </div>
+              <div class="col-sm-6">
+                <a href="#tambahbenih" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive" style="margin: 30px 0px;">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>                                
+                  <th>No</th>
+                  <th>Nama Benih</th>                                
+                  <th>Asal</th>                              
+                  <th>Tahun Panen</th>                              
+                  <th>Kelas</th>
+                  <th>Stok Bulan Terakhir</th>  
+                  <th>Stok Sampai</th>                                
+                  <th>Aksi</th>                              
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                  $no = 1;                                          
+                  foreach ($benih as $row) {    
+                ?>
+                <tr >
+                  <td><?php echo $no; ?></td>                                
+                  <td><?php echo "$row[nama_benih]"; ?></td>                              
+                  <td><?php echo "$row[asal]"; ?></td>                         
+                  <td><?php echo "$row[tahun_panen]"; ?></td>
+                  <td><?php echo "$row[kelas]"; ?></td>
+                  <td><?php echo "$row[stok_bulan_terakhir]"; ?></td>
+                  <td><?php echo "$row[stok_sampai]"; ?></td>
+                  <td>
+                    <a href="#editbenih" class="editbenih" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                  </td>
+                </tr>
+                <?php                                 
+                    $no++;
+                  }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Distribusi Benih   -->
+    <section class="distibusibenih" id="distibusibenih" style="padding-top: 0px; margin-top: -100px;">
+      <div class="container">
+        <div class="table table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2>Data <b>Distribusi Benih</b></h2>
+              </div>
+              <div class="col-sm-6">
+                <a href="#tambahdistribusibenih" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive" style="margin: 30px 0px;">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>                                
+                  <th>No</th>
+                  <th>Nama Benih</th>                                
+                  <th>Tanggal</th>                              
+                  <th>Tahun Panen</th>                              
+                  <th>Kelas</th>
+                  <th>Jumlah Kg</th>  
+                  <th>Keterangan</th>                                
+                  <th>Aksi</th>                              
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                  $no = 1;                                          
+                  foreach ($distribusibenih as $row) {    
+                ?>
+                <tr >
+                  <td><?php echo $no; ?></td>                                
+                  <td><?php echo "$row[nama_benih]"; ?></td>                              
+                  <td><?php echo "$row[tanggal]"; ?></td>                         
+                  <td><?php echo "$row[tahun_panen]"; ?></td>
+                  <td><?php echo "$row[kelas_benih]"; ?></td>
+                  <td><?php echo "$row[jumlah_kg]"; ?></td>
+                  <td><?php echo "$row[keterangan]"; ?></td>
+                  <td>
+                    <a href="#editdistribusibenih" class="editbenih" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                  </td>
+                </tr>
+                <?php                                 
+                    $no++;
+                  }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top: 0px;">
       <div class="container-fluid text-center" style="color:white;background-color: black;">
         <div style=" margin-top: 10px;">
           <p style="font-family: calibri"><span class="glyphicon glyphicon-copyright-mark"></span> 2018 All Reserved Design By BALITTAS</p>

@@ -5,7 +5,10 @@
 			$data['serat'] = $this->m_data->load_serat();
 			$data['varietas'] = $this->m_data->load_varietas();
 			$data['leaflet'] = $this->m_data->load_leaflet();
-			$data['gambarleaflet'] = $this->m_data->load_gambar_leaflet();		
+			$data['gambarleaflet'] = $this->m_data->load_gambar_leaflet();
+			$data['monograf'] = $this->m_data->load_budidaya();
+			$data['benih'] = $this->m_data->load_benih();
+			$data['distribusibenih'] = $this->m_data->load_distribusibenih();
 			$this->load->view("v_admin",$data);
 		}
 
@@ -31,17 +34,15 @@
 			$namaSerat = $this->input->post('namaSerat');		
 			$deskripsi = $this->input->post('editdeskripsi');		
 			$gambar = $this->input->post('editserat');		
-
 			$targetpathSer = "serat/gambar_serat/";	
-
-			if (empty($_FILES['editgambarserat']['name'])) {			
-				$this->m_data->edit_serat($idSerat, $namaSerat, $deskripsi, $gambar);	
-			}else{
-				$dataserat = $this->m_data->get_serat_byId($idSerat);
-				unlink($targetpathSer.$dataSer[0]->gambar_ser);
-				$targetpathSerat = $targetpathSer.basename($_FILES['editgambarserat']['name']);
-				move_uploaded_file($_FILES['editgambarserat']['tmp_name'],$targetpathSerat);
+			$dataserat = $this->m_data->get_serat_byId($idSerat);
+			if (!empty($_FILES['editgambarserat']['name'])) {		
+			 	unlink($targetpathSer.$dataserat[0]->gambar);
+				$targetpathSeratgmbr = $targetpathSer.basename($_FILES['editgambarserat']['name']);
+				move_uploaded_file($_FILES['editgambarserat']['tmp_name'],$targetpathSeratgmbr);
 				$this->m_data->edit_serat($idSerat, $namaSerat, $deskripsi, $_FILES['editgambarserat']['name']);	
+			} else { 
+				$this->m_data->edit_serat_noimg($idSerat, $namaSerat, $deskripsi);	
 			}		
 			redirect(base_url('c_data/'));
 		}
