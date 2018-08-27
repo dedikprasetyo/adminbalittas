@@ -40,7 +40,9 @@
 						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 						       			<a href="#2" class="halaman">Kapuk</a>
 						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-						       			<a href="#3" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
+						       			<a href="#3" class="halaman">Kenaf</a>
+						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+						       			<a href="#3" class="halaman" style="margin-bottom: 10px;">Abaka</a>
 						  			</div>
 									<div class="col-sm-6 col-lg-6">
 									    <a href="#4" class="halaman" style="margin-top:10px;">Rami</a>	
@@ -67,7 +69,8 @@
 						  	<div class="container-fluid">
 						  		<div class="row">
 						  			<div class="col-sm-12 col-lg-12">
-						  				<a href="#produk" class="halaman" style="margin-top: 10px;">Benih</a>	
+						  				<!-- <a href="#produk" class="halaman" style="margin-top: 10px;">Benih</a>	 -->
+						  				<a href="<?php echo base_url('produk/Benih')?>" style="margin-top: 10px;">Benih</a>	
 						  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 						  				<a href="<?php echo base_url('produk/produk2') ?>" class="halaman">Alat dan Mesin</a>
 						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
