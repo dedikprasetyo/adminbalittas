@@ -1,9 +1,9 @@
-<!-- <?php
+<?php
     $isLogin = $this->session->userdata( 'akunAktif' );
     if($isLogin==""){
         redirect(base_url('admin/index'));
     }
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="en" id="home">
@@ -11,88 +11,45 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <title>Balittas</title>
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <link href="<?php echo base_url();?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/styleadmin.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/simple-sidebar.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>/assets/img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
+    
+    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>/bootstrap/js/croppie.js"></script>
+    <script src="<?php echo base_url();?>/bootstrap/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <header>
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a href="#home" class="navbar-brand halaman">
-              <img src="<?php echo base_url();?>/assets/img/balittaslitbang.png" width="270" style="margin-right:-90px; padding-right: 25px;">
-            </a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bar" aria-expanded="false" style="margin-top:25px; margin-right: -20px;">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
-            <ul class="nav navbar-nav navbar-right" >
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Varietas <span class="caret"></span></a>
-                  <ul class="dropdown-menu" style="margin:-5px 0px 0px 0px; width:280px; background-color:#fece00;">
-                    <div class="container-fluid">
-                      <div class="col-sm-6 col-lg-6">
-                        <li><a href="#Kapas" class="halaman">Kapas</a></li>
-                        <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                        <li><a href="#Kapuk" class="halaman">Kapuk</a></li>
-                        <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                        <li><a href="#Kenaf" class="halaman">Kenaf</a></li>
-                      </div>
-                      <div class="col-sm-6 col-lg-6">
-                        <li><a href="#Rami" class="halaman">Rami</a></li>
-                        <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                        <li><a href="#Rosela" class="halaman">Rosela</a></li>
-                        <hr style="margin-left:0px; margin: 1px 0px 1px 0px; text-align: left; width:95%;">
-                        <li><a href="#Sisal" class="halaman">Sisal</a></li>
-                      </div>
-                    </div>
-                  </ul>
-                </li>
-              <li> <a href="#login" data-toggle="modal" data-target="#login-modal" class="halaman">Welcome Admin</a></li>
-              <li> <a href="index.html#layanan" class="halaman">Logout</a></li>
-            </ul>
-          </div> 
-          <div class="collapse navbar-collapse" id="bar"  style="margin-top:5px; margin-left: -60px; margin-right: -60px; border:0;" >
-            <ul class="nav navbar-nav navbar-right hidden-md hidden-lg" style="background-color:#57bb82;">
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Varietas <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#Serat" class="halaman">Tembakau</a></li>
-                  <li><a href="#Varietas" class="halaman">Jarak Pagar</a></li>
-                  <li><a href="#Leaflet" class="halaman">Jarak Kepyar</a></li>
-                  <li><a href="#Budidaya" class="halaman">Kapas</a></li>
-                  <li><a href="#Stok Benih" class="halaman">Kapuk</a></li>
-                  <li><a href="#Kenaf" class="halaman">Kenaf</a></li>
-                  <li><a href="#Rami" class="halaman">Rami</a></li>
-                  <li><a href="#Rosela" class="halaman">Rosela</a></li>
-                  <li><a href="#Tebu" class="halaman">Tebu</a></li>
-                  <li><a href="#Wijen" class="halaman">Wijen</a></li>
-                </ul>
-              </li>
-              <li> <a href="#login" data-toggle="modal" data-target="#login-modal" class="halaman">Welcome Admin</a></li>
-              <li> <a href="index.html#layanan" class="halaman">Logout</a></li>
-            </ul>
-          </div> 
-        </div>
-      </nav>  
-    </header>
+
+    <div class="sidenav" style="padding-top: 10px;">        
+        <a href="#tabelSerat"><i class="glyphicon glyphicon-chevron-right"></i> Data Serat</a>
+        <hr style="border-color: grey;margin:0px 13px 5px 13px;">
+        <a href="#tabelVarietas"><i class="glyphicon glyphicon-chevron-right"></i> Data Varietas</a>
+        <hr style="border-color: grey;margin:0px 13px 5px 13px;">
+        <a href="#tabelLeaflet"><i class="glyphicon glyphicon-chevron-right"></i> Data Leaflet</a>
+        <hr style="border-color: grey;margin:0px 13px 5px 13px;">
+        <a href="#tabelBudidaya"><i class="glyphicon glyphicon-chevron-right"></i> Data Budidaya</a>
+        <hr style="border-color: grey;margin:0px 13px 5px 13px;">
+        <a href="#tabelBenih"><i class="glyphicon glyphicon-chevron-right"></i> Data Benih</a>
+        <hr style="border-color: grey;margin:0px 13px 5px 13px;">
+        <a href="#tabelDistribusiBenih"><i class="glyphicon glyphicon-chevron-right"></i> Data Distribusi Benih</a>        
+    </div>
 
     <!-- Data Serat -->
-    <section class="serat" id="serat" style="padding-top: 2px; margin-top: 100px;">
+    <section class="serat" id="tabelSerat" style="padding-top: 50px; margin-top: -70px;">
       <div class="container">
         <div class="table table-wrapper">
           <div class="table-title">
@@ -150,7 +107,6 @@
       </div>
     </section>
 
-
     <!-- Tambah Modal HTML Serat -->
     <div id="tambahserat" class="modal fade">
       <div class="modal-dialog">
@@ -159,7 +115,7 @@
             <h4 class="modal-title">Tambah Data Serat</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('c_data/tambahSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <div class="form-group">
                 <label>Nama Serat</label>
@@ -202,7 +158,7 @@
             <h4 class="modal-title">Edit Data Serat</h4>`
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('c_data/editSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <input hidden id="idSerat" name="idSerat">
               <div class="form-group">
@@ -214,7 +170,6 @@
                 <textarea type="text" name="editdeskripsi" id="editdeskripsi" class="form-control" rows="8"required></textarea>
               </div>
               
-              <!-- iki gk isok -->
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
@@ -280,7 +235,7 @@
     </script>
 
     <!-- Data Varietas -->
-    <section class="varietas" id="varietas" style="padding-top: 0px; margin-top: -80px;">
+    <section class="varietas" id="tabelVarietas" style="padding-top: 50px; margin-top: -120px;">
       <div class="container">
         <div class="table table-wrapper">
           <div class="table-title">
@@ -327,7 +282,7 @@
                   <td><?php echo "$row[tanggal_upload]"; ?></td>
                   <td><?php echo "$row[waktu_upload]"; ?></td>
                   <td>
-                    <a href="#editvarietas" class="editvarietas" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#editvarietas" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
                   </td>
                 </tr>
@@ -343,7 +298,7 @@
     </section>
 
     <!-- Data Leaflet -->
-    <section class="leaflet" id="leaflet" style="padding-top: 0px; margin-top: -100px;">
+    <section class="leaflet" id="tabelLeaflet" style="padding-top: 50px; margin-top: -80px;">
       <div class="container">
         <div class="table table-wrapper">
           <div class="table-title">
@@ -399,7 +354,8 @@
                     $nama = $row['nama_leaflet'];
                   ?>
                   <td>
-                    <a href="#editvarietas" class="editvarietas" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#editleaflet" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+
                     <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
                   </td>
                 </tr>
@@ -415,13 +371,13 @@
     </section>
 
     <!-- Data Budidaya   -->
-    <section class="budidaya" id="budidaya" style="padding-top: 0px; margin-top: -100px;">
+    <section class="budidaya" id="tabelBudidaya" style="padding-top: 50px; margin-top: -80px;">
       <div class="container">
         <div class="table table-wrapper">
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
-                <h2>Data <b>Monograf Budidaya Tanaman Serat</b></h2>
+                <h2>Data <b>Budidaya</b></h2>
               </div>
               <div class="col-sm-6">
                 <a href="#tambahbudidaya" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
@@ -433,10 +389,10 @@
               <thead>
                 <tr>                                
                   <th>No</th>
-                  <th>Nama Monograf</th>                                
-                  <th>Spesifikasi</th>                              
-                  <th>Deskripsi</th>                              
-                  <th>File Gambar</th>
+                  <th>Judul</th>                                
+                  <th>Deskripsi Singkat</th>                              
+                  <th>Penulis</th>                              
+                  <th>File</th>
                   <th>Tanggal Upload</th>                                
                   <th>Aksi</th>                              
                 </tr>
@@ -448,17 +404,14 @@
                 ?>
                 <tr >
                   <td><?php echo $no; ?></td>                                
-                  <td><?php echo "$row[nama_monograf]"; ?></td>                              
-                  <td>
-                    <a href="#spesifikasi" style="font-weight: unset;" onclick="">                        
-                      <button class="btn btn-warning">Spesifikasi</button>
-                    </a>
-                  </td>       
-                  <td><?php echo "$row[deskripsi_monograf]"; ?></td>                         
-                  <td><?php echo "$row[gambar]"; ?></td>
+                  <td><?php echo "$row[judul]"; ?></td>                              
+                  <td><?php echo "$row[cuplikan_monograf]"; ?></td>                         
+                  <td><?php echo "$row[penulis]"; ?></td>
+                  <td><?php echo "$row[file]"; ?></td>
                   <td><?php echo "$row[tanggal]"; ?></td>
+
                   <td>
-                    <a href="#editvarietas" class="editvarietas" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#editbudidaya" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
                   </td>
                 </tr>
@@ -474,7 +427,7 @@
     </section>
 
     <!-- Data Benih   -->
-    <section class="benih" id="benih" style="padding-top: 0px; margin-top: -100px;">
+    <section class="benih" id="tabelBenih" style="padding-top: 50px; margin-top: -80px;">
       <div class="container">
         <div class="table table-wrapper">
           <div class="table-title">
@@ -515,7 +468,7 @@
                   <td><?php echo "$row[stok_bulan_terakhir]"; ?></td>
                   <td><?php echo "$row[stok_sampai]"; ?></td>
                   <td>
-                    <a href="#editbenih" class="editbenih" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#editbenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
                   </td>
                 </tr>
@@ -531,7 +484,7 @@
     </section>
 
     <!-- Data Distribusi Benih   -->
-    <section class="distibusibenih" id="distibusibenih" style="padding-top: 0px; margin-top: -100px;">
+    <section class="distibusibenih" id="tabelDistribusiBenih" style="padding-top: 50px; margin-top: -80px;">
       <div class="container">
         <div class="table table-wrapper">
           <div class="table-title">
@@ -572,7 +525,80 @@
                   <td><?php echo "$row[jumlah_kg]"; ?></td>
                   <td><?php echo "$row[keterangan]"; ?></td>
                   <td>
-                    <a href="#editdistribusibenih" class="editbenih" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#editdistribusibenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                  </td>
+                </tr>
+                <?php                                 
+                    $no++;
+                  }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Alat dan Mesin -->
+    <section class="alsin" id="tabelAlsin" style="padding-top: 50px; margin-top: -80px;">
+      <div class="container">
+        <div class="table table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2>Data <b>Alat dan Mesin</b></h2>
+              </div>
+              <div class="col-sm-6">
+                <a href="#tambahalsin" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive" style="margin: 30px 0px;">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>                                
+                  <th>No</th>
+                  <th>Nama Alat dan Mesin</th>
+                  <th>File gambar 1</th>
+                  <th>File gambar 2</th>   
+                  <th>Aksi</th>                              
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                  $no = 1;                                          
+                  foreach ($alsin as $row) {    
+                ?>
+                <tr >
+                  <td><?php echo $no; ?></td>
+                  <td><?php echo "$row[nama_leaflet]"; ?></td>
+                  <?php 
+                    for ($i=($no-1); $i <(count($alsin)); $i++) { 
+                      if ($i==0) {
+                        echo "<td>".$gambaralsin[$i]->file."</td>";
+                        echo "<td>".$gambaralsin[$i+1]->file."</td>";
+                        $idimg1 = $gambaralsin[$i]->id_gambar;
+                        $idimg2 = $gambaralsin[$i+1]->id_gambar;
+                        $leaflet1 = $gambaralsin[$i]->file;
+                        $leaflet2 = $gambaralsin[$i+1]->file;
+                        break;
+                      } else {                                       
+                        echo "<td>".$gambaralsin[$i*2]->file."</td>";
+                        echo "<td>".$gambaralsin[($i*2)+1]->file."</td>";
+                        $idimg1 = $gambaralsin[$i*2]->id_gambar;
+                        $idimg2 = $gambaralsin[($i*2)+1]->id_gambar;
+                        $leaflet1 = $gambaralsin[$i*2]->file;
+                        $leaflet2 = $gambaralsin[($i*2)+1]->file;
+                        break;                               
+                      }
+                    }
+                    $idalsin = $row['id_leaflet'];
+                    $nama = $row['nama_leaflet'];
+                  ?>
+                  <td>
+                    <a href="#editalsin" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+
                     <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
                   </td>
                 </tr>
