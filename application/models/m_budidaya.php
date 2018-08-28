@@ -33,6 +33,26 @@ class M_budidaya extends CI_Model{
         	// return $data->result();
         }
 
+     function detailMonografBerdasarkanID($id){
+     	$data=$this->db->query("SELECT * FROM detail_monograf d
+								join monograf m on d.id_monograf=m.id_monograf
+								where m.id_serat='$id'");
+     	return $data->result();
+     }
+
+     public function getJumlahDetailMonografBerdasarkanIDSerat($id){
+     	$data=$this->db->query("SELECT * FROM detail_monograf d
+								join monograf m on d.id_monograf=m.id_monograf
+								where m.id_serat='$id'");
+		return $data->num_rows();
+     }
+     public function getDetailMonografBerdasarkanIDSerat($id, $perpage, $start){
+		$data=$this->db->query("SELECT * FROM detail_monograf d 
+								JOIN monograf m on d.id_monograf=m.id_monograf
+								WHERE m.id_serat='$id' LIMIT $perpage OFFSET $start");
+		return $data->result();
+	}
+
 	// content tester pagination
 	// hitung tabel detail monograf
 	public function getJumlahBaris($id){
@@ -42,11 +62,11 @@ class M_budidaya extends CI_Model{
 		return $data->num_rows();
 	}
 
-	public function getJumlahBaris2(){
-		$data=$this->db->query("SELECT * FROM detail_monograf d 
-								JOIN monograf m on d.id_monograf=m.id_monograf");
-		return $data->num_rows();
-	}
+	// public function getJumlahBaris2(){
+	// 	$data=$this->db->query("SELECT * FROM detail_monograf d 
+	// 							JOIN monograf m on d.id_monograf=m.id_monograf");
+	// 	return $data->num_rows();
+	// }
 
 
 	//with active record or query builder

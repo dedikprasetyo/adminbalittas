@@ -140,7 +140,22 @@
 			<!-- <div style="height: 50px; background-color: red;"></div> -->
 			<div class="containerImg" id="home">
 
-				<img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+				<?php 
+				    if(!empty($Judul)){
+			 		foreach($Judul as $jud) {
+			 			?>
+				   <img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+				    <?php } } else if(!empty($Judul2)){?>
+				    <?php foreach($Judul2 as $j) ?>
+				      <img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+				     <?php } else if(!empty($JudulMono)){?>
+				     <?php foreach($JudulMono as $jm) {?>
+				        <img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+				    <?php }} else{?>
+						  <img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+				    <?php } ?>
+
+				<!-- <img src="<?php //echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;"> -->
 			 	<div class="contentImg text-center">
 				    <?php 
 				    if(!empty($Judul)){
@@ -156,9 +171,14 @@
 				    </h1>
 				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Deskripsi Varietas <?php echo $j->nama_varietas;?>
 				    </h1>
-				     <?php } else{?>
-				       <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Monograf
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Monograf
+				     <?php } else if(!empty($JudulMono)){?>
+				     <?php foreach($JudulMono as $jm) {?>
+				       <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Budidaya <?php echo $jm->nama_serat; ?> </h1>	
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Budidaya
+				    </h1>
+				    <?php }} else{?>
+						 <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Pencarian</h1>
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Pencarian
 				    </h1>
 				    <?php } ?>
 				     <!-- <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Detail Varietas</h1> -->

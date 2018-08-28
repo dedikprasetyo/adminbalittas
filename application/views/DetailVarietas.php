@@ -130,7 +130,7 @@
 							 </div>
 						</form>						
 					</div>
-					<a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;"><h3 class="text-left" style="color:black;">Leaflet</h3></a>
+					<a href="<?php echo base_url('varietas/detail/') ?>" style="text-decoration-line:none;"><h3 class="text-left" style="color:black;">Leaflet</h3></a>
 					<hr style="border-color: black">
 						
 						<?php 

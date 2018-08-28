@@ -36,20 +36,20 @@
 						  	<div class="container-fluid">
 						  		<div class="row">
 						  			<div class="col-sm-6 col-lg-6">
-						       			<a href="#1" class="halaman" style="margin-top: 10px;">Kapas</a>
+						       			<a href="<?php echo base_url('varietas/detail/kapas') ?>" class="halaman" style="margin-top: 10px;">Kapas</a>
 						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-						       			<a href="#2" class="halaman">Kapuk</a>
+						       			<a href="<?php echo base_url('varietas/detail/kapuk') ?>" class="halaman">Kapuk</a>
 						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-						       			<a href="#3" class="halaman">Kenaf</a>
+						       			<a href="<?php echo base_url('varietas/detail/kenaf') ?>" class="halaman">Kenaf</a>
 						       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-						       			<a href="#3" class="halaman" style="margin-bottom: 10px;">Abaka</a>
+						       			<a href="<?php echo base_url('varietas/detail/abaka') ?>" class="halaman" style="margin-bottom: 10px;">Abaka</a>
 						  			</div>
 									<div class="col-sm-6 col-lg-6">
-									    <a href="#4" class="halaman" style="margin-top:10px;">Rami</a>	
+									    <a href="<?php echo base_url('varietas/detail/rami') ?>" class="halaman" style="margin-top:10px;">Rami</a>	
 										<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-										<a href="#5" class="halaman">Rosela</a>	
+										<a href="<?php echo base_url('varietas/detail/rosela') ?>" class="halaman">Rosela</a>	
 								  		<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  		<a href="#6" class="halaman">Sisal</a>	
+								  		<a href="<?php echo base_url('varietas/detail/sisal') ?>" class="halaman">Sisal</a>	
 								  	</div>
 								</div>
 							</div>							  	
@@ -220,56 +220,27 @@
 					</div>
 					<div class="col-sm-9 col-lg-9">
 						<div class="row">
-							<?php foreach($monograf as $mono) 
-								{
-							?>
-								<div class="col-xs-12 col-sm-6 col-lg-6">
-							 	<a href="<?php echo base_url('budidaya/budidayatanamanserat/').urlencode(strtolower($mono->nama_monograf)); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
-							 		<h4 style="font-family: Minion Pro; font-size: 1.2em;"><?php echo $mono->nama_monograf;?></h4>
-									<!-- <hr style="margin:-6px 0px 5px 0px; border-color: orange; width:60%;">
-									<div class="overlayhr"></div> -->
-							 		<p> <div class="thumbnail" style="background-color: white; border-style: none; float:left; margin-right:15px;">
-							 			<?php 
-							 				if(empty($mono->gambar)){
-							 			 ?>
-								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:100px; height:150px;"  >
-										<img src="<?php echo base_url() ?>item img/monograf/monograf.jpg" class="imageZoom">
-										<div class="itemZoom-overlay top"></div>
-										</div>
-										<?php } else{ ?>
-										<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:100px;"  >
-										<img src="<?php echo base_url() ?>item img/monograf/<?php echo $mono->gambar; ?>" class="imageZoom">
-										<div class="itemZoom-overlay top"></div>
-										</div>
-										<?php 
-											}
-										 ?>
-										<span style="margin-left: 10px;" class="label label-success"><p style="margin-top: 10px;" class="glyphicon glyphicon-calendar"></p> <?php echo $mono->tanggal; ?></span>
-							 		</div><p style="color:black; text-align: justify;"><?php echo substr($mono->deskripsi_monograf,0,250)." [..]"; ?></p></p>
-							 	</a>
+							 <?php foreach($budidaya as $name) {?>
+							 <div class="col-xs-12 col-sm-6 col-lg-6">
+							 	<a href="<?php echo base_url('budidaya/budidayatanamanserat/').urlencode(strtolower($name->nama_serat)); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
 							 		
+									<div class="overlayhr"></div>
+							 		<p>
+							 			<div class="thumbnail" style="background-color: white; border-style: none; float:left; margin-right:15px;">
+								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:200px;"  >
+										<img src="item img/serat/<?php echo $name->gambar; ?>" class="imageZoom">
+										<div class="itemZoom-overlay top"></div>
+										</div>
+							 		</div>
+							 		<h4 style="font-family: Minion Pro;"><?php echo $name->nama_serat; ?> </h4>
+									<hr style="margin:-6px 0px 5px 0px; border-color: orange;">
+							 		<p style="color:black; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam voluptates mollitia earum neque, animi consequuntur porro aspernatur repellat error in</p>
+							 		</p>
+							 	</a>
 							</div>
-
 							<?php 
 								}
 							 ?>
-							 
-							 <!-- <div class="col-sm-8 col-lg-8">
-							 	<a href="" style="text-decoration-line: none;" class="teknologiBudidaya">
-							 		<h4 style="font-family: Minion Pro;">Penangkaran Benih </h4>
-									<hr style="margin:-6px 0px 5px 0px; border-color: orange; width:60%;">
-									<div class="overlayhr"></div>
-							 		<div class="thumbnail" style="background-color: white; border-style: none; ">
-								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:350px;"  >
-										<img src="item img/tembakau.jpg" class="imageZoom">
-										<div class="itemZoom-overlay top"></div>
-										</div>
-										<div class="col-sm-8 col-sm-push-8" style="margin-top:-190px;">
-											<p style="color:black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure inventore nisi quo, praesentium aspernatur deleniti.</p>
-										</div>
-							 		</div>
-							 	</a>
-							</div> -->
 
 							<!-- <div class="col-sm-4 col-lg-4">
 							 	<a href="<?php //echo base_url('teknologibudidaya/penangkaranBenih'); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">

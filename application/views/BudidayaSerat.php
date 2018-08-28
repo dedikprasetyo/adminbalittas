@@ -29,14 +29,13 @@
 					<hr style="border-color: black">
 					<div class="row" style="margin-bottom: 20px;">
 					
-						<?php foreach($monograf as $cup) {
+						<?php foreach($budidaya as $cup) {
 							?>
 							<!-- <?php //var_dump($cup->cuplikan_monograf); ?>		 -->
 						<!-- content 1 -->
 						<div class="col-xs-12 col-sm-12 col-lg-12">
 								<div class="thumbnail" style=" border-radius: 5px; background-color: #eee;">
 									<div class="container-fluid">
-									<!-- <img src="<?php echo base_url() ?>item img/gambar/Edited/serat.jpg ?>" alt="" style="width: 100%;"> -->
 									<br>
 									<h4 style="color:rgb(242,97,5);font-size: 24px;"><?php echo $cup->judul; ?></h4>
 									<p style="text-indent: 0.5in; text-align: justify;"><?php echo $cup->cuplikan_monograf; ?></p>
@@ -53,37 +52,16 @@
 									</div>									
 								</div>
 						</div>	
-						<!-- Masing-masing cuplikan -->
-						<!--  <div class="col-xs-12 col-sm-4 col-lg-4">	 
-							<div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
-								<a href="" style="text-decoration-line: none;">
-											<img src="<?php echo base_url() ?>item img/gambar/Edited/serat.jpg ?>" alt="" style="width: 100%;">
-									
-									<h4 style="color:#fece00;"></h4>
-								</a>
-								<h4 style="color:#fece00;"><?php echo substr($cup->judul,0,15). " [..]"; ?></h4>
-								<p style="text-align: justify;"><?php echo substr($cup->cuplikan_monograf,0,150)." [..]"; ?></p>
-								<p><?php echo $cup->penulis; ?></p>
-								<p>File selengkapnya dapat di unduh <a href="<?php echo base_url() ?>file/unduhan/<?php echo $cup->file; ?>" style="text-decoration-line: none">Di sini</a></p>
-								<br>							
-								<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-									<a href="" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
-								</div>
-							</div>					
-						</div>	 -->
 							<?php 
 							} 
 							?>
 					</div>
 
-							<ul class="pager" >
+						<ul class="pager" >
 						<?php foreach($link as $pagination) {
 							echo "<li>". $pagination."</li>";
 						}?>
-					</ul>
-
-				
-
+					</ul> 
 				</div>
 				<div class="col-sm-3 col-lg-3">
 					<a href="" style="text-decoration-line:none;"><h3 class="text-left" style="color:black; margin-top: -25px;">Pencarian</h3></a>

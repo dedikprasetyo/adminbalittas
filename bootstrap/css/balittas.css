@@ -403,3 +403,7 @@
   border-radius: 40px;
   /*max-width: 265px;*/
 }
+
+.pencarian a:hover{
+  color:#fece00!important;
+}
