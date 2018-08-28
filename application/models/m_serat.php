@@ -6,6 +6,16 @@
    			return $query->result();
 		}
 
+		public function pencarianSerat($cari){
+			if($cari == "#serat"){
+				$cari="";
+			}
+			$data=$this->db->query("SELECT * FROM serat
+									WHERE 
+									nama_serat LIKE '%$cari%' OR deskripsi_serat LIKE '%$cari%' ");
+			return $data->result();
+		}
+
 			//buat nampilin nama di url
 	// public function selectIdBynamaSerat($namaSerat){
 	// 	$data=$this->db->query("SELECT id_serat

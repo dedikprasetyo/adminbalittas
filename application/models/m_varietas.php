@@ -79,5 +79,11 @@ class M_varietas extends CI_Model{
         	return $data->result();
         }
 
+     function selectLeafletOnSide(){
+     		$data=$this->db->query("SELECT l.nama_leaflet, g.file
+									FROM leaflet l 
+									JOIN gambar_leaflet g ON l.id_leaflet=g.id_leaflet LIMIT 22");
+     		return $data->result();
+     }
 }
 ?>

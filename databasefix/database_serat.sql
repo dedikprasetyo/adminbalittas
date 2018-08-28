@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2018 at 07:02 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Aug 27, 2018 at 03:56 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -338,41 +336,6 @@ ELSEIF (@hitung < 1000) THEN
 SET new.`id_benih` = concat('B0',@hitung);
 ELSE
 SET new.`id_benih` = concat('B',@hitung);
-END IF;
-END IF;
-END
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `budidaya`
---
-
-CREATE TABLE `budidaya` (
-  `id_serat` char(5) NOT NULL,
-  `id_budidaya` char(5) NOT NULL,
-  `nama_budidaya` varchar(255) NOT NULL,
-  `deskripsi_budidaya` text NOT NULL,
-  `file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Triggers `budidaya`
---
-DELIMITER $$
-CREATE TRIGGER `tr_id_budidaya` BEFORE INSERT ON `budidaya` FOR EACH ROW BEGIN
-SET @hitung = CONVERT((RIGHT((SELECT `id_budidaya` FROM `budidaya` ORDER by `id_budidaya` DESC LIMIT 1), 4)), UNSIGNED) + 1;
-if (@hitung > 1) THEN
-if (@hitung < 10) THEN 
-SET new.`id_budidaya` = concat('B000',@hitung);
-ELSEIF (@hitung < 100) THEN
-SET new.`id_budidaya` = concat('B00',@hitung);
-ELSEIF (@hitung < 1000) THEN
-SET new.`id_budidaya` = concat('B0',@hitung);
-ELSE
-SET new.`id_budidaya` = concat('B',@hitung);
 END IF;
 END IF;
 END
@@ -3059,7 +3022,9 @@ INSERT INTO `serat` (`id_serat`, `nama_serat`, `deskripsi_serat`, `gambar`) VALU
 ('S0004', 'Kenaf', 'Kenaf (Hibiscus cannabinus L) sudah lama dibudidayakan di Indonesia dan pada tahun 1986/1987 mencapai luas 26.000 ha yang tersebar di Lampung, Jawa Barat, Jawa Tengah, Jawa Timur, dan Kalimantan Selatan. Kenaf memiliki keunggulan beradaptasi luas pada berbagai kondisi lahan dan memiliki toleransi yang tinggi terhadap kondisi cekaman abiotik seperti: genangan air, kekeringan, dan pH tanah yang rendah (masam). Kenaf merupakan tanaman hari pendek berumur 100â€“140 hari, dikembangkan dengan benih. \nHampir semua bagian tanaman dapat digunakan untuk bahan baku berbagai industri. Daun kenaf mengandung protein kasar 24% sangat baik untuk pakan ternak unggas dan ruminansia. Biji kenaf mengandung lemak 20% bagus untuk minyak goreng karena banyak mengandung asam lemak tidak jenuh (Oleat dan Linoleat). Kayu kenaf sangat baik sebagai bahan baku industri particle board untuk berbagai keperluan seperti furnitur, pintu, jendela, kusen, pelapis dinding rumah, dll. Serat kenaf banyak digunakan sebagai bahan baku berbagai industri seperti: fibre board, geo-textile, soil remediation, pulp dan kertas, tekstil, karpet, kerajinan tangan, dll. Fibre board dari serat kenaf saat ini digunakan sebagai bahan untuk interior mobil seperti langit-langit, pintu, dushboard, dll. Selain itu, fibre board juga banyak digunakan pada industri eletronik untuk casing TV, radio, tape, dll. Juga untuk perumahan sebagai pelapis dinding rumah, peredam suara, dll. Geotextile, fibredrain banyak digunakan oleh para kontraktor pada pembangunan bandara, jembatan, pertambangan, dll. sebagai ba-han untuk pencegahan longsornya tanah dan penyerapan air tanah. Soil remediation menggu-nakan serat kenaf adalah untuk memperbaiki kondisi kesuburan tanah terutama pada bekas pertambangan sebagai usaha reklamasi. Serat kenaf juga digunakan sebagai bahan suplemen dalam pembuatan tekstil yang diblending dengan serat kapas dan poliester. Pulp dari kenaf digunakan untuk industri kertas. \nPengembangan tanaman kenaf diprioritaskan pada lahan bonorowo (lahan banjir) yang tidak sesuai untuk tanaman lain pada waktu banjir. Dengan menyempitnya areal bonorowo (akibat dari perbaikan jaringan irigasi), tanaman kenaf mulai dikembangkan pada daerah lahan masam di daerah Kalimantan Timur dan lahan kering di Jawa. Pengembangan tanaman kenaf diprioritaskan pada lahan sawah irigasi terbatas dan lahan podsolik merah kuning (PMK). Kendala yang dihadapi untuk pengembangan komoditas tersebut adalah masih rendahnya produktivitas di tingkat petani, dan sulitnya proses penyeratan.\nVarietas unggul kenaf yang telah dihasilkan Balittas adalah KR 11 untuk lahan bonorowo; KR 14 dan KR 15 untuk lahan podsolik merah kuning (PMK); dan KR 9 dan KR 12 untuk lahan kering. Varietasâ€“varietas tersebut dapat ditanam sembarang waktu karena kurang terpengaruh oleh fotoperiodisitas. Pengembangan kenaf adalah di Jawa (Barat, Tengah, Timur), Lampung, Riau, Sulawesi Selatan, dan Kalimantan (Selatan, Timur, Tengah, dan Barat). \nPenggunaan varietas unggul kenaf dapat meningkatkan pendapatan petani hingga 25â€“ 35%. Selain itu, tanaman kenaf dapat digunakan untuk memberdayakan lahan kritis, seperti lahan masam (PMK dan gambut). Kenaf dapat ditanam secara tumpang sari dengan jagung lokal atau P7. Penggunaan varietas unggul kenaf di daerah yang berpotensi untuk pengembangan akan menghasilkan produksi 2â€“3 ton serat/tahun dan meningkatkan pendapatan petani sebesar Rp2.000.000,00 per musim.', 'kenaf.jpeg'),
 ('S0005', 'Rami', 'Rami semula dikembangkan di daerah dataran tinggi walaupun sebenarnya rami juga dapat dikembangkan di dataran rendah terutama yang memiliki fasilitas pengairan. Kendala pe-ngembangan rami adalah panjangnya rantai proses penyeratan sampai menjadi serat siap pintal. Proses yang panjang ini menyebabkan rami bukan sebagai â€œcash cropâ€, walaupun harga serat rami lebih tinggi dari harga serat kapas. Sebagai salah satu penghasil serat alami, rami merupakan komoditas yang perlu dikembangkan. Komoditas ini, selain menghasilkan serat alami yang bermutu tinggi, juga mempunyai hasil samping yang bernilai ekonomi, seperti kompos limbah dekortikasi dan daun rami untuk campuran pakan ternak. \nVarietas baru Ramindo 1, dengan nama lama Pujon 10, sudah sejak lama dikembangkan petani/pengusaha dan sudah terbukti keunggulannya baik di masyarakat maupun hasil penelitian. Ramindo 1 memberikan produktivitas serat yang tinggi (2â€“2,7 ton/ha/tahun) dengan kualitas serat yang cukup baik, serta memiliki daya adaptasi yang luas, sehingga klon ini sesuai untuk dikembangkan di dataran rendah, sedang hingga tinggi. \nLimbah dekortikasi (penyeratan) dapat diolah menjadi pupuk organik yang sangat halus dengan kandungan: Organik 20,13%; N total 2,15%; C/N ratio 3,01%; bahan organik 34,83%; P2O5 1,47%; K2O 2,76%; CaO 3,73%; MgO 2,22%; S 0,13%; dan KTK 65,56 me/100 g pupuk organik. Teknik pengomposan dapat dilakukan secara sederhana, yaitu dengan mencampurkan dedak, sedikit gula pasir, EM-4, dan disiram air secukupnya. Selain itu, sisa dekortikasi banyak mengandung kayu, dan seratnya baik untuk bahan baku pulp/kertas. \nDaun rami (40% dari bobot brangkasan segar) mengandung protein sekitar 24%, sangat baik untuk sumber protein ternak dan unggas. Setelah diproses menjadi tepung dapat dimanfaatkan untuk campuran konsentrat berbagai pakan ternak. Pakan ternak dari daun rami mengandung sekitar: 10% air; 1,05â€“1,75% lisin; 0,14â€“0,73% methionin; dan 0,18â€“0,31% triptophan. Selain itu mengandung karotin (provitamin A) dan riboflavin (vitamin B2) masing-masing 13,3 dan 0,74 mg tiap 100 g bahan keringnya. \nPenggunaan varietas unggul Ramindo 1 dengan pemberian paket pupuk lengkap (orga-nik, N, P, K dan ZPT+ PPC) dapat meningkatkan hasil serat sampai dengan 58â€“60%.', 'rami.jpeg'),
 ('S0006', 'Rosela', '', 'rosela.PNG'),
-('S0010', 'Sisal', '', 'sisal.jpg');
+('S0010', 'Sisal', '', 'sisal.jpg'),
+('S0011', 'Abaka', 'Tanaman abaka (Musa textilis Nee) termasuk salah satu jenis tanaman pisang yang buahnya tidak dimanfaatkan, tetapi diambil seratnya dari batang semu. Pada awal abad ke-16 penduduk asli daerah Cebu, Filipina memanfaatkan serat abaka untuk bahan pakaina. Oleh sebab itu,tanaman abaka dinamakan Musa textilis.\r\n\r\nSejak dahulu serat abka populer secara komersial dalam bentuk produksi tali dan jaring ikan. Saat ini, serat diolah untuk bahan baku kertas, seperti kertas cologne, kertas sering, kertas teh celup, kertas stensil, kertas rokok, serta kertas yang memerlukan ketahanan dan daya simpan yang tinggi seperti kertas uang, kertas surat berharga, kertas dokumen, kertas peta, dan produk komersial lainnya.\r\n\r\nMasyrakat Filipina sejak lama memanfaatkan serat abaa untuk pembuatan bahan pakaian nasional. Sementara Pemerintah Amerika Seerikat memanfaatkan serat abakauntuk pembuatan uang kertas dolarnya karena serat abkamemang memiliki sejumlah keunggulan jika dibandingkan dengan jenis serat alam lainnya dan serat sintesis.Keunggulannya antara lain memiliki kekuatan tidak getas dan tidak mudah putus, memiliki tekstur yang sangat baik, mengilap seperti memantulkan cahaya,awet,lentur,serta tahan salinitas.\r\n\r\nKarakter-karakter unggul ini yang menyebabkan serat abaka populer sebagai tali kapal dan jaring nelayan. Nilon memang lebih tahan terhadap air laut, tetapi kelemahannya tidak tahan panas dan mudah kusut. Serat abaka dapat dipintal tunggal, bisa dicampur kapas,rami,canabis,rayon,dan polyster.\r\n\r\nAbaka penghasil ligno-selulosa potensial yang menyebabkan kekuatan serat sangat tinggi, sehingga memungkinkan untuk menghasilkan pulp dan kertas berkekuatan tinggi sperti kertas uang. Selain itu, abaka merupakan tanaman yang mudah dibudidayakan dalam wkatu relatif singkat dibandingkan dengan tanaman kayu.\r\n\r\nTanaman abakka dapat tumbuh pada lahan tanpa pengolahan tanah dan tidak memerlukan persiapan lahan yang intensif. Abaka adalah tanaman naungan yang tumbuh baik di bawah kanopi pohjon hutan, sehingga pengembangan abaka tidak merusak ekosistem.\r\n\r\nDi Indonesia, perusahaan yang menangani budi daya dan industri abaka, sangat terbatas. Perusahaan yang mulai memanfaatkan abaka, antar lain Abaka Crafts dalam bentuk usaha industri kerajinan kertas serat dan PT Kertas Leces Probolinggo untuk industri pulp dna kertas.\r\n\r\nProduk utama abaka adalah serat, yang diolah melalui proses penyeratan dan pengeringan. Selain serat,dari abaka dapat dihasilkan minyak biji abaka yang dapat dimanfaatkan sebagai produk kesehatan dan perawatan kulit, limbah dari sisa penyeratan dan daun abaka dapat digunakan sebagai pupuk organik.\r\n\r\nOrientasi pemanfaatan abaka saat ini dominan ke produk serat, sehingga pengembangan produk dari biji berupa minyak abaka dan pendayagunaan limbah sebagai pupuk organik kurang mendapat perhatian. Peluang ini patut dikembangkan untuk lebih meningkatkan nilai tambah bagi pengembangan abaka dan aneka produknuya. Kebutuhan abaka dalam bentuk pulp dan kertas meningkat seiring dengan perkembangan kepeduliaan terhadap keamanan lingkungan dan konservasi hutan serta peningkatan kebutuhan dunia akan pulp kertas bermutu tinggi.\r\n\r\nDi Filipina, produktivitas abaka rendah disebabkan usaha budi daya tidak intensif, adanya penyakit virus abaka yakni Bunchy-top dan Mosaic, serta sebagian besar penanaman abaka sudah tua dan rusak pada areal pertanaman abaka di Filipina dan menjadi penyakit utama yang menyerang abaka. Saat ini, belum dijumpai varietas abaka yang resisten terhadap virus. Untuk itu , setidaknya satu varietas abaka perlu dikembangkan melalui teknik rekayasa genetik (genetic engineering) untuk mengidentifikasi varietas yang terus menerus memproduksi dan menguntungkan,walaupun diserang penyakit tersebut. Untuk mencegah dampak negatif berkembangnya kedua penyakit tersebut, maka penggunaan benih abaka yang berasal dari Filipina harus dihindari.\r\n\r\nProduk serat abaka saat ini dapat memenuhi kebutuhan, baik untuk pasar Filipina maupun internasional. Diperkirakan 69,2% dari total serat abaka yang dihasilkan oleh Filipina dikonsumsi secara lokal dan sisantya diekspor ke inggris (53,3%), Jepang (34%), dan Amerika Serikat (6%). Untuk pulp, abaka diekspor ke Jerman, Inggris, Jepang, Perancis, Amerika Serikat, Inggris, dan Singapura.\r\n\r\nSelama ini , kebutuhan kapas untuk industri tekstil dalam negeri 95% bergantung impor dari Amerika Serikat. Kapas memang tidak mungkin dibudidayakan di kawasan tropis dengan hasil sebaik di kawasan subtropis. Alternatifnya adalah meningkatkan budi daya rami (Bohemeria nivea), jute (Corchorus capsularis dan Corchorus olitorius), kenaf (hibiscus cannabinus), dan abaka (Mus textilis) yang merupakan tanaman asli kawasan tropis.\r\n\r\nBudi daya abaka relatif sederhana dibandingkan dengan rami,jute,kenaf, dan cannabis. Budi daya rami yang bisa mencapai lebih dari 10 tahun hanya cocok pada ketinggian di atas 500 m dpl. Jute, Kenaf, dan cannabis merupakan tanaman semusim dan sekali tanam harus dibongkar. Sementar abaka cocok dibudidayakan mulai dataran rendah sampai ketinggian 1.500 m dpl, maka pada iklim basah, untuk sekali tanam, dan terus-menerus dipanen selama 10 tahun. Budi daya dan pengolahan abaka juga menyerap banyak tenaga kerja.\r\n\r\nBank Indonesia dan Direktorat Jendral Industri Agro, kementerian Perindustrian tahun 2012 melaporkan bahwa potensi pasar internasional serat abaka sebesar 600.000 ton/tahun dan meningkat 5% tahun.Saat ini potensi pasar serat abaka disuplai produsen utama sebesar 80%. Keadaan ini merupakan peluang untuk pengembangan abaka bagi daerah yang berpotensi, seperti Lampung dan Kabupaten Kepulauan Talaud Sulawesi Utara.', 'abaka.png'),
+('S0012', 'new', 'new', 'noImg.jpg');
 
 --
 -- Triggers `serat`
@@ -3252,13 +3217,6 @@ ALTER TABLE `benih`
   ADD KEY `id_serat` (`id_serat`);
 
 --
--- Indexes for table `budidaya`
---
-ALTER TABLE `budidaya`
-  ADD PRIMARY KEY (`id_budidaya`),
-  ADD KEY `id_serat` (`id_serat`);
-
---
 -- Indexes for table `detail_monograf`
 --
 ALTER TABLE `detail_monograf`
@@ -3337,12 +3295,6 @@ ALTER TABLE `benih`
   ADD CONSTRAINT `benih_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `budidaya`
---
-ALTER TABLE `budidaya`
-  ADD CONSTRAINT `budidaya_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `detail_monograf`
 --
 ALTER TABLE `detail_monograf`
@@ -3390,7 +3342,6 @@ ALTER TABLE `stok_benih`
 --
 ALTER TABLE `varietas`
   ADD CONSTRAINT `varietas_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

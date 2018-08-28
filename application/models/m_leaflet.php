@@ -37,7 +37,7 @@
 		}
 
 		function selectLeafletTerbaru() {
-        	$query = $this->db->limit(8);
+        	$query = $this->db->limit(12);
 	        $query = $this->db->select('leaflet.nama_leaflet, gambar_leaflet.file');
 	        $query = $this->db->from('leaflet');        	
         	$query = $this->db->join('gambar_leaflet', 'leaflet.id_leaflet = gambar_leaflet.id_leaflet');

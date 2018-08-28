@@ -70,7 +70,7 @@
 			
 			$dataHeader['Judul'] =$this->m_varietas->getSerat($idSerat);
 			// $dataHeader['Judul'] = "Varietas";
-			$data['subleaflet']=$this->m_leaflet->selectLeafletTerbaru();
+			$data['subleaflet']=$this->m_varietas->selectLeafletOnSide();
 			$data['serat']=$this->m_varietas->getSerat($idSerat);
 			//ori
 			// $data['varietas']=$this->m_varietas->getVarietas($idSerat);

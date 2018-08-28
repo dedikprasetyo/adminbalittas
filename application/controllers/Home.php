@@ -20,6 +20,7 @@
 
 			$data['serat'] = $this->m_serat->selectSerat();
 			$data['monograf']= $this->m_budidaya->getMonograf();
+			$data['budidaya'] = $this->m_serat->selectSerat();
 
             //Membuat link
             // $str_links = $this->pagination->create_links();
@@ -32,7 +33,6 @@
 		
 			// $this->load->view('HalamanUtamaSerat');
 		}	
-		
 
 		public function agribisnis() {
 			$this->load->view('HalamanDetailAgribisnis');
