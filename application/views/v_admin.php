@@ -45,7 +45,9 @@
         <hr style="border-color: grey;margin:0px 13px 5px 13px;">
         <a href="#tabelBenih"><i class="glyphicon glyphicon-chevron-right"></i> Data Benih</a>
         <hr style="border-color: grey;margin:0px 13px 5px 13px;">
-        <a href="#tabelDistribusiBenih"><i class="glyphicon glyphicon-chevron-right"></i> Data Distribusi Benih</a>        
+        <a href="#tabelDistribusiBenih"><i class="glyphicon glyphicon-chevron-right"></i> Data Distribusi Benih</a>  
+        <hr style="border-color: grey;margin:0px 13px 5px 13px;">
+        <a href="#tabelAlsin"><i class="glyphicon glyphicon-chevron-right"></i> Data Alat dan Mesin</a>         
     </div>
 
     <!-- Data Serat -->
@@ -240,15 +242,41 @@
         <div class="table table-wrapper">
           <div class="table-title">
             <div class="row">
-              <div class="col-sm-6">
+              
+              <div class="col-sm-2">
                 <h2>Data <b>Varietas</b></h2>
               </div>
-              <div class="col-sm-6">
-                <a href="#tambahvarietas" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
+
+              <div class="col-sm-2">
+                <h5 style="margin-left: 28px;">Filter by &nbsp :</h5>
               </div>
+
+              <div class="col-sm-2" style="padding-top: 0px;">
+                <select class="form-control komoditas" id="jenisKomoditas" name="komoditas" style="margin-left: -77px; width: 170px; height: 35px;" onchange="filterVarietas();">
+                       <!-- <option disabled>Komoditas</option> -->
+                       <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                  <?php
+                    $komoditas = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                    for($i = 1;$i < count($komoditas);$i++){
+                      echo"<option value=$komoditas[$i]> $komoditas[$i] </option>";
+                    }
+                  ?>
+                </select>
+              </div>
+
+              <div class="col-sm-2">
+              </div>
+
+              <div class="col-sm-2">
+              </div>
+              
+              <div class="col-sm-2">
+                <a href="#tambahvarietas" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span class="text-right">Tambah Data</span></a>            
+              </div>
+
             </div>
           </div>
-          <div class="table-responsive" style="margin: 30px 0px;">
+          <div class="table-responsive" style="margin: 30px 0px;" id="tableKomoditas">
             <table class="table table-striped table-hover">
               <thead>
                 <tr>                                
@@ -296,6 +324,26 @@
         </div>
       </div>
     </section>
+
+    <!-- Filter Varietas -->
+    <script>
+      function filterVarietas(){
+        var komoditas = $("#jenisKomoditas").val();
+        $.ajax({
+            type:"POST",
+            url: "../admin/filterVarietas",
+            data: "serattt=" + komoditas,
+            dataType : "html",
+            success:function(msg){
+                $("#tableKomoditas").html(msg);                
+            },
+            error:function(){
+              alert("Search failed");
+            }
+        });
+      }
+    </script>
+
 
     <!-- Data Leaflet -->
     <section class="leaflet" id="tabelLeaflet" style="padding-top: 50px; margin-top: -80px;">
@@ -599,7 +647,8 @@
                   <td>
                     <a href="#editalsin" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
 
-                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                    <!-- <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>   -->
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_alsin('<?php echo $row['id_leaflet']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>    
                   </td>
                 </tr>
                 <?php                                 
@@ -612,6 +661,35 @@
         </div>
       </div>
     </section>
+
+    <!-- Delete Modal HTML Alat dan Mesin -->
+    <div id="hapusalsin" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">            
+              <h4 class="modal-title">Hapus Data Alat dan Mesin</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">          
+              <p>Yakin ingin menghapus data ini?</p>
+              <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <a href="" id="idhapusalsin"><input type="button" class="btn btn-danger" value="Hapus"></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function confirm_modal_alsin(delete_url)
+        {
+          $('#hapusalsin').modal('show', {backdrop: 'static'});
+          document.getElementById('idhapusalsin').setAttribute('href' ,"hapusAlsin/"+delete_url);
+        }
+    </script>
 
     <footer style="margin-top: 0px;">
       <div class="container-fluid text-center" style="color:white;background-color: black;">

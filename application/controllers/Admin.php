@@ -48,7 +48,7 @@
 			$dataserat = $this->m_data->get_serat_byId($idSerat);
 			unlink($targetpathSeratgmbr.$dataserat[0]->gambar);
 			$this->m_data->hapus_serat($idSerat);
-			redirect(base_url('admin/serat'));
+			redirect(base_url('admin/serat#tabelSerat'));
 		}
 		public function tambahSerat(){
 			$this->load->model("m_data");
@@ -63,7 +63,7 @@
 				move_uploaded_file($_FILES['gambar']['tmp_name'],$targetpathSerat);
 				$this->m_data->tambah_serat($namaSerat, $deskripsi, $_FILES['gambar']['name']);	
 			}
-			redirect(base_url('admin/serat'));
+			redirect(base_url('admin/serat#tabelSerat'));
 		}
 		public function editSerat(){
 			$this->load->model("m_data");
@@ -81,8 +81,30 @@
 			} else { 
 				$this->m_data->edit_serat_noimg($idSerat, $namaSerat, $deskripsi);	
 			}		
-			redirect(base_url('admin/serat'));
+			redirect(base_url('admin/serat#tabelSerat'));
 		}
-		
+
+		//alsin
+		public function hapusAlsin($idAlsin){
+			$this->load->model("m_data");
+			// $targetpathSeratgmbr = "item img/serat/";
+			// $dataserat = $this->m_data->get_serat_byId($idSerat);
+			// unlink($targetpathSeratgmbr.$dataserat[0]->gambar);
+			$this->m_data->hapus_Alsin($idAlsin);
+			redirect(base_url('admin/serat#tabelAlsin'));
+		}
+
+
+		public function filterVarietas() {
+			$this->load->model("m_data");
+			$komoditas = $this->input->post('serattt');
+			if ($komoditas == "Semua Komoditas") {
+				$data['dataVarietasFiltered'] = $this->m_data->load_varietas($komoditas);
+			} else {
+				$data['dataVarietasFiltered'] = $this->m_data->load_varietas_filter($komoditas);
+			}
+			$this->load->view('FilterTable', $data);
+		}
+
 	}
  ?>

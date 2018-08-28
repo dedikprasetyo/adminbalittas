@@ -29,6 +29,10 @@
 			$sql = $this->db ->query("SELECT * FROM `varietas`");
 			return $sql->result_array();
 		}
+		public function load_varietas_filter($komoditas) {
+			$sql = $this->db ->query("SELECT * FROM `varietas` JOIN `serat` ON `varietas`.`id_serat` = `serat`.`id_serat` WHERE `serat`.`nama_serat` = \"$komoditas\"");
+	        return $sql->result_array();
+		}
 
 		//Leaflet	
 		public function load_leaflet(){
@@ -68,6 +72,9 @@
 		public function load_gambar_alsin(){
 			$sql = $this->db ->query("SELECT `gambar_leaflet`.`id_leaflet`, `gambar_leaflet`.`id_gambar`, `gambar_leaflet`.`file` FROM `leaflet` JOIN `jenis_leaflet` ON `leaflet`.`id_jenis_leaflet` = `jenis_leaflet`.`id_jenis_leaflet` JOIN `gambar_leaflet` ON `leaflet`.`id_leaflet` = `gambar_leaflet`.`id_leaflet` WHERE `jenis_leaflet`.`nama_jenis` = \"Alat dan Mesin\"");
 			return $sql->result();
+		}
+		public function hapus_alsin($idAlsin){
+			$sql = $this->db->query("DELETE FROM `leaflet` WHERE `id_leaflet` = \"$idAlsin\"");		
 		}
 	}
 ?>
