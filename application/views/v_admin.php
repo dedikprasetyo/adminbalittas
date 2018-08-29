@@ -43,7 +43,7 @@
         <hr style="border-color: grey;margin:0px 13px 5px 13px;">
         <a href="#tabelBudidaya"><i class="glyphicon glyphicon-chevron-right"></i> Data Budidaya</a>
         <hr style="border-color: grey;margin:0px 13px 5px 13px;">
-        <a href="#tabelBenih"><i class="glyphicon glyphicon-chevron-right"></i> Data Benih</a>
+        <a href="#tabelStokBenih"><i class="glyphicon glyphicon-chevron-right"></i> Data Stok Benih</a>
         <hr style="border-color: grey;margin:0px 13px 5px 13px;">
         <a href="#tabelDistribusiBenih"><i class="glyphicon glyphicon-chevron-right"></i> Data Distribusi Benih</a>  
         <hr style="border-color: grey;margin:0px 13px 5px 13px;">
@@ -311,7 +311,7 @@
                   <td><?php echo "$row[waktu_upload]"; ?></td>
                   <td>
                     <a href="#editvarietas" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_varietas('<?php echo $row['id_varietas']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>  
                   </td>
                 </tr>
                 <?php                                 
@@ -324,6 +324,35 @@
         </div>
       </div>
     </section>
+
+    <!-- Delete Modal HTML Varietas -->
+    <div id="hapusvarietas" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">            
+              <h4 class="modal-title">Hapus Data Varietas</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">          
+              <p>Yakin ingin menghapus data ini?</p>
+              <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <a href="" id="idhapusvarietas"><input type="button" class="btn btn-danger" value="Hapus"></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function confirm_modal_varietas(delete_url)
+        {
+          $('#hapusvarietas').modal('show', {backdrop: 'static'});
+          document.getElementById('idhapusvarietas').setAttribute('href' ,"hapusVarietas/"+delete_url);
+        }
+    </script>
 
     <!-- Filter Varietas -->
     <script>
@@ -403,8 +432,7 @@
                   ?>
                   <td>
                     <a href="#editleaflet" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-
-                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_leaflet('<?php echo $row['id_leaflet']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>   
                   </td>
                 </tr>
                 <?php                                 
@@ -417,6 +445,35 @@
         </div>
       </div>
     </section>
+
+    <!-- Delete Modal HTML Leaflet -->
+    <div id="hapusleaflet" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">            
+              <h4 class="modal-title">Hapus Data Leaflet</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">          
+              <p>Yakin ingin menghapus data ini?</p>
+              <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <a href="" id="idhapusleaflet"><input type="button" class="btn btn-danger" value="Hapus"></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function confirm_modal_leaflet(delete_url)
+        {
+          $('#hapusleaflet').modal('show', {backdrop: 'static'});
+          document.getElementById('idhapusleaflet').setAttribute('href' ,"hapusLeaflet/"+delete_url);
+        }
+    </script>
 
     <!-- Data Budidaya   -->
     <section class="budidaya" id="tabelBudidaya" style="padding-top: 50px; margin-top: -80px;">
@@ -441,7 +498,6 @@
                   <th>Deskripsi Singkat</th>                              
                   <th>Penulis</th>                              
                   <th>File</th>
-                  <th>Tanggal Upload</th>                                
                   <th>Aksi</th>                              
                 </tr>
               </thead>
@@ -456,11 +512,11 @@
                   <td><?php echo "$row[cuplikan_monograf]"; ?></td>                         
                   <td><?php echo "$row[penulis]"; ?></td>
                   <td><?php echo "$row[file]"; ?></td>
-                  <td><?php echo "$row[tanggal]"; ?></td>
+                  
 
                   <td>
                     <a href="#editbudidaya" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_budidaya('<?php echo $row['id_detail_monograf']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
                   </td>
                 </tr>
                 <?php                                 
@@ -474,17 +530,46 @@
       </div>
     </section>
 
-    <!-- Data Benih   -->
-    <section class="benih" id="tabelBenih" style="padding-top: 50px; margin-top: -80px;">
+    <!-- Delete Modal HTML Budidaya -->
+    <div id="hapusbudidaya" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">            
+              <h4 class="modal-title">Hapus Data Budidaya</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">          
+              <p>Yakin ingin menghapus data ini?</p>
+              <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <a href="" id="idhapusbudidaya"><input type="button" class="btn btn-danger" value="Hapus"></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function confirm_modal_budidaya(delete_url)
+        {
+          $('#hapusbudidaya').modal('show', {backdrop: 'static'});
+          document.getElementById('idhapusbudidaya').setAttribute('href' ,"hapusBudidaya/"+delete_url);
+        }
+    </script>
+
+    <!-- Data Stok Benih   -->
+    <section class="stokbenih" id="tabelStokBenih" style="padding-top: 50px; margin-top: -80px;">
       <div class="container">
         <div class="table table-wrapper">
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
-                <h2>Data <b>Benih</b></h2>
+                <h2>Data <b>Stok Benih</b></h2>
               </div>
               <div class="col-sm-6">
-                <a href="#tambahbenih" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
+                <a href="#tambahstokbenih" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
               </div>
             </div>
           </div>
@@ -505,7 +590,7 @@
               <tbody>
                 <?php 
                   $no = 1;                                          
-                  foreach ($benih as $row) {    
+                  foreach ($stokbenih as $row) {    
                 ?>
                 <tr >
                   <td><?php echo $no; ?></td>                                
@@ -517,7 +602,7 @@
                   <td><?php echo "$row[stok_sampai]"; ?></td>
                   <td>
                     <a href="#editbenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
                   </td>
                 </tr>
                 <?php                                 
@@ -530,6 +615,35 @@
         </div>
       </div>
     </section>
+
+    <!-- Delete Modal HTML Stok Benih -->
+    <div id="hapusstokbenih" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">            
+              <h4 class="modal-title">Hapus Data Stok Benih</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">          
+              <p>Yakin ingin menghapus data ini?</p>
+              <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <a href="" id="idhapusstokbenih"><input type="button" class="btn btn-danger" value="Hapus"></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function confirm_modal_stokbenih(delete_url)
+        {
+          $('#hapusstokbenih').modal('show', {backdrop: 'static'});
+          document.getElementById('idhapusstokbenih').setAttribute('href' ,"hapusStokBenih/"+delete_url);
+        }
+    </script>
 
     <!-- Data Distribusi Benih   -->
     <section class="distibusibenih" id="tabelDistribusiBenih" style="padding-top: 50px; margin-top: -80px;">
@@ -574,7 +688,7 @@
                   <td><?php echo "$row[keterangan]"; ?></td>
                   <td>
                     <a href="#editdistribusibenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_distribusibenih('<?php echo $row['id_distribusi']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>  
                   </td>
                 </tr>
                 <?php                                 
@@ -587,6 +701,35 @@
         </div>
       </div>
     </section>
+
+    <!-- Delete Modal HTML Distribusi Benih -->
+    <div id="hapusdistribusibenih" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">            
+              <h4 class="modal-title">Hapus Data Distribusi Benih</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">          
+              <p>Yakin ingin menghapus data ini?</p>
+              <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <a href="" id="idhapusdistribusibenih"><input type="button" class="btn btn-danger" value="Hapus"></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function confirm_modal_distribusibenih(delete_url)
+        {
+          $('#hapusdistribusibenih').modal('show', {backdrop: 'static'});
+          document.getElementById('idhapusdistribusibenih').setAttribute('href' ,"hapusDistribusiBenih/"+delete_url);
+        }
+    </script>
 
     <!-- Data Alat dan Mesin -->
     <section class="alsin" id="tabelAlsin" style="padding-top: 50px; margin-top: -80px;">

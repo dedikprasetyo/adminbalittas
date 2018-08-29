@@ -31,7 +31,7 @@
 			$data['leaflet'] = $this->m_data->load_leaflet();
 			$data['gambarleaflet'] = $this->m_data->load_gambar_leaflet();
 			$data['monograf'] = $this->m_data->load_budidaya();
-			$data['benih'] = $this->m_data->load_benih();
+			$data['stokbenih'] = $this->m_data->load_stok_benih();
 			$data['distribusibenih'] = $this->m_data->load_distribusibenih();
 			$data['alsin'] = $this->m_data->load_alsin();
 			$data['gambaralsin'] = $this->m_data->load_gambar_alsin();
@@ -84,17 +84,7 @@
 			redirect(base_url('admin/serat#tabelSerat'));
 		}
 
-		//alsin
-		public function hapusAlsin($idAlsin){
-			$this->load->model("m_data");
-			// $targetpathSeratgmbr = "item img/serat/";
-			// $dataserat = $this->m_data->get_serat_byId($idSerat);
-			// unlink($targetpathSeratgmbr.$dataserat[0]->gambar);
-			$this->m_data->hapus_Alsin($idAlsin);
-			redirect(base_url('admin/serat#tabelAlsin'));
-		}
-
-
+		//varietas
 		public function filterVarietas() {
 			$this->load->model("m_data");
 			$komoditas = $this->input->post('serattt');
@@ -105,6 +95,60 @@
 			}
 			$this->load->view('FilterTable', $data);
 		}
+		public function hapusVarietas($idVarietas){
+			$this->load->model("m_data");
+			$datagambardansk = $this->m_data->get_imgsk_varietas_byId($idVarietas);
+			unlink('item img/gambar/Edited/'.$datagambardansk[0]->file_gambar);
+			unlink('file/SK/'.$datagambardansk[0]->file_SK);
 
+			$this->m_data->hapus_varietas($idVarietas);
+			redirect(base_url('admin/serat#tabelVarietas'));
+		}
+
+		//leaflet
+		public function hapusLeaflet($idLeaflet){
+			$this->load->model("m_data");
+			$dataleaflet = $this->m_data->get_leaflet_byId($idLeaflet);
+			$targetpathleaflet = "item img/leafletgabungan/";
+			unlink($targetpathleaflet.$dataleaflet[0]->file);
+			unlink($targetpathleaflet.$dataleaflet[1]->file);
+			$this->m_data->hapus_leaflet($idLeaflet);
+			redirect(base_url('admin/serat#tabelLeaflet'));
+		}
+		
+		//budidaya
+		public function hapusBudidaya($idBudidaya){
+			$this->load->model("m_data");
+			$targetpathbudidaya = "file/unduhan/";
+			$databudidaya = $this->m_data->get_budidaya_byId($idBudidaya);
+			unlink($targetpathbudidaya.$databudidaya[0]->file);
+			$this->m_data->hapus_budidaya($idBudidaya);
+			redirect(base_url('admin/serat#tabelBudidaya'));
+		}
+		
+		//stok benih
+		public function hapusStokBenih($idStokBenih){
+			$this->load->model("m_data");
+			$this->m_data->hapus_stok_benih($idStokBenih);
+			redirect(base_url('admin/serat#tabelStokBenih'));
+		}
+		
+		//distribusi benih
+		public function hapusDistribusiBenih($idDistribusi){
+			$this->load->model("m_data");
+			$this->m_data->hapus_distribusibenih($idDistribusi);
+			redirect(base_url('admin/serat#tabelDistribusiBenih'));
+		}
+
+		//alsin
+		public function hapusAlsin($idAlsin){
+			$this->load->model("m_data");
+			$dataleaflet = $this->m_data->get_alsin_byId($idAlsin);
+			$targetpathleaflet = "item img/leafletgabungan/";
+			unlink($targetpathleaflet.$dataleaflet[0]->file);
+			unlink($targetpathleaflet.$dataleaflet[1]->file);
+			$this->m_data->hapus_Alsin($idAlsin);
+			redirect(base_url('admin/serat#tabelAlsin'));
+		}
 	}
- ?>
+?>
