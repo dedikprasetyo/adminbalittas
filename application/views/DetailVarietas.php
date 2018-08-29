@@ -47,9 +47,18 @@
 									<br>
 									<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
 									    <span style="font-size: 12px;">Bagikan &nbsp</span>
-										<a href=""><span><img src="<?php echo base_url() ?>item img/fb.png" alt=""></span></a>
-										<a href=""><span><img src="<?php echo base_url() ?>item img/twitter.png" alt=""></span></a>
-										<a href=""><span><img src="<?php echo base_url() ?>item img/gplus.png" alt=""></span></a>
+									    <!-- Share link FB -->
+									    <a id="button" onclick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $value->nama_serat; ?>&amp;p[summary]=<?php echo substr($value->deskripsi_serat, 0, 25);?>&amp;p[url]=<?php echo base_url(); ?>&amp;&p[images][0]=<?php echo base_url() ?>item img/serat/<?php echo $value->gambar; ?>', 'sharer', 'toolbar=0,status=0,width=550,height=400');" target="_parent" href="javascript: void(0)">
+                        					<span><img src="<?php echo base_url() ?>item img/fb.png" /></span>
+                        				</a>
+										<!-- Share link Twitter -->
+										<a class="twitter popup" href="http://twitter.com/share?source=sharethiscom&text=<?php echo "Tanaman Serat : ".$value->nama_serat;?>&url=<?php echo base_url(); ?>&via=berbagiyuks" target="blank">
+											<span><img src="<?php echo base_url() ?>item img/twitter.png" /></span>
+										</a>
+										<!-- Share link Google -->
+										<a href="javascript:void(0);" onclick="popUp=window.open('https://plus.google.com/share?url=<?php echo base_url('varietas/detail/').$value->nama_serat; ?> ','popupwindow','scrollbars=yes,width=800,height=400');popUp.focus();return false">
+											<span><img src="<?php echo base_url() ?>item img/gplus.png" /></span>
+										</a>
 									</div>									
 								</div>
 						</div>

@@ -10,11 +10,27 @@
 			if($cari == "#serat"){
 				$cari="";
 			}
-			$data=$this->db->query("SELECT * FROM serat
+			$data=$this->db->query("SELECT s.nama_serat, s.deskripsi_serat FROM serat s
 									WHERE 
-									nama_serat LIKE '%$cari%' OR deskripsi_serat LIKE '%$cari%' ");
+									s.nama_serat LIKE '%$cari%' OR s.deskripsi_serat LIKE '%$cari%'
+									");
 			return $data->result();
 		}
+
+		// public function pencarianSerat($cari){
+		// 	if($cari == "#serat"){
+		// 		$cari="";
+		// 	}
+		// 	$query=$this->db->distinct();
+		// 	$query=$this->db->select("*");
+		// 	$query=$this->db->from("serat");
+		// 	$query=$this->db->group_start()
+		// 					->where('nama_serat like', "%$cari%")
+		// 					->or_where('deskripsi_serat like', "%%$cari")
+		// 					->group_end();
+		// 	$query=$this->db->get();
+		// 	return $query->result();
+		// }
 
 			//buat nampilin nama di url
 	// public function selectIdBynamaSerat($namaSerat){

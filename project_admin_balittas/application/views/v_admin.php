@@ -1,3 +1,10 @@
+<!-- <?php
+    $isLogin = $this->session->userdata( 'akunAktif' );
+    if($isLogin==""){
+        redirect(base_url('admin/index'));
+    }
+?> -->
+
 <!DOCTYPE html>
 <html lang="en" id="home">
   <head>

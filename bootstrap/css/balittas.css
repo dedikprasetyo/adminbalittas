@@ -407,3 +407,7 @@
 .pencarian a:hover{
   color:#fece00!important;
 }
+
+.standar{
+  min-height: 880px;
+}

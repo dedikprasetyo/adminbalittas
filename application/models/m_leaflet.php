@@ -45,6 +45,18 @@
 	        return $query->result();	
         }
 
+        function getJumlahLeaflet(){
+        	$data=$this->db->query("SELECT * from leaflet");
+        	return $data->num_rows();
+        }
+
+        function paginationAll($perpage, $start){
+        	$data=$this->db->query("SELECT * from leaflet l
+									join gambar_leaflet g on l.id_leaflet=g.id_leaflet
+									join jenis_leaflet j on j.id_jenis_leaflet=l.id_jenis_leaflet
+									LIMIT $perpage OFFSET $start ");
+        	return $data->result();
+        }
        
 	} 
 ?>

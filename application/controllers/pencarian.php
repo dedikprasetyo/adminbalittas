@@ -15,6 +15,7 @@
 			$cari=$this->input->get('keyword');
 			$datapencarian['keyword'] = $cari;	
 			$datapencarian['pencarianKomoditas']=$this->m_serat->pencarianSerat($cari);
+			$datapencarian['pencarianVarietas']=$this->m_varietas-> pencarianVarietas($cari);
 
 			$this->load->view('Header');	
 			$this->load->view('HalamanPencarian', $datapencarian);

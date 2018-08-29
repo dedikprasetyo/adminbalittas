@@ -130,7 +130,7 @@
 				<div class="row">		 
 					<div class="col-sm-9 col-lg-9">
 					    <ul class="breadcrumb" style="margin: -6px 0px -10px -15px;">
-						  	<li class="active">Home</li> 
+						  	<li class="active">Beranda</li> 
 						</ul>
 					<h3 class="text-left" style="color:black; font-family: Minion Pro">Tanaman Serat</h3>
 					<hr style="border-color: grey; margin-top: -8px;">
@@ -176,7 +176,7 @@
 						<div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
 							<form method="get" action="<?php echo base_url('pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
 								<div class="input-group" style="z-index: 0;">
-								    <input type="text" class="form-control" placeholder="Cari" required>
+								    <input type="text" name="keyword" class="form-control" placeholder="Cari" required>
 								    <div class="input-group-btn">
 								      <button class="btn btn-success" type="submit">
 								        <i class="glyphicon glyphicon-search"></i>
@@ -185,7 +185,7 @@
 								 </div>
 							</form>						
 						</div>
-						<a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;"><h3 class="text-left" style="color:black;font-family: Minion Pro">Leaflet</h3></a>
+						<a href="<?php echo base_url('leaflet/halamanleaflet') ?>" style="text-decoration-line:none;"><h3 class="text-left" style="color:black;font-family: Minion Pro">Leaflet</h3></a>
 						<hr style="border-color: grey;margin-top: -8px;">
 						<?php 
 							$ganjil = true;
@@ -216,31 +216,45 @@
 				<div class="row">
 					<div class="col-sm-3 col-lg-3">
 						<h3 class="text-center" style="color:black;margin-top: 0px;font-family: Minion Pro;">Budidaya Tanaman Serat</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, quae iure blanditiis veniam adipisci, facilis ab necessitatibus! Reiciendis, praesentium, accusamus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque laboriosam facilis consectetur ad asperiores architecto aliquid omnis eius, nisi aspernatur, amet illo doloribus inventore dolor quibusdam dignissimos aperiam quisquam officia?</p>
+						<p style="text-align:justify; ">Tanaman serat yaitu tumbuhan yang dibudidayakan dan diambil seratnya untuk keperluan manusia. Biasanya serat tumbuhan berasal dari buah, kulit, kayu, akar, pelepah atau daunnya. Serat tumbuhan/serat pangan; biasanya tersusun atas selulosa, hemiselulosa, dan kadang-kadang mengandung pula lignin.</p>
 					</div>
 					<div class="col-sm-9 col-lg-9">
 						<div class="row">
 							 <?php foreach($budidaya as $name) {?>
-							 <div class="col-xs-12 col-sm-6 col-lg-6">
+							 <div class="col-xs-12 col-sm-3 col-lg-3">
 							 	<a href="<?php echo base_url('budidaya/budidayatanamanserat/').urlencode(strtolower($name->nama_serat)); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
-							 		
+							 		<h4 style="font-family: Minion Pro; margin-left: 10px;">Budidaya <?php echo $name->nama_serat; ?> </h4>
+									<hr style="margin:-6px 0px 5px 5px; border-color: orange;">
 									<div class="overlayhr"></div>
-							 		<p>
-							 			<div class="thumbnail" style="background-color: white; border-style: none; float:left; margin-right:15px;">
-								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:200px;"  >
+							 			<div class="thumbnail" style="background-color: white; border-style: none;">
+								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);"  >
 										<img src="item img/serat/<?php echo $name->gambar; ?>" class="imageZoom">
 										<div class="itemZoom-overlay top"></div>
 										</div>
 							 		</div>
-							 		<h4 style="font-family: Minion Pro;"><?php echo $name->nama_serat; ?> </h4>
-									<hr style="margin:-6px 0px 5px 0px; border-color: orange;">
-							 		<p style="color:black; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam voluptates mollitia earum neque, animi consequuntur porro aspernatur repellat error in</p>
-							 		</p>
 							 	</a>
 							</div>
 							<?php 
 								}
 							 ?>
+
+							 <!--  <div class="col-xs-12 col-sm-6 col-lg-6">
+							 	<a href="<?php //echo base_url('budidaya/budidayatanamanserat/').urlencode(strtolower($name->nama_serat)); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
+							 		
+									<div class="overlayhr"></div>
+							 		<p>
+							 			<div class="thumbnail" style="background-color: white; border-style: none; float:left; margin-right:15px;">
+								 		<div class="itemZoom" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); width:200px;"  >
+										<img src="item img/serat/<?php //echo $name->gambar; ?>" class="imageZoom">
+										<div class="itemZoom-overlay top"></div>
+										</div>
+							 		</div>
+							 		<h4 style="font-family: Minion Pro;"><?php //echo $name->nama_serat; ?> </h4>
+									<hr style="margin:-6px 0px 5px 0px; border-color: orange;">
+							 		<p style="color:black; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam voluptates mollitia earum neque, animi consequuntur porro aspernatur repellat error in</p>
+							 		</p>
+							 	</a>
+							</div> -->
 
 							<!-- <div class="col-sm-4 col-lg-4">
 							 	<a href="<?php //echo base_url('teknologibudidaya/penangkaranBenih'); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
@@ -380,7 +394,7 @@
 				<div class="container">
 				<!-- Produk -->
 					<h3 class="text-center" style="color:black;font-family: Minion Pro;">Produk</h3>
-					<p class="text-center" style="color: black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo aut magni perferendis repellat rerum assumenda, facere. Alias deserunt pariatur magnam rerum quod voluptates, quidem id labore quam. Illum nemo minus repellat veritatis aliquid, consequatur, dolorem, laborum magnam voluptatibus consequuntur voluptate tempora! Vel, odio. Corporis nam maiores nemo, dicta temporibus et.</p>
+					<p class="text-center" style="color: black;">Inovasi teknologi yang paling strategis untuk mendukung pengembangan komoditas adalah varietas unggul. Penggunaan varietas unggul suatu komoditas mempunyai dampak yang sangat luas, antara lain dapat berpengaruh terhadap efisiensi biaya dalam budi daya, peningkatan produksi dan mutu, serta pemanfaatan lahan-lahan marginal, sehingga dapat berdampak sosial dan ekonomi yang cukup nyata bagi petani. Selain itu, penggunaan varietas unggul merupakan teknologi yang relatif mudah diterima dan diterapkan oleh petani.</p>
 					<br><br>
 					<div class="row text-center">
 					    <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">

@@ -38,53 +38,80 @@
 					</form>						
 				</div>
 				<br>
-				<h3 style=" font-style: italic;">Hasil pencarian<span class="matche-cnt"><span id="jumlahTerkait"></span> terkait</span></h3>
+				<h3 style=" font-style: italic;">Hasil pencarian <span class="matche-cnt"><span id="jumlahTerkait"></span> terkait</span></h3>
 				<hr style="margin-top: -6px;">
 				<input hidden id="keyword" value="<?php echo $keyword; ?>">								
 		
 
-
+					<!-- Pencarian Tabel Serat -->
 					<?php 
+					$tempSerat="";
 					$jumlahPencarian = 0;
-					foreach($pencarianKomoditas as $cari) {?>
+					foreach($pencarianKomoditas as $cari) {
+						if($tempSerat!=$cari->nama_serat) {
+						?>
 							<div class="pencarian">
-								<!-- <h3 class="pencarian"><span><?php //echo $cari->nama_serat; ?></span></h3> -->
 								<a style="text-decoration-line:none; color:red;" href="<?php echo base_url('varietas/detail/').urlencode(strtolower($cari->nama_serat));?>"><h3><?php echo $cari->nama_serat; ?></h3></a>
-								<!-- <p><?php //echo substr($cari->deskripsi_serat, 0,550); ?></p> -->
 								<?php 
 									$deskripsi="";
-									if(strlen($cari->deskripsi_serat)>670){
 									if(!empty($cari->deskripsi_serat)){
 										$deskripsi=substr($cari->deskripsi_serat, 0,670)." [...]";
 										echo '<p style="text-indent:0.5in; text-align:justify;">'.$deskripsi.'</p>';
-										// echo '<a style="font-style:italic;" href="">Selengkapnya</a>';
 									}else{
 										$deskripsi="(Belum Ada Deskripsi)";
 										echo '<p style="text-align:justify; font-style:italic;">'.$deskripsi.'</p>';
 									}
-
-								}else {
-									$deskripsi=$cari->deskripsi_serat;
-								}
-
 								 ?>
+								 <div>
+								 <a href="<?php echo base_url('pencarian')?>?keyword=%23serat" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;Serat</span></a>	
+								<hr style="margin-top: -2px;">
+								</div>
 							</div>
 					<?php 
 					$jumlahPencarian++;
 							} 
+							$tempSerat=$cari->nama_serat;
+						}
+							?>	
 
-
-
-							if($jumlahPencarian == 0){
-								echo "<script>$(\"#jumlahTerkait\").text(\"$jumlahPencarian\");</script>";
-								echo "<h3 class=\"text-center\" style=\"font-family: futura md bt;\">Hasil untuk <b style=\"color: rgb(242,97,5);\">$keyword</b> tidak ditemukan!</h3>"; 	
-							}else{
-								echo "<script>
-								$(\"#jumlahTerkait\").text(\"$jumlahPencarian\");
-								</script>";
+					<!-- Pencarian tabel varietas -->
+					<?php 
+					$tempVarietas="";
+						foreach($pencarianVarietas as $cari) {
+							if($tempVarietas!=$cari->nama_varietas){
+							?>
+								<div class="pencarian">
+									<a style="text-decoration-line:none; color:red;" href="<?php echo base_url('varietas/spesifikasiVarietas/').urlencode(strtolower($cari->nama_varietas));?>"><h3><?php echo $cari->nama_varietas; ?></h3></a>
+									<?php 
+										$deskripsi="";
+										if(!empty($cari->deskripsi_varietas)){
+											$deskripsi=substr($cari->deskripsi_varietas, 0,670)." [...]";
+											echo '<p style="text-indent:0.5in; text-align:justify;">'.$deskripsi.'</p>';
+										}else{
+											$deskripsi="(Belum Ada Deskripsi)";
+											echo '<p style="text-align:justify; font-style:italic;">'.$deskripsi.'</p>';
+										}
+									 ?>
+									 <div>
+								 <a href="<?php echo base_url('pencarian')?>?keyword=%23varietas" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;varietas</span></a>	
+								<hr style="margin-top: -2px;">
+								</div>
+								</div>
+						<?php 
+						$jumlahPencarian++;
+								} 
+								$tempVarietas=$cari->nama_varietas;
 							}
-							?>							
-
+								
+								if($jumlahPencarian == 0){
+									echo "<script>$(\"#jumlahTerkait\").text(\"$jumlahPencarian\");</script>";
+									echo "<h3 class=\"text-center\" style=\"font-family: futura md bt;\">Hasil untuk <b style=\"color: rgb(242,97,5);\">$keyword</b> tidak ditemukan!</h3>"; 	
+								}else{
+									echo "<script>
+									$(\"#jumlahTerkait\").text(\"$jumlahPencarian\");
+									</script>";
+								} 
+								?>	
 							<!-- <div>					
 								<a href="" style="text-decoration-line: none;" class="teknologiBudidaya">						
 									<h3 class="pencarian"><span>Kapas</span></h3>

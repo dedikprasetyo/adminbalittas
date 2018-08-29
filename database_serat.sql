@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2018 at 09:25 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Waktu pembuatan: 29 Agu 2018 pada 17.25
+-- Versi server: 10.1.32-MariaDB
+-- Versi PHP: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `atribut`
+-- Struktur dari tabel `atribut`
 --
 
 CREATE TABLE `atribut` (
@@ -34,7 +34,7 @@ CREATE TABLE `atribut` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `atribut`
+-- Dumping data untuk tabel `atribut`
 --
 
 INSERT INTO `atribut` (`nama_atribut`, `id_atribut`) VALUES
@@ -256,7 +256,7 @@ INSERT INTO `atribut` (`nama_atribut`, `id_atribut`) VALUES
 ('Warna Urat Daun', 'A0217');
 
 --
--- Triggers `atribut`
+-- Trigger `atribut`
 --
 DELIMITER $$
 CREATE TRIGGER `tr_id_atribut` BEFORE INSERT ON `atribut` FOR EACH ROW BEGIN
@@ -279,51 +279,52 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `benih`
+-- Struktur dari tabel `benih`
 --
 
 CREATE TABLE `benih` (
   `id_serat` char(5) NOT NULL,
   `nama_benih` varchar(255) NOT NULL,
-  `id_benih` char(5) NOT NULL,
-  `stok_sampai` date NOT NULL,
-  `jumlah_stok` double NOT NULL
+  `id_benih` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `benih`
+-- Dumping data untuk tabel `benih`
 --
 
-INSERT INTO `benih` (`id_serat`, `nama_benih`, `id_benih`, `stok_sampai`, `jumlah_stok`) VALUES
-('S0004', 'KR 6', 'B0001', '0000-00-00', 0),
-('S0004', 'KR 9', 'B0002', '0000-00-00', 0),
-('S0004', 'KR 11', 'B0003', '0000-00-00', 0),
-('S0004', 'KR 12', 'B0004', '0000-00-00', 0),
-('S0004', 'KR 14', 'B0005', '0000-00-00', 0),
-('S0004', 'KR 15', 'B0006', '0000-00-00', 0),
-('S0006', 'Roselindo 1', 'B0007', '0000-00-00', 0),
-('S0006', 'Roselindo 2', 'B0008', '0000-00-00', 0),
-('S0006', 'Roselindo 3', 'B0009', '0000-00-00', 0),
-('S0006', 'Roselindo 4', 'B0010', '0000-00-00', 0),
-('S0006', 'ASB 81', 'B0011', '0000-00-00', 0),
-('S0002', 'ISA 205 A', 'B0012', '0000-00-00', 0),
-('S0002', 'Kanesia 1', 'B0013', '0000-00-00', 0),
-('S0002', 'Kanesia 2', 'B0014', '0000-00-00', 0),
-('S0002', 'Kanesia 3', 'B0015', '0000-00-00', 0),
-('S0002', 'Kanesia 5', 'B0016', '0000-00-00', 0),
-('S0002', 'Kanesia 7', 'B0017', '0000-00-00', 0),
-('S0002', 'Kanesia 8', 'B0018', '0000-00-00', 0),
-('S0002', 'Kanesia 9', 'B0019', '0000-00-00', 0),
-('S0002', 'Kanesia 10', 'B0020', '0000-00-00', 0),
-('S0002', 'Kanesia 11', 'B0021', '0000-00-00', 0),
-('S0002', 'Kanesia 12', 'B0022', '0000-00-00', 0),
-('S0002', 'Kanesia 13', 'B0023', '0000-00-00', 0),
-('S0002', 'Kanesia 14', 'B0024', '0000-00-00', 0),
-('S0002', 'Kanesia 15', 'B0025', '0000-00-00', 0),
-('S0002', 'LRA 5166', 'B0026', '0000-00-00', 0);
+INSERT INTO `benih` (`id_serat`, `nama_benih`, `id_benih`) VALUES
+('S0004', 'KR 6', 'B0001'),
+('S0004', 'KR 9', 'B0002'),
+('S0004', 'KR 11', 'B0003'),
+('S0004', 'KR 12', 'B0004'),
+('S0004', 'KR 14', 'B0005'),
+('S0004', 'KR 15', 'B0006'),
+('S0006', 'Roselindo 1', 'B0007'),
+('S0006', 'Roselindo 2', 'B0008'),
+('S0006', 'Roselindo 3', 'B0009'),
+('S0006', 'Roselindo 4', 'B0010'),
+('S0006', 'ASB 81', 'B0011'),
+('S0002', 'ISA 205 A', 'B0012'),
+('S0002', 'Kanesia 1', 'B0013'),
+('S0002', 'Kanesia 2', 'B0014'),
+('S0002', 'Kanesia 3', 'B0015'),
+('S0002', 'Kanesia 5', 'B0016'),
+('S0002', 'Kanesia 7', 'B0017'),
+('S0002', 'Kanesia 8', 'B0018'),
+('S0002', 'Kanesia 9', 'B0019'),
+('S0002', 'Kanesia 10', 'B0020'),
+('S0002', 'Kanesia 11', 'B0021'),
+('S0002', 'Kanesia 12', 'B0022'),
+('S0002', 'Kanesia 13', 'B0023'),
+('S0002', 'Kanesia 14', 'B0024'),
+('S0002', 'Kanesia 15', 'B0025'),
+('S0002', 'LRA 5166', 'B0026'),
+('S0002', 'Kanesia 19', 'B0027'),
+('S0004', 'Kenafindo 1', 'B0028'),
+('S0004', 'Kenafindo 2', 'B0029');
 
 --
--- Triggers `benih`
+-- Trigger `benih`
 --
 DELIMITER $$
 CREATE TRIGGER `tr_id_benih` BEFORE INSERT ON `benih` FOR EACH ROW BEGIN
@@ -346,32 +347,72 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `budidaya`
+-- Struktur dari tabel `detail_monograf`
 --
 
-CREATE TABLE `budidaya` (
-  `id_serat` char(5) NOT NULL,
-  `id_budidaya` char(5) NOT NULL,
-  `nama_budidaya` varchar(255) NOT NULL,
-  `deskripsi_budidaya` text NOT NULL,
+CREATE TABLE `detail_monograf` (
+  `id_monograf` char(5) NOT NULL,
+  `id_detail_monograf` char(6) NOT NULL,
+  `cuplikan_monograf` text NOT NULL,
+  `penulis` varchar(255) NOT NULL,
+  `judul` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Triggers `budidaya`
+-- Dumping data untuk tabel `detail_monograf`
+--
+
+INSERT INTO `detail_monograf` (`id_monograf`, `id_detail_monograf`, `cuplikan_monograf`, `penulis`, `judul`, `file`) VALUES
+('M0001', 'DM0001', 'Tanaman kapas (Gossypium hirsutum L.) merupakan salah satu komoditas perkebunan unggulan di Indonesia. Tanaman ini merupakan penghasil serat alam yang banyak digunakan untuk bahan baku tekstil. Dengan semakin pesatnya penggunaan serat sintetis, serat kapas tetap merupakan salah satu pilihan yang masih banyak digunakan. Karena serat kapas memiliki keunggulan yaitu bersifat higroskopis sehingga mudah menyerap keringat (Sulistyo dan Mawarni 1991). Industri tekstil dan produk tekstil (TPT) telah menjadi andalan penghasil devisa terbesar dari sektor non-migas (sekitar 15%), Didukung oleh sekitar 2.650 Unit perusahaan dengan kapasitas produksi ± 6 Juta ton yang memerlukan serat kapas ± 500 Ribu ton per tahun (Rachman 2007).', 'Badan Penelitian dan Pengembangan Pertanian', 'File Lengkap Buku Kapas', 'Buku Kapas 2013 full.pdf'),
+('M0003', 'DM0013', 'Tanaman kapas telah dikembangkan sejak jaman penjajahan Be1anda, dengan pola “tanam paksa”. Pada saat itu tercatat bahwa luas areal kapas mencapai 82.120 ha (Hasmosoewignyo dalam Kemala et al., 1975) sebagian besar (60%) berada di Jawa TImur dan Jawa Tengah. Penanaman kapas terus dilanjutkan pada saat penjajahan Jepang, namun luasnya semakin berkurang, yaitu hanya sekitar 17.278 ha (Loebis dalam Sulistyo dan Mawaini, 1991), hingga akhirnya kapas hampir tidak diusahakan lagi. Dibandingkan dengan komoditas perkebunan. lainnya, kapas belum diusahakan dalam skala perkebunan besar.', 'Moch. Sahid dan S.A. Wahyuni', 'KERAGAAN DAN KONSEP PERBAIKAN PENGEMBANGAN KAPAS DI INDONESIA', 'keragaan-dan-konsep-kapas.pdf'),
+('M0003', 'DM0014', 'Tanaman kapas diduga berasal dari Asia, Afrika, Australia, dan Amerika. Tanaman kapas telah lama dikenal dan dibudidayakan sejak zaman prasejarah. Di India (di lembah Sungai Indus) telah dikenal sekitar 3000 tahun sebelum Masehi dan digunakan untuk bahan baku tekstil (Poehlman, 1977; AAK. 1983). Kapas juga telah digunakan di Asia Kecil, Ethiopia, dan Afrika Timur. Bahkan menurut Harlan dalam Lee (1984) di sekitar Asia Kecil (Timur Dekat) kapas telah dibudidayakan sejak tahun 7000 sebelum Masehi.  Kapas masuk ke Eropa melalui Spanyol, dibawa oleh bangsa Moor. Di Cina telah dikenal sejak abad ke-7 dan di Amerika telah digunakan oleh suku Aztek dan Inca. Di Amerika terutama di Peru dan Meksiko tanaman kapas sebagai bahan baku pakaian telah dikenal jauh sebelum bangsa Eropa menemukan Amerika (Poehlman, 1977).', 'Rusim Mardjono', 'BIOLOGI TANAMAN KAPAS', 'biologi-tanaman-kapas.pdf'),
+('M0003', 'DM0015', 'Untuk mencapai sasaran pemuliaan tanaman yang semakin kompleks, diperlukan sumber genetik yang luas. Menghadapi tuntutan konsumen yang semakin beragam, pemulia tanaman berlomba-lomba untuk mendapatkan varietas baru dengan memanfaatkan spesies-spesies yang berkerabat atau varietas-varietas primitif yang memiliki sifat menguntungkan. diketemukannya varietas-varietas baru menyebabkan tersingkirnya varietas-varietas lama dan makin menyempitnya keragaman genetik. Sebagai contoh, dengan masuknya varietas-varietas kapas unggul yang mutu seratnya tinggi dari Amerika Serikat pada tahun 1960-an menyebabkan tersingkirnya varietas-varietas yang sudah beradaptasi di Indonesia seperti seperti kapas Bayan, kapas Hulu, Cambodia yang kesemuanya tahan terhadap hama Sundapteryx Bigutulla.', 'Siwi Sumartini', 'PENGELOLAAN PLASMA NUTFAH KAPAS DI INDONESIA', 'Pengelolaan-Plasma-nutfah-kapas-Indonesia.pdf'),
+('M0003', 'DM0016', 'Produksi dan produktivitas kapas Indonesia sangat rendah. Produksi kapas dalam negeri kurang dari 1% dan kebutuhan kapas indonesia yang besarnya 400.000 ton/tahun. Sedangkan produktivitas kapas indonesia hanya sekitar 600kg/ha. Rendahnya produktivitas kapas indonesia terutama adanya gangguan biotik seperti adanya serangan serangga hama,  sedangkan gangguan abiotik terutama sering terjadi kekeringan. Dalam upaya mengatasi masalah tersebut peran pemuliaan sangat besar, yaitu dengan dilepasnya beberapa varietas kapas yang mampu mengatasu masalah-masalah tersebut.', 'Rusim Mardjono', 'PEMULIAAN KAPAS DI INDONESIA', 'Pemuliaan-kapas-Indonesia.pdf'),
+('M0003', 'DM0017', 'Kebutuhan serat kapas sebagai bahan baku industri tekstil didalam negeri berkisar antara 365-500 ribu ton setiap tahun. Produksi serat kapas dalam negeri sebesar 2 ribu ton per tahun memenuhi 0,4% dari kebutuhan nasional (Taher,1999). Menurut Soeripto (1999) tercatat impor serat kapas sebesar 479 ribu ton pada tahun 1998-1999.', 'Siwi Sumartini dan Hasnam', 'TEKNIK PRODUKSI BENIH KAPAS BERSERTIFIKAT', 'Teknik-produksi-benih-kapas-bersertifikat.pdf'),
+('M0003', 'DM0018', 'Industri tekstil mengalami perkembangan yang pesat seiring dengan meningkatnya perekonomian indonesia. Pada tahun 4 konsumsi kapas hanya 1,6 kg/kapita/tahun dan pada 1995 naik menjadi 4,1kg/kapita/tahun. Produksi kapas di dalam negeri saat ini baru memenuhi 1% dari kebutuhan industri tekstil, 99% lainnya berasal dari impor (Kasryno et. al., 1998). Program Intensifikasi Kapas Rakyat (IKR) yang dimulai sejak tahun 1978/1979 dengan tujuan meningkatkan produksi dan pendapatan petani, membuka dan memperluas lapangan kerja, serta mengurangi ketergantungan impor serat kapas (Wahyuni er. at., 1993).', 'Teger Basuki, Bambang S. dan S.A. Wahyuni', 'SISTEM USAHA TANI KAPAS DI INDONESIA', 'Sistem-usaha-tani-kapas-Indonesia.pdf'),
+('M0003', 'DM0019', 'Dalam rangka mengembangkan kehidupan dan pemberdayaan ekonomi di kawasan pedesaan, saat itu berbagai komoditas perkebunan dapat memberikan peluang untuk dikembangkan lebih lanjut dengan harapan dapat meningkatkan pendapatan masyarakat pedesaan terutama tani. Salah satu komoditas perkebunan yang dapat dijadikan sebagai komoditas andalan dari suatu daerah adalah kapas. Mengingat kebutuhan serat kapas dalam negeri semakin meningkat setiap tahunnya, maka kapas merupakan salah satu komoditas perkebunan yang mempunyai prospek cukup baik untuk dibudidayakan serta diusahakan lebih lanjut menjadi komoditas yang mempunyai nilai ekonomi tinggi', 'PR Sukun Bagian IKR', 'PENGALAMAN PR SUKUN DALAM PENGELOLAAN IKR', 'Pengalaman-pr-sukun-pengelolaan-ikr.pdf'),
+('M0003', 'DM0020', 'Dari beberapa faktor penentu produksi pertanian, cuaca dan iklim merupakan faktor yang sulit dikendalikan. Oleh karena itu cara terbaik untuk memanfaatkan potensi cuaca dan iklim bagi usaha pertanian adalah dengan menyesuaikan kegiatan kita terhadap kedua faktor tersebut. Pengusahaan tanaman kapas tidak terlepas dari faktor yang mempengaruhi pertumbuhan dan perkembangan serta keberhasilan produksi. Faktor tersebut meliputi faktor lingkungan (tanah dan iklim), teknik budi daya, dan tanaman. Faktor iklim dan cuaca berpengaruh langsung terhadap kuantitas dan kualitas panen. Unsur-unsur iklim yang erat kaitannya dengan pertumbuhan kapas adalah curah hujan, suhu udara, radiasi surya, kelembapan, dan kecepatan angin. Pemanfaatan sumber daya iklim dalam usaha tani kapas akan mengurangi resiko kegagalan hasil', 'Prima Diarini Riajaya', 'KAJIAN IKLIM PADA TANAMAN KAPAS', 'kajian-iklim-tanaman-kapas.pdf'),
+('M0003', 'DM0021', 'Kapas dapat diusahakan pada berbagai tipe dan jenis tanah sepanjang faktor-faktor tumbuh yang lain memungkinkan. Pengertian tanah dalam bidang pertanian merupakan suatu tubuh alam yang mempunyai arti  kedalaman dan daerah permukaan, hasil pembentukannya oleh gaya destruktif (pelapukan dan perombakan oleh mikrobia) serta gaya sintetik (terbentuknya mineral tertentu dan berkembangnya lapisan-lapisan tanah yang khas) dan berfungsi sebagai tempat tumbuh tanaman (Soepardi, 1983). Istilah lahan merupakan bagian dari bentang alam (landscape) yang mencakup pengertian lingkungan fisik termasuk iklim, topografi, relief, hidrologi bahkan keadaan vegetasi alami (natural vegetation) yang semuannya secara potensial akan berpangaruh terhadap penggunaan tanah (FAO, 1976)', 'Fitriningdyah Tri Kadarwati', 'TANAH UNTUK TANAMAN KAPAS SERTA PENGELOLAANNYA', 'tanah-untuk-tanaman-kapas-serta-pengelolaannya.pdf'),
+('M0003', 'DM0022', 'Peningkatan produksi serat kapas dalam negeri telah diusahakan secara maksimal melalui gram intensifikasi kapas rakyat (IKR) sejak tahun 1979, kenyataannya sampai saat ini area produktivitas kapas program tersebut terus mengalami penurunan, bahkan impor serat kapas mencapai 99%. program pengembangan kapas yang selama ini diarahkan ke lahan kering banyak mengalami kendala mengingat daya dukung lahan, iklim, kondisi sosial ekonomi petani tidak memungkinkan kapas dapat berkembangdengan baik.', 'Moch. Machfud', 'BUDI DAYA KAPAS DI LAHAN SAWAH', 'budi-daya-kapas-lahan-sawah.pdf'),
+('M0003', 'DM0023', 'Program Intensifikasi Kapas Rakyat (IKR) dikembangkan pada dua tipe lahan yaitu: lahan kering untuk tanam musim penghujan (TMP) dan lahan sawah sesudah padi untuk tanam musim kemarau (TMK). Areal TMP 1998/1999 seluas 13.731 ha atau 75% dan TMK 1999 seluas 4.551 ha atau 25% dari areal IKR seluruhnya (Ditjenbun, 1999). Lahan kering atau tadah hujan adalah lahan yang sumber airnya berasal dari curah hujan. Berdasarkan batasan tersebut maka keberhasilan tanaman yang diusahakan tergantung pada intensitas maupun lamanya hujan. Tanaman kapas memerlukan air hujan terbanyak pada saat pertumbuhan, dan cuaca kering pada saat panen. Karena itu waktu tanam merupakan pertimbangan utama dalam mengembangkan kapas musim penghujan (Riajaya dan Hasnam, 1990). Mengingat pentingnya distribusi hujan selama pertumbuhan kapas, maka penentuan waktu tanam kapas dibahas lebih mandalam, dibandingkan teknologi yang lain.', 'Moch. Sahid', 'BUDI DAYA KAPAS DI LAHAN TADAH HUJAN', 'budi-daya-kapas-lahan-tadah-hujan.pdf'),
+('M0003', 'DM0024', 'Salah satu sajad pengganggu yang merupakan pembatas produksi tanaman adalah gulma. Menurut Moenandir (1988) karena persaingan gulma, kehilangan hasil tanaman teredusir sebesar 1% (musim penghujan) dan 13% (musim kemarau). Keberadaan gulma di pertanaman kapas berpengaruh negatif terhadap kuantitas serat, serta meningkatkan biaya produksi. Penurunan produksi kapas yang diakibatkan gangguan gulma berkisar 35-89% (Mercado, 1979).', 'Sri Mulyaningsih, Mohammad Cholid, dan Endarwati', 'PENGELOLAAN GULMA DI PERTANAMAN KAPAS', 'pengelolaan-gulma-pertanaman-kapas.pdf'),
+('M0003', 'DM0025', 'Banyak sekali serangga yang berasosiasi dengan tanaman kapas. Hal ini terjadi karena tanaman kapas mempunyai extrafloral nectar, yaitu nectar yang dihasilkan oleh bagian tanaman lain, selain bunga, yang disukai oleh serangga. Serangga-serangga tersebut ada yang tergolong hama (memakan bagian tanaman kapas) dan serangga berguna (misalnya serangga penyerbuk, parasitoid, predator, dan lain-lain). Dari kompleks serangga yang berasosiasi dengan tanaman kapas tersebut, 62 spesies serangga dan 2 tungau telah berhasil diidentifikasi sebagai serangga hama. Serangga-serangga hama tersebut dapat dikelompokkan sebagai serangga hama utama, serangga hama potensial, dan serangga hama kurang penting.', 'Nurindah', 'SERANGGA HAMA KAPAS', 'serangga-hama-kapas.pdf'),
+('M0003', 'DM0026', 'Musuh alami serangga hama merupakan agnesia hayati yang berperan sebagai salah satu faktor pembatas perkembangan populasi serangga hama. Dalam pengendaliaan hama secara hayati, musuh alami serangga hama merupakan agnesia yang dimanfaatkan untuk menekan populasi hama. Secara ekologi, pengertian pengendalian hayati adalah pengaturan yang dilakukan oleh musuh alami dalam mengendalikan populasi serangga hama pada tingkat yang rendah. Dengan demikian, musuh alami merupakan faktor mortalitas biotik utama bagi perkembangan populasi serangga hama.', 'Nurindah dan IG.A.A. Indrayani', 'MUSUH ALAMI SERANGGA HAMA KAPAS', 'musuh-alami-serangga-hama-kapas.pdf'),
+('M0003', 'DM0027', 'Pengendalian hama terpadu (PHT) adalah suatu pendekatan ekologi untuk pengelolaan hama dengan memanfaatkan semua teknik dan metode yang sesuai secara serasi ke dalam satu kesatuan program, agar populasi hama dapat dipertahankan berada di bawah ambang kerusakan ekonomi (NAS, 1971;  Oka, 1995; sMITH, 1983). Falsafah PHT dalah menekan populasi hama, bukan memusnahkannya, dengan memanfaatkan kekuatan pengendali alami seperti cuaca, ketahanan tanaman inang, dan aksi musuh alami dengan tujuan mengoptimakan hasil pengendalian (Huffaker dan Smith, 1980). Ketiga faktor tersebut dapat bekerja secara maksimal apabila kerusakan lingkungan oleh zat-zat beracun berada pada tingkat minimum atau hanya sedikit terjadi (Van den Bosch et al., 1982)', 'Molide Rizal, Sri Hadiyani. S.A. Wahyuni., Bambang S. dan Subandrijo', 'PENGENDALIAAN HAMA TERPADU PADA TANAMAN KAPAS', 'pengendalian-hama-terpadu-tanaman-kapas.pdf'),
+('M0003', 'DM0028', 'Nuclear Polyhedrosis Virus (NPV) termasuk genus Baculovirus, famili Bcauloviridae, yaitu sejenis virus patogen serangga yang mematikan serangga inang mengikuti mekanisme racun perut, Biasannya NPV menyerang nekleus sel-sel peka, terutama sel-sel di dalam saluran pencernaan, sel darah, trakea, dan badan lemak. NPV merupakan matriks protein, yang tersusun atas tiga komponen utama, yaitu : polyhedral inclusion bodies (PIB), virion, dan nukleokapsid (Ignoffo dan Couch, 1981). Nukleokapsid adalah bagian paling infektif dari NPV, karena bagian ini yang tersusun atas rantai DNA berperan penting dalam replikasi NPV pada nukleus sel-sel inang yang terinfeksi', 'IG.A.A. Indrayani', 'TEKNIK PERBANYAKAN NUCLEAR POLYHEDROSIS VIRUS SECARA IN VIVO', 'teknik-perbanyakan-nuclear-polyhedrosis-virus-secara-in-vitro.pdf'),
+('M0003', 'DM0029', 'Parasitoid telur yang tergolong dalam famili Trichogrammatidae merupakan parasitoid yang banyak digunakan sebagai agnesia dalam program pengendalian hayati. Trichogramma spp. Merupakan parasitoid yang telah digunakan untuk mengendalikan serangga lama, terutama dari Ordo Lepidoptera, pada 20 spesies tanaman pertanian, perkebunan, dan kehutanan, yang meliputi 28 spesies serangga hama (Stinner et al., 1974; Hassan, 1993; Pinto dan Southammer, 1994)', 'Nurindah', 'TEKNIK PERBANYAKAN PARASITOID TELUR, Trichogramma', 'teknik-perbanyakan-parasitoid-telur-trichogramma.pdf'),
+('M0003', 'DM0030', 'Gangguan serangan hama penggerek buah Helicoverpa armigera Hubner pada tanaman kapas merpakan salah satu penyebab adanya rendahnya produktivitas hasil kapas berbiji. Untuk keperluan pengendalian hama ini petani belum mampu melepaskan diri dari penggunaan insektisida kimia sintesis. Pada umumnnya pengendalian hama pada tanaman kapas dilakukan secara berjadwal, sehingga banyak menghabiskan insektisida. Untuk satu hektar tanaman kapas dibutuhkan insektisida sampai 6 liter (Sri-Hadiyani et al., 1999a)', 'Dwi Adi Sunarto dan Subiyakto', 'INSEKTISIDA NABATI SERBUK BIJI MIMBA (SBM) UNTUK PENGENDALIAN HAMA (Helicoverpa armigera Hubner PADA TANAMAN KAPAS', 'insektisida-nabati-serbuk-biji-mimba-pengendalian-hama-kapas.pdf'),
+('M0003', 'DM0031', 'Timbulnya penyakit tanaman merupakan akibat adanya interaksi patogen, tanaman inang, dan faktor lingkungan yang cocok. Sampai saat ini pada tanaman kapas di Indonesia, penyakit masih belum begitu penting dibandingkan gangguan hama, meskipun pada saat cuaca kering, dan di daerah Sulawesi Selatan pernah dilaporkan adanya serangan penyakit hawar bakteri yang sangat merugikan pada saat cuaca lembab. Di samping itu ada juga penyakit yang sering terjadi pada tanaman muda sampai umur ± 30 hari yang menyebabkan robohnya tanaman kapas (disebut penyakit rebah kecambah atau damping-off) yang disebabkan oleh jamur patogen. Sedangkan di luar negeri, kerusakan akibat berbagai penyakit rata-rata sebesar ± 13,1% per tahunnya, yang penting adalah penyakit kecambah, layu, dan busuk buah (Watkins, 1981a)', 'Gembong Dalmadiyo, Nildar Ibrahim, dan Titiek Yulianti', 'PENYAKIT TANAMAN KAPAS DAN PENGENDALIAANNYA ', 'penyakit-tanaman-kapas-pengendaliannya.pdf'),
+('M0003', 'DM0032', 'Serat kapas merupakan bahan baku pembuatan tekstil. Meskipun akhir-akhir ini telah diproduksi serat sintesis, tetapi serat kapas masih memegang peranan penting dalam industri tekstil. Bahan baku industri tekstil dunia ± 51% berupa serat kapas (Soeprijono et al., 1973)', 'Budi Saroso dan Darmono', 'PASCAPANEN, GINING, DAN KLASIFIKASI MUTU SERAT KAPAS', 'pascapanen-gining-klasifikasi-mutu-serat-kapas.pdf'),
+('M0003', 'DM0033', 'Kapas dibudidayakan dengan tujuan menghasilkan serat untuk bahan baku industri tekstil. Selain serat sebagai hasil utamannya, juga diperoleh hasil samping berupa batang dan biji kapas. Batang kapas mengandung selulosa, karena itu dapat dimanfaatkan untuk bahan baku pulp kertas. Biji kapas merupakan dua pertiga dari hasil panen kapas berbiji. Agar dapat dimanfaatkan, biji kapas harus diolah lebih dahulu. Setelah diolah akan dihasilkan serat pendek (linter), kulit (hull), minyak, dan bungkil. Hasil olahan biji kapas dapat dimanfaatkan untuk berbagai keperluan.', 'Budi Saroso', 'ANEKA MANFAAT HASIL SAMPING TANAMAN KAPAS', 'aneka-manfaat-hasil-samping-tanaman-kapas.pdf'),
+('M0003', 'DM0034', 'Pertanaman kapas di Indonesia tersebar di beberapa propinsi di Jawa dan di luar Jawa. Sebagian besar petani menanam kapas pada lahan miliknya yang tidak begitu luas. Boleh dikata sebagian besar petani kapas adalah petani tradisional yang mengerjakan lahannya dengan peralatan sederhana, misalnya mengolah tanah dengan cangkul, memberantas gulma dengan sabit atau cangkul. Sebagian besar pertanaman kapas di lahan kering atau tadah hujan sehingga masalah pengendaliaan gulma menjadi sangat penting, karena gulma akan tumbuh dengan tanaman pokok.', 'Darmono dan Soebandi', 'PERALATAN MEKANISME UNTUK BUDI DAYA KAPAS', 'peralatan-mekanis-budi-daya-kapas.pdf'),
+('M0004', 'DM0035', '-', 'Dian I. Kangiden, Sudjidro, dan U. Setyo-Budi', 'BIOLOGI TANAMAN KENAF', '-'),
+('M0004', 'DM0036', 'Kenaf (Hibiscus cannabinus L.) merupakan tanaman penghasil serat dari kulit batangnya. Pada mulanya serat kenaf hanya digunakan sebagai bahan baku karung goni untuk mengemas hasil-hasil pertanian terutama gula, kopi, kakao, dan lain-lain yang mudah busuk. Saat ini serat kenaf dapat digunakan sebagai bahan baku pembuatan fibre board (door-trim, interior mobil), particle board, fibre drain, geo-textile, kertas berkualitas tinggi (Sudjindro, 2003; 2004).', 'Rr.Sri Hartati, Mardjani, dan U. Setyo-Budi', 'PLASMA NUTFAH KENAF ', 'plasma nutfah kenaf.pdf'),
+('M0004', 'DM0037', '-', 'Bambang Heliyanto, Sudjindro, dan Mardjani', 'PEMULIAAN TANAMAN KENAF DAN HASILNYA', '-'),
+('M0004', 'DM0038', '-', 'Adji Sastrosupadi, Budi Santoso, dan Sudjindro', 'BUDIDAYA KENAF (Hisbiscus cannabinus L.)', '-'),
+('M0004', 'DM0039', '-', 'Sri-Hadiyani dan Agus-Salim', 'HAMA TANAMAN KENAF DAN PENGENDALIANNYA', '-'),
+('M0004', 'DM0040', '-', 'Gembong Daladiyo dan Supriyono', 'PENYAKIT TANAMAN KENAF DAN PENGENDALIANNYA', '-'),
+('M0004', 'DM0041', '-', 'Darmono', 'PEMISAHAN KULIT BATANG KENAF DENGAN RIBBONER BALITTAS', '-'),
+('M0004', 'DM0042', '-', 'Winarto B.W.', 'PROSES PENGOLAHAN KENAF MENJADI SERAT', '-'),
+('M0004', 'DM0043', '-', 'Adji Sastrosupadi dan Moh. Sahid', 'POTENSI TANAMAN SERAT KARUNG SEBAGAI PENGHASIL BAHAN BAKU PUPL', '-'),
+('M0004', 'DM0044', '-', 'Mukani dan Cece Suhara', 'PENGEMBANGAN TANAMAN SERAT KARUNG', '-');
+
+--
+-- Trigger `detail_monograf`
 --
 DELIMITER $$
-CREATE TRIGGER `tr_id_budidaya` BEFORE INSERT ON `budidaya` FOR EACH ROW BEGIN
-SET @hitung = CONVERT((RIGHT((SELECT `id_budidaya` FROM `budidaya` ORDER by `id_budidaya` DESC LIMIT 1), 4)), UNSIGNED) + 1;
+CREATE TRIGGER `tr_id_detail_monograf` BEFORE INSERT ON `detail_monograf` FOR EACH ROW BEGIN
+SET @hitung = CONVERT((RIGHT((SELECT id_detail_monograf FROM `detail_monograf` ORDER by id_detail_monograf DESC LIMIT 1), 4)), UNSIGNED) + 1;
 if (@hitung > 1) THEN
 if (@hitung < 10) THEN 
-SET new.`id_budidaya` = concat('B000',@hitung);
+SET new.id_detail_monograf = concat('DM000',@hitung);
 ELSEIF (@hitung < 100) THEN
-SET new.`id_budidaya` = concat('B00',@hitung);
+SET new.id_detail_monograf = concat('DM00',@hitung);
 ELSEIF (@hitung < 1000) THEN
-SET new.`id_budidaya` = concat('B0',@hitung);
+SET new.id_detail_monograf = concat('DM0',@hitung);
 ELSE
-SET new.`id_budidaya` = concat('B',@hitung);
+SET new.id_detail_monograf = concat('DM',@hitung);
 END IF;
 END IF;
 END
@@ -381,7 +422,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_varietas`
+-- Struktur dari tabel `detail_varietas`
 --
 
 CREATE TABLE `detail_varietas` (
@@ -391,7 +432,7 @@ CREATE TABLE `detail_varietas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `detail_varietas`
+-- Dumping data untuk tabel `detail_varietas`
 --
 
 INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
@@ -1872,7 +1913,7 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `distribusi_benih`
+-- Struktur dari tabel `distribusi_benih`
 --
 
 CREATE TABLE `distribusi_benih` (
@@ -1886,7 +1927,7 @@ CREATE TABLE `distribusi_benih` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `distribusi_benih`
+-- Dumping data untuk tabel `distribusi_benih`
 --
 
 INSERT INTO `distribusi_benih` (`id_benih`, `id_distribusi`, `tanggal`, `tahun_panen`, `kelas_benih`, `jumlah_kg`, `keterangan`) VALUES
@@ -2698,10 +2739,10 @@ INSERT INTO `distribusi_benih` (`id_benih`, `id_distribusi`, `tanggal`, `tahun_p
 ('B0025', 'D0805', '2011-12-09', 'Asembagus 2009', 'Dasar', 1, '');
 
 --
--- Triggers `distribusi_benih`
+-- Trigger `distribusi_benih`
 --
 DELIMITER $$
-CREATE TRIGGER `tr_distribusi_benih` BEFORE INSERT ON `distribusi_benih` FOR EACH ROW BEGIN
+CREATE TRIGGER `tr_id_distribusi` BEFORE INSERT ON `distribusi_benih` FOR EACH ROW BEGIN
 SET @hitung = CONVERT((RIGHT((SELECT `id_distribusi` FROM `distribusi_benih` ORDER by `id_distribusi` DESC LIMIT 1), 4)), UNSIGNED) + 1;
 if (@hitung > 1) THEN
 if (@hitung < 10) THEN 
@@ -2721,7 +2762,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gambar_leaflet`
+-- Struktur dari tabel `gambar_leaflet`
 --
 
 CREATE TABLE `gambar_leaflet` (
@@ -2731,7 +2772,7 @@ CREATE TABLE `gambar_leaflet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `gambar_leaflet`
+-- Dumping data untuk tabel `gambar_leaflet`
 --
 
 INSERT INTO `gambar_leaflet` (`id_leaflet`, `id_gambar`, `file`) VALUES
@@ -2781,10 +2822,10 @@ INSERT INTO `gambar_leaflet` (`id_leaflet`, `id_gambar`, `file`) VALUES
 ('L0022', 'IMG0044', 'alat pengupas2.jpg');
 
 --
--- Triggers `gambar_leaflet`
+-- Trigger `gambar_leaflet`
 --
 DELIMITER $$
-CREATE TRIGGER `tr_gambar_leaflet` BEFORE INSERT ON `gambar_leaflet` FOR EACH ROW BEGIN
+CREATE TRIGGER `tr_id_gambar` BEFORE INSERT ON `gambar_leaflet` FOR EACH ROW BEGIN
 SET @hitung = CONVERT((RIGHT((SELECT `id_gambar` FROM `gambar_leaflet` ORDER by `id_gambar` DESC LIMIT 1), 4)), UNSIGNED) + 1;
 if (@hitung > 1) THEN
 if (@hitung < 10) THEN 
@@ -2804,7 +2845,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_leaflet`
+-- Struktur dari tabel `jenis_leaflet`
 --
 
 CREATE TABLE `jenis_leaflet` (
@@ -2813,7 +2854,7 @@ CREATE TABLE `jenis_leaflet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jenis_leaflet`
+-- Dumping data untuk tabel `jenis_leaflet`
 --
 
 INSERT INTO `jenis_leaflet` (`id_jenis_leaflet`, `nama_jenis`) VALUES
@@ -2824,7 +2865,7 @@ INSERT INTO `jenis_leaflet` (`id_jenis_leaflet`, `nama_jenis`) VALUES
 ('JL005', 'Alat dan Mesin');
 
 --
--- Triggers `jenis_leaflet`
+-- Trigger `jenis_leaflet`
 --
 DELIMITER $$
 CREATE TRIGGER `tr_id_jenis_leaflet` BEFORE INSERT ON `jenis_leaflet` FOR EACH ROW BEGIN
@@ -2845,7 +2886,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `leaflet`
+-- Struktur dari tabel `leaflet`
 --
 
 CREATE TABLE `leaflet` (
@@ -2855,7 +2896,7 @@ CREATE TABLE `leaflet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `leaflet`
+-- Dumping data untuk tabel `leaflet`
 --
 
 INSERT INTO `leaflet` (`id_leaflet`, `nama_leaflet`, `id_jenis_leaflet`) VALUES
@@ -2883,7 +2924,7 @@ INSERT INTO `leaflet` (`id_leaflet`, `nama_leaflet`, `id_jenis_leaflet`) VALUES
 ('L0022', 'Alat Pengupas Buah Jarak', 'JL005');
 
 --
--- Triggers `leaflet`
+-- Trigger `leaflet`
 --
 DELIMITER $$
 CREATE TRIGGER `tr_id_leaflet` BEFORE INSERT ON `leaflet` FOR EACH ROW BEGIN
@@ -2906,7 +2947,52 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `serat`
+-- Struktur dari tabel `monograf`
+--
+
+CREATE TABLE `monograf` (
+  `id_monograf` char(5) NOT NULL,
+  `id_serat` char(5) NOT NULL,
+  `nama_monograf` varchar(255) NOT NULL,
+  `deskripsi_monograf` text NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `monograf`
+--
+
+INSERT INTO `monograf` (`id_monograf`, `id_serat`, `nama_monograf`, `deskripsi_monograf`, `gambar`, `tanggal`) VALUES
+('M0001', 'S0002', 'Peningkatan Produktivitas dan Pendapatan Petani Kapas', 'Puji syukur kami panjatkan ke hadirat Allah Tuhan Yang Maha Esa atas semua limpahan rahmat dan karunia-Nya sehingga Buku mengenai Kapas dapat diterbitkan. Buku ini memuat 19 makalah yang disajikan dalam bentuk semi populer yaitu: 3 dari pemuliaan, 5 dari ekofisiologi, 6 dari hama dan penyakit, 3 dari pascapanen, serta 2 dari sosial ekonomi. Buku ini merupakan revisi Monograf Kapas Buku 1 (terbit tahun 2001) dan Monograf Kapas Buku 2 (terbit tahun 2002). Penerbitan buku ini diharapkan dapat menambah wawasan stake holders yang berkecimpung dalam tanaman kapas baik langsung maupun tidak langsung antara lain: petani, penyuluh, pengelola/ pengusaha, dinas terkait, perguruan tinggi, dan para peneliti, serta pengambil kebijakan.', 'bukukapas.jpg', '2017-08-31'),
+('M0003', 'S0002', 'Monograf Balittas No.7', 'Monograf Kapas, Balai Penelitian Tanaman Tembakau dan Serat, ISSN : 0853-9308', '', '2014-01-28'),
+('M0004', 'S0004', 'Monograf Balittas No.1 ', 'Monograf Kenaf (Buku1|Buku2), Balai Penelitian Tanaman Tembakau dan Serat, ISSN : 0853-9308', '', '2014-01-28');
+
+--
+-- Trigger `monograf`
+--
+DELIMITER $$
+CREATE TRIGGER `tr_id_monograf` BEFORE INSERT ON `monograf` FOR EACH ROW BEGIN
+SET @hitung = CONVERT((RIGHT((SELECT id_monograf FROM `monograf` ORDER by id_monograf DESC LIMIT 1), 4)), UNSIGNED) + 1;
+if (@hitung > 1) THEN
+if (@hitung < 10) THEN 
+SET new.id_monograf = concat('M000',@hitung);
+ELSEIF (@hitung < 100) THEN
+SET new.id_monograf = concat('M00',@hitung);
+ELSEIF (@hitung < 1000) THEN
+SET new.id_monograf = concat('M0',@hitung);
+ELSE
+SET new.id_monograf = concat('M',@hitung);
+END IF;
+END IF;
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `serat`
 --
 
 CREATE TABLE `serat` (
@@ -2917,19 +3003,20 @@ CREATE TABLE `serat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `serat`
+-- Dumping data untuk tabel `serat`
 --
 
 INSERT INTO `serat` (`id_serat`, `nama_serat`, `deskripsi_serat`, `gambar`) VALUES
-('S0002', 'Kapas', 'Sebagai negara produsen tekstil No. 5 di dunia, volume ekspor industri tekstil dan produk tekstil (TPT) Indonesia pada tahun 2005 mencapai US$8,59 miliar dan mampu menyerap tenaga kerja mencapai 1,7 juta orang, belum termasuk tenaga kerja yang diserap dalam sektor pertanian dan perdagangan. Serat kapas merupakan bahan baku utama dari industri TPT. Kebutuhan akan serat kapas pada 2004/2005 berkisar 510 ribu ton yang diprediksi akan meningkat menjadi 688 ribu ton pada 2010. Produksi serat kapas dalam negeri hanya berkisar 1,600â€“2,500 ribu ton atau kurang dari 0,5% kebutuhan nasional. Sampai dengan tahun 2025, agribisnis kapas diharapkan dapat memberikan kontribusi pada industri TPT sekitar 30% dari kebutuhan bahan baku kapas saat ini. Tantangan yang dihadapi oleh pengembangan kapas In-donesia cukup kompleks, berawal dari ketidaktersediaan benih bermutu sampai dengan kelangkaan modal petani. Ketersediaan sumber daya alam terutama lahan kering masih cukup luas di luar Jawa, seperti Sulawesi Selatan, Nusa Tenggara Barat, dan Nusa Tenggara Timur yang memberikan peluang bagi pengembangan kapas nasional. Oleh karena itu, komoditas kapas merupakan salah satu komoditas yang diprioritaskan untuk dikembangkan dalam mendukung revitalisasi perkebunan. \nSalah satu aspek intensifikasi adalah varietas unggul, karena varietas unggul merupakan komponen teknologi yang paling mudah diadopsi oleh petani. Balittas telah melepas 15 seri varietas Kapas Indonesia (Kanesia); enam diantaranya dilepas pada tahun 2006/2007 yaitu Kanesia 10, Kanesia 11, Kanesia 12, Kanesia 13, Kanesia 14, dan Kanesia 15. Kanesia 8 merupakan varietas unggul kapas yang telah digunakan dalam pengembangan kapas nasional dengan potensi produksi 1,85â€“2,73 ton kapas berbiji/ha dan persen serat 33,3â€“38,7%. Varietas-varietas baru tersebut memiliki potensi produksi 17â€“22% lebih tinggi dibanding Kanesia 8, dan tingkat ketahanan yang moderat terhadap salah satu hama utama kapas, Amrasca biguttulla, serta mutu serat yang tidak berbeda dengan Kanesia 8. Kanesia 14 dan Kanesia 15 memiliki daya adaptasi yang lebih besar terhadap keterbatasan air dibandingkan varietas-varietas lainnya, sehing-ga kedua varietas tersebut lebih sesuai untuk dikembangkan pada daerah-daerah tadah hujan. \nPenggunaan varietas-varietas unggul kapas dalam pengembangan dengan luas areal yang diperkirakan mencapai 10.000 hektar dan dengan produktivitas pada tingkat petani mencapai 1,5 ton/ha (50â€“70% dari potensi produksi), maka produksi kapas nasional akan meningkat 9.000 ton kapas berbiji atau 3.000 ton serat kapas yang setara dengan US$4,2 juta (dengan harga serat rata-rata US$1,4/kg serat). Manfaat tersebut akan meningkat lebih tinggi apabila luas areal kapas mampu mencapai target pengembangan kapas nasional yaitu sekitar 70.000 ha pada 2010.', 'kapas.JPG'),
+('S0002', 'Kapas', 'Sebagai negara produsen tekstil No. 5 di dunia, volume ekspor industri tekstil dan produk tekstil (TPT) Indonesia pada tahun 2005 mencapai US$8,59 miliar dan mampu menyerap tenaga kerja mencapai 1,7 juta orang, belum termasuk tenaga kerja yang diserap dalam sektor pertanian dan perdagangan. Serat kapas merupakan bahan baku utama dari industri TPT. Kebutuhan akan serat kapas pada 2004/2005 berkisar 510 ribu ton yang diprediksi akan meningkat menjadi 688 ribu ton pada 2010. Produksi serat kapas dalam negeri hanya berkisar 1,600-2,500 ribu ton atau kurang dari 0,5% kebutuhan nasional. Sampai dengan tahun 2025, agribisnis kapas diharapkan dapat memberikan kontribusi pada industri TPT sekitar 30% dari kebutuhan bahan baku kapas saat ini. Tantangan yang dihadapi oleh pengembangan kapas Indonesia cukup kompleks, berawal dari ketidaktersediaan benih bermutu sampai dengan kelangkaan modal petani. Ketersediaan sumber daya alam terutama lahan kering masih cukup luas di luar Jawa, seperti Sulawesi Selatan, Nusa Tenggara Barat, dan Nusa Tenggara Timur yang memberikan peluang bagi pengembangan kapas nasional. Oleh karena itu, komoditas kapas merupakan salah satu komoditas yang diprioritaskan untuk dikembangkan dalam mendukung revitalisasi perkebunan.', 'kapas.JPG'),
 ('S0003', 'Kapuk', 'Sejak tahun 1928 sampai sekarang Indonesia masih merupakan negara pengekspor kapuk, tetapi jumlahnya terus menurun. Pada 1936/1937 Indonesia merupakan negara pengekspor terbesar di dunia, jumlahnya mencapai 28.400 ton serat atau sekitar 85% kebutuhan serat kapuk dunia. Pada tahun 2003 ekspor serat kapuk menurun menjadi 1.496 ton serat. Penurunan ekspor kapuk antara lain disebabkan banyaknya kapuk tua yang tidak produktif, penebangan kapuk tanpa diimbangi peremajaan, meningkatnya penggunaan serat kapuk dalam negeri, dan persaingan dengan bahan sintetis seperti karet busa. Selain itu penurunan ekspor kapuk Indonesia disebabkan kalah bersaing dalam harga dengan Thailand yang lebih murah. Untuk meningkatkan ekspor serat kapuk antara lain dengan meningkatkan produktivitas dan tetap mempertahankan kualitas serat kapuk yang baik. Varietas unggul yang telah dilepas Balittas untuk mendukung pengembangan kapuk ada-lah Muktiharjo 1 (MH 1) , Muktiharjo 2 (MH 2), dan Togo B dari tipe Karibea yang dilepas pada tahun 2006 dan sesuai untuk usaha tani monokultur, serta Muktiharjo 3 (MH 3) dan Muktiharjo 4 (MH 4) dari tipe yang sama yang sesuai untuk program penghijauan dan konservasi lahan yang dilepas pada tahun 2007.', 'kapuk.jpeg'),
-('S0004', 'Kenaf', 'Kenaf (Hibiscus cannabinus L) sudah lama dibudidayakan di Indonesia dan pada tahun 1986/1987 mencapai luas 26.000 ha yang tersebar di Lampung, Jawa Barat, Jawa Tengah, Jawa Timur, dan Kalimantan Selatan. Kenaf memiliki keunggulan beradaptasi luas pada berbagai kondisi lahan dan memiliki toleransi yang tinggi terhadap kondisi cekaman abiotik seperti: genangan air, kekeringan, dan pH tanah yang rendah (masam). Kenaf merupakan tanaman hari pendek berumur 100â€“140 hari, dikembangkan dengan benih. \nHampir semua bagian tanaman dapat digunakan untuk bahan baku berbagai industri. Daun kenaf mengandung protein kasar 24% sangat baik untuk pakan ternak unggas dan ruminansia. Biji kenaf mengandung lemak 20% bagus untuk minyak goreng karena banyak mengandung asam lemak tidak jenuh (Oleat dan Linoleat). Kayu kenaf sangat baik sebagai bahan baku industri particle board untuk berbagai keperluan seperti furnitur, pintu, jendela, kusen, pelapis dinding rumah, dll. Serat kenaf banyak digunakan sebagai bahan baku berbagai industri seperti: fibre board, geo-textile, soil remediation, pulp dan kertas, tekstil, karpet, kerajinan tangan, dll. Fibre board dari serat kenaf saat ini digunakan sebagai bahan untuk interior mobil seperti langit-langit, pintu, dushboard, dll. Selain itu, fibre board juga banyak digunakan pada industri eletronik untuk casing TV, radio, tape, dll. Juga untuk perumahan sebagai pelapis dinding rumah, peredam suara, dll. Geotextile, fibredrain banyak digunakan oleh para kontraktor pada pembangunan bandara, jembatan, pertambangan, dll. sebagai ba-han untuk pencegahan longsornya tanah dan penyerapan air tanah. Soil remediation menggu-nakan serat kenaf adalah untuk memperbaiki kondisi kesuburan tanah terutama pada bekas pertambangan sebagai usaha reklamasi. Serat kenaf juga digunakan sebagai bahan suplemen dalam pembuatan tekstil yang diblending dengan serat kapas dan poliester. Pulp dari kenaf digunakan untuk industri kertas. \nPengembangan tanaman kenaf diprioritaskan pada lahan bonorowo (lahan banjir) yang tidak sesuai untuk tanaman lain pada waktu banjir. Dengan menyempitnya areal bonorowo (akibat dari perbaikan jaringan irigasi), tanaman kenaf mulai dikembangkan pada daerah lahan masam di daerah Kalimantan Timur dan lahan kering di Jawa. Pengembangan tanaman kenaf diprioritaskan pada lahan sawah irigasi terbatas dan lahan podsolik merah kuning (PMK). Kendala yang dihadapi untuk pengembangan komoditas tersebut adalah masih rendahnya produktivitas di tingkat petani, dan sulitnya proses penyeratan.\nVarietas unggul kenaf yang telah dihasilkan Balittas adalah KR 11 untuk lahan bonorowo; KR 14 dan KR 15 untuk lahan podsolik merah kuning (PMK); dan KR 9 dan KR 12 untuk lahan kering. Varietasâ€“varietas tersebut dapat ditanam sembarang waktu karena kurang terpengaruh oleh fotoperiodisitas. Pengembangan kenaf adalah di Jawa (Barat, Tengah, Timur), Lampung, Riau, Sulawesi Selatan, dan Kalimantan (Selatan, Timur, Tengah, dan Barat). \nPenggunaan varietas unggul kenaf dapat meningkatkan pendapatan petani hingga 25â€“ 35%. Selain itu, tanaman kenaf dapat digunakan untuk memberdayakan lahan kritis, seperti lahan masam (PMK dan gambut). Kenaf dapat ditanam secara tumpang sari dengan jagung lokal atau P7. Penggunaan varietas unggul kenaf di daerah yang berpotensi untuk pengembangan akan menghasilkan produksi 2â€“3 ton serat/tahun dan meningkatkan pendapatan petani sebesar Rp2.000.000,00 per musim.', 'kenaf.jpeg'),
-('S0005', 'Rami', 'Rami semula dikembangkan di daerah dataran tinggi walaupun sebenarnya rami juga dapat dikembangkan di dataran rendah terutama yang memiliki fasilitas pengairan. Kendala pe-ngembangan rami adalah panjangnya rantai proses penyeratan sampai menjadi serat siap pintal. Proses yang panjang ini menyebabkan rami bukan sebagai â€œcash cropâ€, walaupun harga serat rami lebih tinggi dari harga serat kapas. Sebagai salah satu penghasil serat alami, rami merupakan komoditas yang perlu dikembangkan. Komoditas ini, selain menghasilkan serat alami yang bermutu tinggi, juga mempunyai hasil samping yang bernilai ekonomi, seperti kompos limbah dekortikasi dan daun rami untuk campuran pakan ternak. \nVarietas baru Ramindo 1, dengan nama lama Pujon 10, sudah sejak lama dikembangkan petani/pengusaha dan sudah terbukti keunggulannya baik di masyarakat maupun hasil penelitian. Ramindo 1 memberikan produktivitas serat yang tinggi (2â€“2,7 ton/ha/tahun) dengan kualitas serat yang cukup baik, serta memiliki daya adaptasi yang luas, sehingga klon ini sesuai untuk dikembangkan di dataran rendah, sedang hingga tinggi. \nLimbah dekortikasi (penyeratan) dapat diolah menjadi pupuk organik yang sangat halus dengan kandungan: Organik 20,13%; N total 2,15%; C/N ratio 3,01%; bahan organik 34,83%; P2O5 1,47%; K2O 2,76%; CaO 3,73%; MgO 2,22%; S 0,13%; dan KTK 65,56 me/100 g pupuk organik. Teknik pengomposan dapat dilakukan secara sederhana, yaitu dengan mencampurkan dedak, sedikit gula pasir, EM-4, dan disiram air secukupnya. Selain itu, sisa dekortikasi banyak mengandung kayu, dan seratnya baik untuk bahan baku pulp/kertas. \nDaun rami (40% dari bobot brangkasan segar) mengandung protein sekitar 24%, sangat baik untuk sumber protein ternak dan unggas. Setelah diproses menjadi tepung dapat dimanfaatkan untuk campuran konsentrat berbagai pakan ternak. Pakan ternak dari daun rami mengandung sekitar: 10% air; 1,05â€“1,75% lisin; 0,14â€“0,73% methionin; dan 0,18â€“0,31% triptophan. Selain itu mengandung karotin (provitamin A) dan riboflavin (vitamin B2) masing-masing 13,3 dan 0,74 mg tiap 100 g bahan keringnya. \nPenggunaan varietas unggul Ramindo 1 dengan pemberian paket pupuk lengkap (orga-nik, N, P, K dan ZPT+ PPC) dapat meningkatkan hasil serat sampai dengan 58â€“60%.', 'rami.jpeg'),
+('S0004', 'Kenaf', 'Kenaf (Hibiscus cannabinus L) sudah lama dibudidayakan di Indonesia dan pada tahun 1986/1987 mencapai luas 26.000 ha yang tersebar di Lampung, Jawa Barat, Jawa Tengah, Jawa Timur, dan Kalimantan Selatan. Kenaf memiliki keunggulan beradaptasi luas pada berbagai kondisi lahan dan memiliki toleransi yang tinggi terhadap kondisi cekaman abiotik seperti: genangan air, kekeringan, dan pH tanah yang rendah (masam). Kenaf merupakan tanaman hari pendek berumur 100-140 hari, dikembangkan dengan benih. Hampir semua bagian tanaman dapat digunakan untuk bahan baku berbagai industri. Daun kenaf mengandung protein kasar 24% sangat baik untuk pakan ternak unggas dan ruminansia. Biji kenaf mengandung lemak 20% bagus untuk minyak goreng karena banyak mengandung asam lemak tidak jenuh (Oleat dan Linoleat). Kayu kenaf sangat baik sebagai bahan baku industri particle board untuk berbagai keperluan seperti furnitur, pintu, jendela, kusen, pelapis dinding rumah, dll. Serat kenaf banyak digunakan sebagai bahan baku berbagai industri seperti: fibre board, geo-textile, soil remediation, pulp dan kertas, tekstil, karpet, kerajinan tangan, dll. Fibre board dari serat kenaf saat ini digunakan sebagai bahan untuk interior mobil seperti langit-langit, pintu, dushboard, dll. ', 'kenaf.jpeg'),
+('S0005', 'Rami', 'Rami semula dikembangkan di daerah dataran tinggi walaupun sebenarnya rami juga dapat dikembangkan di dataran rendah terutama yang memiliki fasilitas pengairan. Kendala pengembangan rami adalah panjangnya rantai proses penyeratan sampai menjadi serat siap pintal. Sebagai salah satu penghasil serat alami, rami merupakan komoditas yang perlu dikembangkan. Komoditas ini, selain menghasilkan serat alami yang bermutu tinggi, juga mempunyai hasil samping yang bernilai ekonomi, seperti kompos limbah dekortikasi dan daun rami untuk campuran pakan ternak. Varietas baru Ramindo 1 sudah sejak lama dikembangkan petani/pengusaha dan sudah terbukti keunggulannya baik di masyarakat maupun hasil penelitian. Ramindo 1 memberikan produktivitas serat yang tinggi (2-2,7 ton/ha/tahun) dengan kualitas serat yang cukup baik, serta memiliki daya adaptasi yang luas, sehingga klon ini sesuai untuk dikembangkan di dataran rendah, sedang hingga tinggi.', 'rami.jpeg'),
 ('S0006', 'Rosela', '', 'rosela.PNG'),
-('S0010', 'Sisal', '', 'sisal.jpg');
+('S0010', 'Sisal', '', 'sisal.jpg'),
+('S0011', 'Abaka', 'Tanaman abaka (Musa textilis Nee) termasuk salah satu jenis tanaman pisang yang buahnya tidak dimanfaatkan, tetapi diambil seratnya dari batang semu. Pada awal abad ke-16 penduduk asli daerah Cebu, Filipina memanfaatkan serat abaka untuk bahan pakaian. Oleh sebab itu, tanaman abaka dinamakan Musa textilis. Sejak dahulu serat abaka populer secara komersial dalam bentuk produksi tali dan jaring ikan. Saat ini, serat diolah untuk bahan baku kertas, seperti kertas cologne, kertas sering, kertas teh celup, kertas stensil, kertas rokok, serta kertas yang memerlukan ketahanan dan daya simpan yang tinggi seperti kertas uang, kertas surat berharga, kertas dokumen, kertas peta, dan produk komersial lainnya.', 'abaka.png');
 
 --
--- Triggers `serat`
+-- Trigger `serat`
 --
 DELIMITER $$
 CREATE TRIGGER `tr_id_serat` BEFORE INSERT ON `serat` FOR EACH ROW BEGIN
@@ -2952,7 +3039,68 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `varietas`
+-- Struktur dari tabel `stok_benih`
+--
+
+CREATE TABLE `stok_benih` (
+  `id_stok_benih` char(6) NOT NULL,
+  `id_benih` char(5) NOT NULL,
+  `asal` varchar(255) NOT NULL,
+  `tahun_panen` char(4) NOT NULL,
+  `kelas` varchar(255) NOT NULL,
+  `stok_bulan_terakhir` double NOT NULL,
+  `stok_sampai` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `stok_benih`
+--
+
+INSERT INTO `stok_benih` (`id_stok_benih`, `id_benih`, `asal`, `tahun_panen`, `kelas`, `stok_bulan_terakhir`, `stok_sampai`) VALUES
+('SB0001', 'B0022', 'Sumberrejo', '2008', 'Dasar', 0, '2018-06-30'),
+('SB0002', 'B0023', 'Asembagus', '2012', 'Dasar', 0, '2018-06-30'),
+('SB0003', 'B0023', 'Asembagus', '2012', 'Pokok', 0, '2018-06-30'),
+('SB0004', 'B0023', 'Asembagus', '2013', 'Dasar', 0, '2018-06-30'),
+('SB0005', 'B0023', 'Asembagus', '2013', 'Pokok', 0, '2018-06-30'),
+('SB0006', 'B0023', 'Asembagus', '2014', 'Dasar', 0, '2018-06-30'),
+('SB0007', 'B0023', 'Asembagus', '2014', 'Pokok', 0, '2018-06-30'),
+('SB0008', 'B0024', 'Asembagus', '2012', 'Pokok', 0, '2018-06-30'),
+('SB0009', 'B0024', 'Asembagus', '2013', 'Dasar', 0, '2018-06-30'),
+('SB0010', 'B0024', 'Asembagus', '2013', 'Pokok', 0, '2018-06-30'),
+('SB0011', 'B0024', 'Asembagus', '2015', 'Pokok', 0, '2018-06-30'),
+('SB0012', 'B0025', 'Asembagus', '2012', 'Dasar', 0, '2018-06-30'),
+('SB0013', 'B0025', 'Asembagus', '2012', 'Pokok', 0, '2018-06-30'),
+('SB0014', 'B0025', 'Asembagus', '2013', 'Dasar', 0, '2018-06-30'),
+('SB0015', 'B0025', 'Asembagus', '2013', 'Pokok', 0, '2018-06-30'),
+('SB0016', 'B0025', 'Asembagus', '2015', 'Pokok', 0, '2018-06-30'),
+('SB0017', 'B0027', 'Sumberrejo', '2017', 'Dasar', 219.9, '2018-06-30'),
+('SB0018', 'B0012', 'Asembagus', '2012', 'Pokok', 0.1, '2018-06-30'),
+('SB0019', 'B0012', 'Asembagus', '2013', 'Dasar', 0, '2018-06-30'),
+('SB0020', 'B0012', 'Asembagus', '2013', 'Pokok', 0, '2018-06-30'),
+('SB0021', 'B0012', 'Asembagus', '2015', 'Pokok', 0, '2018-06-30'),
+('SB0022', 'B0007', 'Sumberrejo', '2014', 'Dasar', 150.96, '2018-06-30'),
+('SB0023', 'B0007', 'Sumberrejo', '2015', 'Dasar', 170.5, '2018-06-30'),
+('SB0024', 'B0008', 'Sumberrejo', '2014', 'Dasar', 197.72, '2018-06-30'),
+('SB0025', 'B0008', 'Asembagus', '2015', 'Dasar', 363.86, '2018-06-30'),
+('SB0026', 'B0009', 'Sumberrejo', '2014', 'Dasar', 113.52, '2018-06-30'),
+('SB0027', 'B0010', 'Sumberrejo', '2014', 'Dasar', 245.26, '2018-06-30'),
+('SB0028', 'B0001', 'Sumberrejo', '2013', 'Dasar', 26.9, '2018-06-30'),
+('SB0029', 'B0002', 'Sumberrejo', '2007', 'Dasar', 0, '2018-06-30'),
+('SB0030', 'B0002', 'Sumberrejo', '2012', 'Dasar', 16.3, '2018-06-30'),
+('SB0031', 'B0003', 'Sumberrejo', '2013', 'Dasar', 0, '2018-06-30'),
+('SB0032', 'B0003', 'Sumberrejo', '2014', 'Dasar', 21.93, '2018-06-30'),
+('SB0033', 'B0004', 'Sumberrejo', '2007', 'Dasar', 0, '2018-06-30'),
+('SB0034', 'B0004', 'Sumberrejo', '2012', 'Dasar', 0, '2018-06-30'),
+('SB0035', 'B0005', 'Sumberrejo', '2007', 'Dasar', 0, '2018-06-30'),
+('SB0036', 'B0005', 'Sumberrejo', '2008', 'Dasar', 0, '2018-06-30'),
+('SB0037', 'B0005', 'Sumberrejo', '2013', 'Dasar', 0, '2018-06-30'),
+('SB0038', 'B0028', 'Karangploso', '2017', 'Dasar', 58.85, '2018-06-30'),
+('SB0039', 'B0029', 'Karangploso', '2017', 'Dasar', 154.6, '2018-06-30');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `varietas`
 --
 
 CREATE TABLE `varietas` (
@@ -2968,7 +3116,7 @@ CREATE TABLE `varietas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `varietas`
+-- Dumping data untuk tabel `varietas`
 --
 
 INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pelepasan`, `tanggal_upload`, `waktu_upload`, `file_SK`, `file_gambar`, `deskripsi_varietas`) VALUES
@@ -2997,7 +3145,7 @@ INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pel
 ('S0003', 'V0027', 'Muktihardjo 2 (MH 2)', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - MH2.pdf', 'mh2.jpg', 'Varietas kapuk hibrida MH 2 merupakan varietas kapuk hibrida hasil persilangan tiga te-tua yaitu (Ruezen Randu x Bondowoso) x Congo yang disingkat dengan (RRxBW)C. Varietas ka-puk hibrida MH 2 pada umur 6 tahun, 12 tahun, dan 40 tahun masing-masing produksinya 331 gelondong/pohon, 868 gelondong/pohon, dan 2.011 gelondong/pohon. Pohon yang telah ber-umur cukup lanjut yaitu lebih dari 40 tahun mampu menghasilkan 42.532 gelondong/ha atau 2.011 gelondong/pohon, setara dengan 335 kg serat/ha atau 6,84 kg serat/ pohon. Varietas ini membentuk pohon-pohon yang tumbuh kuat, yang mempunyai sifat yang berbeda dengan in-duknya. Pohon tersebut lebih tahan terhadap kekeringan dibanding klon Jawa. Seratnya ber-warna putih mengkilat, tidak pecah di pohon, jumlah gelondong dan produksinya lebih banyak dibanding kapuk Jawa.\r\n'),
 ('S0003', 'V0028', 'Muktihardjo 3 (MH 3)', '2014-01-29', '2014-01-29', '08:00:00', '', 'mh3.jpeg', 'Varietas kapuk hibrida MH 3 merupakan hasil persilangan antara klon Congo 2 (tipe Kari-bea) dengan klon lokal Lanang (tipe Indika). Klon Congo merupakan klon introduksi dari Congo, Afrika, yang produksinya mencapai 2.500 - 3.000 gelondong/pohon. Klon Lanang merupakan klon lokal yang mempunyai kelebihan warna serat putih mengkilat, tetapi produksinya rendah yaitu sekitar 750 gelondong/pohon. Varietas MH 3 produksinya dapat mencapai 2.400 gelon-dong/pohon yang lebih tinggi 18% - 20% dibanding MH 1 dan 27% - 30% dibanding MH2 yang sudah dilepas. Hasil seratnya berwarna putih mengkilat yang sangat disukai petani dan eksportir kare-na sesuai dengan kualitas Java Kapok. Pengembangannya disarankan secara okulasi karena, perkembangan melalui biji akan mengalami segrgasi.\r\n'),
 ('S0003', 'V0029', 'Muktihardjo 4 (MH 4)', '2014-01-29', '2014-01-29', '08:00:00', '', 'mh4.jpeg', 'Varietas kapuk MH 4 merupakan hasil persilangan antara klon Seluwok Sawangan 29 (SS 29) yang merupakan klon lokal (tipe Indika), dengan klon Congo (C, tipe Karibea) merupakan klon introduksi dari Congo, Afrika, yang produksinya mencapai 2.500-3.000 gelondong/pohon, tetapi warna serat abu-abu kecokelatan. Klon SS 29 mempunyai kelebihan warna serat putih mengkilat, tetapi produksinya rendah yaitu sekitar 600-750 gelondong/pohon. MH 4 produksi-nya dapat mencapai 2.200 gelondong/pohon, lebih tinggi 11â€“13 % dibanding MH 1 dan 18%-25% dibanding MH 2. Hasil seratnya berwarna putih mengkilat yang sangat disukai petani dan eksportir, karena sesuai dengan kualitas â€œJava Kapok.\r\n'),
-('S0003', 'V0030', 'Tobo B', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - TOGO B.pdf', 'togo b.jpeg', 'Varietas Togo B merupakan hasil seleksi dari varietas introduksi Togo yang berasal dari Togo di Afrika. Varietas ini menunjukkan potensi hasil gelondong yang tinggi dengan jumlah gelondong 41.428 gelondong/ha atau 2.551 gelondong/pohon pada umur 40 tahun. Ketika masih muda (12 tahun), varietas ini sudah mampu menghasilkan 845 gelondong/pohon. Serat yang dihasilkan oleh Togo B putih mengkilat, dan buahnya tidak pecah di pohon. Dengan habitus pohon yang kokoh, Togo-B digunakan dalam program konservasi lahan dan sebagai batang bawah dalam penyediaan bibit kapuk secara okulasi. Dengan habitus pohon yang kokoh, Togo-B digunakan dalam program konservasi lahan dan sebagai batang bawah dalam penyediaan bibit kapuk secara okulasi. \r\n'),
+('S0003', 'V0030', 'Togo B', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - TOGO B.pdf', 'togo b.jpeg', 'Varietas Togo B merupakan hasil seleksi dari varietas introduksi Togo yang berasal dari Togo di Afrika. Varietas ini menunjukkan potensi hasil gelondong yang tinggi dengan jumlah gelondong 41.428 gelondong/ha atau 2.551 gelondong/pohon pada umur 40 tahun. Ketika masih muda (12 tahun), varietas ini sudah mampu menghasilkan 845 gelondong/pohon. Serat yang dihasilkan oleh Togo B putih mengkilat, dan buahnya tidak pecah di pohon. Dengan habitus pohon yang kokoh, Togo-B digunakan dalam program konservasi lahan dan sebagai batang bawah dalam penyediaan bibit kapuk secara okulasi. Dengan habitus pohon yang kokoh, Togo-B digunakan dalam program konservasi lahan dan sebagai batang bawah dalam penyediaan bibit kapuk secara okulasi. \r\n'),
 ('S0003', 'V0031', 'LC31', '2014-01-29', '2014-01-29', '08:00:00', '', 'lc31.jpeg', 'Persilangan klon Lanang x Congo yang dilakukan pada sekitar tahun 1920-an dilanjutkan dengan penanaman benih hasil persilangan dan evaluasi klon hibrida. Di antara klon-klon hibrida yang diseleksi, maka terpilihlah individu nomor 31 yang menunjukkan keunggulan dibandingkan klon hibrida lainnya dan klon terpilih tersebut mulai diperbanyak dan ditanam oleh manajemen perkebunan pada saat itu. Keunikan varietas kapuk LC 31 adalah pembentukan cabang pertama yang rendah antara 20 cm-100 cm diatas permukaan tanah.\r\n'),
 ('S0004', 'V0032', 'Karangploso 14 (KR 14)', '2007-02-20', '2014-01-29', '08:00:00', 'Kenaf - KR 14.pdf', 'kr14.jpeg', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH rendah, kahat unsur hara, dan kandungan Al dan Fe tinggi. Lahan PMK di Kalimantan tersedia cukup luas yang berpotensi untuk pengembangan kenaf. Pemberdayaan lahan PMK di Kalimantan untuk pengembangan kenaf di samping memenuhi serat kenaf dalam negeri juga akan ber-dampak pada peningkatan pendapatan petani dan pendapatan asli daerah. Untuk mendukung pengembangan kenaf di lahan PMK Balittas telah menghasilkan dua varietas unggul yang telah dilepas berdasarkan SK. Mentan No. 133/Kpts/SR.120/2/2007 dan 134/Kpts/SR.120/2/2007 sebagai varietas unggul baru dengan nama Karangploso 14 (KR 14) dan Karangploso 15 (KR 15).\r\n'),
 ('S0004', 'V0033', 'Karangploso 15 (KR 15)', '2007-02-20', '2014-01-29', '08:00:00', 'Kenaf - KR 15.pdf', 'kr15.jpeg', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH rendah, kahat unsur hara, dan kandungan Al dan Fe tinggi. Lahan PMK di Kalimantan tersedia cukup luas yang berpotensi untuk pengembangan kenaf. Pemberdayaan lahan PMK di Kalimantan untuk pengembangan kenaf di samping memenuhi serat kenaf dalam negeri juga akan ber-dampak pada peningkatan pendapatan petani dan pendapatan asli daerah. Untuk mendukung pengembangan kenaf di lahan PMK Balittas telah menghasilkan dua varietas unggul yang telah dilepas berdasarkan SK. Mentan No. 133/Kpts/SR.120/2/2007 dan 134/Kpts/SR.120/2/2007 sebagai varietas unggul baru dengan nama Karangploso 14 (KR 14) dan Karangploso 15 (KR 15).\r\n'),
@@ -3020,7 +3168,7 @@ INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pel
 ('S0010', 'V0057', 'H 11648', '2017-02-14', '2018-07-26', '08:00:00', 'SISAL - H 11648.pdf', 'sisal.jpg', '');
 
 --
--- Triggers `varietas`
+-- Trigger `varietas`
 --
 DELIMITER $$
 CREATE TRIGGER `tr_id_varietas` BEFORE INSERT ON `varietas` FOR EACH ROW BEGIN
@@ -3045,115 +3193,141 @@ DELIMITER ;
 --
 
 --
--- Indexes for table `atribut`
+-- Indeks untuk tabel `atribut`
 --
 ALTER TABLE `atribut`
   ADD PRIMARY KEY (`id_atribut`);
 
 --
--- Indexes for table `benih`
+-- Indeks untuk tabel `benih`
 --
 ALTER TABLE `benih`
   ADD PRIMARY KEY (`id_benih`),
   ADD KEY `id_serat` (`id_serat`);
 
 --
--- Indexes for table `budidaya`
+-- Indeks untuk tabel `detail_monograf`
 --
-ALTER TABLE `budidaya`
-  ADD PRIMARY KEY (`id_budidaya`),
-  ADD KEY `id_serat` (`id_serat`);
+ALTER TABLE `detail_monograf`
+  ADD PRIMARY KEY (`id_detail_monograf`),
+  ADD KEY `id_monograf` (`id_monograf`);
 
 --
--- Indexes for table `detail_varietas`
+-- Indeks untuk tabel `detail_varietas`
 --
 ALTER TABLE `detail_varietas`
   ADD KEY `id_varietas` (`id_varietas`),
   ADD KEY `id_atribut` (`id_atribut`);
 
 --
--- Indexes for table `distribusi_benih`
+-- Indeks untuk tabel `distribusi_benih`
 --
 ALTER TABLE `distribusi_benih`
   ADD PRIMARY KEY (`id_distribusi`),
   ADD KEY `id_benih` (`id_benih`);
 
 --
--- Indexes for table `gambar_leaflet`
+-- Indeks untuk tabel `gambar_leaflet`
 --
 ALTER TABLE `gambar_leaflet`
   ADD PRIMARY KEY (`id_gambar`),
   ADD KEY `id_leaflet` (`id_leaflet`);
 
 --
--- Indexes for table `jenis_leaflet`
+-- Indeks untuk tabel `jenis_leaflet`
 --
 ALTER TABLE `jenis_leaflet`
   ADD PRIMARY KEY (`id_jenis_leaflet`);
 
 --
--- Indexes for table `leaflet`
+-- Indeks untuk tabel `leaflet`
 --
 ALTER TABLE `leaflet`
   ADD PRIMARY KEY (`id_leaflet`),
   ADD KEY `id_jenis` (`id_jenis_leaflet`);
 
 --
--- Indexes for table `serat`
+-- Indeks untuk tabel `monograf`
+--
+ALTER TABLE `monograf`
+  ADD PRIMARY KEY (`id_monograf`),
+  ADD KEY `id_serat` (`id_serat`);
+
+--
+-- Indeks untuk tabel `serat`
 --
 ALTER TABLE `serat`
   ADD PRIMARY KEY (`id_serat`);
 
 --
--- Indexes for table `varietas`
+-- Indeks untuk tabel `stok_benih`
+--
+ALTER TABLE `stok_benih`
+  ADD PRIMARY KEY (`id_stok_benih`),
+  ADD KEY `id_benih` (`id_benih`);
+
+--
+-- Indeks untuk tabel `varietas`
 --
 ALTER TABLE `varietas`
   ADD PRIMARY KEY (`id_varietas`),
   ADD KEY `id_serat` (`id_serat`);
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `benih`
+-- Ketidakleluasaan untuk tabel `benih`
 --
 ALTER TABLE `benih`
   ADD CONSTRAINT `benih_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `budidaya`
+-- Ketidakleluasaan untuk tabel `detail_monograf`
 --
-ALTER TABLE `budidaya`
-  ADD CONSTRAINT `budidaya_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `detail_monograf`
+  ADD CONSTRAINT `detail_monograf_ibfk_1` FOREIGN KEY (`id_monograf`) REFERENCES `monograf` (`id_monograf`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `detail_varietas`
+-- Ketidakleluasaan untuk tabel `detail_varietas`
 --
 ALTER TABLE `detail_varietas`
   ADD CONSTRAINT `detail_varietas_ibfk_1` FOREIGN KEY (`id_varietas`) REFERENCES `varietas` (`id_varietas`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `detail_varietas_ibfk_2` FOREIGN KEY (`id_atribut`) REFERENCES `atribut` (`id_atribut`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `distribusi_benih`
+-- Ketidakleluasaan untuk tabel `distribusi_benih`
 --
 ALTER TABLE `distribusi_benih`
   ADD CONSTRAINT `distribusi_benih_ibfk_1` FOREIGN KEY (`id_benih`) REFERENCES `benih` (`id_benih`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `gambar_leaflet`
+-- Ketidakleluasaan untuk tabel `gambar_leaflet`
 --
 ALTER TABLE `gambar_leaflet`
   ADD CONSTRAINT `gambar_leaflet_ibfk_1` FOREIGN KEY (`id_leaflet`) REFERENCES `leaflet` (`id_leaflet`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `leaflet`
+-- Ketidakleluasaan untuk tabel `leaflet`
 --
 ALTER TABLE `leaflet`
   ADD CONSTRAINT `leaflet_ibfk_2` FOREIGN KEY (`id_jenis_leaflet`) REFERENCES `jenis_leaflet` (`id_jenis_leaflet`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `varietas`
+-- Ketidakleluasaan untuk tabel `monograf`
+--
+ALTER TABLE `monograf`
+  ADD CONSTRAINT `monograf_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `stok_benih`
+--
+ALTER TABLE `stok_benih`
+  ADD CONSTRAINT `stok_benih_ibfk_1` FOREIGN KEY (`id_benih`) REFERENCES `benih` (`id_benih`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `varietas`
 --
 ALTER TABLE `varietas`
   ADD CONSTRAINT `varietas_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;

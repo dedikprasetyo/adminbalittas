@@ -75,7 +75,7 @@ class M_varietas extends CI_Model{
 	}
 
 	 function selectVarietasOnSide(){
-        	$data=$this->db->query("SELECT * From varietas ORDER BY tanggal_upload DESC  LIMIT 42");
+        	$data=$this->db->query("SELECT * From varietas ORDER BY tanggal_upload DESC  LIMIT 7");
         	return $data->result();
         }
 
@@ -85,5 +85,30 @@ class M_varietas extends CI_Model{
 									JOIN gambar_leaflet g ON l.id_leaflet=g.id_leaflet LIMIT 22");
      		return $data->result();
      }
+
+     function pencarianVarietas($cari){
+     		if($cari == "#varietas"){
+				$cari="";
+			}
+			$data=$this->db->query("SELECT v.nama_varietas, v.deskripsi_varietas  FROM varietas  v
+									WHERE v.nama_varietas LIKE '%$cari%' OR v.deskripsi_varietas LIKE '%$cari%' 
+									");
+			return $data->result();
+     }
+
+  //    public function pencarianVarietas($cari){
+		// 	if($cari == "#varietas"){
+		// 		$cari="";
+		// 	}
+		// 	$query=$this->db->distinct();
+		// 	$query=$this->db->select("*");
+		// 	$query=$this->db->from("varietas");
+		// 	$query=$this->db->group_start()
+		// 					->where('nama_varietas like', "%$cari%")
+		// 					->or_where('deskripsi_varietas like', "%%$cari")
+		// 					->group_end();
+		// 	$query=$this->db->get();
+		// 	return $query->result();
+		// }
 }
 ?>

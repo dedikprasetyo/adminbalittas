@@ -3,10 +3,10 @@
 	<head>
 		<title><?php echo "$judul"; ?></title>
 		<meta charset="utf-8">		
-		<meta name="description" content="A Tuts+ course">
-		<meta name="author" content="Gusna Ikhsan">		
+		<meta name="description" content="A Tuts+ course">		
 		<link rel="stylesheet" href="<?php echo base_url() ?>bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="<?php echo base_url() ?>bootstrap/css/balittas.css">
+		<link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -19,12 +19,12 @@
 			<div align="center" style="margin-top: 100px;">				
 				<div class="alert alert-warning fade in text-center" style="width: 40%;">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<p><strong>salah lurr</strong></p>
+					<p><strong>Password salah!</strong></p>
 				</div>
 			</div>
 			<?php  } ?>		
 		<div class="text-center" style="margin-top: 100px; background-color: none;">
-			<a href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>item img/logoBalittas2.png" style="width:350px;height: auto"></a>
+			<a href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>item img/logoBalittas.png" style="width:350px;height: auto; margin-top: 45px"></a>
 		</div>
 		<div style="background-color: none;" align="center">			
 			<div style="background-color:orange; width: 350px;border-radius: 5px;" class="text-center">

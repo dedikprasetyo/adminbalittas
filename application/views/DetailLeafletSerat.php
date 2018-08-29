@@ -21,7 +21,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	</head>	
 	<body>
-		<header>						
+		<!-- <header>						
 			<div class="hidden-md hidden-lg" style="background-color: rgb(28,69,26); height: 70px;"></div>			
 			<nav class="navbar navbar-inverse navbar-fixed-top navbarHover">
 				<div class="container-fluid">
@@ -59,14 +59,14 @@
 								  	</div>							  	
 							  	</div>
 							</div>
-							<!-- <div class="dropdownHeader">
+							<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Budidaya Tanaman Serat <span class="caret"></div>
 							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -126px;">
 								  	<div class="container-fluid">		
 							          	<a href="#" style="margin-top: 10px; margin-bottom: 10px;">Masing - masing Komoditas</a>					    
 								  	</div>
 							  	</div>
-							</div> -->
+							</div>
 							<div class="dropdownHeader">
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Leaflet Produk <span class="caret"></div>
 							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -175px; min-width: 350px;">
@@ -125,14 +125,14 @@
 				</div>
 			</nav>	
 			<!-- Gambar tengah -->									 
-			<div class="containerImg" id="home">
+			<!-- <div class="containerImg" id="home">
 				<img src="item img/tembakauHeader.jpg" alt="" style="width: 100%;">
 			 	<div class="contentImg text-center">
 				    <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Detail Leaflet</h1>
 				    <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Detail Leaflet</h1>				    
 			  	</div>
 			</div>	
-		</header>
+		</header> -->
 
 		<!-- CONTENT -->
 		<div class="container">
@@ -145,302 +145,34 @@
 					<hr style="border-color: grey;margin-top: 10px;">
 					<div class="row" id="Tebu" style="background-color: #eee;  margin-top:20px;">
 						<div class="col-sm-3 col-lg-12">
-							<h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 35px;"><strong>Tebu</strong></h4>
+							<h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 35px;"><strong>Leaflet</strong></h4>
 						<hr style="border-color: rgb(242,97,5);margin-top: -10px;">
 						</div>
 						<?php
 
 							$ganjil = true;
-							foreach ($leaflettb as $value) {
+							foreach ($leafletsemua as $value) {
 								if ($ganjil) {
 						 ?>
 						<div class="col-xs-12 col-sm-4 col-lg-4"> 
 							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
 
-										<img class="leafletImg img-responsive" src="<?php echo base_url() ?>item img/Leaflettebu/<?php echo $value->file; ?>" alt="" style="width:100%;border-radius: 3px;">
+										<img class="leafletImg img-responsive" src="<?php echo base_url() ?>item img/Leafletgabungan/<?php echo $value->file; ?>" alt="" style="width:100%;border-radius: 3px;">
 						<?php 	$ganjil = false; } else { ?>
-										<img class="leafletImg img-responsive" src="<?php echo base_url() ?>item img/Leaflettebu/<?php echo $value->file; ?>" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
+										<img class="leafletImg img-responsive" src="<?php echo base_url() ?>item img/Leafletgabungan/<?php echo $value->file; ?>" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
 									<h4 style="color:rgb(242,97,5);"><?php echo $value->nama_leaflet; ?></h4>
 							</div>						
 						</div>
 						<?php 	$ganjil = true; } } ?>
-						<!-- <div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-										<img class="leafletImg" src="item img/Leaflettebu/poj28781.jpg" alt="" style="width:100%;border-radius: 3px;">
-										<img class="leafletImg" src="item img/Leaflettebu/poj28782.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">VARIETAS UNGGUL BARU POJ 2878 AGRIBUN KERINCI</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leaflettebu/hamatebu1.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leaflettebu/hamatebu2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">PENGENDALIAN SERANGGA HAMA PADA TANAMAN TEBU</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leaflettebu/kebuthanairtanamantebu1.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leaflettebu/kebuthanairtanamantebu2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">KEBUTUHAN AIR TANAMAN TEBU</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leaflettebu/penataanvarietastebu1.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leaflettebu/penataanvarietastebu2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">PENATAAN VARIETAS TEBU</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leaflettebu/rawatratontebu1.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leaflettebu/rawatratontebu2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">RAWAT RATOON TEBU DI LAHAN KERING</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leaflettebu/teknologiproduksibenihtebu1.jpg" alt="" style="height: 179px;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leaflettebu/teknologiproduksibenihtebu2.jpg" alt="" style="height: 179px;border-radius: 3px; margin-top: 5px; margin-bottom: 0px;">
-								<h4 style="color:rgb(242,97,5);">TEKNOLOGI PRODUKSI BENIH TEBU</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leaflettebu/tebangmuatangkuttebu1.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leaflettebu/tebangmuatangkuttebu2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">TEBANG MUAT ANGKUT TEBU</h4>
-							</div>						
-						</div> -->
+						
 					</div>
 					<ul class="pager" >
-						<li><a href=""><</a></li>
-						<li><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">></a></li>
-					</ul>
+						<?php foreach($link as $pagination) {
+							echo "<li>". $pagination."</li>";
+						}?>
+					</ul> 
 
-					<div class="row" id="Jarakpagar" style="background-color: #eee;  margin-top:20px;">
-							<div class="col-sm-3 col-lg-12">
-							<h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 35px;"><strong>Jarak Pagar</strong></h4>
-						<hr style="border-color: rgb(242,97,5);margin-top: -10px;">
-						</div>
-						<?php
-
-							$ganjil = true;
-							foreach ($leafletjp as $value) :
-								if ($ganjil) {
-						 ?>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-
-										<img class="leafletImg img-responsive" src="<?php echo base_url() ?>item img/Leafletjarakpagar/<?php echo $value->file; ?>" alt="" style="width:100%;border-radius: 3px;">
-						<?php 	$ganjil = false; } else { ?>
-										<img class="leafletImg img-responsive" src="<?php echo base_url() ?>item img/Leafletjarakpagar/<?php echo $value->file; ?>" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-									<h4 style="color:rgb(242,97,5);"><?php echo $value->nama_leaflet; ?></h4>
-							</div>						
-						</div>
-						<?php 	$ganjil = true; } ?>
-					<?php endforeach; ?>
-						<!-- <div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg img-responsive" src="item img/Leafletjarakpagar/jarak pagar.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg img-responsive" src="item img/Leafletjarakpagar/jarak pagar2.jpeg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">JARAK PAGAR (Jatropha curcas L.) POTENSI DAN PENGEMBANGAN</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletjarakpagar/populasi komposit.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg " src="item img/Leafletjarakpagar/populasi komposit2.jpeg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-									<h4 style="color:rgb(242,97,5);">POPULASI KOMPOSIT JARAK PAGAR (Jatropha curcas L.) IP-2P, IP-2M, IP-2</h4>
-							</div>						
-						</div> -->
-					</div>
-					<ul class="pager" >
-						<li><a href=""><</a></li>
-						<li><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">></a></li>
-					</ul>
-
-					<div class="row" id="Jarakkepyar"  style="background-color: #eee;  margin-top:20px;">
-						<div class="col-sm-3 col-lg-12">
-							<h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 35px;"><strong>Jarak Kepyar</strong></h4>
-						<hr style="border-color: rgb(242,97,5);margin-top: -10px;">
-						</div>
-						<?php $ganjil = true; foreach($leafletjk as $value){
-							 if ($ganjil){
-						?>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="<?php echo base_url() ?>item img/Leafletjarakkepyar/<?php echo $value->file; ?>" alt="" style="width: 100%;border-radius: 3px;">
-						<?php $ganjil = false; } else{ ?>
-							<img class="leafletImg" src="<?php echo base_url() ?>item img/Leafletjarakkepyar/<?php echo $value->file; ?>" alt="" style="width: 100%;border-radius: 3px; margin-top: 33px;">
-								<h4 style="color:rgb(242,97,5);"><?php echo $value->nama_leaflet; ?></h4>
-							</div>						
-						</div>
-						<?php $ganjil = true;} }?>
 					
-						<!-- <div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletjarakkepyar/teknikbudidayajarkep1.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletjarakkepyar/teknikbudidayajarkep2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 33px;">
-								<h4 style="color:rgb(242,97,5);">TEKNIK BUDIDAYA JARAK KEPYAR</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletjarakkepyar/jarak dan kegunaanya.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletjarakkepyar/jarak dan kegunaanya2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">JARAK DAN KEGUNAANNYA</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4">
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletjarakkepyar/var unggl jarak wijen.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletjarakkepyar/var unggl jarak wijen2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">VARIETAS UNGGUL JARAK DAN WIJEN</h4>
-							</div>						
-						</div> -->
-						</div>
-						<ul class="pager" >
-						<li><a href=""><</a></li>
-						<li><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">></a></li>
-						</ul>
-
-						<div class="row" id="wijen"  style="background-color: #eee;  margin-top:20px;">
-						<div class="col-sm-3 col-lg-12">
-							<h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 35px;"><strong>Wijen</strong></h4>
-						<hr style="border-color: rgb(242,97,5);margin-top: -10px;">
-						</div>
-
-						<?php
-
-							$ganjil = true;
-							foreach ($leafletwj as $value) {
-								if ($ganjil) {
-						 ?>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-
-										<img class="leafletImg img-responsive" src="<?php echo base_url() ?>item img/Leafletwijen/<?php echo $value->file; ?>" alt="" style="width:100%;border-radius: 3px;">
-						<?php 	$ganjil = false; } else { ?>
-										<img class="leafletImg img-responsive" src="<?php echo base_url() ?>item img/Leafletwijen/<?php echo $value->file; ?>" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-									<h4 style="color:rgb(242,97,5);"><?php echo $value->nama_leaflet; ?></h4>
-							</div>						
-						</div>
-						<?php 	$ganjil = true; } } ?>
-
-						<!-- <div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletwijen/winas1.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletwijen/winas2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">VARIETAS WIJEN UNGGUL BARU WINAS 1 DAN WINAS 2</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletwijen/budidaya wijen.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletwijen/budidaya wijen2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">BUDI DAYA WIJEN DI LAHAN KERING DAN SAWAH</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletwijen/varietas unggul wijen.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletwijen/varietas unggul wijen2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">VARIETAS UNGGUL BARU UNTUK PENGEMBANGAN WIJEN DI INDONESIA</h4>
-							</div>				
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletwijen/penyakit wijen.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletwijen/penyakit wijen2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">MENGENAL PENYAKIT WIJEN DAN PENGENDALIANNYA</h4>
-							</div>				
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletwijen/hama penting wijen.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletwijen/hama penting wijen2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">HAMA PENTING TANAMAN WIJEN DAN PENGENDALIANNYA</h4>
-							</div>				
-						</div> -->
-						</div>
-						<ul class="pager" >
-						<li><a href=""><</a></li>
-						<li><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">></a></li>
-						</ul>
-
-						<div class="row" id="alsin"  style="background-color: #eee; margin-top:20px;">
-						<div class="col-sm-3 col-lg-12">
-							<h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 35px;"><strong>Alat dan Mesin</strong></h4>
-						<hr style="border-color: rgb(242,97,5);margin-top: -10px;">
-						</div>
-
-						<?php 
-						 $ganjil=true;
-						 foreach($leafletalsin as $value) :
-						 if($ganjil){
-						 ?>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="<?php echo base_url() ?>item img/Leafletalsin/<?= $value->file; ?>" alt="" style="width: 100%;border-radius: 3px;">
-						<?php $ganjil=false;} else{?>
-									<img class="leafletImg" src="<?php echo base_url() ?>item img/Leafletalsin/<?= $value->file; ?>" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);"><?= $value->nama_leaflet; ?></h4>
-							</div>						
-						</div>
-						<?php $ganjil=true;} ?>
-						<?php endforeach; ?>
-
-
-						<!-- <div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletalsin/budchips1 (1).jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletalsin/budchips1.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">TEKNIK PEMBIBITAN TEBU BUD CHIPS</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletalsin/mesinrajangtembakau1.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletalsin/mesinrajangtembakau2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">ALAT DAN MESIN PERAJANG DAUN TEMBAKAU</h4>
-							</div>						
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-							<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletalsin/mesin pemecah.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletalsin/mesin pemecah2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">MESIN PEMECAH BUAH JARAK PAGAR</h4>
-							</div>				
-						</div>
-						<div class="col-xs-12 col-sm-4 col-lg-4"> 
-						<div class="thumbnail text-center" style="box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.2);">
-									<img class="leafletImg" src="item img/Leafletalsin/alat pengupas.jpg" alt="" style="width: 100%;border-radius: 3px;">
-									<img class="leafletImg" src="item img/Leafletalsin/alat pengupas2.jpg" alt="" style="width: 100%;border-radius: 3px; margin-top: 5px;">
-								<h4 style="color:rgb(242,97,5);">ALAT PENGUPAS BUAH JARAK</h4>
-							</div>				
-						</div> -->
-					</div>
-						<ul class="pager" >
-						<li><a href=""><</a></li>
-						<li><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">></a></li>
-					</ul>
 				</div>
 
 				<div class="col-sm-3 col-lg-3">

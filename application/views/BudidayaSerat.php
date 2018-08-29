@@ -22,14 +22,16 @@
 		<div class="container">
 			<ul class="breadcrumb" style="margin-bottom: 0px;margin-top: 15px;">
 				<li><a href="<?php echo base_url() ?>">Beranda</a></li>
-				<li class="active">Monograf</li>
+				<li class="active">Budidaya</li>
 			</ul>
 			<div class="row">
 				<div class="col-sm-9 col-lg-9">
 					<hr style="border-color: black">
 					<div class="row" style="margin-bottom: 20px;">
 					
-						<?php foreach($budidaya as $cup) {
+						<?php 
+						if(!empty($budidaya)){
+						foreach($budidaya as $cup) {
 							?>
 							<!-- <?php //var_dump($cup->cuplikan_monograf); ?>		 -->
 						<!-- content 1 -->
@@ -52,11 +54,32 @@
 									</div>									
 								</div>
 						</div>	
-							<?php 
-							} 
+						<?php 
+						} } else{
 							?>
-					</div>
+						<div class="col-xs-12 col-sm-12 col-lg-12">
+								<div class="standar thumbnail" style=" border-radius: 5px; background-color: #eee;">
+									<div class="container-fluid text-center">
+									<br>
+									<h2  style="padding-top : 250px; color:red;"><b>Mohon maaf untuk saat ini Referensi Buku yang anda cari dari komoditas Terkait Belum Tersedia :))</b></h2>
+									</div>
+									<br>
+									<br>
+									<!-- <div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
+									    <span style="font-size: 12px;">Bagikan &nbsp</span>
+										<a href=""><span><img src="<?php echo base_url() ?>item img/fb.png" alt=""></span></a>
+										<a href=""><span><img src="<?php echo base_url() ?>item img/twitter.png" alt=""></span></a>
+										<a href=""><span><img src="<?php echo base_url() ?>item img/gplus.png" alt=""></span></a>
+									</div>	 -->								
+								</div>
+						</div>	
 
+						<?php 
+							}
+						 ?>
+						
+					</div>
+		                   
 						<ul class="pager" >
 						<?php foreach($link as $pagination) {
 							echo "<li>". $pagination."</li>";

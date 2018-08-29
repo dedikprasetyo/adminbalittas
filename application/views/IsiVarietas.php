@@ -68,11 +68,11 @@
 															$count-=1;
 															echo '<td></td>';
 															echo '<td style="font-weight: bold; font-style: italic;">'.$value->nama_atribut.'</td>';
-															echo '<td style="text-align:center;">'.$value->detail_value.'</td>';
+															echo '<td style="text-align:justify">'.$value->detail_value.'</td>';
 														}else{
-															echo '<td style="text-align:center;">'.$count.'</td>';
-															echo '<td style="font-weight: bold; font-style: italic; text-align:center;">'.$value->nama_atribut.'</td>';
-															echo '<td style="text-align:center;">'.$value->detail_value.'</td>';
+															echo '<td style="text-align:">'.$count.'</td>';
+															echo '<td style="font-weight: bold; font-style: italic; text-align:justify">'.$value->nama_atribut.'</td>';
+															echo '<td style="text-align:justify">'.$value->detail_value.'</td>';
 														}
 													 ?>
 												</tr>
@@ -89,9 +89,18 @@
 									<br>
 									<div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
 									    <span style="font-size: 12px;">Bagikan &nbsp</span>
-										<a href=""><span><img src="<?php echo base_url() ?>item img/fb.png" alt=""></span></a>
-										<a href=""><span><img src="<?php echo base_url() ?>item img/twitter.png" alt=""></span></a>
-										<a href=""><span><img src="<?php echo base_url() ?>item img/gplus.png" alt=""></span></a>
+										  <!-- Share link FB -->
+									    <a id="button" onclick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $name->nama_varietas; ?>&amp;p[summary]=<?php echo substr($name->deskripsi_varietas, 0, 25);?>&amp;p[url]=<?php echo base_url(); ?>&amp;&p[images][0]=<?php echo base_url() ?>item img/gambar/Edited/<?php echo $name->file_gambar; ?>', 'sharer', 'toolbar=0,status=0,width=550,height=400');" target="_parent" href="javascript: void(0)">
+                        					<span><img src="<?php echo base_url() ?>item img/fb.png" /></span>
+                        				</a>
+										<!-- Share link Twitter -->
+										<a class="twitter popup" href="http://twitter.com/share?source=sharethiscom&text=<?php echo "Varietas Tanaman Serat : ".$name->nama_varietas;?>&url=<?php echo base_url(); ?>&via=berbagiyuks" target="blank">
+											<span><img src="<?php echo base_url() ?>item img/twitter.png" /></span>
+										</a>
+										<!-- Share link Google -->
+										<a href="javascript:void(0);" onclick="popUp=window.open('https://plus.google.com/share?url=<?php echo base_url('varietas/spesifikasiVarietas/').$name->nama_varietas; ?> ','popupwindow','scrollbars=yes,width=800,height=400');popUp.focus();return false">
+											<span><img src="<?php echo base_url() ?>item img/gplus.png" /></span>
+										</a>
 									</div>									
 								</div>
 								<?php 
