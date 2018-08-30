@@ -89,7 +89,7 @@
 			$this->load->model("m_data");
 			$komoditas = $this->input->post('serattt');
 			if ($komoditas == "Semua Komoditas") {
-				$data['dataVarietasFiltered'] = $this->m_data->load_varietas($komoditas);
+				$data['dataVarietasFiltered'] = $this->m_data->load_varietas();
 			} else {
 				$data['dataVarietasFiltered'] = $this->m_data->load_varietas_filter($komoditas);
 			}
@@ -129,7 +129,7 @@
 			$this->load->model("m_data");
 			$komoditas = $this->input->post('serattt');
 			if ($komoditas == "Semua Komoditas") {
-				$data['dataBudidayaFiltered'] = $this->m_data->load_budidaya($komoditas);
+				$data['dataBudidayaFiltered'] = $this->m_data->load_budidaya();
 			} else {
 				$data['dataBudidayaFiltered'] = $this->m_data->load_budidaya_filter($komoditas);
 			}
@@ -146,7 +146,7 @@
 			$this->load->model("m_data");
 			$komoditas = $this->input->post('serattt');
 			if ($komoditas == "Semua Komoditas") {
-				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih($komoditas);
+				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih();
 			} else {
 				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih_filter($komoditas);
 			}
@@ -158,6 +158,55 @@
 			$this->load->model("m_data");
 			$this->m_data->hapus_distribusibenih($idDistribusi);
 			redirect(base_url('admin/serat#tabelDistribusiBenih'));
+		}
+		public function filterDistribusi() {
+			$this->load->model("m_data");
+			$filtertahunbulankomoditas = $this->input->post('serattt');
+			$Tahun = substr($filtertahunbulankomoditas, 0,4);	// echo $Tahun."<br>";
+			$Bulan = substr($filtertahunbulankomoditas, 5,2);	// echo $Bulan."<br>";
+			$Komoditas = substr($filtertahunbulankomoditas, 8,strlen($filtertahunbulankomoditas));	// echo $Komoditas;
+			// echo $Tahun."-".$Bulan."-".$Komoditas;
+			$if1 = "0000-00-Semua Komoditas";
+			$if2 = "0000-00-".$Komoditas;	
+			$if3 = "0000-".$Bulan."-Semua Komoditas";
+			$if4 = "0000-".$Bulan."-".$Komoditas;  
+			$if5 = $Tahun."-00-Semua Komoditas";
+			$if6 = $Tahun."-00-".$Komoditas;
+			$if7 = $Tahun.'-'.$Bulan."-Semua Komoditas";
+			$if8 = $Tahun.'-'.$Bulan.'-'.$Komoditas;
+			// echo $if1."<br>";
+			// echo $if2."<br>";
+			// echo $if3."<br>";
+			// echo $if4."<br>";
+			// echo $if5."<br>";
+			// echo $if6."<br>";
+			// echo $if7."<br>";
+			// echo $if8;
+			if ($filtertahunbulankomoditas == $if1) { //iki 000
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih();
+			} 
+			else if ($filtertahunbulankomoditas == $if2) { //iki 001
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_komoditas($Komoditas);
+			}
+			else if ($filtertahunbulankomoditas == $if3) { //iki 010
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_bulan($Bulan);
+			}
+			else if ($filtertahunbulankomoditas == $if4) { //iki 011
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_bulankomoditas($Bulan,$Komoditas);
+			}
+			else if ($filtertahunbulankomoditas == $if5) { //iki 100
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahun($Tahun);
+			}
+			else if ($filtertahunbulankomoditas == $if6) { //iki 101
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahunkomoditas($Tahun,$Komoditas);
+			}
+			else if ($filtertahunbulankomoditas == $if7) { //iki 110 //
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahunbulan($Tahun,$Bulan);
+			}
+			else { //iki 111
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_all($Tahun,$Bulan,$Komoditas);
+			}
+			$this->load->view('FilterTableDistribusi', $data);
 		}
 
 		//alsin
