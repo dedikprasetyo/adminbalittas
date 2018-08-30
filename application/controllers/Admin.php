@@ -93,7 +93,7 @@
 			} else {
 				$data['dataVarietasFiltered'] = $this->m_data->load_varietas_filter($komoditas);
 			}
-			$this->load->view('FilterTable', $data);
+			$this->load->view('FilterTableVarietas', $data);
 		}
 		public function hapusVarietas($idVarietas){
 			$this->load->model("m_data");
@@ -125,12 +125,32 @@
 			$this->m_data->hapus_budidaya($idBudidaya);
 			redirect(base_url('admin/serat#tabelBudidaya'));
 		}
+		public function filterBudidaya() {
+			$this->load->model("m_data");
+			$komoditas = $this->input->post('serattt');
+			if ($komoditas == "Semua Komoditas") {
+				$data['dataBudidayaFiltered'] = $this->m_data->load_budidaya($komoditas);
+			} else {
+				$data['dataBudidayaFiltered'] = $this->m_data->load_budidaya_filter($komoditas);
+			}
+			$this->load->view('FilterTableBudidaya', $data);
+		}
 		
 		//stok benih
 		public function hapusStokBenih($idStokBenih){
 			$this->load->model("m_data");
 			$this->m_data->hapus_stok_benih($idStokBenih);
 			redirect(base_url('admin/serat#tabelStokBenih'));
+		}
+		public function filterStokBenih() {
+			$this->load->model("m_data");
+			$komoditas = $this->input->post('serattt');
+			if ($komoditas == "Semua Komoditas") {
+				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih($komoditas);
+			} else {
+				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih_filter($komoditas);
+			}
+			$this->load->view('FilterTableStokBenih', $data);
 		}
 		
 		//distribusi benih

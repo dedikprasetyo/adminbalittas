@@ -242,15 +242,12 @@
         <div class="table table-wrapper">
           <div class="table-title">
             <div class="row">
-              
               <div class="col-sm-2">
                 <h2>Data <b>Varietas</b></h2>
               </div>
-
               <div class="col-sm-2">
                 <h5 style="margin-left: 28px;">Filter by &nbsp :</h5>
               </div>
-
               <div class="col-sm-2" style="padding-top: 0px;">
                 <select class="form-control komoditas" id="jenisKomoditas" name="komoditas" style="margin-left: -77px; width: 170px; height: 35px;" onchange="filterVarietas();">
                        <!-- <option disabled>Komoditas</option> -->
@@ -263,17 +260,13 @@
                   ?>
                 </select>
               </div>
-
               <div class="col-sm-2">
               </div>
-
               <div class="col-sm-2">
               </div>
-              
               <div class="col-sm-2">
                 <a href="#tambahvarietas" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span class="text-right">Tambah Data</span></a>            
               </div>
-
             </div>
           </div>
           <div class="table-responsive" style="margin: 30px 0px;" id="tableKomoditas">
@@ -481,15 +474,33 @@
         <div class="table table-wrapper">
           <div class="table-title">
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-3">
                 <h2>Data <b>Budidaya</b></h2>
               </div>
-              <div class="col-sm-6">
-                <a href="#tambahbudidaya" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
+              <div class="col-sm-2">
+                <h5 style="margin-left: -64.5px;">Filter by &nbsp :</h5>
+              </div>
+              <div class="col-sm-2" style="padding-top: 0px;">
+                <select class="form-control komoditasbud" id="jenisKomoditasbud" name="komoditasbud" style="margin-left: -169.5px; width: 170px; height: 35px;" onchange="filterBudidaya();">
+                       <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                  <?php
+                    $komoditasbud = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                    for($i = 1;$i < count($komoditasbud);$i++){
+                      echo"<option value=$komoditasbud[$i]> $komoditasbud[$i] </option>";
+                    }
+                  ?>
+                </select>
+              </div>
+              <div class="col-sm-1">
+              </div>
+              <div class="col-sm-2">
+              </div>
+              <div class="col-sm-2">
+                <a href="#tambahbudidaya" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>               
               </div>
             </div>
           </div>
-          <div class="table-responsive" style="margin: 30px 0px;">
+          <div class="table-responsive" style="margin: 30px 0px;" id="tableKomoditasBudidaya">
             <table class="table table-striped table-hover">
               <thead>
                 <tr>                                
@@ -530,6 +541,25 @@
       </div>
     </section>
 
+    <!-- Filter Budidaya -->
+    <script>
+      function filterBudidaya(){
+        var komoditasbud = $("#jenisKomoditasbud").val();
+        $.ajax({
+            type:"POST",
+            url: "../admin/filterBudidaya",
+            data: "serattt=" + komoditasbud,
+            dataType : "html",
+            success:function(msg){
+                $("#tableKomoditasBudidaya").html(msg);                
+            },
+            error:function(){
+              alert("Search failed");
+            }
+        });
+      }
+    </script>
+
     <!-- Delete Modal HTML Budidaya -->
     <div id="hapusbudidaya" class="modal fade">
       <div class="modal-dialog">
@@ -565,15 +595,33 @@
         <div class="table table-wrapper">
           <div class="table-title">
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-3">
                 <h2>Data <b>Stok Benih</b></h2>
               </div>
-              <div class="col-sm-6">
-                <a href="#tambahstokbenih" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
+              <div class="col-sm-2">
+                <h5 style="margin-left: -64.5px;">Filter by &nbsp :</h5>
+              </div>
+              <div class="col-sm-2" style="padding-top: 0px;">
+                <select class="form-control komoditasstok" id="jenisKomoditasstok" name="komoditasstok" style="margin-left: -169.5px; width: 170px; height: 35px;" onchange="filterStokBenih();">
+                       <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                  <?php
+                    $komoditasstok = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                    for($i = 1;$i < count($komoditasstok);$i++){
+                      echo"<option value=$komoditasstok[$i]> $komoditasstok[$i] </option>";
+                    }
+                  ?>
+                </select>
+              </div>
+              <div class="col-sm-1">
+              </div>
+              <div class="col-sm-2">
+              </div>
+              <div class="col-sm-2">
+                <a href="#tambahstokbenih" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>                   
               </div>
             </div>
           </div>
-          <div class="table-responsive" style="margin: 30px 0px;">
+          <div class="table-responsive" style="margin: 30px 0px;" id="tableKomoditasStok">
             <table class="table table-striped table-hover">
               <thead>
                 <tr>                                
@@ -615,6 +663,25 @@
         </div>
       </div>
     </section>
+
+    <!-- Filter Stok Benih -->
+    <script>
+      function filterStokBenih(){
+        var komoditasstok = $("#jenisKomoditasstok").val();
+        $.ajax({
+            type:"POST",
+            url: "../admin/filterStokBenih",
+            data: "serattt=" + komoditasstok,
+            dataType : "html",
+            success:function(msg){
+                $("#tableKomoditasStok").html(msg);                
+            },
+            error:function(){
+              alert("Search failed");
+            }
+        });
+      }
+    </script>
 
     <!-- Delete Modal HTML Stok Benih -->
     <div id="hapusstokbenih" class="modal fade">

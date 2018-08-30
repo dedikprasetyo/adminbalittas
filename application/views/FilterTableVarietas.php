@@ -32,7 +32,7 @@
                   <td><?php echo "$row[waktu_upload]"; ?></td>
                   <td>
                     <a href="#editvarietas" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-                    <a href="" class="delete" data-toggle="modal" onclick=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_varietas('<?php echo $row['id_varietas']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>  
                   </td>
                 </tr>
                 <?php                                 

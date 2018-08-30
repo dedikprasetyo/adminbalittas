@@ -63,6 +63,10 @@
 			$sql = $this->db ->query("SELECT * FROM `detail_monograf`");
 			return $sql->result_array();
 		}
+		public function load_budidaya_filter($komoditas) {
+			$sql = $this->db ->query("SELECT * FROM `detail_monograf` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\")");
+	        return $sql->result_array();
+		}
 		public function hapus_budidaya($idBudidaya){
 			$sql = $this->db->query("DELETE FROM `detail_monograf` WHERE `id_detail_monograf` = \"$idBudidaya\"");		
 		}
@@ -75,6 +79,10 @@
 		public function load_stok_benih(){
 			$sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih`");
 			return $sql->result_array();
+		}
+		public function load_stok_benih_filter($komoditas) {
+			$sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") ");
+	        return $sql->result_array();
 		}
 		public function hapus_stok_benih($idStokBenih){
 			$sql = $this->db->query("DELETE FROM `stok_benih` WHERE `id_stok_benih` = \"$idStokBenih\"");		
