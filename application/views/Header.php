@@ -16,15 +16,22 @@
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-
-		
 	</head>
 	<body>
-		<header>			
+		<header>	
+		<?php
+				if (!empty($Judul)) { ?>
+					<div class="hidden-md hidden-lg" style="background-color: rgb(28,69,26); height: 70px;"></div>			
+			<?php 
+				} else if(!empty($Judul2)){?>
+					<div class="hidden-md hidden-lg" style="background-color: rgb(28,69,26); height: 70px;"></div>		
+				<?php }else{?>
+						<div class="hidden-md hidden-lg" style="background-color: rgb(28,69,26); height: 70px;"></div>	
+				<?php } ?>		
 			<nav class="navbar navbar-inverse navbar-fixed-top navbarHover">
 				<div class="container-fluid">
 				    <div class="navbar-header" style="margin-top: 5px; margin-bottom: 3px;">						    
-				      <a href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>item img/logoBalittas2.png" style="width:280px;margin-top: -18px;margin-bottom: -6px;margin-left: 5px;"></a>
+				      <a href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>item img/logoBalittas.png" style="width:280px;margin-top: -5px;margin-bottom: -6px;margin-left: 5px;"></a>
 				      <button type="botton" class="navbar-toggle" data-toggle="collapse" data-target="#main" style="margin-top: 10px;">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -46,6 +53,8 @@
 								       			<a href="<?php echo base_url('varietas/detail/kapuk') ?>" class="halaman">Kapuk</a>
 								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 								       			<a href="<?php echo base_url('varietas/detail/kenaf') ?>" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
+								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+								       			<a href="<?php echo base_url('varietas/detail/abaka') ?>" class="halaman" style="margin-bottom: 10px;">Abaka</a>
 								  			</div>
 											<div class="col-sm-6 col-lg-6">
 											    <a href="<?php echo base_url('varietas/detail/rami') ?>" class="halaman" style="margin-top:10px;">Rami</a>	
@@ -62,20 +71,22 @@
 							  	<div class="dropbtnHeader" style="font-family: Minion Pro">Budidaya Tanaman Serat <span class="caret"></div>
 							  	<div class="dropdownHeader-content" style="margin: 0px 0px 0px -126px;">
 								  	<div class="container-fluid">
-								  	<a href="<?php echo base_url() ?>#budidaya" style="margin-top: 10px; margin-bottom: 10px;">Monograf masing - masing Komoditas</a>	
-								  <!-- 	<div class="row">
-								  		<div class="col-sm-6 col-lg-6">
-								  		<a href="<?php //echo base_url() ?>#budidaya" style="margin-top: 10px; margin-bottom: 10px;">Peningkatan Produktifitas dan Pendapatan Petani Kapas</a>
-								  		<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          	<a href="<?php //echo base_url() ?>#budidaya" style="margin-top: 10px; margin-bottom: 10px;">Monograf Balittas No.7</a>
-								  		</div>
-								  		<div class="col-sm-6 col-lg-6">
-								  		<a href="<?php //echo base_url() ?>#budidaya" style="margin-top: 10px; margin-bottom: 10px;">Monograf Balittas (Kenaf)</a>
-								  		<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-							          	<a href="<?php //echo base_url() ?>#budidaya" style="margin-top: 10px; margin-bottom: 10px;">Monograf Balittas No.1</a>
-							          	<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  		</div>
-								  	</div>	 -->
+								  	<div class="row">
+								  			<div class="col-sm-6 col-lg-6">
+								       			<a href="<?php echo base_url('budidaya/budidayatanamanserat/kapas') ?>" class="halaman" style="margin-top: 10px;">Budidaya Kapas</a>
+								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+								       			<a href="<?php echo base_url('budidaya/budidayatanamanserat/kapuk') ?>" class="halaman">Budidaya Kapuk</a>
+								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+								       			<a href="<?php echo base_url('budidaya/budidayatanamanserat/kenaf') ?>" class="halaman" style="margin-bottom: 10px;">Budidaya Kenaf</a>
+								  			</div>
+											<div class="col-sm-6 col-lg-6">
+											    <a href="<?php echo base_url('budidaya/budidayatanamanserat/rami') ?>" class="halaman" style="margin-top:10px;">Budidaya Rami</a>	
+												<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+												<a href="<?php echo base_url('budidaya/budidayatanamanserat/rosela') ?>" class="halaman">Budidaya Rosela</a>	
+										  		<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
+										  		<a href="<?php echo base_url('budidaya/budidayatanamanserat/sisal') ?>" class="halaman">Budidaya Sisal</a>	
+										  	</div>
+										</div>
 								  	</div>
 							  	</div>
 							</div>
@@ -87,7 +98,7 @@
 								  			<div class="col-sm-12 col-lg-12">
 								  				<a href="<?php echo base_url('produk/benih') ?>" style="margin-top: 10px;">Benih</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="#">Alat dan Mesin (Coming Soon)</a>
+								  				<a href="<?php echo base_url('produk/alsin') ?>">Alat dan Mesin</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 							          			<a href="#">Formula (Coming Soon)</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
@@ -99,7 +110,7 @@
 							</div>					      			      
 					    </ul>				    
 				    </div>
-
+					<!-- For Mobile -->
 				    <div class="collapse navbar-collapse no-touch" id="main">			    
 					    <ul class="nav navbar-nav navbar-right hidden-md hidden-lg" style="margin-top: 8px;margin-right: 75px;">
 					      	 <a href="#home" class="halaman" style="text-decoration-line: none;font-size: 14px;"><i style="font-size:14px; color:white; margin-left: 15px;" class="glyphicon glyphicon-home "></i></a>
@@ -117,14 +128,20 @@
 					      	<li class="dropdown">
 					        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Budidaya Tanaman Serat<span class="caret"></span></a>
 						        <ul class="dropdown-menu">
-						        	<li><a href="<?php echo base_url() ?>#budidaya">Masing-masing Komoditas</a></li>
+						        	   <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/kapas') ?>">Budidaya Kapas</a></li>
+			                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/kapuk') ?>">Budidaya Kapuk</a></li>
+			                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/kenaf') ?>">Budidaya Kenaf</a></li>
+			                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/rami') ?>">Budidaya Rami</a></li>
+			                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/rosela') ?>">Budidaya Rosela</a></li>
+			                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/sisal') ?>">Budidaya Sisal</a></li>
+			                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/abaka') ?>">Budidaya Abaka</a></li>
 						       	</ul>
 					      	</li>
 					      	<li class="dropdown">
 					        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Produk<span class="caret"></span></a>
 						        <ul class="dropdown-menu">
 						        	<li><a href="<?php echo base_url('produk/benih')?>">Benih</a></li>
-						          	<li><a href="<?php echo base_url() ?>teknologibudidaya/pesemaian">Alat dan Mesin</a></li>
+						          	<li><a href="<?php echo base_url('produk/alsin')?>">Alat dan Mesin</a></li>
 						          	<li><a href="<?php echo base_url() ?>teknologibudidaya/pemupukan">Formula (Coming Soon)</a></li>
 						          	<li><a href="<?php echo base_url() ?>teknologibudidaya/bebasChlor">Produk Hilir (Coming Soon)</a></li>
 						       	</ul>
@@ -161,25 +178,31 @@
 				    if(!empty($Judul)){
 			 		foreach($Judul as $jud) {
 			 			?>
-				     <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Varietas <?php echo $jud->nama_serat;?>
+				     <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Varietas <b><?php echo $jud->nama_serat;?></b>
 				    </h1>
-				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Varietas <?php echo $jud->nama_serat;?>
+				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Varietas <b><?php echo $jud->nama_serat;?></b>
 				    </h1>
 				    <?php } } else if(!empty($Judul2)){?>
-				    <?php foreach($Judul2 as $j) ?>
-				    <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Deskripsi Varietas <?php echo $j->nama_varietas;?>
+				    <?php foreach($Judul2 as $j) {?>
+				    <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Deskripsi Varietas <b><?php echo $j->nama_varietas;?></b>
 				    </h1>
-				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Deskripsi Varietas <?php echo $j->nama_varietas;?>
+				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Deskripsi Varietas <b><?php echo $j->nama_varietas;?></b>
 				    </h1>
-				     <?php } else if(!empty($JudulMono)){?>
+				     <?php } }else if(!empty($JudulMono)){?>
 				     <?php foreach($JudulMono as $jm) {?>
-				       <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Budidaya <?php echo $jm->nama_serat; ?> </h1>	
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Budidaya
+				       <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Budidaya <b><?php echo $jm->nama_serat; ?></b> </h1>	
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Budidaya <b><?php echo $jm->nama_serat; ?></b>
 				    </h1>
-				    <?php }} else{?>
-						 <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Pencarian</h1>
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Pencarian
+				    <?php }} else if(!empty($JudulPencarian)){?>
+						 <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Pencarian</h1>
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Pencarian
 				    </h1>
+				    <?php } else if(!empty($JudulBenih)){?>
+				    	 <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Benih</h1>
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Benih
+				    <?php } else {?>
+				     	<h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Leaflet</h1>
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Leaflet
 				    <?php } ?>
 				     <!-- <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Detail Varietas</h1> -->
 				    <!-- <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Monograf</h1> -->
