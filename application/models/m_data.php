@@ -63,6 +63,10 @@
 			$sql = $this->db ->query("SELECT * FROM `detail_monograf`");
 			return $sql->result_array();
 		}
+		public function load_budidaya_filter($komoditas) {
+			$sql = $this->db ->query("SELECT * FROM `detail_monograf` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\")");
+	        return $sql->result_array();
+		}
 		public function hapus_budidaya($idBudidaya){
 			$sql = $this->db->query("DELETE FROM `detail_monograf` WHERE `id_detail_monograf` = \"$idBudidaya\"");		
 		}
@@ -76,14 +80,84 @@
 			$sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih`");
 			return $sql->result_array();
 		}
+		public function load_stok_benih_filter($komoditas) {
+			$sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") ");
+	        return $sql->result_array();
+		}
 		public function hapus_stok_benih($idStokBenih){
 			$sql = $this->db->query("DELETE FROM `stok_benih` WHERE `id_stok_benih` = \"$idStokBenih\"");		
 		}
 
 		//Distribusi Benih
 		public function load_distribusibenih(){
-			$sql = $this->db ->query("SELECT * FROM `benih` JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih`");
+			$sql = $this->db ->query("SELECT * FROM `benih` JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih` ORDER BY `distribusi_benih`.`id_distribusi` ASC");
 			return $sql->result_array();
+		}
+		public function load_distribusibenih_filter_komoditas($komoditas) {
+			$sql = $this->db ->query("
+				SELECT * FROM `benih` 
+				JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih` 
+				WHERE `benih`.`id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") 
+				AND `distribusi_benih`.`tanggal` 
+				LIKE \"_%_%_%_%-_%_%-_%_%\" ORDER BY `distribusi_benih`.`id_distribusi` ASC ");
+	        return $sql->result_array();
+		}
+		public function load_distribusibenih_filter_bulan($bulan) {
+			$like = "_%_%_%_%-".$bulan."-_%_%";
+			$sql = $this->db ->query("
+				SELECT * FROM `benih` 
+				JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih` 
+				WHERE `distribusi_benih`.`tanggal` 
+				LIKE \"$like\" ORDER BY `distribusi_benih`.`tanggal` ASC ");
+	        return $sql->result_array();
+		}
+		public function load_distribusibenih_filter_bulankomoditas($bulan,$komoditas) {
+			$like = "_%_%_%_%-".$bulan."-_%_%";
+			$sql = $this->db ->query("
+				SELECT * FROM `benih` 
+				JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih` 
+				WHERE `benih`.`id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") 
+				AND `distribusi_benih`.`tanggal` 
+				LIKE \"$like\" ORDER BY `distribusi_benih`.`tanggal` ASC ");
+	        return $sql->result_array();
+		}
+		public function load_distribusibenih_filter_tahun($tahun) {
+			$like = $tahun."-_%_%-_%_%";
+			$sql = $this->db ->query("
+				SELECT * FROM `benih` 
+				JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih` 
+				WHERE `distribusi_benih`.`tanggal` 
+				LIKE \"$like\" ORDER BY `distribusi_benih`.`tanggal` ASC ");
+	        return $sql->result_array();
+		}
+		public function load_distribusibenih_filter_tahunkomoditas($tahun,$komoditas) {
+			$like = $tahun."-_%_%-_%_%";
+			$sql = $this->db ->query("
+				SELECT * FROM `benih` 
+				JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih` 
+				WHERE `benih`.`id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") 
+				AND `distribusi_benih`.`tanggal` 
+				LIKE \"$like\" ORDER BY `distribusi_benih`.`tanggal` ASC ");
+	        return $sql->result_array();
+		}
+		public function load_distribusibenih_filter_tahunbulan($tahun,$bulan) { 
+			$like = $tahun."-".$bulan."-_%_%";
+			$sql = $this->db ->query("
+				SELECT * FROM `benih` 
+				JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih` 
+				WHERE `distribusi_benih`.`tanggal` 
+				LIKE \"$like\" ORDER BY `distribusi_benih`.`tanggal` ASC ");
+	        return $sql->result_array();
+		}
+		public function load_distribusibenih_filter_all($tahun,$bulan,$komoditas) {
+			$like = $tahun."-".$bulan."-_%_%";
+			$sql = $this->db ->query("
+				SELECT * FROM `benih` 
+				JOIN `distribusi_benih` ON `benih`.`id_benih` = `distribusi_benih`.`id_benih` 
+				WHERE `benih`.`id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") 
+				AND `distribusi_benih`.`tanggal` 
+				LIKE \"$like\" ORDER BY `distribusi_benih`.`tanggal` ASC ");
+	        return $sql->result_array();
 		}
 		public function hapus_distribusibenih($idDistribusi){
 			$sql = $this->db->query("DELETE FROM `distribusi_benih` WHERE `id_distribusi` = \"$idDistribusi\"");		
