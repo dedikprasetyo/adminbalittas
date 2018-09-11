@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_varietas extends CI_Model{
 
-	public function getJumlahBaris($id){
+	public function getJumlahVarietasDariIdSerat($id){
 		$data=$this->db->query("SELECT * FROM varietas WHERE id_serat = '$id'");
 		return $data->num_rows();
 	}
@@ -21,7 +21,6 @@ class M_varietas extends CI_Model{
 								WHERE nama_serat="."'".$namaSerat."'");
 		$hasil=$data->result();
 		return $hasil[0]->id_serat;
-
 	}
 
 	public function getSerat($id){
@@ -38,35 +37,22 @@ class M_varietas extends CI_Model{
 		return $hasil[0]->id_varietas;
 	}
 
-	public function getVarietas($id){
-		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas
-								FROM varietas n
-								WHERE n.id_serat = "."'".$id."'");
-		return $data->result();
-	}
-
-	public function getVarietasSpesifikasi($id){
+	public function getDeskripsiVarietas($id){
 		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas, n.file_SK
 								FROM varietas n 
 								WHERE n.id_varietas = "."'".$id."'");
 		return $data->result();
 	}
-	// public function selectByidNamaSerat($namaSerat){
-	// 	$data=$this->db->query("SELECT id_serat
-	// 							FROM serat
-	// 							WHERE nama_serat= "."'".$namaSerat."'");
-	// 	return $data->result();
-	// }
-	public function getSpesifikasiVarietas($namavarietas){
+	public function getSpesifikasiVarietas($id){
 		$data=$this->db->query("SELECT v.nama_varietas, a.nama_atribut, det.detail_value 
 								FROM varietas v 
 								JOIN detail_varietas det ON v.id_varietas = det.id_varietas
 								JOIN atribut a ON det.id_atribut = a.id_atribut
-								WHERE v.id_varietas = "."'".$namavarietas."'");
+								WHERE v.id_varietas = "."'".$id."'");
 		return $data->result();
 	}
 
-	public function getDeskripsi($idSerat){
+	public function getDeskripsiSerat($idSerat){
 		$data=$this->db->query("SELECT detail_varietas.detail_value FROM varietas
 								JOIN detail_varietas ON varietas.id_varietas = detail_varietas.id_varietas
 								JOIN atribut on detail_varietas.id_atribut = atribut.id_atribut
@@ -77,7 +63,7 @@ class M_varietas extends CI_Model{
 	 function selectVarietasOnSide(){
         	$data=$this->db->query("SELECT * From varietas ORDER BY tanggal_upload DESC  LIMIT 7");
         	return $data->result();
-        }
+    }
 
      function selectLeafletOnSide(){
      		$data=$this->db->query("SELECT l.nama_leaflet, g.file
@@ -90,9 +76,10 @@ class M_varietas extends CI_Model{
      		if($cari == "#varietas"){
 				$cari="";
 			}
-			$data=$this->db->query("SELECT v.nama_varietas, v.deskripsi_varietas  FROM varietas  v
-									WHERE v.nama_varietas LIKE '%$cari%' OR v.deskripsi_varietas LIKE '%$cari%' 
-									");
+			$data=$this->db->query("SELECT varietas.id_varietas, varietas.nama_varietas, varietas.deskripsi_varietas, atribut.nama_atribut, detail_varietas.detail_value 
+				FROM varietas JOIN detail_varietas ON detail_varietas.id_varietas = varietas.id_varietas 
+				JOIN atribut ON atribut.id_atribut = detail_varietas.id_atribut 
+				WHERE varietas.nama_varietas LIKE '%$cari%' OR varietas.deskripsi_varietas LIKE '%$cari%' OR atribut.nama_atribut LIKE '%$cari%' OR detail_varietas.detail_value LIKE '%$cari%' ");
 			return $data->result();
      }
 
@@ -101,11 +88,15 @@ class M_varietas extends CI_Model{
 		// 		$cari="";
 		// 	}
 		// 	$query=$this->db->distinct();
-		// 	$query=$this->db->select("*");
+		// 	$query=$this->db->select("varietas.id_varietas, varietas.nama_varietas, varietas.deskripsi_varietas, atribut.nama_atribut, detail_varietas.detail_value");
 		// 	$query=$this->db->from("varietas");
+		// 	$query=$this->db->join("detail_varietas", "detail_varietas.id_varietas = varietas.id_varietas");
+		// 	$query=$this->db->join("atribut", "atribut.id_atribut = detail_varietas.id_atribut ");
 		// 	$query=$this->db->group_start()
-		// 					->where('nama_varietas like', "%$cari%")
-		// 					->or_where('deskripsi_varietas like', "%%$cari")
+		// 					->where('varietas.nama_varietas like', "%$cari%")
+		// 					->or_where('varietas.deskripsi_varietas like', "%$cari")
+		// 					->or_where('atribut.nama_atribut like', "%$cari%")
+		// 					->or_where('detail_varietas.detail_value like', "%$cari%")
 		// 					->group_end();
 		// 	$query=$this->db->get();
 		// 	return $query->result();

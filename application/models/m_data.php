@@ -204,11 +204,30 @@
 		public function hapus_alsin($idAlsin){
 			$sql = $this->db->query("DELETE FROM `leaflet` WHERE `id_leaflet` = \"$idAlsin\"");		
 		}
+<<<<<<< HEAD
 		public function add_alsin_name($nama){		
 			$sql = $this->db->query("INSERT INTO leaflet (id_leaflet, nama_leaflet, id_jenis_leaflet) VALUES (\"\",\"$nama\",\"JL005\")");	
 		}
 		public function add_alsin_img($img){			
 			$this->db->query("INSERT INTO gambar_leaflet(id_leaflet, id_gambar, file) VALUES ((SELECT id_leaflet FROM leaflet ORDER BY id_leaflet DESC LIMIT 1),\"\",\"$img\")");
+=======
+
+		// PENGUNJUNG
+		public function getTotalVisitor(){
+			$sql = $this->db->query("SELECT SUM(hits) as total FROM statistik_pengunjung");
+			return $sql->result();
+		}
+		public function getTotalToday($tanggal){
+			$sql = $this->db->query("SELECT SUM(hits) as totalHariIni FROM statistik_pengunjung WHERE tanggal = \"$tanggal\"");
+			return $sql->result();		
+		}
+		public function getTotalByMonth($tanggal){
+			$sql = $this->db->query("SELECT SUM(hits) as totalBulanIni FROM statistik_pengunjung WHERE month(tanggal) = \"$tanggal\"");
+			return $sql->result();		
+		}
+		public function addUser($ip,$tanggal,$online){
+			$sql = $this->db->query("INSERT INTO statistik_pengunjung (id_pengunjung, tanggal, hits, online) VALUES(\"$ip\",\"$tanggal\",'1',\"$online\")");			
+>>>>>>> 3c1d5ffa679e7f866fd58ff8485d34de62e98aeb
 		}
 	}
 ?>

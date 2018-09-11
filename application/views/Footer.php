@@ -22,7 +22,7 @@
 		<div class="container-fluid" style="background-color: rgba(28,69,26,1);">
 				<div class="container" style="margin-top: 20px; color:white;">
 					<div class="col-sm-3 col-lg-3">
-						<img src="<?php echo base_url() ?>item img/logoBalittas2.png" style="width: 110%;margin:-27px 0px -8px -32px;">				
+						<img src="<?php echo base_url() ?>item img/logoBalittas.png" style="width: 110%;margin:-10px 0px -8px -32px;">				
 						<table style="color:white;">
 							<tbody>
 								<tr>
@@ -94,22 +94,22 @@
 							<hr style="margin-top: 0px; margin-bottom: 13px; border-color: #fece00;">
 							<div class="row" style="margin: 2px; margin-left: -3px;" >
 								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" ">
-									<a href="" ><i class="fa fa-facebook-square" aria-hidden="true" style="font-size:45px;"></i>
+									<a href="https://web.facebook.com/balittas.malang" target="blank"><i class="fa fa-facebook-square" aria-hidden="true" style="font-size:45px;"></i>
 										<!-- <img src="item img/fbb.png" class="icon-sosmed img-rounded" alt="Cinque Terre" width="50" height="50"> -->
 									</a>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" >
-									<a href="">
+									<a href="https://twitter.com/BalittasMalang" target="blank">
 										<i class="fa fa-twitter-square" aria-hidden="true" style="font-size:45px;"></i>
 									</a>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" >
-									<a href=""  >
+									<a href="https://www.youtube.com/channel/UCiYhtpYmb_SWaIJMarhejag/featured" target="blank">
 										<i class="fa fa-youtube-square" aria-hidden="true" style="font-size:45px;"></i>
 									</a>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-lg-3 sosmed no-touch" style="margin-top: -3px;">
-									<a href=""  >
+									<a href="https://www.instagram.com/balittas_malang/" target="blank">
 										<i class="fa fa-instagram" aria-hidden="true" style="font-size:45px;"></i>
 									</a>
 								</div>
@@ -122,7 +122,7 @@
 									<p style="margin-top: 5px;">Pengunjung Hari Ini</p>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 5px;">10</p>
+									<p style="margin-top: 5px;"><?php echo $pengunjungHariIni[0]->totalHariIni; ?></p>
 								</div>								
 							</div>
 							<hr style="border-style: dashed; margin-top: 1px;margin-bottom: 10px; border-color: #fece00;">
@@ -131,7 +131,7 @@
 									<p style="margin-top: 2px;">Pengunjung Bulan Ini</p>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 2px;">10</p>
+									<p style="margin-top: 2px;"><?php echo $pengunjungBulanIni[0]->totalBulanIni; ?></p>
 								</div>								
 							</div>															
 							<hr style="border-style: dashed; margin-top: 0px;margin-bottom: 10px; border-color: #fece00;">
@@ -140,7 +140,7 @@
 									<p style="margin-top: 2px;">Total Pengunjung</p>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<p style="margin-top: 2px;">10</p>
+									<p style="margin-top: 2px;"><?php echo $pengunjungTotal[0]->total; ?></p>
 								</div>								
 							</div>		
 						</div>

@@ -13,7 +13,7 @@ $('.halaman').on('click', function(e){
 
 	//pindah scroll
 	$('html, body').animate({
-		scrollTop: elemenTujuan.offset().top - 70 //jarak buat atas dari masing2 fitur
+		scrollTop: elemenTujuan.offset().top - 62 //jarak buat atas dari masing2 fitur
 	}, 1200, "easeInOutExpo"); //satuan milisecond
 	e.preventDefault();
 

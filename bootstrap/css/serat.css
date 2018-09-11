@@ -1,6 +1,26 @@
 .thumbnail{
 	min-height:469px;
+	/*background-color: red!important;*/
 }
+.tbku{
+	min-height:580px;
+	background-color: red!important;
+}
+
+.tbku:after{
+	display:block;
+	float:right;
+}
+
+/*h3:before{
+	display:block;
+	float:right;
+}*/
+
+
+/*.test .thumbnail{
+	color:red;
+}*/
 
 .table-responsive{
 			max-height: 450px;
