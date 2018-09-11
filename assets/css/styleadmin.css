@@ -208,6 +208,11 @@
     .modal .modal-title {
         display: inline-block;
     }
+    .modal .modal-header {
+	    color: white;
+	    background: rgb(92,184,92);
+	    border-radius: 10px 10px 0 0;
+	}
 	.modal .form-control {
 		border-radius: 2px;
 		box-shadow: none;

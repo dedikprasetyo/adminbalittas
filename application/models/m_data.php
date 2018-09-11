@@ -58,6 +58,31 @@
 			$sql = $this->db->query("DELETE FROM `leaflet` WHERE `id_leaflet` = \"$idLeaflet\"");		
 		}
 
+		// public function add_leaflet_name($nama,$jenisLeaflet){		
+		public function add_leaflet_name($nama){		
+			$sql = $this->db->query("INSERT INTO leaflet (id_leaflet, nama_leaflet, id_jenis_leaflet) VALUES (\"\",\"$nama\",\"JL001\")");	
+			// $sql = $this->db->query("INSERT INTO leaflet (id_leaflet, nama_leaflet, id_jenis_leaflet) 
+			// 	VALUES (\"\",\"$nama\",\"$jenisLeaflet\")");			
+		}
+		public function add_leaflet_img($img){			
+			$this->db->query("INSERT INTO gambar_leaflet(id_leaflet, id_gambar, file) VALUES ((SELECT id_leaflet FROM leaflet ORDER BY id_leaflet DESC LIMIT 1),\"\",\"$img\")");
+		}
+
+		public function get_jenisleaflet(){
+			$sql = $this->db ->query("SELECT * FROM `jenis_leaflet`");
+			return $sql->result();
+		}
+
+		// public function getIdjenisleaflet($namaJenis) { //blm		
+		// 	$sql = $this->db->query("SELECT id_jenis_leaflet FROM jenis_leaflet WHERE nama_jenis = \"$namaJenis\"");
+		// 	$hasil = $sql->result();
+		// 	return $hasil[0]->id_jenis_leaflet;
+		// }
+		// public function add_jenis_leaflet($namaJenis) { //blm		
+		// 	$this->db->query("INSERT INTO `jenis_leaflet`(`id_jenis_leaflet`, `nama_jenis`) VALUES (\"\",\"$namaJenis\")");
+		// }
+
+
 		//Budidaya
 		public function load_budidaya(){
 			$sql = $this->db ->query("SELECT * FROM `detail_monograf`");
@@ -178,6 +203,12 @@
 		}
 		public function hapus_alsin($idAlsin){
 			$sql = $this->db->query("DELETE FROM `leaflet` WHERE `id_leaflet` = \"$idAlsin\"");		
+		}
+		public function add_alsin_name($nama){		
+			$sql = $this->db->query("INSERT INTO leaflet (id_leaflet, nama_leaflet, id_jenis_leaflet) VALUES (\"\",\"$nama\",\"JL005\")");	
+		}
+		public function add_alsin_img($img){			
+			$this->db->query("INSERT INTO gambar_leaflet(id_leaflet, id_gambar, file) VALUES ((SELECT id_leaflet FROM leaflet ORDER BY id_leaflet DESC LIMIT 1),\"\",\"$img\")");
 		}
 	}
 ?>

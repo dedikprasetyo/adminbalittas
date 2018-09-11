@@ -90,12 +90,8 @@
                   <td><?php echo "$deskripsi_cut"; ?></td>
                   <td><?php echo "$row[gambar]"; ?></td>
                   <td>
-
-
                     <a href="#tomboleditserat" class="edit" onclick="modal_edit_serat('<?php echo $row['id_serat']; ?>','<?php echo $row['nama_serat']; ?>','<?php echo $row['deskripsi_serat']; ?>','<?php echo $row['gambar']; ?>');"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-
-
-                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_serat('<?php echo $row['id_serat']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>          
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_serat('<?php echo $row['id_serat']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>        
                   </td>
                 </tr>
                 <?php                                 
@@ -114,7 +110,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Tambah Data Serat</h4>
+            <h4 class="modal-title" style="font-size: 18px;">Tambah Data Serat</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
@@ -137,7 +133,7 @@
                     </button>                                    
                     <div class="btn btn-default image-preview-input">                                        
                       <span class="image-preview-input-title">Pilih File</span>
-                      <input type="file" style="width:100px" accept="image/png, image/jpeg, image/gif," name="gambar">                            
+                      <input type="file" style="width:100px" accept="image/png, image/jpeg, image/gif," name="gambar">     
                     </div>
                   </span>
                 </div>
@@ -157,7 +153,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Edit Data Serat</h4>`
+            <h4 class="modal-title" style="font-size: 18px;">Edit Data Serat</h4>`
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <form enctype="multipart/form-data" action="<?php echo base_url('admin/editSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
@@ -171,7 +167,6 @@
                 <label>Deskripsi</label>
                 <textarea type="text" name="editdeskripsi" id="editdeskripsi" class="form-control" rows="8"required></textarea>
               </div>
-              
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
@@ -213,7 +208,7 @@
         <div class="modal-content">
           <form>
             <div class="modal-header">            
-              <h4 class="modal-title">Hapus Data Serat</h4>
+              <h4 class="modal-title" style="font-size: 18px;">Hapus Data Serat</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -324,7 +319,7 @@
         <div class="modal-content">
           <form>
             <div class="modal-header">            
-              <h4 class="modal-title">Hapus Data Varietas</h4>
+              <h4 class="modal-title" style="font-size: 18px;">Hapus Data Varietas</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -445,7 +440,7 @@
         <div class="modal-content">
           <form>
             <div class="modal-header">            
-              <h4 class="modal-title">Hapus Data Leaflet</h4>
+              <h4 class="modal-title" style="font-size: 18px;">Hapus Data Leaflet</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -468,6 +463,61 @@
         }
     </script>
 
+    <!-- Tambah Modal HTML leaflet-->
+    <div id="tambahleaflet" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" style="font-size: 18px;">Tambah Data Leaflet</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
+              </div>
+                 <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahLeaflet');?>" method="post" class="form-horizontal">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama Leaflet</label>
+                            <input type="text" class="form-control" name="namaLeaflet" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Jenis Leaflet</label>
+                            <input type="text" class="form-control" list="daftarJenis" id="jenisLeaflet" name="jenisLeaflet" required>
+                        </div>
+                        <div class="form-group" style="padding-bottom: 0px">
+                            <label>Upload Gambar Ke-1</label>
+
+                            <div class="input-group">              
+                                <input type="file" id="gmbr1" name="gambar1" style="display:none" onchange="document.getElementById('img1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
+                                <input type="text" id="img1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel">
+                                <input type="button" value="Pilih File" onclick="document.getElementById('gmbr1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                            </div>
+
+                        </div>                     
+                        <div class="form-group" style="padding-bottom: 0px">
+                            <label>Upload Gambar Ke-2</label>
+                            
+                            <div class="input-group">                                
+                                <input type="file" id="gmbr2" name="gambar2" style="display:none" onchange="document.getElementById('img2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
+                                <input type="text" id="img2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel" required>
+                                <input type="button" value="Pilih File" onclick="document.getElementById('gmbr2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                            </div>
+
+                        </div>                                    
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                        <input type="submit" class="btn btn-success" value="Tambah">
+                    </div>
+                </form>              
+            </div>
+        </div>
+    </div>
+
+    <datalist id="daftarJenis">
+    <?php 
+        foreach ($listJenis as $row) {
+            echo "<option value=\"$row->nama_jenis\">";
+        }
+    ?>
+    </datalist>
     <!-- Data Budidaya   -->
     <section class="budidaya" id="tabelBudidaya" style="padding-top: 50px; margin-top: -80px;">
       <div class="container">
@@ -566,7 +616,7 @@
         <div class="modal-content">
           <form>
             <div class="modal-header">            
-              <h4 class="modal-title">Hapus Data Budidaya</h4>
+              <h4 class="modal-title" style="font-size: 18px;">Hapus Data Budidaya</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -691,7 +741,7 @@
         <div class="modal-content">
           <form>
             <div class="modal-header">            
-              <h4 class="modal-title">Hapus Data Stok Benih</h4>
+              <h4 class="modal-title" style="font-size: 18px;">Hapus Data Stok Benih</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -853,7 +903,7 @@
         <div class="modal-content">
           <form>
             <div class="modal-header">            
-              <h4 class="modal-title">Hapus Data Distribusi Benih</h4>
+              <h4 class="modal-title" style="font-size: 18px;">Hapus Data Distribusi Benih</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -954,7 +1004,7 @@
         <div class="modal-content">
           <form>
             <div class="modal-header">            
-              <h4 class="modal-title">Hapus Data Alat dan Mesin</h4>
+              <h4 class="modal-title" style="font-size: 18px;">Hapus Data Alat dan Mesin</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -976,6 +1026,46 @@
           document.getElementById('idhapusalsin').setAttribute('href' ,"hapusAlsin/"+delete_url);
         }
     </script>
+
+    <!-- Tambah Modal HTML Alsin-->
+    <div id="tambahalsin" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" style="font-size: 18px;">Tambah Data Alat dan Mesin</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
+              </div>
+                 <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahAlsin');?>" method="post" class="form-horizontal">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama Alat dan Mesin</label>
+                            <input type="text" class="form-control" name="namaAlsin" required>
+                        </div>
+                        <div class="form-group" style="padding-bottom: 0px">
+                            <label>Upload Gambar Ke-1</label>
+                            <div class="input-group">              
+                                <input type="file" id="gmbralsin1" name="gambaralsin1" style="display:none" onchange="document.getElementById('imgalsin1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
+                                <input type="text" id="imgalsin1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel">
+                                <input type="button" value="Pilih File" onclick="document.getElementById('gmbralsin1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                            </div>
+                        </div>                     
+                        <div class="form-group" style="padding-bottom: 0px">
+                            <label>Upload Gambar Ke-2</label>
+                            <div class="input-group">                                
+                                <input type="file" id="gmbralsin2" name="gambaralsin2" style="display:none" onchange="document.getElementById('imgalsin2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
+                                <input type="text" id="imgalsin2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel" required>
+                                <input type="button" value="Pilih File" onclick="document.getElementById('gmbralsin2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                            </div>
+                        </div>                                    
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                        <input type="submit" class="btn btn-success" value="Tambah">
+                    </div>
+                </form>              
+            </div>
+        </div>
+    </div>
 
     <footer style="margin-top: 0px;">
       <div class="container-fluid text-center" style="color:white;background-color: black;">

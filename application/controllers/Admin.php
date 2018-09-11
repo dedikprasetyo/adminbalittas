@@ -28,6 +28,7 @@
 			$this->load->model("m_data");
 			$data['serat'] = $this->m_data->load_serat();
 			$data['varietas'] = $this->m_data->load_varietas();
+			$data['listJenis'] = $this->m_data->get_jenisleaflet();
 			$data['leaflet'] = $this->m_data->load_leaflet();
 			$data['gambarleaflet'] = $this->m_data->load_gambar_leaflet();
 			$data['monograf'] = $this->m_data->load_budidaya();
@@ -113,6 +114,37 @@
 			unlink($targetpathleaflet.$dataleaflet[0]->file);
 			unlink($targetpathleaflet.$dataleaflet[1]->file);
 			$this->m_data->hapus_leaflet($idLeaflet);
+			redirect(base_url('admin/serat#tabelLeaflet'));
+		}
+
+		public function tambahLeaflet(){
+			$this->load->model("m_data");
+			
+			$nama = $this->input->post('namaLeaflet');	
+			$this->m_data->add_leaflet_name($nama);	
+
+
+
+					// $idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
+					// if (!empty($idJenis)) {
+					// 	$this->m_data->add_leaflet_name($nama,$idJenis);	
+					// } else {
+					// 	$this->m_data->add_jenis_leaflet($this->input->post('jenisLeaflet'));
+					// 	$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
+					// 	$this->m_data->add_leaflet_name($nama,$idJenis);	
+					// }
+				
+
+			$targetpathleaflet = "item img/leafletgabungan/";		
+			
+			$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['gambar1']['name']);
+			move_uploaded_file($_FILES['gambar1']['tmp_name'],$targetpathleaflet1);
+			$this->m_data->add_leaflet_img($_FILES['gambar1']['name']);	
+				
+			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambar2']['name']);
+			move_uploaded_file($_FILES['gambar2']['tmp_name'],$targetpathleaflet2);
+			$this->m_data->add_leaflet_img($_FILES['gambar2']['name']);
+
 			redirect(base_url('admin/serat#tabelLeaflet'));
 		}
 		
@@ -217,6 +249,25 @@
 			unlink($targetpathleaflet.$dataleaflet[0]->file);
 			unlink($targetpathleaflet.$dataleaflet[1]->file);
 			$this->m_data->hapus_Alsin($idAlsin);
+			redirect(base_url('admin/serat#tabelAlsin'));
+		}
+
+		public function tambahAlsin(){
+			$this->load->model("m_data");
+			
+			$nama = $this->input->post('namaAlsin');	
+			$this->m_data->add_alsin_name($nama);	
+
+			$targetpathleaflet = "item img/leafletgabungan/";		
+			
+			$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['gambaralsin1']['name']);
+			move_uploaded_file($_FILES['gambaralsin1']['tmp_name'],$targetpathleaflet1);
+			$this->m_data->add_alsin_img($_FILES['gambaralsin1']['name']);	
+				
+			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambaralsin2']['name']);
+			move_uploaded_file($_FILES['gambaralsin2']['tmp_name'],$targetpathleaflet2);
+			$this->m_data->add_alsin_img($_FILES['gambaralsin2']['name']);
+
 			redirect(base_url('admin/serat#tabelAlsin'));
 		}
 	}
