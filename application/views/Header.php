@@ -178,9 +178,9 @@
 				    if(!empty($Judul)){
 			 		foreach($Judul as $jud) {
 			 			?>
-				     <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Varietas <b><?php echo $jud->nama_serat;?></b>
+				     <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Komoditas <b><?php echo $jud->nama_serat;?></b>
 				    </h1>
-				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Varietas <b><?php echo $jud->nama_serat;?></b>
+				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Komoditas <b><?php echo $jud->nama_serat;?></b>
 				    </h1>
 				    <?php } } else if(!empty($Judul2)){?>
 				    <?php foreach($Judul2 as $j) {?>

@@ -55,36 +55,46 @@
 							<hr style="margin-top: 0px; margin-bottom: 10px; border-color: #fece00;">							
 							<table>
 								<tbody>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Kementrian Pertanian</td>
-										</tr>
-									</a>	
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Badan Litbang Pertanian</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">UPT Badan Litbang Pertanian</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Pustaka Balitbangtan</td>
-										</tr>
-									</a>
-									<a href="">
-										<tr class="headerHover">
-											<td class="glyphicon glyphicon-ok">&nbsp</td>
-											<td style="padding-top: 3px;">Pusat Unggulan Iptek Tanaman Serat</td>
-										</tr>
-									</a>								
+									<a href="http://pertanian.go.id/">
+												<tr class="headerHover">
+													<td class="glyphicon glyphicon-ok">&nbsp</td>
+													<td style="padding-top: 3px;">
+														<a href="http://pertanian.go.id/" style="text-decoration: none;" class="headerHover" target='blank'> Kementrian Pertanian</a>
+													</td>
+												</tr>
+											</a>	
+									<a href="http://www.litbang.pertanian.go.id/">
+												<tr class="headerHover">
+													<td class="glyphicon glyphicon-ok">&nbsp</td>
+													<td style="padding-top: 3px;">
+														<a href="http://www.litbang.pertanian.go.id/" style="text-decoration: none;" class="headerHover" target='blank'> Badan Litbang Pertanian</a>
+													</td>
+												</tr>
+											</a>
+									<a href="http://www.litbang.pertanian.go.id/profil/links">
+												<tr class="headerHover">
+													<td class="glyphicon glyphicon-ok">&nbsp</td>
+													<td style="padding-top: 3px;">
+														<a href="http://www.litbang.pertanian.go.id/profil/links" style="text-decoration: none;" class="headerHover" target='blank'> UPT Badan Litbang Pertanian</a>
+													</td>
+												</tr>
+											</a>
+									<a href="http://digilib.litbang.pertanian.go.id/~pustaka/indonesiana/">
+												<tr class="headerHover">
+													<td class="glyphicon glyphicon-ok">&nbsp</td>
+													<td style="padding-top: 3px;">
+														<a href="http://digilib.litbang.pertanian.go.id/~pustaka/indonesiana/" style="text-decoration: none;" class="headerHover" target='blank'> Pustaka Balitbangtan</a>
+													</td>
+												</tr>
+											</a>
+									<a href="http://pui.ristekdikti.go.id/index.php/lembaga/profil/vjW8v6X">
+												<tr class="headerHover">
+													<td class="glyphicon glyphicon-ok">&nbsp</td>
+													<td style="padding-top: 3px;">
+														<a href="http://pui.ristekdikti.go.id/index.php/lembaga/profil/vjW8v6X" style="text-decoration: none;" class="headerHover" target='blank'> Pusat Unggulan Iptek Tanaman Serat</a>
+													</td>
+												</tr>
+											</a>								
 								</tbody>
 							</table>
 							<br>														

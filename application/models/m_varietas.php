@@ -82,7 +82,6 @@ class M_varietas extends CI_Model{
 				WHERE varietas.nama_varietas LIKE '%$cari%' OR varietas.deskripsi_varietas LIKE '%$cari%' OR atribut.nama_atribut LIKE '%$cari%' OR detail_varietas.detail_value LIKE '%$cari%' ");
 			return $data->result();
      }
-
   //    public function pencarianVarietas($cari){
 		// 	if($cari == "#varietas"){
 		// 		$cari="";

@@ -26,6 +26,25 @@
                   <h3 class="text-left" style="color:black; font-family: Minion Pro">Ketersediaan Benih</h3>
                </a>
                <hr style="border-color: grey;margin-top: -8px;">
+               <!-- Label Filter -->
+              <!--  <div class="row">
+                  <div class="col-xs-4 col-sm-9 col-lg-9">
+                     <h5 class="text-right" style="margin-left: 5px;"><b>Filter by :</b></h5>
+                  </div>
+                  <div class="col-xs-4 col-sm-3 col-lg-3 text-right">
+                     <select class="form-control komoditas" id="komoditasku" name="komoditas" style="margin-right: 13px;" onchange="filterB();">
+                        <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                        <?php
+                           $komoditas = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                           for($i = 1;$i < count($komoditas);$i++){
+                              echo"<option value=$komoditas[$i]> $komoditas[$i] </option>";
+                           }
+                        ?>
+                     </select>
+                  </div>
+               </div> -->
+               <br>
+               <div id="tablebenih2">
                <div class="table-responsive">
                   <table class="table table-hover" style="text-align: center;">
                      <thead style="text-align:center; background-color: rgba(28,69,26,0.9);border-bottom: 3px solid white; color:#fece00;">
@@ -40,9 +59,11 @@
                      <tbody>
                         <?php
                            $count=0;
+                           $jumlah=0;
                             foreach ($stokbenih as $ben) 
                            {
                            	$count++;
+                              $jumlah+=$ben->stok_bulan_terakhir;
                            	?>
                         <tr>
                            <td><?php echo $count; ?></td>
@@ -56,16 +77,72 @@
                         <?php 
                            } 
                            ?>
+                           <tr style="background-color: rgba(28,69,26, 0.3);">
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td style="font-weight: bold;">JUMLAH</td>
+                           <td></td>
+                           <td class="text-center" style="font-weight: bold;"><?php echo number_format($jumlah, 2); ?></td>
+                           <td></td>
+                        </tr>
                      </tbody>
                   </table>
                </div>
+               </div>
+
+               <script>
+                        //ajax filter benih
+                        // function filterB(){
+                        //    var komoditas = $("#komoditasku").val();
+                        //    // alert(komoditas);
+                        //    // alert komoditas
+                        //    $.ajax({
+                        //       type:"POST",
+                        //       url: "../produk/filterBenih",
+                        //       data: "benihhhhhhhh=" + komoditas,
+                        //       dataType : "html",
+                        //       succes:function(msg){
+                        //          $("#tablebenih2").html(msg);
+                        //       },
+                        //       error:function(){
+                        //          alert("Search Failed");
+                        //       }
+                        //    });
+                        // }
+
+                        // function filterB(){
+                        //   var komoditas = $("#komoditasku").val();
+                        //         // alert(komoditasstok);
+
+                        //   $.ajax({
+                        //       type:"POST",
+                        //       url: "../produk/filterStokBenih",
+                        //       data: "benih=" + komoditas,
+                        //       dataType : "html",
+                        //       success:function(msg){
+                        //           $("#tablebenih2").html(msg);                
+                        //       },
+                        //       error:function(){
+                        //         alert("Search failed");
+                        //       }
+                        //   });
+                        // }
+               </script>
+
                <h3>Distribusi Benih</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <!-- Label Filter -->
-               <div class="row">
+               <div class="row" >
                   <div class="col-xs-4 col-sm-8 col-lg-8">
-                     <h5 class="text-right" style="margin-left: 20px;"><b>Filter by :</b></h5>
+                     <h5 class="text-right" style="margin-left: 5px;"><b>Filter by :</b></h5>
                   </div>
+                  <!-- <div class="col-xs-3 col-sm-2 col-lg-2 text-right" >
+                     <select class="form-control bulan" id="bulan" name="bulan" style="margin-left: 23px;" onchange="filter();">
+                        <option disabled>Komoditas</option>
+                        <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                     </select>
+                  </div> -->
                   <div class="col-xs-4 col-sm-2 col-lg-2 text-right">
                      <select class="form-control bulan" id="bulan" name="bulan" style="margin-left: 13px;" onchange="filter();">
                         <option disabled>Bulan</option>
@@ -78,12 +155,12 @@
                            ?>
                      </select>
                   </div>
-                  <div class="col-xs-3 col-sm-2 col-lg-2 text-right">
+                  <div class="col-xs-4 col-sm-2 col-lg-2 text-right">
                      <select class="form-control tahun" id="tahun" name="tahun" onchange="filter();">
                         <option disabled>Tahun</option>
-                        <option value="2009" selected>2009</option>
+                        <option value="2011" selected>2011</option>
                         <?php
-                           for($i = 2010;$i <= 2050;$i++){
+                           for($i = 2012;$i <= 2050;$i++){
                            	echo"<option value=$i> $i </option>";
                            }
                            ?>
@@ -91,7 +168,8 @@
                   </div>
                </div>
                <br>
-               <div class="table-responsive" style="text-align: center;">
+               <div id="table-data">
+                   <div class="table-responsive" style="text-align: center;">
                   <table class="table table-hover">
                      <thead style="background-color: rgba(28,69,26,0.9);border-bottom: 3px solid white; color:#fece00;">
                         <th style="text-align:center;">No</th>
@@ -105,10 +183,18 @@
                      <tbody>
                         <?php 
                            $count=0;
+                           $jumlah=0;
                            foreach($distribusi as $ben)
                            {
                            $count++; 
-                           	 ?>
+                           $jumlah += $ben->jumlah_kg;
+                           $keterangan = "";
+                           if(!empty($ben->keterangan)){
+                              $keterangan = substr($ben->keterangan, 0,20). " ...";
+                           }else{
+                              $keterangan = $ben->keterangan;
+                           }
+                               ?>
                         <tr>
                            <td><?php echo $count; ?></td>
                            <td><?php echo $ben->nama_benih; ?></td>
@@ -118,11 +204,22 @@
                            <td><?php echo $ben->jumlah_kg; ?></td>
                            <td><?php echo $ben->keterangan; ?></td>
                         </tr>
-                     </tbody>
-                     <?php 
+                          <?php 
                         }
-                        ?>	
+                        ?> 
+                        <tr style="background-color: rgba(28,69,26, 0.3);">
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td style="font-weight: bold;">JUMLAH</td>
+                           <td></td>
+                           <td class="text-center" style="font-weight: bold;"><?php echo number_format($jumlah, 2); ?></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                   
                   </table>
+               </div>
                </div>
             </div>
             <div class="col-sm-3 col-lg-3">
@@ -173,6 +270,7 @@
          <span class="closeModal" style="margin-top: 50px; margin-left: 15px;">&times;</span>
          <img class="modalLeaflet-content" id="imgModal">
       </div>
+      
       <script>
          // Get the modal
          var modal = document.getElementById('myModal');
@@ -194,6 +292,8 @@
          span.onclick = function() { 
              modal.style.display = "none";
          }
+
+         
 
          // ajax
          function filter(){
@@ -226,19 +326,6 @@
                alert("Search failed");
             }
          });
-       //   var input, filter, table, tr, td, i;
-         // table = document.getElementById("tabelku");
-         // tr = table.getElementsByTagName("tr");
-         // for (i = 0; i < tr.length; i++) {
-         //   td = tr[i].getElementsByTagName("td")[2];
-         //   if (td) {
-         //     if ((td.innerHTML.toUpperCase().indexOf(bulan) > -1) && (td.innerHTML.toUpperCase().indexOf(tahun) > -1))  {
-         //       tr[i].style.display = "";
-         //     } else {
-         //       tr[i].style.display = "none";
-         //     }
-         //   }       
-         // }
       }
       </script>
       <!-- END OF MODALS -->

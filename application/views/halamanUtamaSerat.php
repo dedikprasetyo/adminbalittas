@@ -163,9 +163,9 @@
                         <div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);" id="<?php echo $no++ ?>">
                            <a href="<?php echo base_url('varietas/detail/').urlencode(strtolower($row->nama_serat));?>" style="text-decoration-line: none;">
                               <img src="<?php echo base_url() ?>item img/serat/<?php echo $row->gambar; ?>" alt="" style="width: 100%;">
-                              <h4 style="color:#fece00;"><?php echo $row->nama_serat; ?></h4>
+                              <h4 style="color:#fece00;">Komoditas Serat <b><?php echo $row->nama_serat; ?></b></h4>
                            </a>
-                           <?php 
+                         <!--   <?php 
                               if (!empty($row->deskripsi_serat)) {
                               	$deskripsi = substr($row->deskripsi_serat, 0, 50)." [..]";
                               	echo "<p>$deskripsi</p>";
@@ -173,7 +173,7 @@
                               	$deskripsi = "(Belum ada deskripsi)";
                               	echo "<p style=\"font-style: italic;\">$deskripsi</p><br>";
                               }
-                              ?>
+                              ?> -->
                            <br>							
                            <div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
                               <a href="<?php echo base_url('varietas/detail/').urlencode(strtolower($row->nama_serat));?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>

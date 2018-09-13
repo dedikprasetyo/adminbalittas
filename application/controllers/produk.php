@@ -30,11 +30,50 @@
 
 			$dataheader['JudulBenih']="Benih";
 			$data['leaflet']=$this->m_produk->selectLeafletTerbaru();
+			// //dedik
+			// $data['stokbenih']=$this->m_produk->load_stok_benih();
 			$data['stokbenih']=$this->m_produk->getBenih();
-			$data['distribusi']=$this->m_produk->getDistribusiBenih();
+			// $data['stokbenih']=$this->m_produk->selectStokBenihFiltered('S0002');
+			//tidak di pake
+			// $data['distribusi']=$this->m_produk->getDistribusiBenih();
+			//test filter
+			$data['distribusi']=$this->m_produk->selectDistribusiBenih();
+			// var_dump($data);
 			$this->load->view('Header', $dataheader);
 			$this->load->view('ProdukSerat', $data);
 			$this->load->view('Footer', $counter);
+		}
+
+		// public function filterBenih(){
+		// 	// Versi 2
+			
+		// 	$komoditas = $this->input->post('benih');
+		// 	// echo $komoditas;
+		// 	if ($komoditas == "Semua Komoditas") {
+		// 		$data['dataStokBenihFiltered'] = $this->m_produk->getBenih();
+		// 	} else {
+		// 		$data['dataStokBenihFiltered'] = $this->m_produk->selectStokBenihFiltered($komoditas);
+		// 	}
+		// 	$this->load->view('FilterTableClientBenih', $data);
+		// }
+		//dedik
+		// public function filterStokBenih() {
+		// 	$komoditas = $this->input->post('benih');
+		// 	// echo $komoditas;
+		// 	if ($komoditas == "Semua Komoditas") {
+		// 		$data['dataStokBenihFiltered'] = $this->m_produk->load_stok_benih();
+		// 	} else {
+		// 		$data['dataStokBenihFiltered'] = $this->m_produk->load_stok_benih_filter($komoditas);
+		// 	}
+		// 	$this->load->view('FilterTableClientBenih', $data);
+		// }
+
+		  public function filterDistribusi() {
+			$tahun_bulan = $this->input->post('tahun_bulan');
+			// echo $tahun_bulan;
+			$data['dataDistribusiFiltered'] = $this->m_produk->selectDistribusiFiltered(substr($tahun_bulan, 0, 4) , substr($tahun_bulan, 5, 2));
+			// var_dump($data);
+			$this->load->view('FilterTableClientDistribusiBenih', $data);
 		}
 
 		public function alsin(){
