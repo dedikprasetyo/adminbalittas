@@ -90,7 +90,12 @@
                   <td><?php echo "$deskripsi_cut"; ?></td>
                   <td><?php echo "$row[gambar]"; ?></td>
                   <td>
-                    <a href="#tomboleditserat" class="edit" onclick="modal_edit_serat('<?php echo $row['id_serat']; ?>','<?php echo $row['nama_serat']; ?>','<?php echo $row['deskripsi_serat']; ?>','<?php echo $row['gambar']; ?>');"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#tomboleditserat" class="edit" onclick="modal_edit_serat(
+                    '<?php echo $row['id_serat']; ?>',
+                    '<?php echo $row['nama_serat']; ?>',
+                    '<?php echo $row['deskripsi_serat']; ?>',
+                    '<?php echo $row['gambar']; ?>'
+                    );"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_serat('<?php echo $row['id_serat']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>        
                   </td>
                 </tr>
@@ -471,7 +476,7 @@
                 <h4 class="modal-title" style="font-size: 18px;">Tambah Data Leaflet</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
               </div>
-                 <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahLeaflet');?>" method="post" class="form-horizontal">
+                 <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahLeaflet');?>" method="post" class="form-horizontal" autocomplete="off">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nama Leaflet</label>
@@ -484,7 +489,7 @@
                         <div class="form-group" style="padding-bottom: 0px">
                             <label>Upload Gambar Ke-1</label>
 
-                            <div class="input-group">              
+                            <div class="input-group" required>              
                                 <input type="file" id="gmbr1" name="gambar1" style="display:none" onchange="document.getElementById('img1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
                                 <input type="text" id="img1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel">
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
@@ -494,7 +499,7 @@
                         <div class="form-group" style="padding-bottom: 0px">
                             <label>Upload Gambar Ke-2</label>
                             
-                            <div class="input-group">                                
+                            <div class="input-group" required>                                
                                 <input type="file" id="gmbr2" name="gambar2" style="display:none" onchange="document.getElementById('img2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
                                 <input type="text" id="img2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
@@ -650,10 +655,8 @@
                 <h2>Data <b>Stok Benih</b></h2>
               </div>
               <div class="col-sm-2">
-                <!-- <h5 style="margin-left: -64.5px;">Filter by &nbsp :</h5> -->
               </div>
               <div class="col-sm-2" style="padding-top: 0px;">
-                
               </div>
               <div class="col-sm-1">
               </div>
@@ -758,12 +761,17 @@
               </div>
               <div class="form-group">
                 <label>Tahun Panen</label>
-                <input type="number" step="1" name="tahunPanen" class="form-control" required>
+                <input type="number" step="1" name="tahunPanen" class="form-control" placeholder="contoh : 2018" required>
                 
               </div>
               <div class="form-group">
                 <label>Kelas</label>
-                <input type="text" name="namaBenih" class="form-control" required>
+                <!-- <input type="text" name="kelas" class="form-control" required> -->
+                <select name="kelas" class="form-control">
+                  <option value="">Tidak Ada</option>
+                  <option value="Dasar">Dasar</option>
+                  <option value="Pokok">Pokok</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Stok Bulan Terakhir (kg)</label>
@@ -771,7 +779,7 @@
               </div>
               <div class="form-group">
                 <label>Stok Sampai</label><br>
-                <input type="date" id="stokSampai" name="stokSampai" class="form-control" value="YYYY-MM-DD" required>
+                <input type="date" id="stokSampai" name="stokSampai" class="form-control" required>
               </div>  
               <div class="modal-footer">
                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
@@ -841,7 +849,7 @@
                   <th>Tanggal Distribusi</th>                              
                   <th>Tahun Panen</th>                              
                   <th>Kelas</th>
-                  <th>Jumlah Kg</th>  
+                  <th>Jumlah (kg)</th>  
                   <th>Keterangan</th>                                
                   <th>Aksi</th>                              
                 </tr>
@@ -874,6 +882,62 @@
         </div>
       </div>
     </section>
+
+    <!-- Tambah Modal HTML Distribusi Benih -->
+    <div id="tambahdistribusibenih" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Tambah Data Distribusi Benih</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahDistribusiBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
+              <div class="modal-body">
+              <div class="form-group">
+                <label>Nama Benih</label>
+                <input type="text" class="form-control" list="daftarbenih2" id="namaBenih" name="namaBenih" required>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Distribusi</label><br>
+                <input type="date" id="tanggalDistribusi" name="tanggalDistribusi" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Tahun Panen</label>
+                <input type="text" name="tahunPanen" class="form-control" placeholder="contoh : Sumberrejo 2018" required>
+              </div>
+              <div class="form-group">
+                <label>Kelas</label>
+                <select name="kelas" class="form-control">
+                  <option value="">Tidak Ada</option>
+                  <option value="Dasar">Dasar</option>
+                  <option value="Pokok">Pokok</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Jumlah (kg)</label>
+                <input type="number" step="0.01" name="jumlahkg" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Keterangan</label>
+                <input type="text" name="keterangan" class="form-control" required>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                <input type="submit" class="btn btn-success" value="Tambah">
+              </div>
+            </div>
+          </form>              
+        </div>
+      </div>
+    </div>
+
+    <datalist id="daftarbenih2">
+    <?php 
+        foreach ($listBenih as $row) {
+            echo "<option value=\"$row->nama_benih\">";
+        }
+    ?>
+    </datalist> 
 
     <!-- Filter Distribusi -->
     <script>
