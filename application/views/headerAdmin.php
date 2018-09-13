@@ -30,10 +30,10 @@
 				    	<img src="<?php echo base_url() ?>assets/img/balittaslitbang.png" style="width:290px; margin-left: -35px;">
 				    </div>			
 				    <div class="collapse navbar-collapse">			    
-					    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: -40px;">
+					    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: -40.5px;">
 					      	<div class="dropdownHeader">
 							  	<a href="<?php echo base_url('admin/logout'); ?>"><div class="dropbtnHeader" 
-							  	style="font-family: Minion Pro; cursor: pointer;">Logout &nbsp<i class="glyphicon glyphicon-log-out" style="font-size: 1.0em;"></i></div></a>
+							  	style="font-family: Minion Pro; cursor: pointer;">Logout &nbsp<i class="glyphicon glyphicon-log-out" style="font-size: 0.8em;"></i></div></a>
 							</div>																			      		     
 					    </ul>				    
 				    </div>				    

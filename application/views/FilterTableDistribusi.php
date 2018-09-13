@@ -3,7 +3,7 @@
                 <tr>                                
                   <th>No</th>
                   <th>Nama Benih</th>                                
-                  <th>Tanggal</th>                              
+                  <th>Tanggal Distribusi</th>                              
                   <th>Tahun Panen</th>                              
                   <th>Kelas</th>
                   <th>Jumlah Kg</th>  

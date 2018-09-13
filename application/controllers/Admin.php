@@ -28,10 +28,12 @@
 			$this->load->model("m_data");
 			$data['serat'] = $this->m_data->load_serat();
 			$data['varietas'] = $this->m_data->load_varietas();
+			$data['listJenis'] = $this->m_data->get_jenisleaflet();
 			$data['leaflet'] = $this->m_data->load_leaflet();
 			$data['gambarleaflet'] = $this->m_data->load_gambar_leaflet();
 			$data['monograf'] = $this->m_data->load_budidaya();
 			$data['stokbenih'] = $this->m_data->load_stok_benih();
+			$data['listBenih'] = $this->m_data->get_benih();
 			$data['distribusibenih'] = $this->m_data->load_distribusibenih();
 			$data['alsin'] = $this->m_data->load_alsin();
 			$data['gambaralsin'] = $this->m_data->load_gambar_alsin();
@@ -115,6 +117,32 @@
 			$this->m_data->hapus_leaflet($idLeaflet);
 			redirect(base_url('admin/serat#tabelLeaflet'));
 		}
+
+		public function tambahLeaflet(){
+			$this->load->model("m_data");
+			$nama = $this->input->post('namaLeaflet');	
+
+					$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
+					if (!empty($idJenis)) {
+						$this->m_data->add_leaflet_name($nama,$idJenis);	
+					} else {
+						$this->m_data->add_jenis_leaflet($this->input->post('jenisLeaflet'));
+						$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
+						$this->m_data->add_leaflet_name($nama,$idJenis);	
+					}
+				
+			$targetpathleaflet = "item img/leafletgabungan/";		
+			
+			$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['gambar1']['name']);
+			move_uploaded_file($_FILES['gambar1']['tmp_name'],$targetpathleaflet1);
+			$this->m_data->add_leaflet_img($_FILES['gambar1']['name']);	
+				
+			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambar2']['name']);
+			move_uploaded_file($_FILES['gambar2']['tmp_name'],$targetpathleaflet2);
+			$this->m_data->add_leaflet_img($_FILES['gambar2']['name']);
+
+			redirect(base_url('admin/serat#tabelLeaflet'));
+		}
 		
 		//budidaya
 		public function hapusBudidaya($idBudidaya){
@@ -142,15 +170,22 @@
 			$this->m_data->hapus_stok_benih($idStokBenih);
 			redirect(base_url('admin/serat#tabelStokBenih'));
 		}
-		public function filterStokBenih() {
+		public function tambahStokBenih(){
 			$this->load->model("m_data");
-			$komoditas = $this->input->post('serattt');
-			if ($komoditas == "Semua Komoditas") {
-				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih();
-			} else {
-				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih_filter($komoditas);
-			}
-			$this->load->view('FilterTableStokBenih', $data);
+			$asal = $this->input->post('asal');
+			$tahunpanen = $this->input->post('tahunPanen');
+			$kelas = $this->input->post('kelas');
+			$stokbulanterakhir = $this->input->post('stokBulanTerakhir');
+			$stoksampai = $this->input->post('stokSampai');
+			$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+					if (!empty($idBenih)) { //ada
+						$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
+					} else { //tidak ada
+						$this->m_data->add_benih($this->input->post('namaBenih'));
+						$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+						$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
+					}
+			redirect(base_url('admin/serat#tabelStokBenih'));
 		}
 		
 		//distribusi benih
@@ -161,52 +196,46 @@
 		}
 		public function filterDistribusi() {
 			$this->load->model("m_data");
-			$filtertahunbulankomoditas = $this->input->post('serattt');
-			$Tahun = substr($filtertahunbulankomoditas, 0,4);	// echo $Tahun."<br>";
-			$Bulan = substr($filtertahunbulankomoditas, 5,2);	// echo $Bulan."<br>";
-			$Komoditas = substr($filtertahunbulankomoditas, 8,strlen($filtertahunbulankomoditas));	// echo $Komoditas;
-			// echo $Tahun."-".$Bulan."-".$Komoditas;
-			$if1 = "0000-00-Semua Komoditas";
-			$if2 = "0000-00-".$Komoditas;	
-			$if3 = "0000-".$Bulan."-Semua Komoditas";
-			$if4 = "0000-".$Bulan."-".$Komoditas;  
-			$if5 = $Tahun."-00-Semua Komoditas";
-			$if6 = $Tahun."-00-".$Komoditas;
-			$if7 = $Tahun.'-'.$Bulan."-Semua Komoditas";
-			$if8 = $Tahun.'-'.$Bulan.'-'.$Komoditas;
-			// echo $if1."<br>";
-			// echo $if2."<br>";
-			// echo $if3."<br>";
-			// echo $if4."<br>";
-			// echo $if5."<br>";
-			// echo $if6."<br>";
-			// echo $if7."<br>";
-			// echo $if8;
-			if ($filtertahunbulankomoditas == $if1) { //iki 000
+			$filtertahunbulan = $this->input->post('serattt');
+			$Tahun = substr($filtertahunbulan, 0,4);	// echo $Tahun."<br>";
+			$Bulan = substr($filtertahunbulan, 5,2);	// echo $Bulan."<br>";
+			$Komoditas = substr($filtertahunbulan, 8,strlen($filtertahunbulan));	// echo $Komoditas;
+			$if1 = "0000-00";
+			$if2 = "0000-".$Bulan;
+			$if3 = $Tahun."-00";
+			$if4 = $Tahun.'-'.$Bulan;
+			if ($filtertahunbulan == $if1) { //iki 00
 				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih();
 			} 
-			else if ($filtertahunbulankomoditas == $if2) { //iki 001
-				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_komoditas($Komoditas);
-			}
-			else if ($filtertahunbulankomoditas == $if3) { //iki 010
+			else if ($filtertahunbulan == $if2) { //iki 01
 				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_bulan($Bulan);
 			}
-			else if ($filtertahunbulankomoditas == $if4) { //iki 011
-				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_bulankomoditas($Bulan,$Komoditas);
-			}
-			else if ($filtertahunbulankomoditas == $if5) { //iki 100
+			else if ($filtertahunbulan == $if3) { //iki 10
 				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahun($Tahun);
 			}
-			else if ($filtertahunbulankomoditas == $if6) { //iki 101
-				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahunkomoditas($Tahun,$Komoditas);
-			}
-			else if ($filtertahunbulankomoditas == $if7) { //iki 110 //
+			else { //iki 11
 				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahunbulan($Tahun,$Bulan);
 			}
-			else { //iki 111
-				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_all($Tahun,$Bulan,$Komoditas);
-			}
 			$this->load->view('FilterTableDistribusi', $data);
+		}
+		public function tambahDistribusiBenih(){
+			$this->load->model("m_data");
+			$tanggal = $this->input->post('tanggalDistribusi');
+			$tahunpanen = $this->input->post('tahunPanen');
+			$kelas = $this->input->post('kelas');
+			$jumlahkg = $this->input->post('jumlahkg');
+			$keterangan = $this->input->post('keterangan');
+			$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+					
+					if (!empty($idBenih)) { //ada
+						$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
+					} else { //tidak ada
+						$this->m_data->add_benih($this->input->post('namaBenih'));
+						$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+						$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
+					}
+
+			redirect(base_url('admin/serat#tabelDistribusiBenih'));
 		}
 
 		//alsin
@@ -217,6 +246,25 @@
 			unlink($targetpathleaflet.$dataleaflet[0]->file);
 			unlink($targetpathleaflet.$dataleaflet[1]->file);
 			$this->m_data->hapus_Alsin($idAlsin);
+			redirect(base_url('admin/serat#tabelAlsin'));
+		}
+
+		public function tambahAlsin(){
+			$this->load->model("m_data");
+			
+			$nama = $this->input->post('namaAlsin');	
+			$this->m_data->add_alsin_name($nama);	
+
+			$targetpathleaflet = "item img/leafletgabungan/";		
+			
+			$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['gambaralsin1']['name']);
+			move_uploaded_file($_FILES['gambaralsin1']['tmp_name'],$targetpathleaflet1);
+			$this->m_data->add_alsin_img($_FILES['gambaralsin1']['name']);	
+				
+			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambaralsin2']['name']);
+			move_uploaded_file($_FILES['gambaralsin2']['tmp_name'],$targetpathleaflet2);
+			$this->m_data->add_alsin_img($_FILES['gambaralsin2']['name']);
+
 			redirect(base_url('admin/serat#tabelAlsin'));
 		}
 	}
