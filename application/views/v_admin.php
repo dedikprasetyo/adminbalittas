@@ -11,23 +11,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <title>Balittas</title>
-    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
     <link href="<?php echo base_url();?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/styleadmin.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/simple-sidebar.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>/assets/img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
-    
-    
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="<?php echo base_url();?>/bootstrap/js/croppie.js"></script>
     <script src="<?php echo base_url();?>/bootstrap/js/bootstrap.min.js"></script>
@@ -293,9 +287,10 @@
                   <td><?php echo $no; ?></td>                                
                   <td><?php echo "$row[nama_varietas]"; ?></td>                              
                   <td>
-                    <a href="#spesifikasi" style="font-weight: unset;" onclick="">                        
+                    <a href="#spesifikasi" style="font-weight: unset;" onclick="modal_detail()">                        
                       <button class="btn btn-warning">Spesifikasi</button>
                     </a>
+
                   </td>       
                   <td><?php echo "$row[tanggal_pelepasan]"; ?></td>                         
                   <td><?php echo "$row[file_gambar]"; ?></td>
@@ -317,6 +312,49 @@
         </div>
       </div>
     </section>
+
+    <script>
+        function modal_detail()
+        {
+          $('#spesifikasi').modal('show', {backdrop: 'static'});          
+        }
+    </script>
+
+    <div id="spesifikasi" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" style="font-size: 18px;">Data Spesifikasi Varietas</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
+              </div>
+                 <form action="<?php echo base_url('admin/editDesVarietas'); ?>" method="post" class="form-horizontal">
+                    <input hidden id="idSpe" name="idSpesifikasi">
+                    <input hidden id="jumlahAtr" name="jumlahAtr">
+                    <input hidden id="idDeskripsi" name="idDeskripsi">
+                    <div class="modal-body">                                         
+                        <div class="form-group">
+                            <label>Deskripsi</label>
+                            <textarea type="text" name="deskripsi" class="form-control" id="des" rows="8"></textarea>
+                        </div>
+                        <div class="form-group"> 
+                            <div class="text-center">                                
+                                <label>Spesifikasi</label>                            
+                            </div>
+                            <table style="margin-left: 0px;" id="tableDetail">                              
+                              <!--elemet sebagai target append-->
+                              <tbody id="detail">
+                              </tbody>                              
+                          </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                        <input type="submit" class="btn btn-success" value="Simpan">
+                    </div>
+                </form>              
+            </div>
+        </div>
+    </div>
 
     <!-- Delete Modal HTML Varietas -->
     <div id="hapusvarietas" class="modal fade">
@@ -366,6 +404,151 @@
       }
     </script>
 
+    <!-- Tambah Modal HTML Varietas -->
+    <div id="tambahvarietas" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Tambah Data Varietas</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahVarietas'); ?>" method="post" class="form-horizontal" autocomplete="off">
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Nama Varietas</label>
+                <input type="text" name="namaVarietas" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Pelepasan</label>           
+                <input type="text" name="tanggalPelepasan" class="form-control" placeholder="ex : 2018/07/27" required>
+              </div>
+              <div class="form-group" style="padding-bottom: 0px">
+                <label>Upload Gambar</label>
+                <div class="input-group image-preview">
+                  <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="250x150 piksel"> 
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                      <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>                                    
+                    <div class="btn btn-default image-preview-input">                                        
+                      <span class="image-preview-input-title">Pilih File</span>
+                      <input type="file" style="width:100px" accept="image/png, image/jpeg, image/gif," name="gambar">            
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group" style="padding-bottom: 0px">
+                <label>Upload SK</label>
+                <div class="input-group">                                
+                  <input type="file" id="picked" name="sk" style="display:none" onchange="document.getElementById('filename').value=this.value" accept="application/pdf">
+                  <input type="text" id="filename" style="width: 468px;height: 35px;" disabled="disable">
+                  <input type="button" value="Pilih File" onclick="document.getElementById('picked').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">
+                </div>
+              </div>
+              <div class="form-group"> 
+                <label>Spesifikasi</label>                            
+                <table style="margin-left: 0px;">
+                  <thead style="background-color: none;">
+                    <tr>
+                      <th style="font-weight: unset;">Atribut</th>
+                      <th style="font-weight: unset;padding-left: 10px;">Value</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+
+                  <!--elemet sebagai target append-->
+                  <tbody id="itemlist">
+                    <tr>
+                      <td><input list="daftarAtribut" id="atribut0" name="atribut0" type="text" style="border-radius: 0px;width: 224px; height: 35px;"></td>
+                      <td><input name="value0" class="" type="text" style="border-radius: 0px;margin:0px 10px;width: 224px;height: 35px;"></td>
+                      <td></td>
+                    </tr> 
+                  </tbody>
+                  <form method="post" action="<?php base_url('admin/tambahVarietas') ?>"><input hidden name="temp" id="temp" value="1"></form>
+                  <tfoot>
+                    <tr>
+                      <td></td>
+                      <td class="text-right"><button class="btn btn-small btn-default" onclick="additem(); return false" style="margin-top: 10px;height: 35px;margin-right: 10px;"><i class="fa fa-plus" style="margin-top: -25px;"></i></button></td>
+                      <td></td>
+                    </tr>
+                  </tfoot>                                                                     
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <input type="submit" class="btn btn-success" value="Tambah">
+            </div>
+          </form>              
+        </div>
+      </div>
+    </div>
+
+    <datalist id="daftarAtribut"> 
+      <?php 
+        foreach ($listAtribut as $row) {
+            echo "<option value=\"$row->nama_atribut\">";
+        }
+      ?> 
+    </datalist>
+
+     <script>
+            var indeks = 1;            
+
+            function additem() {
+//                menentukan target append
+                var itemlist = document.getElementById('itemlist');
+                
+//                membuat element
+                var row = document.createElement('tr');
+                var jenis = document.createElement('td');
+                var jumlah = document.createElement('td');
+                var aksi = document.createElement('td');
+
+//                meng append element
+                itemlist.appendChild(row);
+                row.appendChild(jenis);
+                row.appendChild(jumlah);
+                row.appendChild(aksi);
+                          
+
+//                membuat element input
+                var jenis_input = document.createElement('input');
+                jenis_input.setAttribute('list', 'daftarAtribut');
+                jenis_input.setAttribute('id', 'atribut'+ indeks);
+                jenis_input.setAttribute('name', 'atribut'+ indeks);
+                jenis_input.setAttribute('class', 'autocomplete')
+                jenis_input.setAttribute('type', 'text');
+                jenis_input.setAttribute('style', 'margin-top : 10px;width: 224px;height: 35px;');
+                // autocomplete(document.getElementById("atribut" + indeks), listAtribut);
+
+                var jumlah_input = document.createElement('input');
+                jumlah_input.setAttribute('name', 'value'+ indeks);
+                jumlah_input.setAttribute('type', 'text');
+                jumlah_input.setAttribute('style', 'margin : 10px 10px 0px 10px;width: 224px;height: 35px;');
+
+
+                var hapus = document.createElement('span');
+
+//                meng append element input
+                jenis.appendChild(jenis_input);                
+                jumlah.appendChild(jumlah_input);
+                aksi.appendChild(hapus);
+
+                hapus.innerHTML = '<button class="btn btn-small btn-default" style="margin-top:10px;width: 5px;height: 35px;"><i class="fa fa-trash 0"></i></button>';
+//                membuat aksi delete element
+                indeks++;
+                document.getElementById('temp').value = indeks;
+                
+                hapus.onclick = function () {
+                    row.parentNode.removeChild(row);
+                    // indeks--;
+                    document.getElementById('temp').value = indeks;
+                };
+
+            }
+
+      </script>
 
     <!-- Data Leaflet -->
     <section class="leaflet" id="tabelLeaflet" style="padding-top: 50px; margin-top: -80px;">
@@ -488,23 +671,19 @@
                         </div>
                         <div class="form-group" style="padding-bottom: 0px">
                             <label>Upload Gambar Ke-1</label>
-
                             <div class="input-group" required>              
                                 <input type="file" id="gmbr1" name="gambar1" style="display:none" onchange="document.getElementById('img1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="img1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel">
+                                <input type="text" id="img1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  828x583 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
-
                         </div>                     
                         <div class="form-group" style="padding-bottom: 0px">
                             <label>Upload Gambar Ke-2</label>
-                            
                             <div class="input-group" required>                                
                                 <input type="file" id="gmbr2" name="gambar2" style="display:none" onchange="document.getElementById('img2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="img2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel" required>
+                                <input type="text" id="img2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  828x583 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
-
                         </div>                                    
                     </div>
                     <div class="modal-footer">
@@ -579,8 +758,6 @@
                   <td><?php echo "$row[cuplikan_monograf]"; ?></td>                         
                   <td><?php echo "$row[penulis]"; ?></td>
                   <td><?php echo "$row[file]"; ?></td>
-                  
-
                   <td>
                     <a href="#editbudidaya" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_budidaya('<?php echo $row['id_detail_monograf']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
@@ -615,6 +792,58 @@
         });
       }
     </script>
+
+     <!-- Tambah Modal HTML Budidaya -->
+    <div id="tambahbudidaya" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Tambah Data Budidaya</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahBudidaya'); ?>" method="post" class="form-horizontal" autocomplete="off">
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Komoditas</label>
+                <select class="form-control" name="selectkomoditas">
+                  <option value="S0002">Kapas</option>
+                  <option value="S0003">Kapuk</option>
+                  <option value="S0004">Kenaf</option>
+                  <option value="S0005">Rami</option>
+                  <option value="S0006">Rosela</option>
+                  <option value="S0010">Sisal</option>
+                  <option value="S0011">Abaka</option>
+                </select>                            
+              </div>
+              <div class="form-group">
+                <label>Judul</label>
+                <input type="text" name="judul" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Deskripsi Singkat</label>
+                <textarea type="text" name="deskripsiSingkat" class="form-control" rows="6" required ></textarea>
+              </div>
+              <div class="form-group">
+                <label>Penulis</label>
+                <input type="text" name="penulis" class="form-control" required>
+              </div>
+              <div class="form-group" style="padding-bottom: 0px">
+                <label>Upload File</label>
+                  <div class="input-group">                                
+                    <input type="file" id="filepdf" name="pdf" style="display:none" onchange="document.getElementById('pdftext').value=this.value" accept="application/pdf" required>
+                    <input type="text" id="pdftext" style="width: 468px;height: 35px;" disabled="disable">
+                    <input type="button" value="Pilih File" onclick="document.getElementById('filepdf').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                  </div>
+              </div> 
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <input type="submit" class="btn btn-success" value="Tambah">
+            </div>
+          </form>              
+        </div>
+      </div>
+    </div>
 
     <!-- Delete Modal HTML Budidaya -->
     <div id="hapusbudidaya" class="modal fade">
@@ -748,13 +977,11 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahStokBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
-
               <div class="modal-body">
               <div class="form-group">
                 <label>Nama Benih</label>
                 <input type="text" class="form-control" list="daftarbenih" id="namaBenih" name="namaBenih" required>
               </div>
-              
               <div class="form-group">
                 <label>Asal</label>
                 <input type="text" name="asal" class="form-control" required>
@@ -762,7 +989,6 @@
               <div class="form-group">
                 <label>Tahun Panen</label>
                 <input type="number" step="1" name="tahunPanen" class="form-control" placeholder="contoh : 2018" required>
-                
               </div>
               <div class="form-group">
                 <label>Kelas</label>
@@ -1125,7 +1351,7 @@
                             <label>Upload Gambar Ke-1</label>
                             <div class="input-group">              
                                 <input type="file" id="gmbralsin1" name="gambaralsin1" style="display:none" onchange="document.getElementById('imgalsin1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="imgalsin1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel">
+                                <input type="text" id="imgalsin1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  828x583 piksel">
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbralsin1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                     
@@ -1133,7 +1359,7 @@
                             <label>Upload Gambar Ke-2</label>
                             <div class="input-group">                                
                                 <input type="file" id="gmbralsin2" name="gambaralsin2" style="display:none" onchange="document.getElementById('imgalsin2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="imgalsin2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  1169x827 piksel" required>
+                                <input type="text" id="imgalsin2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  828x583 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbralsin2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                                    

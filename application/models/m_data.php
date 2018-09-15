@@ -93,6 +93,10 @@
 			$sql = $this->db->query("SELECT `file` FROM `detail_monograf` WHERE `id_detail_monograf` = \"$idBudidaya\"");
 			return $sql->result();
 		}
+		public function add_budidaya($idserat,$deskripsisingkat,$penulis,$judul,$file) { //blm		
+			$this->db->query("
+				INSERT INTO `detail_monograf`(`id_serat`, `id_detail_monograf`, `cuplikan_monograf`, `penulis`, `judul`, `file`) VALUES (\"$idserat\",\"\",\"$deskripsisingkat\",\"$penulis\",\"$judul\",\"$file\")");
+		}
 
 		//Stok Benih
 		public function load_stok_benih(){
@@ -107,8 +111,7 @@
 			return $sql->result();
 		}
 		public function add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai){		
-			$sql = $this->db->query("
-				INSERT INTO `stok_benih`(`id_stok_benih`, `id_benih`, `asal`, `tahun_panen`, `kelas`, `stok_bulan_terakhir`, `stok_sampai`) VALUES (\"\",\"$idBenih\",\"$asal\",\"$tahunpanen\",\"$kelas\",\"$stokbulanterakhir\",\"$stoksampai\");");			
+			$sql = $this->db->query("INSERT INTO `stok_benih`(`id_stok_benih`, `id_benih`, `asal`, `tahun_panen`, `kelas`, `stok_bulan_terakhir`, `stok_sampai`) VALUES (\"\",\"$idBenih\",\"$asal\",\"$tahunpanen\",\"$kelas\",\"$stokbulanterakhir\",\"$stoksampai\");");			
 		}
 
 		//untuk stok benih dan distribusi
@@ -117,6 +120,7 @@
 			$hasil = $sql->result();
 			return $hasil[0]->id_benih;
 		}
+
 		//untuk stok benih dan distribusi
 		public function add_benih($namabenih) { 	
 			$this->db->query("INSERT INTO `benih`(`nama_benih`, `id_benih`) VALUES (\"$namabenih\",\"\")");
@@ -178,7 +182,6 @@
 			$sql = $this->db->query("DELETE FROM `leaflet` WHERE `id_leaflet` = \"$idAlsin\"");		
 
 		}
-
 		public function add_alsin_name($nama){		
 			$sql = $this->db->query("INSERT INTO leaflet (id_leaflet, nama_leaflet, id_jenis_leaflet) VALUES (\"\",\"$nama\",\"JL005\")");	
 		}
@@ -203,5 +206,4 @@
 			$sql = $this->db->query("INSERT INTO statistik_pengunjung (id_pengunjung, tanggal, hits, online) VALUES(\"$ip\",\"$tanggal\",'1',\"$online\")");			
 		}
 	}
-
 ?>

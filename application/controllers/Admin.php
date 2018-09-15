@@ -12,7 +12,6 @@
 				$this->session->set_userdata(array(
 						'akunAktif'=>"Administrator"),
 				true);
-
 				redirect(base_url('admin/serat'));
 			}else{
 				$data['coba'] = "salah";
@@ -102,7 +101,6 @@
 			$datagambardansk = $this->m_data->get_imgsk_varietas_byId($idVarietas);
 			unlink('item img/gambar/Edited/'.$datagambardansk[0]->file_gambar);
 			unlink('file/SK/'.$datagambardansk[0]->file_SK);
-
 			$this->m_data->hapus_varietas($idVarietas);
 			redirect(base_url('admin/serat#tabelVarietas'));
 		}
@@ -117,30 +115,24 @@
 			$this->m_data->hapus_leaflet($idLeaflet);
 			redirect(base_url('admin/serat#tabelLeaflet'));
 		}
-
 		public function tambahLeaflet(){
 			$this->load->model("m_data");
 			$nama = $this->input->post('namaLeaflet');	
-
-					$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
-					if (!empty($idJenis)) {
-						$this->m_data->add_leaflet_name($nama,$idJenis);	
-					} else {
-						$this->m_data->add_jenis_leaflet($this->input->post('jenisLeaflet'));
-						$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
-						$this->m_data->add_leaflet_name($nama,$idJenis);	
-					}
-				
+			$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
+			if (!empty($idJenis)) {
+				$this->m_data->add_leaflet_name($nama,$idJenis);	
+			} else {
+				$this->m_data->add_jenis_leaflet($this->input->post('jenisLeaflet'));
+				$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
+				$this->m_data->add_leaflet_name($nama,$idJenis);	
+			}
 			$targetpathleaflet = "item img/leafletgabungan/";		
-			
 			$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['gambar1']['name']);
 			move_uploaded_file($_FILES['gambar1']['tmp_name'],$targetpathleaflet1);
 			$this->m_data->add_leaflet_img($_FILES['gambar1']['name']);	
-				
 			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambar2']['name']);
 			move_uploaded_file($_FILES['gambar2']['tmp_name'],$targetpathleaflet2);
 			$this->m_data->add_leaflet_img($_FILES['gambar2']['name']);
-
 			redirect(base_url('admin/serat#tabelLeaflet'));
 		}
 		
@@ -151,6 +143,18 @@
 			$databudidaya = $this->m_data->get_budidaya_byId($idBudidaya);
 			unlink($targetpathbudidaya.$databudidaya[0]->file);
 			$this->m_data->hapus_budidaya($idBudidaya);
+			redirect(base_url('admin/serat#tabelBudidaya'));
+		}
+		public function tambahBudidaya(){
+			$this->load->model("m_data");
+			$idserat = $this->input->post('selectkomoditas');
+			$judul = $this->input->post('judul');
+			$deskripsisingkat = $this->input->post('deskripsiSingkat');
+			$penulis = $this->input->post('penulis');
+			$targetpathbudidaya = "file/unduhan/";		
+			$targetpathbudidayamonograf = $targetpathbudidaya.basename($_FILES['pdf']['name']);
+			move_uploaded_file($_FILES['pdf']['tmp_name'],$targetpathbudidayamonograf);
+			$this->m_data->add_budidaya($idserat,$deskripsisingkat,$penulis,$judul,$_FILES['pdf']['name']);
 			redirect(base_url('admin/serat#tabelBudidaya'));
 		}
 		public function filterBudidaya() {
@@ -178,13 +182,13 @@
 			$stokbulanterakhir = $this->input->post('stokBulanTerakhir');
 			$stoksampai = $this->input->post('stokSampai');
 			$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
-					if (!empty($idBenih)) { //ada
-						$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
-					} else { //tidak ada
-						$this->m_data->add_benih($this->input->post('namaBenih'));
-						$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
-						$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
-					}
+			if (!empty($idBenih)) { //ada
+				$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
+			} else { //tidak ada
+				$this->m_data->add_benih($this->input->post('namaBenih'));
+				$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+				$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
+			}
 			redirect(base_url('admin/serat#tabelStokBenih'));
 		}
 		
@@ -226,15 +230,13 @@
 			$jumlahkg = $this->input->post('jumlahkg');
 			$keterangan = $this->input->post('keterangan');
 			$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
-					
-					if (!empty($idBenih)) { //ada
-						$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
-					} else { //tidak ada
-						$this->m_data->add_benih($this->input->post('namaBenih'));
-						$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
-						$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
-					}
-
+			if (!empty($idBenih)) { //ada
+				$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
+			} else { //tidak ada
+				$this->m_data->add_benih($this->input->post('namaBenih'));
+				$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+				$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
+			}
 			redirect(base_url('admin/serat#tabelDistribusiBenih'));
 		}
 
@@ -248,23 +250,17 @@
 			$this->m_data->hapus_Alsin($idAlsin);
 			redirect(base_url('admin/serat#tabelAlsin'));
 		}
-
 		public function tambahAlsin(){
 			$this->load->model("m_data");
-			
 			$nama = $this->input->post('namaAlsin');	
 			$this->m_data->add_alsin_name($nama);	
-
 			$targetpathleaflet = "item img/leafletgabungan/";		
-			
 			$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['gambaralsin1']['name']);
 			move_uploaded_file($_FILES['gambaralsin1']['tmp_name'],$targetpathleaflet1);
 			$this->m_data->add_alsin_img($_FILES['gambaralsin1']['name']);	
-				
 			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambaralsin2']['name']);
 			move_uploaded_file($_FILES['gambaralsin2']['tmp_name'],$targetpathleaflet2);
 			$this->m_data->add_alsin_img($_FILES['gambaralsin2']['name']);
-
 			redirect(base_url('admin/serat#tabelAlsin'));
 		}
 	}
