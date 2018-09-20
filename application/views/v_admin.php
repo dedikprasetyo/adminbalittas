@@ -603,11 +603,22 @@
                         break;                               
                       }
                     }
+
                     $idleaflet = $row['id_leaflet'];
                     $nama = $row['nama_leaflet'];
+                    $nama2 = $row['nama_jenis'];
                   ?>
+                 
                   <td>
-                    <a href="#editleaflet" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#tomboleditleaflet" class="edit" onclick="modal_edit_leaflet(
+                    '<?php echo "$idleaflet"; ?>',
+                    '<?php echo "$nama2"; ?>',
+                    '<?php echo "$nama"; ?>',
+                    '<?php echo "$idimg1"; ?>',
+                    '<?php echo "$idimg2"; ?>',
+                    '<?php echo "$leaflet1"; ?>',
+                    '<?php echo "$leaflet2"; ?>',
+                    );"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_leaflet('<?php echo $row['id_leaflet']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>   
                   </td>
                 </tr>
@@ -702,6 +713,66 @@
         }
     ?>
     </datalist>
+
+    <!-- Edit Modal HTML Leaflet-->
+    <div id="tomboleditleaflet" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Edit Data Leaflet</h4>`
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editLeaflet'); ?>" method="post" class="form-horizontal" autocomplete="off">
+            <div class="modal-body">
+              <input id="idleaflet" name="idleaflet" hidden>
+              <input id="idgambar1" name="idimg1" hidden>
+              <input id="idgambar2" name="idimg2" hidden>
+                <div class="form-group">
+                  <label>Nama Leaflet</label>
+                  <input type="text" class="form-control" name="namaLeaflet" id="namaLeaflet" required>
+                </div>
+                <div class="form-group">
+                  <label>Jenis Leaflet</label>
+                  <input type="text" class="form-control" list="daftarJenis" name="namajenisLeaflet" id="namajenisLeaflet" required>
+                </div>
+                <div class="form-group" style="padding-bottom: 0px">
+                  <label>Upload Gambar Ke-1</label>
+                  <div class="input-group">              
+                    <input type="file" id="leaf1" name="leaflet1" style="display:none" onchange="document.getElementById('leaflet1').value=this.value" accept="image/png, image/jpeg, image/gif">
+                    <input type="text" id="leaflet1" style="width: 468px;height: 35px;" disabled="disable">
+                    <input type="button" value="Pilih File" onclick="document.getElementById('leaf1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                  </div>
+                </div>                     
+                <div class="form-group" style="padding-bottom: 0px">
+                  <label>Upload Gambar Ke-2</label>
+                  <div class="input-group">                                
+                  <input type="file" id="leaf2" name="leaflet2" style="display:none" onchange="document.getElementById('leaflet2').value=this.value" accept="image/png, image/jpeg, image/gif">
+                  <input type="text" id="leaflet2" style="width: 468px;height: 35px;" disabled="disable" required>
+                  <input type="button" value="Pilih File" onclick="document.getElementById('leaf2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                </div>
+              </div>               
+            </div>    
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                <input type="submit" class="btn btn-success" value="Simpan">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function modal_edit_leaflet(idleaflet,namaJenis,namaLeaflet,idgmbr1,idgmbr2,gmbr1,gmbr2)
+        {
+          $('#tomboleditleaflet').modal('show', {backdrop: 'static'});          
+          document.getElementById('idleaflet').value = idleaflet;
+          document.getElementById('namajenisLeaflet').value = namaJenis;
+          document.getElementById('namaLeaflet').value = namaLeaflet;
+          document.getElementById('idgambar1').value = idgmbr1;
+          document.getElementById('idgambar2').value = idgmbr2;
+          document.getElementById('leaflet1').value = gmbr1;
+          document.getElementById('leaflet2').value = gmbr2;  
+        }
+    </script>
 
     <!-- Data Budidaya   -->
     <section class="budidaya" id="tabelBudidaya" style="padding-top: 50px; margin-top: -80px;">

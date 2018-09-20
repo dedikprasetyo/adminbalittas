@@ -43,7 +43,7 @@
 
 		//Leaflet	
 		public function load_leaflet(){
-			$sql = $this->db ->query("SELECT * FROM `leaflet`");
+			$sql = $this->db ->query("SELECT * FROM `leaflet` JOIN `jenis_leaflet` ON `leaflet`.`id_jenis_leaflet` = `jenis_leaflet`.`id_jenis_leaflet` ORDER BY `leaflet`.`id_leaflet`");
 			return $sql->result_array();
 		}
 		public function load_gambar_leaflet(){
@@ -52,6 +52,10 @@
 		}
 		public function get_leaflet_byId($idLeaflet){
 			$sql = $this->db->query("SELECT * FROM gambar_leaflet WHERE id_leaflet = \"$idLeaflet\"");
+			return $sql->result();
+		}
+		public function get_leaflet_img_byId($id){			
+			$sql = $this->db->query("SELECT * FROM gambar_leaflet WHERE id_gambar = \"$id\"");
 			return $sql->result();
 		}
 		public function hapus_leaflet($idLeaflet){
@@ -75,6 +79,13 @@
 		}
 		public function add_jenis_leaflet($namaJenis) { //blm		
 			$this->db->query("INSERT INTO `jenis_leaflet`(`id_jenis_leaflet`, `nama_jenis`) VALUES (\"\",\"$namaJenis\")");
+		}
+		//blm
+		public function updateLeafletNameJenis($id,$nama, $idjenis){			
+			// $this->db->query("UPDATE `leaflet` SET `nama_leaflet`= \"$nama\" WHERE `id_leaflet` = \"$id\"");
+		}
+		public function updateLeafletImg($id,$img){			
+			// $this->db->query("UPDATE `gambar_leaflet` SET `file`= \"$img\" WHERE `id_gambar` = \"$id\"");
 		}
 
 		//Budidaya

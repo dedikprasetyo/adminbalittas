@@ -117,24 +117,82 @@
 		}
 		public function tambahLeaflet(){
 			$this->load->model("m_data");
+		    $nama = $this->input->post('namaLeaflet'); 
+		    $idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
+		    if (!empty($idJenis)) {
+		        $this->m_data->add_leaflet_name($nama,$idJenis); 
+		    } else {
+		    	$this->m_data->add_jenis_leaflet($this->input->post('jenisLeaflet'));
+		    	$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
+		    	$this->m_data->add_leaflet_name($nama,$idJenis); 
+		    }
+		    $targetpathleaflet = "item img/leafletgabungan/";  
+		    $targetpathleaflet1 = $targetpathleaflet.basename($_FILES['gambar1']['name']);
+		    move_uploaded_file($_FILES['gambar1']['tmp_name'],$targetpathleaflet1);
+		    $this->m_data->add_leaflet_img($_FILES['gambar1']['name']); 
+		    $targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambar2']['name']);
+		    move_uploaded_file($_FILES['gambar2']['tmp_name'],$targetpathleaflet2);
+		    $this->m_data->add_leaflet_img($_FILES['gambar2']['name']);
+		    redirect(base_url('admin/serat#tabelLeaflet'));
+		}
+		public function editLeaflet(){
+			$this->load->model("m_data");
+			$idleaflet = $this->input->post('idleaflet');
+			$idgmbr1 = $this->input->post('idimg1');		
+			$idgmbr2 = $this->input->post('idimg2');	
 			$nama = $this->input->post('namaLeaflet');	
-			$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
-			if (!empty($idJenis)) {
-				$this->m_data->add_leaflet_name($nama,$idJenis);	
+			$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('namajenisLeaflet'));
+
+
+			$dataleaflet1 = $this->m_data->get_leaflet_img_byId($idgmbr1); 
+			$dataleaflet2 = $this->m_data->get_leaflet_img_byId($idgmbr2); 
+			$targetpathleaflet = "item img/leafletgabungan/";		
+
+			//blm
+			if (!empty($idJenis)) { //langsung update
+				$this->m_data->updateLeafletNameJenis($idleaflet,$nama, $idJenis);	
 			} else {
+				//tambah jenis dulu
 				$this->m_data->add_jenis_leaflet($this->input->post('jenisLeaflet'));
 				$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('jenisLeaflet'));
-				$this->m_data->add_leaflet_name($nama,$idJenis);	
+				//baru update
+				$this->m_data->updateLeafletNameJenis($idleaflet, $nama, $idJenis);		
 			}
-			$targetpathleaflet = "item img/leafletgabungan/";		
-			$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['gambar1']['name']);
-			move_uploaded_file($_FILES['gambar1']['tmp_name'],$targetpathleaflet1);
-			$this->m_data->add_leaflet_img($_FILES['gambar1']['name']);	
-			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambar2']['name']);
-			move_uploaded_file($_FILES['gambar2']['tmp_name'],$targetpathleaflet2);
-			$this->m_data->add_leaflet_img($_FILES['gambar2']['name']);
+
+			if (empty($_FILES['leaflet1']['name'])&&empty($_FILES['leaflet2']['name'])) {	
+				//gambar1 dan gambar2 kosong
+			} elseif (!empty($_FILES['leaflet1']['name'])&&!empty($_FILES['leaflet2']['name'])) {
+				//gambar1 dan gambar2 tidak kosong
+				unlink($targetpathleaflet.$dataleaflet1[0]->file);
+				unlink($targetpathleaflet.$dataleaflet2[0]->file);
+				$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['leaflet1']['name']);
+				move_uploaded_file($_FILES['leaflet1']['tmp_name'],$targetpathleaflet1);
+				$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['leaflet2']['name']);
+				move_uploaded_file($_FILES['leaflet2']['tmp_name'],$targetpathleaflet2);
+				$this->m_data->updateLeafletImg($idgmbr1,$_FILES['leaflet1']['name']); 
+				$this->m_data->updateLeafletImg($idgmbr2,$_FILES['leaflet2']['name']); 
+			} elseif (!empty($_FILES['leaflet1']['name'])) {
+				//gambar1 kosong
+				unlink($targetpathleaflet.$dataleaflet1[0]->file);
+				$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['leaflet1']['name']);
+				move_uploaded_file($_FILES['leaflet1']['tmp_name'],$targetpathleaflet1);
+				$this->m_data->updateLeafletImg($idgmbr1,$_FILES['leaflet1']['name']); 
+			} elseif (!empty($_FILES['leaflet2']['name'])) {
+				// gambar2 kosong
+				unlink($targetpathleaflet.$dataleaflet2[0]->file);
+				$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['leaflet2']['name']);
+				move_uploaded_file($_FILES['leaflet2']['tmp_name'],$targetpathleaflet2);
+				$this->m_data->updateLeafletImg($idgmbr2,$_FILES['leaflet2']['name']); 
+			}
+			
+
+			
+
+
 			redirect(base_url('admin/serat#tabelLeaflet'));
+
 		}
+
 		
 		//budidaya
 		public function hapusBudidaya($idBudidaya){
