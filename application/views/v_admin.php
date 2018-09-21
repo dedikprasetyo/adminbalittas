@@ -184,7 +184,7 @@
             </div>    
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
-                <input type="submit" class="btn btn-success" value="Simpan">
+              <input type="submit" class="btn btn-success" value="Simpan">
             </div>
           </form>
         </div>
@@ -413,19 +413,20 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
           </div>
           <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahVarietas'); ?>" method="post" class="form-horizontal" autocomplete="off">
+
             <div class="modal-body">
               <div class="form-group">
                 <label>Nama Varietas</label>
                 <input type="text" name="namaVarietas" class="form-control" required>
               </div>
               <div class="form-group">
-                <label>Tanggal Pelepasan</label>           
-                <input type="text" name="tanggalPelepasan" class="form-control" placeholder="ex : 2018/07/27" required>
-              </div>
+                <label>Tanggal Pelepasan</label>       
+                <input type="date" name="tanggalPelepasan" class="form-control" required>
+              </div> 
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
-                  <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="250x150 piksel"> 
+                  <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="250x150 piksel //blm diganti"> 
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                       <span class="glyphicon glyphicon-remove"></span> Clear
@@ -446,7 +447,9 @@
                 </div>
               </div>
               <div class="form-group"> 
-                <label>Spesifikasi</label>                            
+                <label>Spesifikasi</label>   
+
+
                 <table style="margin-left: 0px;">
                   <thead style="background-color: none;">
                     <tr>
@@ -464,15 +467,24 @@
                       <td></td>
                     </tr> 
                   </tbody>
-                  <form method="post" action="<?php base_url('admin/tambahVarietas') ?>"><input hidden name="temp" id="temp" value="1"></form>
+
+
+
+                 <form method="post" action="<?php base_url('admin/tambahVarietas') ?>"><input hidden name="temp" id="temp" value="1"></form>
+
                   <tfoot>
                     <tr>
                       <td></td>
+
+
                       <td class="text-right"><button class="btn btn-small btn-default" onclick="additem(); return false" style="margin-top: 10px;height: 35px;margin-right: 10px;"><i class="fa fa-plus" style="margin-top: -25px;"></i></button></td>
+
+
                       <td></td>
                     </tr>
                   </tfoot>                                                                     
                 </table>
+
               </div>
             </div>
             <div class="modal-footer">
@@ -484,71 +496,68 @@
       </div>
     </div>
 
-    <datalist id="daftarAtribut"> 
-      <?php 
+    <datalist id="daftarAtribut">
+    <?php 
         foreach ($listAtribut as $row) {
             echo "<option value=\"$row->nama_atribut\">";
         }
-      ?> 
+    ?>
     </datalist>
 
-     <script>
-            var indeks = 1;            
+    <script>
+      var indeks = 1;            
+      function additem() {
 
-            function additem() {
-//                menentukan target append
-                var itemlist = document.getElementById('itemlist');
-                
-//                membuat element
-                var row = document.createElement('tr');
-                var jenis = document.createElement('td');
-                var jumlah = document.createElement('td');
-                var aksi = document.createElement('td');
+        //menentukan target append
+        var itemlist = document.getElementById('itemlist');
+                  
+        //membuat element
+        var row = document.createElement('tr');
+        var jenis = document.createElement('td');
+        var jumlah = document.createElement('td');
+        var aksi = document.createElement('td');
 
-//                meng append element
-                itemlist.appendChild(row);
-                row.appendChild(jenis);
-                row.appendChild(jumlah);
-                row.appendChild(aksi);
-                          
+        //meng append element
+        itemlist.appendChild(row);
+        row.appendChild(jenis);
+        row.appendChild(jumlah);
+        row.appendChild(aksi);
+                            
+        //membuat element input
+        var jenis_input = document.createElement('input');
+        jenis_input.setAttribute('list', 'daftarAtribut');
+        jenis_input.setAttribute('id', 'atribut'+ indeks);
+        jenis_input.setAttribute('name', 'atribut'+ indeks);
+        jenis_input.setAttribute('class', 'autocomplete')
+        jenis_input.setAttribute('type', 'text');
+        jenis_input.setAttribute('style', 'margin-top : 10px;width: 224px;height: 35px;');
+        // autocomplete(document.getElementById("atribut" + indeks), listAtribut);
 
-//                membuat element input
-                var jenis_input = document.createElement('input');
-                jenis_input.setAttribute('list', 'daftarAtribut');
-                jenis_input.setAttribute('id', 'atribut'+ indeks);
-                jenis_input.setAttribute('name', 'atribut'+ indeks);
-                jenis_input.setAttribute('class', 'autocomplete')
-                jenis_input.setAttribute('type', 'text');
-                jenis_input.setAttribute('style', 'margin-top : 10px;width: 224px;height: 35px;');
-                // autocomplete(document.getElementById("atribut" + indeks), listAtribut);
+        var jumlah_input = document.createElement('input');
+        jumlah_input.setAttribute('name', 'value'+ indeks);
+        jumlah_input.setAttribute('type', 'text');
+        jumlah_input.setAttribute('style', 'margin : 10px 10px 0px 10px;width: 224px;height: 35px;');
 
-                var jumlah_input = document.createElement('input');
-                jumlah_input.setAttribute('name', 'value'+ indeks);
-                jumlah_input.setAttribute('type', 'text');
-                jumlah_input.setAttribute('style', 'margin : 10px 10px 0px 10px;width: 224px;height: 35px;');
+        var hapus = document.createElement('span');
 
+        //meng append element input
+        jenis.appendChild(jenis_input);                
+        jumlah.appendChild(jumlah_input);
+        aksi.appendChild(hapus);
 
-                var hapus = document.createElement('span');
-
-//                meng append element input
-                jenis.appendChild(jenis_input);                
-                jumlah.appendChild(jumlah_input);
-                aksi.appendChild(hapus);
-
-                hapus.innerHTML = '<button class="btn btn-small btn-default" style="margin-top:10px;width: 5px;height: 35px;"><i class="fa fa-trash 0"></i></button>';
-//                membuat aksi delete element
-                indeks++;
-                document.getElementById('temp').value = indeks;
-                
-                hapus.onclick = function () {
-                    row.parentNode.removeChild(row);
-                    // indeks--;
-                    document.getElementById('temp').value = indeks;
-                };
-
-            }
-
-      </script>
+        hapus.innerHTML = '<button class="btn btn-small btn-default" style="margin-top:10px;width: 5px;height: 35px;"><i class="fa fa-trash 0"></i></button>';
+        
+        //membuat aksi delete element
+        indeks++;
+        document.getElementById('temp').value = indeks;
+                  
+        hapus.onclick = function () {
+          row.parentNode.removeChild(row);
+          // indeks--;
+          document.getElementById('temp').value = indeks;
+        };
+      }
+    </script>
 
     <!-- Data Leaflet -->
     <section class="leaflet" id="tabelLeaflet" style="padding-top: 50px; margin-top: -80px;">
@@ -684,7 +693,7 @@
                             <label>Upload Gambar Ke-1</label>
                             <div class="input-group" required>              
                                 <input type="file" id="gmbr1" name="gambar1" style="display:none" onchange="document.getElementById('img1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="img1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  828x583 piksel" required>
+                                <input type="text" id="img1" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                     
@@ -692,7 +701,7 @@
                             <label>Upload Gambar Ke-2</label>
                             <div class="input-group" required>                                
                                 <input type="file" id="gmbr2" name="gambar2" style="display:none" onchange="document.getElementById('img2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="img2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  828x583 piksel" required>
+                                <input type="text" id="img2" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                                    
@@ -724,7 +733,7 @@
           </div>
           <form enctype="multipart/form-data" action="<?php echo base_url('admin/editLeaflet'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
-              <input id="idleaflet" name="idleaflet" hidden>
+              <input id="idleaflet" name="idleaflett" hidden>
               <input id="idgambar1" name="idimg1" hidden>
               <input id="idgambar2" name="idimg2" hidden>
                 <div class="form-group">
@@ -739,7 +748,7 @@
                   <label>Upload Gambar Ke-1</label>
                   <div class="input-group">              
                     <input type="file" id="leaf1" name="leaflet1" style="display:none" onchange="document.getElementById('leaflet1').value=this.value" accept="image/png, image/jpeg, image/gif">
-                    <input type="text" id="leaflet1" style="width: 468px;height: 35px;" disabled="disable">
+                    <input type="text" id="leaflet1" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable">
                     <input type="button" value="Pilih File" onclick="document.getElementById('leaf1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                   </div>
                 </div>                     
@@ -747,7 +756,7 @@
                   <label>Upload Gambar Ke-2</label>
                   <div class="input-group">                                
                   <input type="file" id="leaf2" name="leaflet2" style="display:none" onchange="document.getElementById('leaflet2').value=this.value" accept="image/png, image/jpeg, image/gif">
-                  <input type="text" id="leaflet2" style="width: 468px;height: 35px;" disabled="disable" required>
+                  <input type="text" id="leaflet2" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable" required>
                   <input type="button" value="Pilih File" onclick="document.getElementById('leaf2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                 </div>
               </div>               
@@ -772,6 +781,7 @@
           document.getElementById('leaflet1').value = gmbr1;
           document.getElementById('leaflet2').value = gmbr2;  
         }
+        
     </script>
 
     <!-- Data Budidaya   -->
@@ -830,7 +840,15 @@
                   <td><?php echo "$row[penulis]"; ?></td>
                   <td><?php echo "$row[file]"; ?></td>
                   <td>
-                    <a href="#editbudidaya" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#tomboleditbudidaya" class="edit" onclick="modal_edit_budidaya(
+                    '<?php echo $row['id_serat']; ?>',
+                    '<?php echo $row['nama_serat']; ?>',
+                    '<?php echo $row['id_detail_monograf']; ?>',
+                    '<?php echo $row['judul']; ?>',
+                    '<?php echo $row['cuplikan_monograf']; ?>',
+                    '<?php echo $row['penulis']; ?>',
+                    '<?php echo $row['file']; ?>'
+                    );"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_budidaya('<?php echo $row['id_detail_monograf']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
                   </td>
                 </tr>
@@ -902,7 +920,7 @@
                 <label>Upload File</label>
                   <div class="input-group">                                
                     <input type="file" id="filepdf" name="pdf" style="display:none" onchange="document.getElementById('pdftext').value=this.value" accept="application/pdf" required>
-                    <input type="text" id="pdftext" style="width: 468px;height: 35px;" disabled="disable">
+                    <input type="text" id="pdftext" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable">
                     <input type="button" value="Pilih File" onclick="document.getElementById('filepdf').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                   </div>
               </div> 
@@ -915,6 +933,65 @@
         </div>
       </div>
     </div>
+
+    <!-- Edit Modal HTML Budidaya-->
+    <div id="tomboleditbudidaya" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Edit Data Budidaya</h4>`
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editBudidayaaaa'); ?>" method="post" class="form-horizontal" autocomplete="off">
+            <div class="modal-body">
+              <input hidden id="idSerat_id" name="idSerat">
+              <input hidden id="idBudidaya_id" name="idBudidaya">
+              <div class="form-group">
+                <label>Komoditas</label>
+                <input type="text" id="namaSerat_id" name="namaSerat" class="form-control" disabled>
+              </div>
+              <div class="form-group">
+                <label>Judul</label>
+                <input type="text" id="judul_id" name="judul" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Deskripsi Singkat</label>
+                <textarea type="text" id="cuplikan_id" name="deskripsiSingkat" class="form-control" rows="6" required ></textarea>
+              </div>
+              <div class="form-group">
+                <label>Penulis</label>
+                <input type="text" id="penulis_id" name="penulis" class="form-control" required>
+              </div>
+              <div class="form-group" style="padding-bottom: 0px">
+                <label>Upload File</label>
+                <div class="input-group">                                
+                  <input type="file" id="editfilepdf" name="editpdfbudi" style="display:none" onchange="document.getElementById('editpdftext_id').value=this.value" accept="application/pdf">
+                  <input type="text" id="editpdftext_id" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable">
+                  <input type="button" value="Pilih File" onclick="document.getElementById('editfilepdf').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                </div>
+              </div> 
+            </div>  
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <input type="submit" class="btn btn-success" value="Simpan">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function modal_edit_budidaya(idSerat,namaSerat,idBudidaya,judul,cuplikan,penulis,file)
+        {
+          $('#tomboleditbudidaya').modal('show', {backdrop: 'static'});          
+          document.getElementById('idSerat_id').value = idSerat;
+          document.getElementById('namaSerat_id').value = namaSerat;
+          document.getElementById('idBudidaya_id').value = idBudidaya;
+          document.getElementById('judul_id').value = judul;
+          document.getElementById('cuplikan_id').value = cuplikan;
+          document.getElementById('penulis_id').value = penulis;
+          document.getElementById('editpdftext_id').value = file;  
+        }
+    </script>
 
     <!-- Delete Modal HTML Budidaya -->
     <div id="hapusbudidaya" class="modal fade">
@@ -944,6 +1021,8 @@
           document.getElementById('idhapusbudidaya').setAttribute('href' ,"hapusBudidaya/"+delete_url);
         }
     </script>
+
+
 
     <!-- Data Stok Benih   -->
     <section class="stokbenih" id="tabelStokBenih" style="padding-top: 50px; margin-top: -80px;">
@@ -1360,7 +1439,14 @@
                     $nama = $row['nama_leaflet'];
                   ?>
                   <td>
-                    <a href="#editalsin" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#tomboleditalsin" class="edit" onclick="modal_edit_alsin(
+                    '<?php echo "$idalsin"; ?>',
+                    '<?php echo "$nama"; ?>',
+                    '<?php echo "$idimg1"; ?>',
+                    '<?php echo "$idimg2"; ?>',
+                    '<?php echo "$leaflet1"; ?>',
+                    '<?php echo "$leaflet2"; ?>'
+                    );"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_alsin('<?php echo $row['id_leaflet']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>    
                   </td>
                 </tr>
@@ -1422,7 +1508,7 @@
                             <label>Upload Gambar Ke-1</label>
                             <div class="input-group">              
                                 <input type="file" id="gmbralsin1" name="gambaralsin1" style="display:none" onchange="document.getElementById('imgalsin1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="imgalsin1" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  828x583 piksel">
+                                <input type="text" id="imgalsin1" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disabled" placeholder="  828x583 piksel">
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbralsin1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                     
@@ -1430,7 +1516,7 @@
                             <label>Upload Gambar Ke-2</label>
                             <div class="input-group">                                
                                 <input type="file" id="gmbralsin2" name="gambaralsin2" style="display:none" onchange="document.getElementById('imgalsin2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="imgalsin2" style="width: 468px;height: 35px;" disabled="disabled" placeholder="  828x583 piksel" required>
+                                <input type="text" id="imgalsin2" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disabled" placeholder="  828x583 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbralsin2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                                    
@@ -1443,6 +1529,62 @@
             </div>
         </div>
     </div>
+
+    <!-- Edit Modal HTML Alsin-->
+    <div id="tomboleditalsin" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Edit Data Alat dan Mesin</h4>`
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editAlsin'); ?>" method="post" class="form-horizontal" autocomplete="off">
+            <div class="modal-body">
+              <input id="idalsin_id" name="idalsin" hidden>
+              <input id="idgambaralsin1_id" name="idgambaralsin1" hidden>
+              <input id="idgambaralsin2_id" name="idgambaralsin2" hidden>
+                <div class="form-group">
+                  <label>Nama Alat dan Mesin</label>
+                  <input type="text" class="form-control" name="namaAlsin" id="namaAlsin_id" required>
+                </div>
+                <div class="form-group" style="padding-bottom: 0px">
+                  <label>Upload Gambar Ke-1</label>
+                  <div class="input-group">              
+                    <input type="file" id="leafalsin1" name="leafletalsin1" style="display:none" onchange="document.getElementById('leafletalsin1').value=this.value" accept="image/png, image/jpeg, image/gif">
+                    <input type="text" id="leafletalsin1" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable">
+                    <input type="button" value="Pilih File" onclick="document.getElementById('leafalsin1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">         
+                  </div>
+                </div>                     
+                <div class="form-group" style="padding-bottom: 0px">
+                  <label>Upload Gambar Ke-2</label>
+                  <div class="input-group">                                
+                    <input type="file" id="leafalsin2" name="leafletalsin2" style="display:none" onchange="document.getElementById('leafletalsin2').value=this.value" accept="image/png, image/jpeg, image/gif">
+                    <input type="text" id="leafletalsin2" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable" required>
+                    <input type="button" value="Pilih File" onclick="document.getElementById('leafalsin2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
+                </div>
+              </div>               
+            </div>    
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                <input type="submit" class="btn btn-success" value="Simpan">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function modal_edit_alsin(idAlsin,namaAlsin,idgmbralsin1,idgmbralsin2,gmbralsin1,gmbralsin2)
+        {
+          $('#tomboleditalsin').modal('show', {backdrop: 'static'});          
+          document.getElementById('idalsin_id').value = idAlsin;
+          document.getElementById('namaAlsin_id').value = namaAlsin;
+          document.getElementById('idgambaralsin1_id').value = idgmbralsin1;
+          document.getElementById('idgambaralsin2_id').value = idgmbralsin2;
+          document.getElementById('leafletalsin1').value = gmbralsin1;
+          document.getElementById('leafletalsin2').value = gmbralsin2;  
+        }
+        
+    </script>
 
     <footer style="margin-top: 0px;">
       <div class="container-fluid text-center" style="color:white;background-color: black;">

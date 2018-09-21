@@ -27,6 +27,7 @@
 			$this->load->model("m_data");
 			$data['serat'] = $this->m_data->load_serat();
 			$data['varietas'] = $this->m_data->load_varietas();
+			$data['listAtribut'] = $this->m_data->getAtribut();
 			$data['listJenis'] = $this->m_data->get_jenisleaflet();
 			$data['leaflet'] = $this->m_data->load_leaflet();
 			$data['gambarleaflet'] = $this->m_data->load_gambar_leaflet();
@@ -104,6 +105,56 @@
 			$this->m_data->hapus_varietas($idVarietas);
 			redirect(base_url('admin/serat#tabelVarietas'));
 		}
+		public function tambahVarietas(){
+			$this->load->model("m_data");
+
+			date_default_timezone_set('Asia/Jakarta');
+	        $tgl = date('Y-m-d'); 
+	        $wkt = date('H:i:s');		
+
+			$namaVarietas = $this->input->post('namaVarietas');		
+			$tanggalPelepasan = $this->input->post('tanggalPelepasan');
+
+			// upload gambar
+			$targetpathgmbr = "item img/gambar/Edited/";
+			$targetpathsk = "file/SK/"; 
+			$targetpathgmbr = $targetpathgmbr.basename($_FILES['gambar']['name']);
+			$targetpathsk = $targetpathsk.basename($_FILES['sk']['name']);
+
+			$gambarVarietas = "";
+			if (empty($_FILES['sk']['name']) || empty($_FILES['gambar']['name'])) {
+				$gambarVarietas = "serat.jpg";
+			} else {
+				$gambarVarietas = $_FILES['gambar']['name'];
+			}
+
+			//blm
+			// $this->m_data->add_varietas($namaVarietas,$tglPelepasan,$tgl,$wkt,$_FILES['sk']['name'],$gambarVarietas);
+			// $this->m_data->add_deskripsi_varietas($deskripsi);
+			// echo $this->input->post('temp')."<br>";
+
+
+
+			for ($i=0; $i < $this->input->post('temp') ; $i++) { 
+				$tesAtribut = $this->input->post('atribut'."$i");
+				if (!is_null($tesAtribut)) {
+					// $idAtribut = $this->m_data->getIdAtribut($this->input->post('atribut'."$i"));
+					if (!empty($idAtribut)) {
+						// $this->m_data->add_detail_deskripsi($idAtribut,$this->input->post('value'."$i"));
+						// echo "->".$this->input->post('value'."$i")."<br>"; //no
+						// echo "->".$this->input->post('value0')."<br>"; //no
+						// echo "->".$this->input->post('value2')."<br>"; //no
+					} else {
+						// $this->m_data->addAtribut($this->input->post('atribut'."$i"));
+						// $idAtribut = $this->m_data->getIdAtribut($this->input->post('atribut'."$i"));
+						// $this->m_data->add_detail_deskripsi($idAtribut,$this->input->post('value'."$i"));
+					}
+				}
+			}
+			move_uploaded_file($_FILES['gambar']['tmp_name'],$targetpathgmbr);
+			move_uploaded_file($_FILES['sk']['tmp_name'],$targetpathsk);				
+			redirect(base_url('admin/serat'));	
+		}
 
 		//leaflet
 		public function hapusLeaflet($idLeaflet){
@@ -137,18 +188,14 @@
 		}
 		public function editLeaflet(){
 			$this->load->model("m_data");
-			$idleaflet = $this->input->post('idleaflet');
+			$idleaflet = $this->input->post('idleaflett');
 			$idgmbr1 = $this->input->post('idimg1');		
 			$idgmbr2 = $this->input->post('idimg2');	
 			$nama = $this->input->post('namaLeaflet');	
 			$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('namajenisLeaflet'));
-
-
 			$dataleaflet1 = $this->m_data->get_leaflet_img_byId($idgmbr1); 
 			$dataleaflet2 = $this->m_data->get_leaflet_img_byId($idgmbr2); 
 			$targetpathleaflet = "item img/leafletgabungan/";		
-
-			//blm
 			if (!empty($idJenis)) { //langsung update
 				$this->m_data->updateLeafletNameJenis($idleaflet,$nama, $idJenis);	
 			} else {
@@ -158,7 +205,6 @@
 				//baru update
 				$this->m_data->updateLeafletNameJenis($idleaflet, $nama, $idJenis);		
 			}
-
 			if (empty($_FILES['leaflet1']['name'])&&empty($_FILES['leaflet2']['name'])) {	
 				//gambar1 dan gambar2 kosong
 			} elseif (!empty($_FILES['leaflet1']['name'])&&!empty($_FILES['leaflet2']['name'])) {
@@ -184,15 +230,8 @@
 				move_uploaded_file($_FILES['leaflet2']['tmp_name'],$targetpathleaflet2);
 				$this->m_data->updateLeafletImg($idgmbr2,$_FILES['leaflet2']['name']); 
 			}
-			
-
-			
-
-
 			redirect(base_url('admin/serat#tabelLeaflet'));
-
 		}
-
 		
 		//budidaya
 		public function hapusBudidaya($idBudidaya){
@@ -224,6 +263,27 @@
 				$data['dataBudidayaFiltered'] = $this->m_data->load_budidaya_filter($komoditas);
 			}
 			$this->load->view('FilterTableBudidaya', $data);
+		}
+		public function editBudidayaaaa(){
+			$this->load->model("m_data");
+			$idSer = $this->input->post('idSerat');
+			$idBud = $this->input->post('idBudidaya');
+			$judul = $this->input->post('judul');	
+			$des = $this->input->post('deskripsiSingkat');								
+			$penulis = $this->input->post('penulis');
+			$targetpathbudidaya = "file/unduhan/";	
+			$databudidaya = $this->m_data->get_budidaya_byId($idBud);
+			if (empty($_FILES['editpdfbudi']['name'])) {
+				$this->m_data->update_bud_nofile($idBud,$des,$penulis,$judul);
+			}else{
+				unlink($targetpathbudidaya.$databudidaya[0]->file);
+				$targetpathbudidayamonograf = $targetpathbudidaya.basename($_FILES['editpdfbudi']['name']);
+				move_uploaded_file($_FILES['editpdfbudi']['tmp_name'],$targetpathbudidayamonograf);
+				// echo $idgmbr1."----".$_FILES['leafletalsin1']['name']."<br>";
+				// echo $_FILES['editpdfbudi']['name'];
+				$this->m_data->update_bud_withfile($idBud,$des,$penulis,$judul,$_FILES['editpdfbudi']['name']);
+			}
+			redirect(base_url('admin/serat#tabelBudidaya'));
 		}
 		
 		//stok benih
@@ -319,6 +379,45 @@
 			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambaralsin2']['name']);
 			move_uploaded_file($_FILES['gambaralsin2']['tmp_name'],$targetpathleaflet2);
 			$this->m_data->add_alsin_img($_FILES['gambaralsin2']['name']);
+			redirect(base_url('admin/serat#tabelAlsin'));
+		}
+		public function editAlsin(){
+			$this->load->model("m_data");
+			$idalsin = $this->input->post('idalsin');
+			$idgmbralsin1 = $this->input->post('idgambaralsin1');		
+			$idgmbralsin2 = $this->input->post('idgambaralsin2');	
+			$namaalsin = $this->input->post('namaAlsin');	
+			$dataleaflet1 = $this->m_data->get_leaflet_img_byId($idgmbralsin1); 
+			$dataleaflet2 = $this->m_data->get_leaflet_img_byId($idgmbralsin2); 
+			$targetpathleaflet = "item img/leafletgabungan/";		
+  			$this->m_data->updateAlsinName($idalsin,$namaalsin);	
+			if (empty($_FILES['leafletalsin1']['name'])&&empty($_FILES['leafletalsin2']['name'])) {	
+				//gambar1 dan gambar2 kosong
+			} elseif (!empty($_FILES['leafletalsin1']['name'])&&!empty($_FILES['leafletalsin2']['name'])) {
+				//gambar1 dan gambar2 tidak kosong
+				unlink($targetpathleaflet.$dataleaflet1[0]->file);
+				unlink($targetpathleaflet.$dataleaflet2[0]->file);
+				$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['leafletalsin1']['name']);
+				move_uploaded_file($_FILES['leafletalsin1']['tmp_name'],$targetpathleaflet1);
+				$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['leafletalsin2']['name']);
+				move_uploaded_file($_FILES['leafletalsin2']['tmp_name'],$targetpathleaflet2);
+				// echo $idgmbr1."----".$_FILES['leafletalsin1']['name']."<br>";
+				// echo $idgmbr2."----".$_FILES['leafletalsin2']['name'];
+				$this->m_data->updateAlsinImg($idgmbralsin1,$_FILES['leafletalsin1']['name']); 
+				$this->m_data->updateAlsinImg($idgmbralsin2,$_FILES['leafletalsin2']['name']); 
+			} elseif (!empty($_FILES['leafletalsin1']['name'])) {
+				//gambar1 kosong
+				unlink($targetpathleaflet.$dataleaflet1[0]->file);
+				$targetpathleaflet1 = $targetpathleaflet.basename($_FILES['leafletalsin1']['name']);
+				move_uploaded_file($_FILES['leafletalsin1']['tmp_name'],$targetpathleaflet1);
+				$this->m_data->updateAlsinImg($idgmbralsin1,$_FILES['leafletalsin1']['name']); 
+			} elseif (!empty($_FILES['leafletalsin2']['name'])) {
+				// gambar2 kosong
+				unlink($targetpathleaflet.$dataleaflet2[0]->file);
+				$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['leafletalsin2']['name']);
+				move_uploaded_file($_FILES['leafletalsin2']['tmp_name'],$targetpathleaflet2);
+				$this->m_data->updateAlsinImg($idgmbralsin2,$_FILES['leafletalsin2']['name']); 
+			}
 			redirect(base_url('admin/serat#tabelAlsin'));
 		}
 	}

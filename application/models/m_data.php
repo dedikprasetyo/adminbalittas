@@ -40,6 +40,10 @@
 		public function hapus_varietas($idVarietas){
 			$sql = $this->db->query("DELETE FROM `varietas` WHERE `id_varietas` = \"$idVarietas\"");		
 		}
+		public function getAtribut() {			
+			$sql = $this->db->query("SELECT `nama_atribut` FROM `atribut` order by `id_atribut` asc");
+			return $sql->result();
+		}
 
 		//Leaflet	
 		public function load_leaflet(){
@@ -72,25 +76,24 @@
 			$sql = $this->db ->query("SELECT `nama_jenis` FROM `jenis_leaflet`");
 			return $sql->result();
 		}
-		public function getIdjenisleaflet($namaJenis) { //blm		
+		public function getIdjenisleaflet($namaJenis) {
 			$sql = $this->db->query("SELECT id_jenis_leaflet FROM jenis_leaflet WHERE nama_jenis = \"$namaJenis\"");
 			$hasil = $sql->result();
 			return $hasil[0]->id_jenis_leaflet;
 		}
-		public function add_jenis_leaflet($namaJenis) { //blm		
+		public function add_jenis_leaflet($namaJenis) { 
 			$this->db->query("INSERT INTO `jenis_leaflet`(`id_jenis_leaflet`, `nama_jenis`) VALUES (\"\",\"$namaJenis\")");
 		}
-		//blm
 		public function updateLeafletNameJenis($id,$nama, $idjenis){			
-			// $this->db->query("UPDATE `leaflet` SET `nama_leaflet`= \"$nama\" WHERE `id_leaflet` = \"$id\"");
+			$this->db->query("UPDATE `leaflet` SET `nama_leaflet`=\"$nama\",`id_jenis_leaflet`=\"$idjenis\" WHERE `id_leaflet` = \"$id\"");
 		}
-		public function updateLeafletImg($id,$img){			
-			// $this->db->query("UPDATE `gambar_leaflet` SET `file`= \"$img\" WHERE `id_gambar` = \"$id\"");
+		public function updateLeafletImg($idgambar,$file){			
+			$this->db->query("UPDATE `gambar_leaflet` SET `file`=\"$file\" WHERE `id_gambar` = \"$idgambar\"");
 		}
 
 		//Budidaya
 		public function load_budidaya(){
-			$sql = $this->db ->query("SELECT * FROM `detail_monograf`");
+			$sql = $this->db ->query("SELECT * FROM `detail_monograf` JOIN `serat` ON `detail_monograf`.`id_serat` = `serat`.`id_serat` ORDER BY `detail_monograf`.`id_detail_monograf`");
 			return $sql->result_array();
 		}
 		public function load_budidaya_filter($komoditas) {
@@ -108,6 +111,12 @@
 			$this->db->query("
 				INSERT INTO `detail_monograf`(`id_serat`, `id_detail_monograf`, `cuplikan_monograf`, `penulis`, `judul`, `file`) VALUES (\"$idserat\",\"\",\"$deskripsisingkat\",\"$penulis\",\"$judul\",\"$file\")");
 		}
+		public function update_bud_nofile($idBud,$des,$penulis,$judul){	
+			$sql = $this->db->query("UPDATE `detail_monograf` SET `cuplikan_monograf`=\"$des\",`penulis`=\"$penulis\",`judul`=\"$judul\" WHERE `id_detail_monograf`=\"$idBud\"");	
+		}	
+		public function update_bud_withfile($idBud,$des,$penulis,$judul,$file){					
+			$sql = $this->db->query("UPDATE `detail_monograf` SET `cuplikan_monograf`=\"$des\",`penulis`=\"$penulis\",`judul`=\"$judul\", `file`=\"$file\" WHERE `id_detail_monograf`=\"$idBud\"");	
+		}	
 
 		//Stok Benih
 		public function load_stok_benih(){
@@ -198,6 +207,12 @@
 		}
 		public function add_alsin_img($img){			
 			$this->db->query("INSERT INTO gambar_leaflet(id_leaflet, id_gambar, file) VALUES ((SELECT id_leaflet FROM leaflet ORDER BY id_leaflet DESC LIMIT 1),\"\",\"$img\")");
+		}
+		public function updateAlsinName($id,$nama){			
+			$this->db->query("UPDATE `leaflet` SET `nama_leaflet`=\"$nama\" WHERE `id_leaflet` = \"$id\"");
+		}
+		public function updateAlsinImg($id,$img){			
+			$this->db->query("UPDATE `gambar_leaflet` SET `file`= \"$img\" WHERE `id_gambar` = \"$id\"");
 		}
 
 		// PENGUNJUNG
