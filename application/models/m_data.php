@@ -26,7 +26,7 @@
 
 		//Varietas
 		public function load_varietas(){
-			$sql = $this->db ->query("SELECT * FROM `varietas`");
+			$sql = $this->db ->query("SELECT * FROM `varietas` JOIN `serat` ON `varietas`.`id_serat` = `serat`.`id_serat` ORDER BY `varietas`.`id_varietas`");
 			return $sql->result_array();
 		}
 		public function load_varietas_filter($komoditas) {
@@ -44,6 +44,12 @@
 			$sql = $this->db->query("SELECT `nama_atribut` FROM `atribut` order by `id_atribut` asc");
 			return $sql->result();
 		}
+		public function add_varietas($idjenisKomoditas,$namaVarietas,$tglPelepasan,$tgl,$wkt,$sk,$gmbr,$deskripsivar){		
+			$this->db->query("INSERT INTO `varietas`(`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pelepasan`, `tanggal_upload`, `waktu_upload`, `file_SK`, `file_gambar`, `deskripsi_varietas`) 
+				VALUES (\"$idjenisKomoditas\",\"\",\"$namaVarietas\",\"$tglPelepasan\",\"$tgl\",\"$wkt\",\"$sk\",\"$gmbr\",\"$deskripsivar\")");
+		}
+
+
 
 		//Leaflet	
 		public function load_leaflet(){

@@ -274,14 +274,19 @@
                   <th>File Gambar</th>
                   <th>File SK</th>                                
                   <th>Tanggal Upload</th>                                
-                  <th>Waktu Upload</th>  
+                  <th>Waktu Upload</th>
+                  <th>Deskripsi</th>  
                   <th>Aksi</th>                              
                 </tr>
               </thead>
               <tbody>
                 <?php 
                   $no = 1;                                          
-                  foreach ($varietas as $row) {    
+                  foreach ($varietas as $row) {  
+                    $deskripsivar_cut = ""; 
+                    if (strlen($row['deskripsi_varietas']) != 0) {
+                      $deskripsivar_cut = substr($row['deskripsi_varietas'], 0, 50).' ...';
+                    }      
                 ?>
                 <tr >
                   <td><?php echo $no; ?></td>                                
@@ -291,15 +296,31 @@
                       <button class="btn btn-warning">Spesifikasi</button>
                     </a>
 
-                  </td>       
-                  <td><?php echo "$row[tanggal_pelepasan]"; ?></td>                         
-                  <td><?php echo "$row[file_gambar]"; ?></td>
-                  <td><?php echo "$row[file_SK]"; ?></td>
-                  <td><?php echo "$row[tanggal_upload]"; ?></td>
-                  <td><?php echo "$row[waktu_upload]"; ?></td>
+                  </td>
+                  <?php
+                      $namasrt = $row['nama_serat'];
+                      $idvar = $row['id_varietas'];
+                      $namavar = $row['nama_varietas'];
+                      $tgl = $row['tanggal_pelepasan'];
+                      $file1 = $row['file_SK'];
+                      $file2 = $row['file_gambar'];
+                      $desk = $row['deskripsi_varietas'];
+                   ?>       
+                  <td><?php echo $row['tanggal_pelepasan']; ?></td>                         
+                  <td><?php echo $row['file_gambar']; ?></td>
+                  <td><?php echo $row['file_SK']; ?></td>
+                  <td><?php echo $row['tanggal_upload']; ?></td>
+                  <td><?php echo $row['waktu_upload']; ?></td>
+                  <td><?php echo $deskripsivar_cut; ?></td>
                   <td>
-                    <a href="#editvarietas" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_varietas('<?php echo $row['id_varietas']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>  
+
+                    <a href="#tomboleditvar" class="edit" onclick="modal_edit_var('<?php echo "$namasrt"; ?>','<?php echo "$idvar"; ?>','<?php echo "$namavar"; ?>','<?php echo "$tgl"; ?>','<?php echo "$file1"; ?>','<?php echo "$file2"; ?>','<?php echo "$desk"; ?>');">
+                        <i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_varietas('<?php echo $row['id_varietas']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a> 
+
+
                   </td>
                 </tr>
                 <?php                                 
@@ -356,6 +377,86 @@
         </div>
     </div>
 
+    <!-- Edit Modal HTML Varietas-->
+    <div id="tomboleditvar" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Edit Data Varietas</h4>`
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editVarietas'); ?>" method="post" class="form-horizontal" autocomplete="off">
+            <div class="modal-body">
+              <input id="idSerat_id" name="idleaflett" hidden>
+              <input id="idVarietas_id" name="idleaflett" hidden>
+              <div class="form-group">
+
+
+
+              <label>Nama Varietas</label>
+                <input type="text" id="namaVarietas_id" name="namaVarietas" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Komoditas</label>
+                <input type="text" id="namaSerat_id" name="namaSerat" class="form-control" disabled>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Pelepasan</label>       
+                <input type="date" id="tanggal_id" name="tanggal" class="form-control" required>
+              </div> 
+              <div class="form-group">
+                <label>Deskripsi</label>
+                <textarea type="text" id="deskripsi_id" name="deskripsi" class="form-control" rows="8" required ></textarea>
+              </div>
+              <div class="form-group" style="padding-bottom: 0px">
+                <label>Upload Gambar</label>
+                <div class="input-group image-preview">
+                  <input id="filegambar_id" type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="250x150 piksel //blm diganti"> 
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                      <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>                                    
+                    <div class="btn btn-default image-preview-input">                                        
+                      <span class="image-preview-input-title">Pilih File</span>
+                      <input type="file" style="width:100px" accept="image/png, image/jpeg, image/gif," name="gambarvar">            
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group" style="padding-bottom: 0px">
+                <label>Upload SK</label>
+                <div class="input-group">                                
+                  <input type="file" id="picked" name="sk" style="display:none" onchange="document.getElementById('filesk_id').value=this.value" accept="application/pdf">
+                  <input type="text" id="filesk_id" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disable">
+                  <input type="button" value="Pilih File" onclick="document.getElementById('picked').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <input type="submit" class="btn btn-success" value="Simpan">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+     <script>
+        function modal_edit_var(namaSerat,idvarietas,namaVarietas,tglPelepasan,filesk,filegambar,deskripsivarietas) {
+          // alert(namaSerat+" "+idvarietas+" "+namaVarietas+" "+tglPelepasan+" "+filesk+" "+filegambar+" "+deskripsivarietas);
+          $('#tomboleditvar').modal('show', {backdrop: 'static'});
+          // $().value = namaserat  
+          document.getElementById('namaSerat_id').value = namaSerat;
+          document.getElementById('idVarietas_id').value = idvarietas;
+          document.getElementById('namaVarietas_id').value = namaVarietas;
+          document.getElementById('tanggal_id').value = tglPelepasan;
+          document.getElementById('filesk_id').value = filesk;
+          document.getElementById('filegambar_id').value = filegambar;
+          document.getElementById('deskripsi_id').value = deskripsivarietas;  
+        }
+        
+    </script>
+
+
     <!-- Delete Modal HTML Varietas -->
     <div id="hapusvarietas" class="modal fade">
       <div class="modal-dialog">
@@ -404,6 +505,8 @@
       }
     </script>
 
+    
+
     <!-- Tambah Modal HTML Varietas -->
     <div id="tambahvarietas" class="modal fade">
       <div class="modal-dialog">
@@ -420,20 +523,36 @@
                 <input type="text" name="namaVarietas" class="form-control" required>
               </div>
               <div class="form-group">
+                <label>Komoditas</label>
+                <select class="form-control" name="idjenisKomoditas">
+                  <option value="S0002">Kapas</option>
+                  <option value="S0003">Kapuk</option>
+                  <option value="S0004">Kenaf</option>
+                  <option value="S0005">Rami</option>
+                  <option value="S0006">Rosela</option>
+                  <option value="S0010">Sisal</option>
+                  <option value="S0011">Abaka</option>
+                </select>    
+              </div>
+              <div class="form-group">
                 <label>Tanggal Pelepasan</label>       
-                <input type="date" name="tanggalPelepasan" class="form-control" required>
+                <input type="date" name="tanggalPelepasanvar" class="form-control" required>
               </div> 
+              <div class="form-group">
+                <label>Deskripsi</label>
+                <textarea type="text" name="deskripsivar" class="form-control" rows="8" required ></textarea>
+              </div>
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
-                  <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="250x150 piksel //blm diganti"> 
+                  <input type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="250x150 piksel //blm diganti"> 
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                       <span class="glyphicon glyphicon-remove"></span> Clear
                     </button>                                    
                     <div class="btn btn-default image-preview-input">                                        
                       <span class="image-preview-input-title">Pilih File</span>
-                      <input type="file" style="width:100px" accept="image/png, image/jpeg, image/gif," name="gambar">            
+                      <input type="file" style="width:100px" accept="image/png, image/jpeg, image/gif," name="gambarvar">            
                     </div>
                   </span>
                 </div>
@@ -442,9 +561,11 @@
                 <label>Upload SK</label>
                 <div class="input-group">                                
                   <input type="file" id="picked" name="sk" style="display:none" onchange="document.getElementById('filename').value=this.value" accept="application/pdf">
-                  <input type="text" id="filename" style="width: 468px;height: 35px;" disabled="disable">
+                  <input type="text" id="filename" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disable">
                   <input type="button" value="Pilih File" onclick="document.getElementById('picked').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">
                 </div>
+
+
               </div>
               <div class="form-group"> 
                 <label>Spesifikasi</label>   
@@ -477,7 +598,7 @@
                       <td></td>
 
 
-                      <td class="text-right"><button class="btn btn-small btn-default" onclick="additem(); return false" style="margin-top: 10px;height: 35px;margin-right: 10px;"><i class="fa fa-plus" style="margin-top: -25px;"></i></button></td>
+                      <!-- <td class="text-right"><button class="btn btn-small btn-default" onclick="additem(); return false" style="margin-top: 10px;height: 35px;margin-right: 10px;"><i class="fa fa-plus" style="margin-top: -25px;"></i></button></td> -->
 
 
                       <td></td>
@@ -504,7 +625,7 @@
     ?>
     </datalist>
 
-    <script>
+   <!--  <script>
       var indeks = 1;            
       function additem() {
 
@@ -557,7 +678,9 @@
           document.getElementById('temp').value = indeks;
         };
       }
-    </script>
+    </script> -->
+
+    
 
     <!-- Data Leaflet -->
     <section class="leaflet" id="tabelLeaflet" style="padding-top: 50px; margin-top: -80px;">
