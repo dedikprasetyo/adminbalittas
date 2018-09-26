@@ -113,7 +113,12 @@
 		public function add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai){		
 			$sql = $this->db->query("INSERT INTO `stok_benih`(`id_stok_benih`, `id_benih`, `asal`, `tahun_panen`, `kelas`, `stok_bulan_terakhir`, `stok_sampai`) VALUES (\"\",\"$idBenih\",\"$asal\",\"$tahunpanen\",\"$kelas\",\"$stokbulanterakhir\",\"$stoksampai\");");			
 		}
-
+		public function edit_nama_benih($idbenih, $namabenih) { 	
+			$this->db->query("UPDATE `benih` SET `nama_benih`=\"$namabenih\" WHERE `id_benih`=\"$idbenih\" ");
+		}
+		public function edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai){
+			$sql = $this->db->query("UPDATE `stok_benih` SET `asal`=\"$asal\",`tahun_panen`=\"$tahunpanen\",`kelas`=\"$kelas\",`stok_bulan_terakhir`=\"$stokbulanterakhir\",`stok_sampai`=\"$stoksampai\" WHERE `id_stok_benih`=\"$idstokbenih\" ");
+		}
 		//untuk stok benih dan distribusi
 		public function getIdnamaBenih($namaBenih) { 
 			$sql = $this->db->query("SELECT `id_benih` FROM `benih` WHERE nama_benih = \"$namaBenih\"");
@@ -163,6 +168,9 @@
 		}
 		public function hapus_distribusibenih($idDistribusi){
 			$sql = $this->db->query("DELETE FROM `distribusi_benih` WHERE `id_distribusi` = \"$idDistribusi\"");		
+		}
+		public function edit_distribusibenih($idbenih,$iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan){
+			$sql=$this->db->query("UPDATE `distribusi_benih` SET `tanggal`=\"$tanggal\",`tahun_panen`=\"$tahunpanen\",`kelas_benih`=\"$kelasbenih\",`jumlah_kg`=\"$jumlahkg\",`keterangan`=\"$keterangan\" WHERE `id_benih`=\"$idbenih\" ");
 		}
 
 		//Alat dan Mesin

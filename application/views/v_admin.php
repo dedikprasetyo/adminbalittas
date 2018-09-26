@@ -924,8 +924,17 @@
                   <td><?php echo "$row[stok_bulan_terakhir]"; ?></td>
                   <td><?php echo "$row[stok_sampai]"; ?></td>
                   <td>
-                    <a href="#editbenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-                    <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
+                   <!--  <a href="#editstokbenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a> -->
+                   <a href="#editstokbenih" class="edit"  onclick="confirm_modal_editstokbenih(
+                   '<?php echo $row['id_benih']; ?>',
+                   '<?php echo $row['id_stok_benih']; ?>',
+                   '<?php echo $row['nama_benih']; ?>',
+                   '<?php echo $row['asal']; ?>',
+                   '<?php echo $row['tahun_panen']; ?>',
+                   '<?php echo $row['kelas']; ?>',
+                   '<?php echo $row['stok_bulan_terakhir']; ?>',
+                   '<?php echo $row['stok_sampai']; ?>')"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#hapusstokbenih" class="delete"  onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
                   </td>
                 </tr>
                 <?php                                 
@@ -1025,6 +1034,71 @@
     ?>
     </datalist> 
 
+     <!-- Edit Modal HTML Stok Benih -->
+    <div id="editstokbenih" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Edit Data Stok Benih</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editStokBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
+              <div class="modal-body">
+              <div class="form-group">
+                <input hidden id="idstokben" name="idstokbenih">
+                <input hidden id="idben" name="idBenih">
+                <label>Nama Benih</label>
+                <input type="text" class="form-control"  id="namabenihid" name="namaBenih" required>
+              </div>
+              <div class="form-group">
+                <label>Asal</label>
+                <input type="text" id="asalid" name="asalbenih" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Tahun Panen</label>
+                <input type="number" step="1" id="tahunid" name="tahunpanenbenih" class="form-control" placeholder="contoh : 2018" required>
+              </div>
+              <div class="form-group">
+                <label>Kelas</label>
+                <!-- <input type="text" name="kelas" class="form-control" required> -->
+                <select id="kelasid" name="kelasbenih" class="form-control">
+                  <option value="">Tidak Ada</option>
+                  <option value="Dasar">Dasar</option>
+                  <option value="Pokok">Pokok</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Stok Bulan Terakhir (kg)</label>
+                <input type="number" step="0.01" id="stokterakhirid" name="stokbulanterakhirbenih" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Stok Sampai</label><br>
+                <input type="date" id="stoksampaiid" name="stoksampaibenih" class="form-control" required>
+              </div>  
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                <input type="submit" class="btn btn-success" value="Simpan">
+              </div>
+            </div>
+          </form>              
+        </div>
+      </div>
+    </div>
+    <script>
+       function confirm_modal_editstokbenih(idBenih,idstokbenih, namaBenih, asalbenih, tahunpanenbenih, kelasbenih, stokbulanterakhirbenih, stoksampaibenih)
+        {
+          $('#editstokbenih').modal('show', {backdrop: 'static'});
+          document.getElementById('idben').value = idBenih;
+          document.getElementById('idstokben').value = idstokbenih;
+          document.getElementById('namabenihid').value = namaBenih;
+          document.getElementById('asalid').value = asalbenih;
+          document.getElementById('tahunid').value = tahunpanenbenih;
+          document.getElementById('kelasid').value = kelasbenih;
+          document.getElementById('stokterakhirid').value = stokbulanterakhirbenih;
+          document.getElementById('stoksampaiid').value = stoksampaibenih;
+        }
+    </script>
+
     <!-- Data Distribusi Benih   -->
     <section class="distibusibenih" id="tabelDistribusiBenih" style="padding-top: 50px; margin-top: -80px;">
       <div class="container">
@@ -1085,7 +1159,7 @@
                   $no = 1;                                          
                   foreach ($distribusibenih as $row) {    
                 ?>
-                <tr >
+                <tr>
                   <td><?php echo $no; ?></td>                                
                   <td><?php echo "$row[nama_benih]"; ?></td>                              
                   <td><?php echo "$row[tanggal]"; ?></td>                         
@@ -1094,7 +1168,15 @@
                   <td><?php echo "$row[jumlah_kg]"; ?></td>
                   <td><?php echo "$row[keterangan]"; ?></td>
                   <td>
-                    <a href="#editdistribusibenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
+                    <a href="#editdistribusibenih" class="edit" onclick="confirm_modal_editdistribusibenih(
+                      '<?php echo $row['id_benih']; ?>',
+                    '<?php echo $row['id_distribusi'];?>',
+                    '<?php echo $row['nama_benih']; ?>',
+                    '<?php echo $row['tanggal']; ?>',
+                    '<?php echo $row['tahun_panen']; ?>',
+                    '<?php echo $row['kelas_benih']; ?>',
+                    '<?php echo $row['jumlah_kg']; ?>',
+                    '<?php echo $row['keterangan']; ?>')"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_distribusibenih('<?php echo $row['id_distribusi']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>  
                   </td>
                 </tr>
@@ -1229,6 +1311,71 @@
         {
           $('#hapusdistribusibenih').modal('show', {backdrop: 'static'});
           document.getElementById('idhapusdistribusibenih').setAttribute('href' ,"hapusDistribusiBenih/"+delete_url);
+        }
+    </script>
+
+     <!-- Edit Modal HTML Distribusi Benih -->
+    <div id="editdistribusibenih" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Edit Data Distribusi Benih</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editDistribusiBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
+              <div class="modal-body">
+              <input hidden id="idbendistri" name="idbenihdistribusibenih">
+              <input hidden id="iddisben" name="iddistribusibenih">
+              <div class="form-group">
+                <label>Nama Benih</label>
+                <input type="text" class="form-control" list="daftarbenih2" id="namadisbenid" name="namanyabenih" required>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Distribusi</label><br>
+                <input type="date" id="tanggaldisbenid" name="tanggaldistribusibenih" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Tahun Panen</label>
+                <input type="text" id="tahundisbenid" name="tahunpanendistribusibenih" class="form-control" placeholder="contoh : Sumberrejo 2018" required>
+              </div>
+              <div class="form-group">
+                <label>Kelas</label>
+                <select id="kelasdisbenid" name="kelasdistribusibenih" class="form-control">
+                  <option value="">Tidak Ada</option>
+                  <option value="Dasar">Dasar</option>
+                  <option value="Pokok">Pokok</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Jumlah (kg)</label>
+                <input type="number" step="0.01" id="jumdisbenid" name="jumlahkgdistribusibenih" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Keterangan</label>
+                <input type="text" id="ketdisbenid" name="keterangandistribusibenih" class="form-control" required>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                <input type="submit" class="btn btn-success" value="Simpan">
+              </div>
+            </div>
+          </form>              
+        </div>
+      </div>
+    </div>
+
+    <script>
+       function confirm_modal_editdistribusibenih(idbenihdistribusibenih,iddistribusibenih, namanyabenih,tanggaldistribusibenih, tahunpanendistribusibenih, kelasdistribusibenih, jumlahkgdistribusibenih, keterangandistribusibenih)
+        {
+          $('#editdistribusibenih').modal('show', {backdrop: 'static'});
+          document.getElementById('idbendistri').value = idbenihdistribusibenih;
+          document.getElementById('iddisben').value = iddistribusibenih;
+          document.getElementById('namadisbenid').value = namanyabenih;
+          document.getElementById('tanggaldisbenid').value = tanggaldistribusibenih;
+          document.getElementById('tahundisbenid').value = tahunpanendistribusibenih;
+          document.getElementById('kelasdisbenid').value = kelasdistribusibenih;
+          document.getElementById('jumdisbenid').value = jumlahkgdistribusibenih;
+          document.getElementById('ketdisbenid').value = keterangandistribusibenih;
         }
     </script>
 

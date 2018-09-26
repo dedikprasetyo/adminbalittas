@@ -191,6 +191,29 @@
 			}
 			redirect(base_url('admin/serat#tabelStokBenih'));
 		}
+		public function editStokBenih(){
+			$this->load->model('m_data');
+			$idstokbenih = $this->input->post('idstokbenih');
+			$asal = $this->input->post('asalbenih');
+			$tahunpanen = $this->input->post('tahunpanenbenih');
+			$kelas = $this->input->post('kelasbenih');
+			$stokbulanterakhir = $this->input->post('stokbulanterakhirbenih');
+			$stoksampai = $this->input->post('stoksampaibenih');
+			// $idbenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+			$idbenih = $this->input->post('idBenih');
+
+			$namabenih = $this->input->post('namaBenih');
+			$this->m_data->edit_nama_benih($idbenih,$namabenih);
+			$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
+			// if (!empty($idbenih)) { //ada
+			// 	$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
+			// } else { //tidak ada
+			// 	$this->m_data->add_benih($this->input->post('namaBenih'));
+			// 	$idbenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+			// 	$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
+			// }
+			redirect(base_url('admin/serat#tabelStokBenih'));
+		}
 		
 		//distribusi benih
 		public function hapusDistribusiBenih($idDistribusi){
@@ -237,6 +260,19 @@
 				$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
 				$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
 			}
+			redirect(base_url('admin/serat#tabelDistribusiBenih'));
+		}
+		public function editDistribusiBenih(){
+			$this->load->model("m_data");
+			// $idbenih=$this->input->post('namanyabenih');
+			$idbenih=$this->input->post('idbenihdistribusibenih');
+			$iddsitribusi=$this->input->post('iddistribusibenih');
+			$tanggal=$this->input->post('tanggaldistribusibenih');
+			$tahunpanen=$this->input->post('tahunpanendistribusibenih');
+			$kelasbenih=$this->input->post('kelasdistribusibenih');
+			$jumlahkg=$this->input->post('jumlahkgdistribusibenih');
+			$keterangan=$this->input->post('keterangandistribusibenih');
+			$this->m_data->edit_distribusibenih($idbenih,$iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan);
 			redirect(base_url('admin/serat#tabelDistribusiBenih'));
 		}
 
