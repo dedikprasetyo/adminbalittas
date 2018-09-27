@@ -1264,12 +1264,8 @@
                   <td><?php echo "$row[stok_bulan_terakhir]"; ?></td>
                   <td><?php echo "$row[stok_sampai]"; ?></td>
                   <td>
-<<<<<<< HEAD
-                   <!--  <a href="#editstokbenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a> -->
-                   <a href="#editstokbenih" class="edit"  onclick="confirm_modal_editstokbenih(
-=======
+
                     <a href="#editstokbenih" class="edit"  onclick="confirm_modal_editstokbenih(
->>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
                    '<?php echo $row['id_benih']; ?>',
                    '<?php echo $row['id_stok_benih']; ?>',
                    '<?php echo $row['nama_benih']; ?>',
@@ -1278,11 +1274,12 @@
                    '<?php echo $row['kelas']; ?>',
                    '<?php echo $row['stok_bulan_terakhir']; ?>',
                    '<?php echo $row['stok_sampai']; ?>')"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-<<<<<<< HEAD
-                    <a href="#hapusstokbenih" class="delete"  onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
-=======
+
+
+                    <!-- <a href="#hapusstokbenih" class="delete"  onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>    -->
+
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
->>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
+
                   </td>
                 </tr>
                 <?php                                 
@@ -1382,12 +1379,8 @@
     ?>
     </datalist> 
 
-<<<<<<< HEAD
-     <!-- Edit Modal HTML Stok Benih -->
-=======
 
     <!-- Edit Modal HTML Stok Benih -->
->>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
     <div id="editstokbenih" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -1667,11 +1660,7 @@
         }
     </script>
 
-<<<<<<< HEAD
-     <!-- Edit Modal HTML Distribusi Benih -->
-=======
     <!-- Edit Modal HTML Distribusi Benih -->
->>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
     <div id="editdistribusibenih" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -1685,11 +1674,7 @@
               <input hidden id="iddisben" name="iddistribusibenih">
               <div class="form-group">
                 <label>Nama Benih</label>
-<<<<<<< HEAD
-                <input type="text" class="form-control" list="daftarbenih2" id="namadisbenid" name="namanyabenih" required>
-=======
                 <input type="text" class="form-control" list="daftarbenih2" id="namadisbenid" name="namanyabenih" disabled>
->>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
               </div>
               <div class="form-group">
                 <label>Tanggal Distribusi</label><br>
@@ -1713,11 +1698,7 @@
               </div>
               <div class="form-group">
                 <label>Keterangan</label>
-<<<<<<< HEAD
-                <input type="text" id="ketdisbenid" name="keterangandistribusibenih" class="form-control" required>
-=======
                 <input type="text" id="ketdisbenid" name="keterangandistribusibenih" class="form-control">
->>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
               </div>
               <div class="modal-footer">
                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
