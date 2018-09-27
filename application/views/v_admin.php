@@ -289,13 +289,51 @@
                     }      
                 ?>
                 <tr >
+                  <?php 
+                    $atr = array();
+                    $ket = array();
+                    $count1 = 0;   
+                    $count2 = 0;                                                                    
+                    foreach ($detail_varietas as $value) {  
+                      if ($row['id_varietas']==$value['id_varietas']) {
+                        $atr[$count1] = $value['nama_atribut'];
+                        $ket[$count2] = $value['detail_value'];                             
+                        $count1++;   
+                        $count2++;                                      
+                      }
+                    }
+                    $idv = $row['id_varietas'];                                     
+                  ?>
+
                   <td><?php echo $no; ?></td>                                
                   <td><?php echo "$row[nama_varietas]"; ?></td>                              
                   <td>
-                    <a href="#spesifikasi" style="font-weight: unset;" onclick="modal_detail()">                        
+
+                  <script>                                   
+                    window['atr' + <?php echo $no; ?>] = [
+                      <?php
+                        for ($i=0; $i < $count1-1; $i++) {                                              
+                          echo '"'.$atr[$i].'",';
+                        }
+                        echo '"'.$atr[$count1-1].'"'; 
+                      ?>                                    
+                    ];                                    
+                    window['val' + <?php echo $no; ?>] = [
+                      <?php
+                        for ($i=0; $i < $count2-1; $i++) {                                              
+                          echo '"'.$ket[$i].'",';
+                        }
+                        echo '"'.$ket[$count2-1].'"'; 
+                      ?> 
+                    ];
+                  </script>
+                    <a href="#spesifikasi" style="font-weight: unset;" onclick="modal_detail(
+                      '<?php echo "$idv"; ?>',
+                      window['atr' + <?php echo $no; ?>],
+                      window['val' + <?php echo $no; ?>]
+                      )">                                    
                       <button class="btn btn-warning">Spesifikasi</button>
                     </a>
-
                   </td>
                   <?php
                       $namasrt = $row['nama_serat'];
@@ -313,14 +351,10 @@
                   <td><?php echo $row['waktu_upload']; ?></td>
                   <td><?php echo $deskripsivar_cut; ?></td>
                   <td>
-
                     <a href="#tomboleditvar" class="edit" onclick="modal_edit_var('<?php echo "$namasrt"; ?>','<?php echo "$idvar"; ?>','<?php echo "$namavar"; ?>','<?php echo "$tgl"; ?>','<?php echo "$file1"; ?>','<?php echo "$file2"; ?>','<?php echo "$desk"; ?>');">
                         <i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i>
                     </a>
-
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_varietas('<?php echo $row['id_varietas']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a> 
-
-
                   </td>
                 </tr>
                 <?php                                 
@@ -334,13 +368,6 @@
       </div>
     </section>
 
-    <script>
-        function modal_detail()
-        {
-          $('#spesifikasi').modal('show', {backdrop: 'static'});          
-        }
-    </script>
-
     <div id="spesifikasi" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -349,9 +376,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
               </div>
                  <form action="<?php echo base_url('admin/editDesVarietas'); ?>" method="post" class="form-horizontal">
-                    <input hidden id="idSpe" name="idSpesifikasi">
+                    <input hidden id="idSpe" name="idVarietasss">
                     <input hidden id="jumlahAtr" name="jumlahAtr">
-                    <input hidden id="idDeskripsi" name="idDeskripsi">
                     <div class="modal-body">                                         
                         <div class="form-group"> 
                             <div class="text-center">                                
@@ -373,6 +399,59 @@
         </div>
     </div>
 
+    <script>
+        var jumlahTr = 0;
+        function modal_detail(id,atr,ket)
+        {
+            var itemlist = document.getElementById('tableDetail');
+            if (jumlahTr > 0) {               
+                $("#tableDetail tr").remove();
+                jumlahTr = 0;
+            } 
+          $('#spesifikasi').modal('show', {backdrop: 'static'});          
+          // alert(atr.length);
+          document.getElementById('jumlahAtr').value = atr.length;
+          document.getElementById('idSpe').value = id;
+            for (var i = 0; i <atr.length; i++) {              
+//                menentukan target append
+//                membuat element
+                var row = document.createElement('tr');
+                var atributjs = document.createElement('td');
+                var valuejs = document.createElement('td');
+                var aksijs = document.createElement('td');
+//                meng append element
+                itemlist.appendChild(row);
+                row.appendChild(atributjs);
+                row.appendChild(valuejs);
+                row.appendChild(aksijs);                          
+//                membuat element input
+                var atrjs = document.createElement('input');
+                atrjs.setAttribute('name', 'atribut'+ i);
+                atrjs.setAttribute('value', ' '+atr[i]);
+                atrjs.setAttribute('type', 'text');
+                atrjs.setAttribute('placeholder', ' Atribut');
+                atrjs.setAttribute('readonly', '');
+                atrjs.setAttribute('style', 'margin-top : 10px;width: 280px;height: 35px;');
+                var valjs = document.createElement('input');
+                valjs.setAttribute('name', 'value'+ i);
+                valjs.setAttribute('value', ' '+ket[i]);
+                valjs.setAttribute('type', 'text');
+                valjs.setAttribute('placeholder', ' Value');
+                valjs.setAttribute('style', 'margin : 10px 10px 0px 10px;width: 280px;height: 35px;');
+                var hapus = document.createElement('span');
+//                meng append element input
+                atributjs.appendChild(atrjs);                
+                valuejs.appendChild(valjs);
+                hapus.innerHTML = '<button class="btn btn-small btn-warning" style="margin-top:10px;width: 5px;height: 35px;"><i class="fa fa-pencil 0"></i></button>';
+//                membuat aksi delete element
+                hapus.onclick = function () {
+                    row.parentNode.removeChild(row);
+                }
+                jumlahTr++;
+            }
+        }
+    </script>
+
     <!-- Edit Modal HTML Varietas-->
     <div id="tomboleditvar" class="modal fade">
       <div class="modal-dialog">
@@ -386,9 +465,6 @@
               <input id="idSerat_id" name="idSerat" hidden>
               <input id="idVarietas_id" name="idVarietass" hidden>
               <div class="form-group">
-
-
-
               <label>Nama Varietas</label>
                 <input type="text" id="namaVarietas_id" name="namaVarietas" class="form-control" required>
               </div>
@@ -427,8 +503,6 @@
                   <input type="button" value="Pilih File" onclick="document.getElementById('picked').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">
                 </div>
               </div>
-
-
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
@@ -442,7 +516,6 @@
         function modal_edit_var(namaSerat,idvarietas,namaVarietas,tglPelepasan,filesk,filegambar,deskripsivarietas) {
           // alert(namaSerat+" "+idvarietas+" "+namaVarietas+" "+tglPelepasan+" "+filesk+" "+filegambar+" "+deskripsivarietas);
           $('#tomboleditvar').modal('show', {backdrop: 'static'});
-          // $().value = namaserat  
           document.getElementById('namaSerat_id').value = namaSerat;
           document.getElementById('idVarietas_id').value = idvarietas;
           document.getElementById('namaVarietas_id').value = namaVarietas;
@@ -450,10 +523,8 @@
           document.getElementById('filesk_id').value = filesk;
           document.getElementById('filegambar_id').value = filegambar;
           document.getElementById('deskripsi_id').value = deskripsivarietas;  
-        }
-        
+        }        
     </script>
-
 
     <!-- Delete Modal HTML Varietas -->
     <div id="hapusvarietas" class="modal fade">
@@ -503,8 +574,6 @@
       }
     </script>
 
-    
-
     <!-- Tambah Modal HTML Varietas -->
     <div id="tambahvarietas" class="modal fade">
       <div class="modal-dialog">
@@ -514,7 +583,6 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
           </div>
           <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahVarietas'); ?>" method="post" class="form-horizontal" autocomplete="off">
-
             <div class="modal-body">
               <div class="form-group">
                 <label>Nama Varietas</label>
@@ -550,7 +618,7 @@
                     </button>                                    
                     <div class="btn btn-default image-preview-input">                                        
                       <span class="image-preview-input-title">Pilih File</span>
-                      <input type="file" style="width:100px" accept="image/png, image/jpeg, image/gif," name="gambarvar">            
+                      <input type="file" style="width:100px" accept="image/png, image/jpeg, image/gif," name="gambarvar">
                     </div>
                   </span>
                 </div>
@@ -562,13 +630,9 @@
                   <input type="text" id="filename" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disable">
                   <input type="button" value="Pilih File" onclick="document.getElementById('pickedsk').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">
                 </div>
-
-
               </div>
               <div class="form-group"> 
                 <label>Spesifikasi</label>   
-
-
                 <table style="margin-left: 0px;">
                   <thead style="background-color: none;">
                     <tr>
@@ -588,7 +652,6 @@
                   </tbody>
 
 
-
                  <form method="post" action="<?php base_url('admin/tambahVarietas') ?>"><input hidden name="temp" id="temp" value="1"></form>
 
                   <tfoot>
@@ -596,7 +659,7 @@
                       <td></td>
 
 
-                      <td class="text-right"><button class="btn btn-small btn-default" onclick="additem(); return false" style="margin-top: 10px;height: 35px;margin-right: 10px;"><i class="fa fa-plus" style="margin-top: -25px;"></i></button></td>
+                      <td class="text-right"><button class="btn btn-small btn-default" onclick="addrow(); return false" style="margin-top: 10px;height: 35px;margin-right: 10px;"><i class="fa fa-plus" style="margin-top: -25px;"></i></button></td>
 
 
                       <td></td>
@@ -615,17 +678,13 @@
       </div>
     </div>
 
-    <datalist id="daftarAtribut">
-    <?php 
-        foreach ($listAtribut as $row) {
-            echo "<option value=\"$row->nama_atribut\">";
-        }
-    ?>
-    </datalist>
-
     <script>
       var indeks = 1;            
-      function additem() {
+      function addrow() {
+
+      //   alert("asd");
+      // }
+
 
         //menentukan target append
         var itemlist = document.getElementById('itemlist');
@@ -677,6 +736,16 @@
         };
       }
     </script>
+
+    <datalist id="daftarAtribut">
+    <?php 
+        foreach ($listAtribut as $row) {
+            echo "<option value=\"$row->nama_atribut\">";
+        }
+    ?>
+    </datalist>
+
+
 
     
 

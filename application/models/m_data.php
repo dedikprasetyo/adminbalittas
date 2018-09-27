@@ -61,8 +61,28 @@
 		public function updateVarietasTanpaFile($id,$namaVar,$tgl,$desk){			
 			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\" ,`deskripsi_varietas`=\"$desk\" WHERE `id_varietas` = \"$id\"");
 		}
-
-
+		public function get_all_detail_varietas(){			
+			$sql = $this->db->query("SELECT v.id_varietas,v.nama_varietas,a.id_atribut, a.nama_atribut,dv.detail_value
+				FROM varietas v 
+				JOIN detail_varietas dv ON v.id_varietas = dv.id_varietas 
+				JOIN atribut a ON dv.id_atribut = a.id_atribut
+				ORDER by v.id_varietas");
+			return $sql->result_array();	
+		}
+		public function getIdAtribut($namaAtribut) {			
+			$sql = $this->db->query("SELECT id_atribut FROM atribut WHERE nama_atribut = \"$namaAtribut\"");
+			$hasil = $sql->result();
+			return $hasil[0]->id_atribut;
+		}
+		public function add_detail_varietas($atribut,$value){					
+			$this->db->query("INSERT INTO `detail_varietas`(`id_varietas`, `id_atribut`, `detail_value`) VALUES ((SELECT id_varietas FROM varietas ORDER BY id_varietas DESC LIMIT 1),\"$atribut\",\"$value\")");		
+		}
+		public function addAtribut($namaAtribut) {			
+			$this->db->query("INSERT INTO atribut (id_atribut, nama_atribut) VALUES (\"\",\"$namaAtribut\")");
+		}
+		public function updateDetailDeskripsi($idvar, $idAtr, $value) {			
+			$this->db->query("UPDATE `detail_varietas` SET `detail_value`= \"$value\" WHERE `id_varietas` = \"$idvar\" AND `id_atribut` = \"$idAtr\"");
+		}
 
 		//Leaflet	
 		public function load_leaflet(){

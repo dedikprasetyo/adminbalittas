@@ -27,6 +27,7 @@
 			$this->load->model("m_data");
 			$data['serat'] = $this->m_data->load_serat();
 			$data['varietas'] = $this->m_data->load_varietas();
+			$data['detail_varietas'] = $this->m_data->get_all_detail_varietas();
 			$data['listAtribut'] = $this->m_data->getAtribut();
 			$data['listJenis'] = $this->m_data->get_jenisleaflet();
 			$data['leaflet'] = $this->m_data->load_leaflet();
@@ -107,77 +108,56 @@
 		}
 		public function tambahVarietas(){
 			$this->load->model("m_data");
-
 			date_default_timezone_set('Asia/Jakarta');
 	        $tgl = date('Y-m-d'); 
 	        $wkt = date('H:i:s');		
-
 			$namaVarietas = $this->input->post('namaVarietas');		
 			$tanggalPelepasan = $this->input->post('tanggalPelepasanvar');
 			$idjenisKomoditas = $this->input->post('idjenisKomoditas');
 			$deskripsivar = $this->input->post('deskripsivar');
-		    
-
-			// upload gambar
 			$targetpathgmbr = "item img/gambar/Edited/";
 			$targetpathsk = "file/SK/"; 
 			$targetpathgmbr2 = $targetpathgmbr.basename($_FILES['gambarvar']['name']);
 			$targetpathsk2 = $targetpathsk.basename($_FILES['tambahsk']['name']);
-			
 			$gambarVarietas = "";
 			if (empty($_FILES['tambahsk']['name']) || empty($_FILES['gambarvar']['name'])) {
 				$gambarVarietas = "serat.jpg";
 			} else {
 				$gambarVarietas = $_FILES['gambarvar']['name'];
 			}
-
-			//blm
 			$this->m_data->add_varietas($idjenisKomoditas,$namaVarietas,$tanggalPelepasan,$tgl,$wkt,$_FILES['tambahsk']['name'],$gambarVarietas,$deskripsivar);
-
-			
-			// $this->m_data->add_deskripsi_varietas($deskripsi);
-			// echo $this->input->post('temp')."<br>";
-
-
-
-			// for ($i=0; $i < $this->input->post('temp') ; $i++) { 
-			// 	$tesAtribut = $this->input->post('atribut'."$i");
-			// 	if (!is_null($tesAtribut)) {
-			// 		// $idAtribut = $this->m_data->getIdAtribut($this->input->post('atribut'."$i"));
-			// 		if (!empty($idAtribut)) {
-			// 			// $this->m_data->add_detail_deskripsi($idAtribut,$this->input->post('value'."$i"));
-			// 			// echo "->".$this->input->post('value'."$i")."<br>"; //no
-			// 			// echo "->".$this->input->post('value0')."<br>"; //no
-			// 			// echo "->".$this->input->post('value2')."<br>"; //no
-			// 		} else {
-			// 			// $this->m_data->addAtribut($this->input->post('atribut'."$i"));
-			// 			// $idAtribut = $this->m_data->getIdAtribut($this->input->post('atribut'."$i"));
-			// 			// $this->m_data->add_detail_deskripsi($idAtribut,$this->input->post('value'."$i"));
-			// 		}
-			// 	}
-			// }
-			
+			echo $this->input->post('temp')."<br>";
+			for ($i=0; $i < $this->input->post('temp') ; $i++) { 
+				$tesAtribut = $this->input->post('atribut'."$i");
+				if (!is_null($tesAtribut)) {
+					$idAtribut = $this->m_data->getIdAtribut($this->input->post('atribut'."$i"));
+					if (!empty($idAtribut)) {
+						$this->m_data->add_detail_varietas($idAtribut,$this->input->post('value'."$i"));
+						echo "->".$this->input->post('value'."$i")."<br>"; //no
+						echo "->".$this->input->post('value0')."<br>"; //no
+						echo "->".$this->input->post('value2')."<br>"; //no
+					} else {
+						$this->m_data->addAtribut($this->input->post('atribut'."$i"));
+						$idAtribut = $this->m_data->getIdAtribut($this->input->post('atribut'."$i"));
+						$this->m_data->add_detail_deskripsi($idAtribut,$this->input->post('value'."$i"));
+					}
+				}
+			}
 			move_uploaded_file($_FILES['tambahsk']['tmp_name'],$targetpathsk2);
 		    move_uploaded_file($_FILES['gambarvar']['tmp_name'],$targetpathgmbr2);
-
 			redirect(base_url('admin/serat#tabelVarietas'));	
 		}
 		public function editVarietas(){
 			$this->load->model("m_data");
-
 			$idVar = $this->input->post('idVarietass');
 			$namaVarietas = $this->input->post('namaVarietas');
 			$tgl = $this->input->post('tanggalPelepasan');					
 			$deskripsiii = $this->input->post('deskripsiv');		
-
 			$targetpathgmbrpath = "item img/gambar/Edited/";
 			$targetpathskpath = "file/SK/"; 
-
 			$targetpathgmbr = $targetpathgmbrpath.basename($_FILES['gambar_v']['name']);
 			$targetpathsk = $targetpathskpath.basename($_FILES['sk']['name']);
-
 			$datagambardansk = $this->m_data->get_imgsk_varietas_byId($idVar);
-			
 			if (!empty($_FILES['gambar_v']['name'])&&!empty($_FILES['sk']['name'])) { //dengan 2 file
 				unlink($targetpathgmbrpath.$datagambardansk[0]->file_gambar);
 				unlink($targetpathskpath.$datagambardansk[0]->file_SK);
@@ -196,6 +176,15 @@
 				$this->m_data->updateVarietasKecGmbr($idVar,$namaVarietas,$tgl,$_FILES['sk']['name'],$deskripsiii);
 			}
 			redirect(base_url('admin/serat#tabelVarietas'));	
+		}
+		public function editDesVarietas(){
+			$this->load->model("m_data");
+			$idVar = $this->input->post('idVarietasss');		
+			for ($i=0; $i < $this->input->post('jumlahAtr') ; $i++) { 
+				$idAtribut = $this->m_data->getIdAtribut(substr($this->input->post('atribut'."$i"), 1));
+				$this->m_data->updateDetailDeskripsi($idVar, $idAtribut, $this->input->post('value'."$i"));
+			}
+			redirect(base_url('admin/serat#tabelVarietas'));
 		}
 
 		//leaflet
