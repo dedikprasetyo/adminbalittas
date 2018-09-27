@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2018 at 08:33 PM
+-- Generation Time: Sep 27, 2018 at 06:06 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -3007,6 +3007,55 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `statistik_pengunjung`
+--
+
+CREATE TABLE `statistik_pengunjung` (
+  `id_statistik` int(11) NOT NULL,
+  `id_pengunjung` varchar(20) NOT NULL,
+  `tanggal` date NOT NULL,
+  `hits` int(15) NOT NULL,
+  `online` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `statistik_pengunjung`
+--
+
+INSERT INTO `statistik_pengunjung` (`id_statistik`, `id_pengunjung`, `tanggal`, `hits`, `online`) VALUES
+(6, '::1', '2018-07-28', 1, '10:28'),
+(7, '::1', '2018-08-27', 1, '10:28'),
+(8, '::1', '2018-08-28', 1, '10:28'),
+(9, '::1', '2018-08-28', 1, '12:16'),
+(10, '::1', '2018-08-28', 1, '19:14'),
+(11, '::1', '2018-08-28', 1, '19:14'),
+(12, '::1', '2018-08-29', 1, '22:04'),
+(13, '::1', '2018-08-29', 1, '23:14'),
+(14, '::1', '2018-08-30', 1, '11:28'),
+(15, '::1', '2018-08-31', 1, '06:27'),
+(16, '::1', '2018-08-31', 1, '07:04'),
+(17, '::1', '2018-09-02', 1, '11:36'),
+(18, '::1', '2018-09-04', 1, '18:23'),
+(19, '::1', '2018-09-04', 1, '19:02'),
+(20, '::1', '2018-09-05', 1, '11:38'),
+(21, '::1', '2018-09-05', 1, '11:45'),
+(22, '::1', '2018-09-06', 1, '08:59'),
+(23, '::1', '2018-09-06', 1, '19:01'),
+(24, '::1', '2018-09-11', 1, '17:00'),
+(25, '::1', '2018-09-12', 1, '20:15'),
+(26, '::1', '2018-09-13', 1, '17:25'),
+(27, '::1', '2018-09-15', 1, '20:08'),
+(28, '::1', '2018-09-18', 1, '00:01'),
+(29, '::1', '2018-09-18', 1, '13:13'),
+(30, '::1', '2018-09-18', 1, '21:55'),
+(31, '::1', '2018-09-20', 1, '04:54'),
+(32, '::1', '2018-09-27', 1, '06:47'),
+(33, '::1', '2018-09-27', 1, '06:48'),
+(34, '::1', '2018-09-27', 1, '22:54');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `stok_benih`
 --
 
@@ -3154,8 +3203,7 @@ INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pel
 ('S0006', 'V0047', 'Roselindo 2', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 2.pdf', 'Roselindo-2.1.png', ''),
 ('S0006', 'V0048', 'Roselindo 3', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 3.pdf', 'Roselindo-3.1.jpg', ''),
 ('S0006', 'V0049', 'Roselindo 4', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 4.pdf', 'Roselindo-4.1.jpg', ''),
-('S0010', 'V0057', 'H 11648', '2017-02-14', '2018-07-26', '08:00:00', 'SISAL - H 11648.pdf', 'sisal.jpg', ''),
-('S0002', 'V0058', 'newww', '2018-09-11', '2018-09-26', '22:38:13', 'new.pdf', 'new.PNG', 'neww');
+('S0010', 'V0057', 'H 11648', '2017-02-14', '2018-07-26', '08:00:00', 'SISAL - H 11648.pdf', 'sisal.jpg', '');
 
 --
 -- Triggers `varietas`
@@ -3243,6 +3291,12 @@ ALTER TABLE `serat`
   ADD PRIMARY KEY (`id_serat`);
 
 --
+-- Indexes for table `statistik_pengunjung`
+--
+ALTER TABLE `statistik_pengunjung`
+  ADD PRIMARY KEY (`id_statistik`);
+
+--
 -- Indexes for table `stok_benih`
 --
 ALTER TABLE `stok_benih`
@@ -3255,6 +3309,16 @@ ALTER TABLE `stok_benih`
 ALTER TABLE `varietas`
   ADD PRIMARY KEY (`id_varietas`),
   ADD KEY `id_serat` (`id_serat`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `statistik_pengunjung`
+--
+ALTER TABLE `statistik_pengunjung`
+  MODIFY `id_statistik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables
