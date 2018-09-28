@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <title>Balittas</title>
+      <title>Balai Penelitian Tanaman Pemanis dan Serat</title>
       <meta charset="utf-8">
       <meta name="description" content="A Tuts+ course">
       <meta name="author" content="DenleiDR">
@@ -148,7 +148,7 @@
          <div class="container">
             <div class="row">
                <div class="col-sm-9 col-lg-9">
-                  <ul class="breadcrumb" style="margin: -6px 0px -10px -15px;">
+                  <ul class="breadcrumb" style="margin: 10px 0px -10px -15px;">
                      <li class="active">Beranda</li>
                   </ul>
                   <h3 class="text-left" style="color:black; font-family: Minion Pro">Tanaman Serat</h3>
@@ -188,7 +188,9 @@
                </div>
                <div class="col-sm-3 col-lg-3">
                   <br>
-                  <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
+
+
+                  <h3 class="text-left" style="color:black;font-family: Minion Pro;margin-top: 36px; ">Pencarian</h3>
                   <hr style="border-color: grey;margin-top: -8px;">
                   <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
                      <form method="get" action="<?php echo base_url('pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">

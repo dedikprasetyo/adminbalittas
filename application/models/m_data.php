@@ -61,8 +61,28 @@
 		public function updateVarietasTanpaFile($id,$namaVar,$tgl,$desk){			
 			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\" ,`deskripsi_varietas`=\"$desk\" WHERE `id_varietas` = \"$id\"");
 		}
-
-
+		public function get_all_detail_varietas(){			
+			$sql = $this->db->query("SELECT v.id_varietas,v.nama_varietas,a.id_atribut, a.nama_atribut,dv.detail_value
+				FROM varietas v 
+				JOIN detail_varietas dv ON v.id_varietas = dv.id_varietas 
+				JOIN atribut a ON dv.id_atribut = a.id_atribut
+				ORDER by v.id_varietas");
+			return $sql->result_array();	
+		}
+		public function getIdAtribut($namaAtribut) {			
+			$sql = $this->db->query("SELECT id_atribut FROM atribut WHERE nama_atribut = \"$namaAtribut\"");
+			$hasil = $sql->result();
+			return $hasil[0]->id_atribut;
+		}
+		public function add_detail_varietas($atribut,$value){					
+			$this->db->query("INSERT INTO `detail_varietas`(`id_varietas`, `id_atribut`, `detail_value`) VALUES ((SELECT id_varietas FROM varietas ORDER BY id_varietas DESC LIMIT 1),\"$atribut\",\"$value\")");		
+		}
+		public function addAtribut($namaAtribut) {			
+			$this->db->query("INSERT INTO atribut (id_atribut, nama_atribut) VALUES (\"\",\"$namaAtribut\")");
+		}
+		public function updateDetailDeskripsi($idvar, $idAtr, $value) {			
+			$this->db->query("UPDATE `detail_varietas` SET `detail_value`= \"$value\" WHERE `id_varietas` = \"$idvar\" AND `id_atribut` = \"$idAtr\"");
+		}
 
 		//Leaflet	
 		public function load_leaflet(){
@@ -158,10 +178,13 @@
 		public function edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai){
 			$sql = $this->db->query("UPDATE `stok_benih` SET `asal`=\"$asal\",`tahun_panen`=\"$tahunpanen\",`kelas`=\"$kelas\",`stok_bulan_terakhir`=\"$stokbulanterakhir\",`stok_sampai`=\"$stoksampai\" WHERE `id_stok_benih`=\"$idstokbenih\" ");
 		}
+<<<<<<< HEAD
 // <<<<<<< HEAD
 // =======
 
 // >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
+=======
+>>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
 		//untuk stok benih dan distribusi
 		public function getIdnamaBenih($namaBenih) { 
 			$sql = $this->db->query("SELECT `id_benih` FROM `benih` WHERE nama_benih = \"$namaBenih\"");
@@ -212,6 +235,7 @@
 		public function hapus_distribusibenih($idDistribusi){
 			$sql = $this->db->query("DELETE FROM `distribusi_benih` WHERE `id_distribusi` = \"$idDistribusi\"");		
 		}
+<<<<<<< HEAD
 // <<<<<<< HEAD
 // 		public function edit_distribusibenih($idbenih,$iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan){
 // 			$sql=$this->db->query("UPDATE `distribusi_benih` SET `tanggal`=\"$tanggal\",`tahun_panen`=\"$tahunpanen\",`kelas_benih`=\"$kelasbenih\",`jumlah_kg`=\"$jumlahkg\",`keterangan`=\"$keterangan\" WHERE `id_benih`=\"$idbenih\" ");
@@ -219,6 +243,10 @@
 		public function edit_distribusibenih($iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan){
 			$sql=$this->db->query("UPDATE `distribusi_benih` SET `tanggal`=\"$tanggal\",`tahun_panen`=\"$tahunpanen\",`kelas_benih`=\"$kelasbenih\",`jumlah_kg`=\"$jumlahkg\",`keterangan`=\"$keterangan\" WHERE `id_distribusi`=\"$iddistribusi\" ");
 // >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
+=======
+		public function edit_distribusibenih($iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan){
+			$sql=$this->db->query("UPDATE `distribusi_benih` SET `tanggal`=\"$tanggal\",`tahun_panen`=\"$tahunpanen\",`kelas_benih`=\"$kelasbenih\",`jumlah_kg`=\"$jumlahkg\",`keterangan`=\"$keterangan\" WHERE `id_distribusi`=\"$iddistribusi\" ");
+>>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
 		}
 
 		//Alat dan Mesin
