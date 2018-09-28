@@ -363,15 +363,7 @@
 			// }
 			redirect(base_url('admin/serat#tabelStokBenih'));
 		}
-<<<<<<< HEAD
-// <<<<<<< HEAD
 		
-// =======
-
-// >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
-=======
-
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
 		//distribusi benih
 		public function hapusDistribusiBenih($idDistribusi){
 			$this->load->model("m_data");
@@ -421,32 +413,16 @@
 		}
 		public function editDistribusiBenih(){
 			$this->load->model("m_data");
-<<<<<<< HEAD
-// <<<<<<< HEAD
-			// $idbenih=$this->input->post('namanyabenih');
-			$idbenih=$this->input->post('idbenihdistribusibenih');
-			$iddsitribusi=$this->input->post('iddistribusibenih');
-// =======
-			$iddistribusi=$this->input->post('iddistribusibenih');
-// >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
-=======
+
 			// $idbenih=$this->input->post('namanyabenih');
 			$iddistribusi=$this->input->post('iddistribusibenih');
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
 			$tanggal=$this->input->post('tanggaldistribusibenih');
 			$tahunpanen=$this->input->post('tahunpanendistribusibenih');
 			$kelasbenih=$this->input->post('kelasdistribusibenih');
 			$jumlahkg=$this->input->post('jumlahkgdistribusibenih');
 			$keterangan=$this->input->post('keterangandistribusibenih');
-<<<<<<< HEAD
-// <<<<<<< HEAD
-			$this->m_data->edit_distribusibenih($idbenih,$iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan);
-// =======
+
 			$this->m_data->edit_distribusibenih($iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan);
-// >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
-=======
-			$this->m_data->edit_distribusibenih($iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan);
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
 			redirect(base_url('admin/serat#tabelDistribusiBenih'));
 		}
 

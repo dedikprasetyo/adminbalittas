@@ -178,13 +178,7 @@
 		public function edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai){
 			$sql = $this->db->query("UPDATE `stok_benih` SET `asal`=\"$asal\",`tahun_panen`=\"$tahunpanen\",`kelas`=\"$kelas\",`stok_bulan_terakhir`=\"$stokbulanterakhir\",`stok_sampai`=\"$stoksampai\" WHERE `id_stok_benih`=\"$idstokbenih\" ");
 		}
-<<<<<<< HEAD
-// <<<<<<< HEAD
-// =======
 
-// >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
-=======
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
 		//untuk stok benih dan distribusi
 		public function getIdnamaBenih($namaBenih) { 
 			$sql = $this->db->query("SELECT `id_benih` FROM `benih` WHERE nama_benih = \"$namaBenih\"");
@@ -235,18 +229,8 @@
 		public function hapus_distribusibenih($idDistribusi){
 			$sql = $this->db->query("DELETE FROM `distribusi_benih` WHERE `id_distribusi` = \"$idDistribusi\"");		
 		}
-<<<<<<< HEAD
-// <<<<<<< HEAD
-// 		public function edit_distribusibenih($idbenih,$iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan){
-// 			$sql=$this->db->query("UPDATE `distribusi_benih` SET `tanggal`=\"$tanggal\",`tahun_panen`=\"$tahunpanen\",`kelas_benih`=\"$kelasbenih\",`jumlah_kg`=\"$jumlahkg\",`keterangan`=\"$keterangan\" WHERE `id_benih`=\"$idbenih\" ");
-// =======
 		public function edit_distribusibenih($iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan){
 			$sql=$this->db->query("UPDATE `distribusi_benih` SET `tanggal`=\"$tanggal\",`tahun_panen`=\"$tahunpanen\",`kelas_benih`=\"$kelasbenih\",`jumlah_kg`=\"$jumlahkg\",`keterangan`=\"$keterangan\" WHERE `id_distribusi`=\"$iddistribusi\" ");
-// >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
-=======
-		public function edit_distribusibenih($iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan){
-			$sql=$this->db->query("UPDATE `distribusi_benih` SET `tanggal`=\"$tanggal\",`tahun_panen`=\"$tahunpanen\",`kelas_benih`=\"$kelasbenih\",`jumlah_kg`=\"$jumlahkg\",`keterangan`=\"$keterangan\" WHERE `id_distribusi`=\"$iddistribusi\" ");
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
 		}
 
 		//Alat dan Mesin

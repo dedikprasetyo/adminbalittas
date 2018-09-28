@@ -1264,17 +1264,9 @@
                   <td><?php echo "$row[stok_bulan_terakhir]"; ?></td>
                   <td><?php echo "$row[stok_sampai]"; ?></td>
                   <td>
-<<<<<<< HEAD
-<!-- <<<<<<< HEAD -->
-                   <!--  <a href="#editstokbenih" class="edit" onclick=""><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a> -->
-                   <!-- <a href="#editstokbenih" class="edit"  onclick="confirm_modal_editstokbenih( -->
-<!-- // ======= -->
-                    <a href="#editstokbenih" class="edit"  onclick="confirm_modal_editstokbenih(
-// >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d
-=======
+
 
                     <a href="#editstokbenih" class="edit"  onclick="confirm_modal_editstokbenih(
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
                    '<?php echo $row['id_benih']; ?>',
                    '<?php echo $row['id_stok_benih']; ?>',
                    '<?php echo $row['nama_benih']; ?>',
@@ -1283,20 +1275,9 @@
                    '<?php echo $row['kelas']; ?>',
                    '<?php echo $row['stok_bulan_terakhir']; ?>',
                    '<?php echo $row['stok_sampai']; ?>')"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-<<<<<<< HEAD
-<!-- <<<<<<< HEAD -->
-                    <a href="#hapusstokbenih" class="delete"  onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
-<!-- ======= -->
-                    <!-- <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_stokbenih('<?php //echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
->>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d -->
-=======
-
-
-                    <!-- <a href="#hapusstokbenih" class="delete"  onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>    -->
 
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
 
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
                   </td>
                 </tr>
                 <?php                                 
@@ -1396,10 +1377,6 @@
     ?>
     </datalist> 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
     <!-- Edit Modal HTML Stok Benih -->
     <div id="editstokbenih" class="modal fade">
       <div class="modal-dialog">
@@ -1680,10 +1657,7 @@
         }
     </script>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
     <!-- Edit Modal HTML Distribusi Benih -->
     <div id="editdistribusibenih" class="modal fade">
       <div class="modal-dialog">
@@ -1699,10 +1673,6 @@
               <div class="form-group">
                 <label>Nama Benih</label>
                 <input type="text" class="form-control" list="daftarbenih2" id="namadisbenid" name="namanyabenih" disabled>
-<<<<<<< HEAD
-<!-- >>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d -->
-=======
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
               </div>
               <div class="form-group">
                 <label>Tanggal Distribusi</label><br>
@@ -1726,15 +1696,7 @@
               </div>
               <div class="form-group">
                 <label>Keterangan</label>
-<<<<<<< HEAD
-<!-- <<<<<<< HEAD -->
-                <input type="text" id="ketdisbenid" name="keterangandistribusibenih" class="form-control" required>
-<!-- ======= -->
-                <!-- <input type="text" id="ketdisbenid" name="keterangandistribusibenih" class="form-control">
->>>>>>> e89ff2c17d94e7a7f6c4d90bc136cef4fdb2dc5d -->
-=======
                 <input type="text" id="ketdisbenid" name="keterangandistribusibenih" class="form-control">
->>>>>>> f68ca862d5ad95425b6039af5ae0d390a252007d
               </div>
               <div class="modal-footer">
                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
