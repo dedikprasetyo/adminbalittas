@@ -1391,7 +1391,7 @@
                 <input hidden id="idstokben" name="idstokbenih">
                 <input hidden id="idben" name="idBenih">
                 <label>Nama Benih</label>
-                <input type="text" class="form-control"  id="namabenihid" name="namaBenih" required>
+                <input type="text" class="form-control"  id="namabenihid" name="namaBenih" disabled>
               </div>
               <div class="form-group">
                 <label>Asal</label>

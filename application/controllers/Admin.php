@@ -352,7 +352,7 @@
 			$idbenih = $this->input->post('idBenih');
 
 			$namabenih = $this->input->post('namaBenih');
-			$this->m_data->edit_nama_benih($idbenih,$namabenih);
+			// $this->m_data->edit_nama_benih($idbenih,$namabenih);
 			$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
 			// if (!empty($idbenih)) { //ada
 			// 	$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
