@@ -1265,6 +1265,7 @@
                   <td><?php echo "$row[stok_sampai]"; ?></td>
                   <td>
 
+
                     <a href="#editstokbenih" class="edit"  onclick="confirm_modal_editstokbenih(
                    '<?php echo $row['id_benih']; ?>',
                    '<?php echo $row['id_stok_benih']; ?>',
@@ -1274,9 +1275,6 @@
                    '<?php echo $row['kelas']; ?>',
                    '<?php echo $row['stok_bulan_terakhir']; ?>',
                    '<?php echo $row['stok_sampai']; ?>')"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
-
-
-                    <!-- <a href="#hapusstokbenih" class="delete"  onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>    -->
 
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_stokbenih('<?php echo $row['id_stok_benih']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>     
 
@@ -1379,7 +1377,6 @@
     ?>
     </datalist> 
 
-
     <!-- Edit Modal HTML Stok Benih -->
     <div id="editstokbenih" class="modal fade">
       <div class="modal-dialog">
@@ -1394,7 +1391,7 @@
                 <input hidden id="idstokben" name="idstokbenih">
                 <input hidden id="idben" name="idBenih">
                 <label>Nama Benih</label>
-                <input type="text" class="form-control"  id="namabenihid" name="namaBenih" required>
+                <input type="text" class="form-control"  id="namabenihid" name="namaBenih" disabled>
               </div>
               <div class="form-group">
                 <label>Asal</label>
@@ -1659,6 +1656,7 @@
           document.getElementById('idhapusdistribusibenih').setAttribute('href' ,"hapusDistribusiBenih/"+delete_url);
         }
     </script>
+
 
     <!-- Edit Modal HTML Distribusi Benih -->
     <div id="editdistribusibenih" class="modal fade">
