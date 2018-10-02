@@ -19,7 +19,7 @@
                <ul class="breadcrumb" style="margin-bottom: 0px;margin-top: 13px;">
                   <li><a href="<?php echo base_url() ?>">Beranda</a></li>
                   <li><a href="<?php echo base_url() ?>#serat">Tanaman Serat</a></li>
-                  <li class="active">Masing - Masing Varietas</li>
+                  <li class="active">Varietas</li>
                </ul>
                <hr style="border-color: black">
                <div class="row" style="margin-bottom: 20px;">
@@ -67,7 +67,7 @@
                   </div>
                   <!-- Content masing - masing varietas -->
                   <div class="container-fluid" style="background-color: #eee;">
-                     <h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 20px;">Masing - Masing Varietas <?php echo $value->nama_serat; ?></h4>
+                     <h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 20px;">Varietas <?php echo $value->nama_serat; ?></h4>
                      <hr style="border-color: rgb(242,97,5);margin-top: -10px;">
                      <?php 
                      $deskripsi="";
@@ -154,7 +154,7 @@
                      </div>
                   </form>
                </div>
-               <a href="<?php echo base_url('varietas/detail/') ?>" style="text-decoration-line:none;">
+               <a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;">
                   <h3 class="text-left" style="color:black;">Leaflet</h3>
                </a>
                <hr style="border-color: black">

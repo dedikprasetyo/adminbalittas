@@ -23,7 +23,7 @@ class M_budidaya extends CI_Model{
 		return $data->num_rows();
     }
      public function getDetailMonografBerdasarkanIDSerat($id, $perpage, $start){
-		$data=$this->db->query("SELECT * FROM detail_monograf WHERE id_serat='$id' LIMIT $perpage OFFSET $start");
+		$data=$this->db->query("SELECT * FROM detail_monograf WHERE id_serat='$id' ORDER BY id_detail_monograf DESC LIMIT $perpage OFFSET $start");
 		return $data->result();
 	}
 	public function pencarianBudidaya($cari){

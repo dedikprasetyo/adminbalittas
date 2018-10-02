@@ -244,7 +244,7 @@
     color:white;
 }
 .headerHover:hover{
-    color:#fece00;
+    color:#fece00!important;
     cursor: pointer;
 }
 .navbarHover{
@@ -255,12 +255,10 @@
     transition: .8s ease;
 }
 .teknologiBudidaya{
-    /*color:rgb(28,69,26);*/
-    color:rgb(242,97,5);
+ color:rgb(242,97,5)!important;
 }
 .teknologiBudidaya:hover{    
-    /*color:rgb(242,97,5);*/
-    color:orange;    
+    color:#fece00!important;
 }
 .dropbtnHeader {
     background-color: transparent;

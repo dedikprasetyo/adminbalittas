@@ -64,7 +64,7 @@
                      </div>
                   </form>
                </div>
-               <h3 class="text-left" style="color:black;font-family: Monion pro">Varietas Terbaru</h3>
+               <h3 class="text-left" style="color:black;font-family: Monion pro">Varietas Unggul Baru</h3>
                <hr style="border-color: grey;margin-top: -5px;">
                <?php foreach($varietas as $varside)
                   {
