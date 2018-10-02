@@ -134,43 +134,55 @@
                <hr style="border-color: grey;margin-top: -8px;">
                <!-- Label Filter -->
                <div class="row" >
-                  <div class="col-xs-4 col-sm-8 col-lg-8">
-                     <h5 class="text-right" style="margin-left: 5px;"><b>Filter by :</b></h5>
-                  </div>
-                  <!-- <div class="col-xs-3 col-sm-2 col-lg-2 text-right" >
-                     <select class="form-control bulan" id="bulan" name="bulan" style="margin-left: 23px;" onchange="filter();">
-                        <option disabled>Komoditas</option>
-                        <option value="Semua Komoditas" selected>Semua Komoditas</option>
-                     </select>
+                                   
+                  
+                  <!-- <div class="col-xs-4 col-sm-2 col-lg-2">
+                      <h5 style="margin-left: 0px;">Filter by &nbsp :</h5>
                   </div> -->
-                  <div class="col-xs-4 col-sm-2 col-lg-2 text-right">
-                     <select class="form-control bulan" id="bulan" name="bulan" style="margin-left: 13px;" onchange="filter();">
-                        <option disabled>Bulan</option>
-                        <option value="Januari" selected>Januari</option>
-                        <?php
-                           $bulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember","--Semua--");
-                           for($i = 1;$i < count($bulan);$i++){
-                           	echo"<option value=$bulan[$i]> $bulan[$i] </option>";
-                           }
-                           ?>
-                     </select>
+                  <div class="col-xs-4 col-sm-4 col-lg-2">
+                      <h5 style="margin-left: 0px;">Filter by &nbsp :</h5>
                   </div>
-                  <div class="col-xs-4 col-sm-2 col-lg-2 text-right">
-                     <select class="form-control tahun" id="tahun" name="tahun" onchange="filter();">
-                        <option disabled>Tahun</option>
-                        <option value="2011" selected>2011</option>
+                  <div class="col-xs-4 col-sm-4 col-lg-2 text-right" >
+                      <select class="form-control komoditasdist" id="jenisKomoditasdist" name="komoditasdist" style="margin-left: -70px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                             <option value="Semua Komoditas" selected>Semua Komoditas</option>
                         <?php
-                           for($i = 2012;$i <= 2050;$i++){
-                           	echo"<option value=$i> $i </option>";
-                           }
-                           ?>
-                     </select>
+                          $komoditasdist = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                          for($i = 1;$i < count($komoditasdist);$i++){
+                            echo"<option value=$komoditasdist[$i]> $komoditasdist[$i] </option>";
+                          }
+                        ?>
+                      </select>
+                    </div>
+
+
+                  <div class="col-xs-4 col-sm-4 col-lg-2 text-right">
+                     <select class="form-control tahundist" id="jenisTahundist" name="tahundist" style="margin-left: -40px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                       <option value="Semua Tahun" selected>Semua Tahun</option>
+                  <?php
+                    for($i = 2000;$i <= 2050;$i++){
+                      echo"<option value=$i> $i </option>";
+                    }
+                  ?>
+                  ?>
+                </select>
+                  </div>
+
+                  <div class="col-xs-4 col-sm-4 col-lg-2 text-right">
+                     <select class="form-control bulandist" id="jenisBulandist" name="bulandist" style="margin-left: -10px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                       <option value="Semua Bulan" selected>Semua Bulan</option>
+                  <?php
+                    $bulandist = array("Semua Bulan","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+                    for($i = 1;$i < count($bulandist);$i++){
+                      echo"<option value=$bulandist[$i]> $bulandist[$i] </option>";
+                    }
+                  ?>
+                </select>
                   </div>
                </div>
                <br>
                <div id="table-data">
                    <div class="table-responsive" style="text-align: center;">
-                  <table class="table table-hover">
+                  <!-- <table class="table table-hover">
                      <thead style="background-color: rgba(28,69,26,0.9);border-bottom: 3px solid white; color:#fece00;">
                         <th style="text-align:center;">No</th>
                         <th style="text-align:center;">Varietas</th>
@@ -218,7 +230,58 @@
                         </tr>
                      </tbody>
                    
-                  </table>
+                  </table> -->
+                  <table class="table table-hover">
+                     <thead style="background-color: rgba(28,69,26,0.9);border-bottom: 3px solid white; color:#fece00;">
+                        <th style="text-align:center;">No</th>
+                        <th style="text-align:center;">Varietas</th>
+                        <th style="text-align:center;">Tanggal</th>
+                        <th style="text-align:center;">Tahun Panen</th>
+                        <th style="text-align:center;">Kelas Benih</th>
+                        <th style="text-align:center;">Jumlah Kg</th>
+                        <th style="text-align:center;">Keterangan</th>
+                     </thead>
+              <tbody>
+                <?php 
+                  // $no = 1; 
+                   $count=0;
+                   $jumlah=0;                                         
+                  foreach ($distribusi as $row) {   
+                     $count++; 
+                           $jumlah += "$row[jumlah_kg]";
+                           $keterangan = "";
+                           if(!empty($row->keterangan)){
+                              $keterangan = substr($row->keterangan, 0,20). " ...";
+                           }else{
+                              $keterangan = "$row[keterangan]";
+                           }
+
+                ?>
+                <tr >
+                  <td><?php echo $count; ?></td>                                
+                  <td><?php echo "$row[nama_benih]"; ?></td>                              
+                  <td><?php echo "$row[tanggal]"; ?></td>                         
+                  <td><?php echo "$row[tahun_panen]"; ?></td>
+                  <td><?php echo "$row[kelas_benih]"; ?></td>
+                  <td><?php echo "$row[jumlah_kg]"; ?></td>
+                  <td><?php echo "$row[keterangan]"; ?></td>
+                  
+                </tr>
+                <?php                                 
+                    // $no++;
+                  }
+                ?>
+                <tr style="background-color: rgba(28,69,26, 0.3);">
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td style="font-weight: bold;">JUMLAH</td>
+                           <td></td>
+                           <td class="text-center" style="font-weight: bold;"><?php echo number_format($jumlah, 2); ?></td>
+                           <td></td>
+                        </tr>
+              </tbody>
+            </table>
                </div>
                </div>
             </div>
@@ -296,36 +359,73 @@
          
 
          // ajax
-         function filter(){
-         var acuan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember","--Semua--"];
-         var bulan = $("#bulan").val();
-         for (var i = 0; i < acuan.length; i++) {
-            if (bulan == acuan[i]) {
-               if (i < 9) {
-                  bulan = "0" + (i+1);
-               } else {
-                  if (i == 12) {
-                     bulan = "_%_%";
-                  } else {
-                     bulan = (i+1);
-                  }
-               }
+         // function filter(){
+         // var acuan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember","--Semua--"];
+         // var bulan = $("#bulan").val();
+         // for (var i = 0; i < acuan.length; i++) {
+         //    if (bulan == acuan[i]) {
+         //       if (i < 9) {
+         //          bulan = "0" + (i+1);
+         //       } else {
+         //          if (i == 12) {
+         //             bulan = "_%_%";
+         //          } else {
+         //             bulan = (i+1);
+         //          }
+         //       }
+         //    }
+         // }
+         // var tahun = $("#tahun").val();
+         // // alert(bulan);
+         //  $.ajax({
+         //      type:"POST",
+         //      url: "../produk/filterDistribusi",
+         //      data: "tahun_bulan=" + tahun + "-" + bulan,
+         //      dataType : "html",
+         //      success:function(msg){
+         //          $("#table-data").html(msg);                
+         //      },
+         //      error:function(){
+         //       alert("Search failed");
+         //    }
+         // });
+
+      function filterDistribusi(){
+        var acuan = ["Semua Bulan","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+        var bulan = $("#jenisBulandist").val();
+        for (var i = 0; i < acuan.length; i++) {
+          if (bulan == acuan[i]) {
+            if (i < 10) {
+              if (i == 0) {
+                bulan = "00"; // bulan = "_%_%";
+              } 
+              else {
+                bulan = "0" + (i);
+              }
+            } else {
+                bulan = (i);
             }
-         }
-         var tahun = $("#tahun").val();
-         // alert(bulan);
-          $.ajax({
+          }
+        }
+        var tahun = $("#jenisTahundist").val();
+        if (tahun == "Semua Tahun") {
+          tahun = "0000"; // tahun = "_%_%_%_%";
+        } 
+        var komoditasdist = $("#jenisKomoditasdist").val();
+          // alert("serattt=" + tahun + "-" + bulan + "-" + komoditasdist);
+        $.ajax({
               type:"POST",
               url: "../produk/filterDistribusi",
-              data: "tahun_bulan=" + tahun + "-" + bulan,
+              data: "serattt=" + tahun + "-" + bulan + "-" + komoditasdist,
               dataType : "html",
               success:function(msg){
-                  $("#table-data").html(msg);                
+                 $("#table-data").html(msg);               
               },
               error:function(){
-               alert("Search failed");
-            }
-         });
+                alert("Search failed");
+              }
+        });
+      
       }
       </script>
       <!-- END OF MODALS -->

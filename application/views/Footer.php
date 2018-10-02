@@ -182,14 +182,12 @@
 		        $(dom).find("[col=g]").css("display", "none");
 		        $(dom).find("[col=b]").css("display", "block");
 		    }
-
 		    else
 		    {
 		        $(dom).find("[col=b]").css("display", "none");
 		        $(dom).find("[col=g]").css("display", "block");
 		    }
 		}
-
 		//JS for scroll to top
 		$(window).scroll(function() {
 		    if ($(this).scrollTop() > 50 ) {
