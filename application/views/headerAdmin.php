@@ -5,7 +5,6 @@
 		<meta charset="utf-8">
 		<!-- <link href="gambar/logo.png" rel="shortcut icon"> -->
 		<meta name="description" content="A Tuts+ course">
-		<meta name="author" content="Gusna Ikhsan">		
 		<!-- <link rel="stylesheet" href="<?php echo base_url() ?>bootstrap/css/bootstrap.css"> -->
 		<link rel="stylesheet" href="<?php echo base_url() ?>bootstrap/css/balittas.css">
 		<link href="<?php echo base_url() ?>item img/Logo-Kementerian-Pertanian.png" rel="shortcut icon">
@@ -28,7 +27,7 @@
 				<div class="container-fluid">
 				    <div class="navbar-header" style="margin-top: 4.49px; margin-bottom: 3px;">
 				    	<a href="<?php echo base_url('Admin/serat') ?>">
-				    		<img src="<?php echo base_url() ?>assets/img/balittaslitbang.png" style="width:290px; margin-left: -35px;">
+				    		<img src="<?php echo base_url() ?>assets/img/balittaslitbang.png" style="width:290px; height: 60px; margin-left: -35px;">
 				    	</a>
 				    </div>			
 				    <div class="collapse navbar-collapse">			    

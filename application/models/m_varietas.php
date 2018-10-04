@@ -9,7 +9,7 @@ class M_varietas extends CI_Model{
 	}
 
 	public function getVarietasByPagination($id, $perpage, $start){
-		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas
+		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas, n.URLV
 								FROM varietas n 
 								WHERE n.id_serat = '$id' ORDER BY n.tanggal_upload DESC LIMIT $perpage OFFSET $start");
 		return $data->result();
@@ -38,7 +38,7 @@ class M_varietas extends CI_Model{
 	}
 
 	public function getDeskripsiVarietas($id){
-		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas, n.file_SK
+		$data=$this->db->query("SELECT n.id_serat, n.id_varietas, n.nama_varietas, n.file_gambar, n.tanggal_upload, 								n.waktu_upload, n.deskripsi_varietas, n.file_SK, n.URLV
 								FROM varietas n 
 								WHERE n.id_varietas = "."'".$id."'");
 		return $data->result();

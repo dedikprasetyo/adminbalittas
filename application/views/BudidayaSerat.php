@@ -33,7 +33,30 @@
                            <h4 style="color:rgb(242,97,5);font-size: 24px;"><?php echo $cup->judul; ?></h4>
                            <p style="text-indent: 0.5in; text-align: justify;"><?php echo $cup->cuplikan_monograf; ?></p>
                            <p>Penulis : <b style="font-style:italic;"><?php echo $cup->penulis; ?></b></p>
-                           <p>File selengkapnya mengenai <b><?php echo $cup->judul; ?></b> dapat di unduh <a href="<?php echo base_url() ?>file/unduhan/<?php echo $cup->file; ?>" style="text-decoration-line: none">Di sini</a></p>
+
+                           <?php 
+                              if (empty($cup->file) && empty($cup->URL)) { ?>
+                                 
+                                 <p>File mengenai <b><?php echo $name->nama_varietas; ?></b> belum tersedia.</p>
+
+                           <?php } else if (empty($cup->URL)) { ?>
+
+                                 <p>File selengkapnya mengenai <b><?php echo $cup->judul; ?></b> dapat di unduh <a href="<?php echo base_url() ?>file/unduhan/<?php echo $cup->file; ?>" style="text-decoration-line: none">Di sini</a></p>
+
+                           <?php } else if (empty($cup->file)) { ?>
+
+                                 <p>Referensi <b><?php echo $cup->judul; ?></b> dapat dilihat <a href="http://<?php echo $cup->URL; ?>" target="blank" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+                           
+                           <?php } else { ?>
+
+                                 <p>File selengkapnya mengenai <b><?php echo $cup->judul; ?></b> dapat di unduh <a href="<?php echo base_url() ?>file/unduhan/<?php echo $cup->file; ?>" style="text-decoration-line: none">Di sini</a></p>
+
+                                 <p>Referensi <b><?php echo $cup->judul; ?></b> dapat dilihat <a href="http://<?php echo $cup->URL; ?>" target="blank" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+
+                           <?php
+                              } 
+                           ?>
+
                         </div>
                         <br>
                         <br>

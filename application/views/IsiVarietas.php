@@ -82,7 +82,30 @@
                               </tbody>
                            </table>
                            <p><b>Catatan:</b></p>
-                           <p>Surat Keputusan Pelepasan <b><?php echo $name->nama_varietas; ?></b> dapat diunduh <a href="<?php echo base_url() ?>file/SK/<?php echo $name->file_SK; ?>" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+                           
+
+                           <?php 
+                              if (empty($name->file_SK) && empty($name->URLV)) { ?>
+                                 
+                                 <p>Surat Keputusan Pelepasan <b><?php echo $name->nama_varietas; ?></b> belum tersedia.</p>
+
+                           <?php } else if (empty($name->URLV)) { ?>
+
+                                 <p>Surat Keputusan Pelepasan <b><?php echo $name->nama_varietas; ?></b> dapat diunduh <a href="<?php echo base_url() ?>file/SK/<?php echo $name->file_SK; ?>" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+
+                           <?php } else if (empty($name->file_SK)) { ?>
+                                 <p>Referensi <b><?php echo $name->nama_varietas; ?></b> dapat dilihat <a href="http://<?php echo $name->URLV; ?>" target="blank" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+                           
+                           <?php } else { ?>
+
+                                 <p>Surat Keputusan Pelepasan <b><?php echo $name->nama_varietas; ?></b> dapat diunduh <a href="<?php echo base_url() ?>file/SK/<?php echo $name->file_SK; ?>" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+
+                                 <p>Referensi <b><?php echo $name->nama_varietas; ?></b> dapat dilihat <a href="http://<?php echo $name->URLV; ?>" target="blank" style="text-decoration-line: none"><b>di sini</b></a>.</p>
+
+                           <?php
+                              } 
+                           ?>
+
                         </div>
                         <br>
                         <br>

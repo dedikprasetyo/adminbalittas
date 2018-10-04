@@ -49,7 +49,9 @@
 			$this->load->model("m_data");
 			$targetpathSeratgmbr = "item img/serat/";
 			$dataserat = $this->m_data->get_serat_byId($idSerat);
-			unlink($targetpathSeratgmbr.$dataserat[0]->gambar);
+			if ($dataserat[0]->gambar != "noImg.jpg") {
+				unlink($targetpathSeratgmbr.$dataserat[0]->gambar);
+			}
 			$this->m_data->hapus_serat($idSerat);
 			redirect(base_url('admin/serat#tabelSerat'));
 		}
@@ -59,7 +61,7 @@
 			$deskripsi = $this->input->post('deskripsi');		
 			$targetpathSer = "item img/serat/";		
 			if (empty($_FILES['gambar']['name'])) {
-				$gambar = "noImg.jpg";
+				$gambar = "noImg.png";
 				$this->m_data->tambah_serat($namaSerat, $deskripsi, $gambar);	
 			}else{
 				$targetpathSerat = $targetpathSer.basename($_FILES['gambar']['name']);
@@ -93,15 +95,20 @@
 			$komoditas = $this->input->post('serattt');
 			if ($komoditas == "Semua Komoditas") {
 				$data['dataVarietasFiltered'] = $this->m_data->load_varietas();
+				$data['datadetail_varietasFilter'] = $this->m_data->get_all_detail_varietas();
 			} else {
 				$data['dataVarietasFiltered'] = $this->m_data->load_varietas_filter($komoditas);
+				$data['datadetail_varietasFilter'] = $this->m_data->get_all_detail_varietas();
+
 			}
 			$this->load->view('FilterTableVarietas', $data);
 		}
 		public function hapusVarietas($idVarietas){
 			$this->load->model("m_data");
 			$datagambardansk = $this->m_data->get_imgsk_varietas_byId($idVarietas);
-			unlink('item img/gambar/Edited/'.$datagambardansk[0]->file_gambar);
+			if ($datagambardansk[0]->file_gambar != "serat.png") {
+				unlink('item img/gambar/Edited/'.$datagambardansk[0]->file_gambar);
+			}
 			unlink('file/SK/'.$datagambardansk[0]->file_SK);
 			$this->m_data->hapus_varietas($idVarietas);
 			redirect(base_url('admin/serat#tabelVarietas'));
@@ -115,6 +122,7 @@
 			$tanggalPelepasan = $this->input->post('tanggalPelepasanvar');
 			$idjenisKomoditas = $this->input->post('idjenisKomoditas');
 			$deskripsivar = $this->input->post('deskripsivar');
+			$urlv = $this->input->post('linkurlvarietas');
 			$targetpathgmbr = "item img/gambar/Edited/";
 			$targetpathsk = "file/SK/"; 
 			$targetpathgmbr2 = $targetpathgmbr.basename($_FILES['gambarvar']['name']);
@@ -125,21 +133,21 @@
 			} else {
 				$gambarVarietas = $_FILES['gambarvar']['name'];
 			}
-			$this->m_data->add_varietas($idjenisKomoditas,$namaVarietas,$tanggalPelepasan,$tgl,$wkt,$_FILES['tambahsk']['name'],$gambarVarietas,$deskripsivar);
+			$this->m_data->add_varietas($idjenisKomoditas,$namaVarietas,$tanggalPelepasan,$tgl,$wkt,$_FILES['tambahsk']['name'],$urlv,$gambarVarietas,$deskripsivar);
 			echo $this->input->post('temp')."<br>";
 			for ($i=0; $i < $this->input->post('temp') ; $i++) { 
 				$tesAtribut = $this->input->post('atribut'."$i");
 				if (!is_null($tesAtribut)) {
 					$idAtribut = $this->m_data->getIdAtribut($this->input->post('atribut'."$i"));
+					// echo $idAtribut;
 					if (!empty($idAtribut)) {
+						// echo $idAtribut;
 						$this->m_data->add_detail_varietas($idAtribut,$this->input->post('value'."$i"));
-						echo "->".$this->input->post('value'."$i")."<br>"; //no
-						echo "->".$this->input->post('value0')."<br>"; //no
-						echo "->".$this->input->post('value2')."<br>"; //no
 					} else {
+						// echo "kosong";
 						$this->m_data->addAtribut($this->input->post('atribut'."$i"));
 						$idAtribut = $this->m_data->getIdAtribut($this->input->post('atribut'."$i"));
-						$this->m_data->add_detail_deskripsi($idAtribut,$this->input->post('value'."$i"));
+						$this->m_data->add_detail_varietas($idAtribut,$this->input->post('value'."$i"));
 					}
 				}
 			}
@@ -152,28 +160,29 @@
 			$idVar = $this->input->post('idVarietass');
 			$namaVarietas = $this->input->post('namaVarietas');
 			$tgl = $this->input->post('tanggalPelepasan');					
-			$deskripsiii = $this->input->post('deskripsiv');		
+			$deskripsiii = $this->input->post('deskripsiv');
+			$urlvarr = $this->input->post('urlvar');		
 			$targetpathgmbrpath = "item img/gambar/Edited/";
 			$targetpathskpath = "file/SK/"; 
 			$targetpathgmbr = $targetpathgmbrpath.basename($_FILES['gambar_v']['name']);
-			$targetpathsk = $targetpathskpath.basename($_FILES['sk']['name']);
+			$targetpathsk = $targetpathskpath.basename($_FILES['updatesk']['name']);
 			$datagambardansk = $this->m_data->get_imgsk_varietas_byId($idVar);
-			if (!empty($_FILES['gambar_v']['name'])&&!empty($_FILES['sk']['name'])) { //dengan 2 file
+			if (!empty($_FILES['gambar_v']['name'])&&!empty($_FILES['updatesk']['name'])) { //dengan 2 file
 				unlink($targetpathgmbrpath.$datagambardansk[0]->file_gambar);
 				unlink($targetpathskpath.$datagambardansk[0]->file_SK);
+				move_uploaded_file($_FILES['updatesk']['tmp_name'],$targetpathsk);	
 				move_uploaded_file($_FILES['gambar_v']['tmp_name'],$targetpathgmbr);
-				move_uploaded_file($_FILES['sk']['tmp_name'],$targetpathsk);	
-				$this->m_data->updateVarietas($idVar,$namaVarietas,$tgl,$_FILES['sk']['name'],$_FILES['gambar_v']['name'],$deskripsiii);
-			}elseif (empty($_FILES['gambar_v']['name'])&&empty($_FILES['sk']['name'])) { //tanpa file
-				$this->m_data->updateVarietasTanpaFile($idVar,$namaVarietas,$tgl,$deskripsiii);
-			}elseif (empty($_FILES['sk']['name'])) { //update gambar aja
+				$this->m_data->updateVarietas($idVar,$namaVarietas,$tgl,$_FILES['updatesk']['name'],$_FILES['gambar_v']['name'],$deskripsiii,$urlvarr);
+			}elseif (empty($_FILES['gambar_v']['name'])&&empty($_FILES['updatesk']['name'])) { //tanpa file
+				$this->m_data->updateVarietasTanpaFile($idVar,$namaVarietas,$tgl,$deskripsiii,$urlvarr);
+			}elseif (empty($_FILES['updatesk']['name'])) { //update gambar aja
 				unlink($targetpathgmbrpath.$datagambardansk[0]->file_gambar);
 				move_uploaded_file($_FILES['gambar_v']['tmp_name'],$targetpathgmbr);
-				$this->m_data->updateVarietasKecSK($idVar,$namaVarietas,$tgl,$_FILES['gambar_v']['name'],$deskripsiii);
+				$this->m_data->updateVarietasKecSK($idVar,$namaVarietas,$tgl,$_FILES['gambar_v']['name'],$deskripsiii,$urlvarr);
 			}elseif (empty($_FILES['gambar_v']['name'])) { //update sk aja
 				unlink($targetpathskpath.$datagambardansk[0]->file_SK);
-				move_uploaded_file($_FILES['sk']['tmp_name'],$targetpathsk);
-				$this->m_data->updateVarietasKecGmbr($idVar,$namaVarietas,$tgl,$_FILES['sk']['name'],$deskripsiii);
+				move_uploaded_file($_FILES['updatesk']['tmp_name'],$targetpathsk);
+				$this->m_data->updateVarietasKecGmbr($idVar,$namaVarietas,$tgl,$_FILES['updatesk']['name'],$deskripsiii,$urlvarr);
 			}
 			redirect(base_url('admin/serat#tabelVarietas'));	
 		}
@@ -279,10 +288,11 @@
 			$judul = $this->input->post('judul');
 			$deskripsisingkat = $this->input->post('deskripsiSingkat');
 			$penulis = $this->input->post('penulis');
+			$urlbudd = $this->input->post('urlbudidaya');
 			$targetpathbudidaya = "file/unduhan/";		
 			$targetpathbudidayamonograf = $targetpathbudidaya.basename($_FILES['pdf']['name']);
 			move_uploaded_file($_FILES['pdf']['tmp_name'],$targetpathbudidayamonograf);
-			$this->m_data->add_budidaya($idserat,$deskripsisingkat,$penulis,$judul,$_FILES['pdf']['name']);
+			$this->m_data->add_budidaya($idserat,$deskripsisingkat,$penulis,$judul,$_FILES['pdf']['name'],$urlbudd);
 			redirect(base_url('admin/serat#tabelBudidaya'));
 		}
 		public function filterBudidaya() {
@@ -302,17 +312,18 @@
 			$judul = $this->input->post('judul');	
 			$des = $this->input->post('deskripsiSingkat');								
 			$penulis = $this->input->post('penulis');
+			$urleditbud = $this->input->post('editurlbud');	
 			$targetpathbudidaya = "file/unduhan/";	
 			$databudidaya = $this->m_data->get_budidaya_byId($idBud);
 			if (empty($_FILES['editpdfbudi']['name'])) {
-				$this->m_data->update_bud_nofile($idBud,$des,$penulis,$judul);
+				$this->m_data->update_bud_nofile($idBud,$des,$penulis,$judul,$urleditbud);
 			}else{
 				unlink($targetpathbudidaya.$databudidaya[0]->file);
 				$targetpathbudidayamonograf = $targetpathbudidaya.basename($_FILES['editpdfbudi']['name']);
 				move_uploaded_file($_FILES['editpdfbudi']['tmp_name'],$targetpathbudidayamonograf);
 				// echo $idgmbr1."----".$_FILES['leafletalsin1']['name']."<br>";
 				// echo $_FILES['editpdfbudi']['name'];
-				$this->m_data->update_bud_withfile($idBud,$des,$penulis,$judul,$_FILES['editpdfbudi']['name']);
+				$this->m_data->update_bud_withfile($idBud,$des,$penulis,$judul,$_FILES['editpdfbudi']['name'],$urleditbud);
 			}
 			redirect(base_url('admin/serat#tabelBudidaya'));
 		}
@@ -323,19 +334,20 @@
 			$this->m_data->hapus_stok_benih($idStokBenih);
 			redirect(base_url('admin/serat#tabelStokBenih'));
 		}
-		public function tambahStokBenih(){
+		public function tambahStokBenihCuy(){
 			$this->load->model("m_data");
 			$asal = $this->input->post('asal');
 			$tahunpanen = $this->input->post('tahunPanen');
 			$kelas = $this->input->post('kelas');
 			$stokbulanterakhir = $this->input->post('stokBulanTerakhir');
 			$stoksampai = $this->input->post('stokSampai');
-			$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+			$namabnh = $this->input->post('namaBenih2');
+			$idBenih = $this->m_data->getIdnmBenih($namabnh);
 			if (!empty($idBenih)) { //ada
 				$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
 			} else { //tidak ada
-				$this->m_data->add_benih($this->input->post('namaBenih'));
-				$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+				$this->m_data->add_benih($this->input->post('namaBenih2'));
+				$idBenih = $this->m_data->getIdnmBenih($this->input->post('namaBenih2'));
 				$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
 			}
 			redirect(base_url('admin/serat#tabelStokBenih'));
@@ -350,7 +362,6 @@
 			$stoksampai = $this->input->post('stoksampaibenih');
 			// $idbenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
 			$idbenih = $this->input->post('idBenih');
-
 			$namabenih = $this->input->post('namaBenih');
 			// $this->m_data->edit_nama_benih($idbenih,$namabenih);
 			$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
@@ -401,19 +412,18 @@
 			$kelas = $this->input->post('kelas');
 			$jumlahkg = $this->input->post('jumlahkg');
 			$keterangan = $this->input->post('keterangan');
-			$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+			$idBenih = $this->m_data->getIdnmBenih($this->input->post('namaBenih'));
 			if (!empty($idBenih)) { //ada
 				$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
 			} else { //tidak ada
 				$this->m_data->add_benih($this->input->post('namaBenih'));
-				$idBenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
+				$idBenih = $this->m_data->getIdnmBenih($this->input->post('namaBenih'));
 				$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
 			}
 			redirect(base_url('admin/serat#tabelDistribusiBenih'));
 		}
 		public function editDistribusiBenih(){
 			$this->load->model("m_data");
-
 			// $idbenih=$this->input->post('namanyabenih');
 			$iddistribusi=$this->input->post('iddistribusibenih');
 			$tanggal=$this->input->post('tanggaldistribusibenih');

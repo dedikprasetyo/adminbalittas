@@ -142,21 +142,11 @@
                   <div class="col-xs-4 col-sm-4 col-lg-2">
                       <h5 style="margin-left: 0px;">Filter by &nbsp :</h5>
                   </div>
-                  <div class="col-xs-4 col-sm-4 col-lg-2 text-right" >
-                      <select class="form-control komoditasdist" id="jenisKomoditasdist" name="komoditasdist" style="margin-left: -70px; width: 170px; height: 35px;" onchange="filterDistribusi();">
-                             <option value="Semua Komoditas" selected>Semua Komoditas</option>
-                        <?php
-                          $komoditasdist = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
-                          for($i = 1;$i < count($komoditasdist);$i++){
-                            echo"<option value=$komoditasdist[$i]> $komoditasdist[$i] </option>";
-                          }
-                        ?>
-                      </select>
-                    </div>
+                  
 
 
                   <div class="col-xs-4 col-sm-4 col-lg-2 text-right">
-                     <select class="form-control tahundist" id="jenisTahundist" name="tahundist" style="margin-left: -40px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                     <select class="form-control tahundist" id="jenisTahundist" name="tahundist" style="margin-left: -70px; width: 170px; height: 35px;" onchange="filterDistribusi();">
                        <option value="Semua Tahun" selected>Semua Tahun</option>
                   <?php
                     for($i = 2000;$i <= 2050;$i++){
@@ -168,7 +158,7 @@
                   </div>
 
                   <div class="col-xs-4 col-sm-4 col-lg-2 text-right">
-                     <select class="form-control bulandist" id="jenisBulandist" name="bulandist" style="margin-left: -10px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                     <select class="form-control bulandist" id="jenisBulandist" name="bulandist" style="margin-left: -40px; width: 170px; height: 35px;" onchange="filterDistribusi();">
                        <option value="Semua Bulan" selected>Semua Bulan</option>
                   <?php
                     $bulandist = array("Semua Bulan","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
@@ -411,12 +401,12 @@
         if (tahun == "Semua Tahun") {
           tahun = "0000"; // tahun = "_%_%_%_%";
         } 
-        var komoditasdist = $("#jenisKomoditasdist").val();
+        // var komoditasdist = $("#jenisKomoditasdist").val();
           // alert("serattt=" + tahun + "-" + bulan + "-" + komoditasdist);
         $.ajax({
               type:"POST",
               url: "../produk/filterDistribusi",
-              data: "serattt=" + tahun + "-" + bulan + "-" + komoditasdist,
+              data: "serattt=" + tahun + "-" + bulan,
               dataType : "html",
               success:function(msg){
                  $("#table-data").html(msg);               

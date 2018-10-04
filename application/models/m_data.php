@@ -30,7 +30,7 @@
 			return $sql->result_array();
 		}
 		public function load_varietas_filter($komoditas) {
-			$sql = $this->db ->query("SELECT * FROM `varietas` JOIN `serat` ON `varietas`.`id_serat` = `serat`.`id_serat` WHERE `serat`.`nama_serat` = \"$komoditas\"");
+			$sql = $this->db ->query("SELECT * FROM `varietas` JOIN `serat` ON `varietas`.`id_serat` = `serat`.`id_serat` WHERE `serat`.`nama_serat` = \"$komoditas\" ORDER BY `varietas`.`id_varietas` desc");
 	        return $sql->result_array();
 		}
 		public function get_imgsk_varietas_byId($idVarietas){
@@ -44,22 +44,22 @@
 			$sql = $this->db->query("SELECT `nama_atribut` FROM `atribut` order by `id_atribut` asc");
 			return $sql->result();
 		}
-		public function add_varietas($idjenisKomoditas,$namaVarietas,$tglPelepasan,$tgl,$wkt,$sk,$gmbr,$deskripsivar){		
-			$this->db->query("INSERT INTO `varietas`(`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pelepasan`, `tanggal_upload`, `waktu_upload`, `file_SK`, `file_gambar`, `deskripsi_varietas`) 
-				VALUES (\"$idjenisKomoditas\",\"\",\"$namaVarietas\",\"$tglPelepasan\",\"$tgl\",\"$wkt\",\"$sk\",\"$gmbr\",\"$deskripsivar\")");
+		public function add_varietas($idjenisKomoditas,$namaVarietas,$tglPelepasan,$tgl,$wkt,$sk,$url,$gmbr,$deskripsivar){		
+			$this->db->query("INSERT INTO `varietas`(`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pelepasan`, `tanggal_upload`, `waktu_upload`, `file_SK`, `URLV`, `file_gambar`, `deskripsi_varietas`) 
+				VALUES (\"$idjenisKomoditas\",\"\",\"$namaVarietas\",\"$tglPelepasan\",\"$tgl\",\"$wkt\",\"$sk\",\"$url\",\"$gmbr\",\"$deskripsivar\")");
 		}
-		public function updateVarietas($id,$namaVar,$tgl,$sk,$gmbr,$desk){			
-			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\",`file_SK`=\"$sk\",`file_gambar`= \"$gmbr\" ,`deskripsi_varietas`=\"$desk\" WHERE `id_varietas` = \"$id\"");
+		public function updateVarietas($id,$namaVar,$tgl,$sk,$gmbr,$desk,$url){			
+			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\",`file_SK`=\"$sk\",`file_gambar`= \"$gmbr\" ,`deskripsi_varietas`=\"$desk\",`URLV`=\"$url\" WHERE `id_varietas` = \"$id\"");
 		}
 		// alternatif
-		public function updateVarietasKecGmbr($id,$namaVar,$tgl,$sk,$desk){			
-			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\",`file_SK`=\"$sk\",`deskripsi_varietas`=\"$desk\" WHERE `id_varietas` = \"$id\"");
+		public function updateVarietasKecGmbr($id,$namaVar,$tgl,$sk,$desk,$url){			
+			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\",`file_SK`=\"$sk\",`deskripsi_varietas`=\"$desk\",`URLV`=\"$url\" WHERE `id_varietas` = \"$id\"");
 		}
-		public function updateVarietasKecSK($id,$namaVar,$tgl,$gmbr,$desk){			
-			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\",`file_gambar`= \"$gmbr\",`deskripsi_varietas`=\"$desk\" WHERE `id_varietas` = \"$id\"");
+		public function updateVarietasKecSK($id,$namaVar,$tgl,$gmbr,$desk,$url){			
+			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\",`file_gambar`= \"$gmbr\",`deskripsi_varietas`=\"$desk\",`URLV`=\"$url\" WHERE `id_varietas` = \"$id\"");
 		}
-		public function updateVarietasTanpaFile($id,$namaVar,$tgl,$desk){			
-			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\" ,`deskripsi_varietas`=\"$desk\" WHERE `id_varietas` = \"$id\"");
+		public function updateVarietasTanpaFile($id,$namaVar,$tgl,$desk,$url){			
+			$this->db->query("UPDATE varietas SET `nama_varietas`= \"$namaVar\",`tanggal_pelepasan`= \"$tgl\" ,`deskripsi_varietas`=\"$desk\",`URLV`=\"$url\" WHERE `id_varietas` = \"$id\"");
 		}
 		public function get_all_detail_varietas(){			
 			$sql = $this->db->query("SELECT v.id_varietas,v.nama_varietas,a.id_atribut, a.nama_atribut,dv.detail_value
@@ -132,11 +132,11 @@
 
 		//Budidaya
 		public function load_budidaya(){
-			$sql = $this->db ->query("SELECT * FROM `detail_monograf` JOIN `serat` ON `detail_monograf`.`id_serat` = `serat`.`id_serat` ORDER BY `detail_monograf`.`id_detail_monograf` desc");
+			$sql = $this->db ->query("SELECT * FROM `detail_monograf` JOIN `Serat` ON `detail_monograf`.`id_serat` = `serat`.`id_serat` ORDER BY `detail_monograf`.`id_detail_monograf` desc");
 			return $sql->result_array();
 		}
 		public function load_budidaya_filter($komoditas) {
-			$sql = $this->db ->query("SELECT * FROM `detail_monograf` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\")");
+			$sql = $this->db ->query("SELECT * FROM `detail_monograf` JOIN `Serat` ON `detail_monograf`.`id_serat` = `serat`.`id_serat` WHERE `detail_monograf`.`id_serat` = (SELECT `serat`.`id_serat` FROM `serat` WHERE `serat`.`nama_serat` = \"$komoditas\") ORDER BY `detail_monograf`.`id_detail_monograf` desc");
 	        return $sql->result_array();
 		}
 		public function hapus_budidaya($idBudidaya){
@@ -146,15 +146,15 @@
 			$sql = $this->db->query("SELECT `file` FROM `detail_monograf` WHERE `id_detail_monograf` = \"$idBudidaya\"");
 			return $sql->result();
 		}
-		public function add_budidaya($idserat,$deskripsisingkat,$penulis,$judul,$file) { //blm		
+		public function add_budidaya($idserat,$deskripsisingkat,$penulis,$judul,$file,$urll) { 	
 			$this->db->query("
-				INSERT INTO `detail_monograf`(`id_serat`, `id_detail_monograf`, `cuplikan_monograf`, `penulis`, `judul`, `file`) VALUES (\"$idserat\",\"\",\"$deskripsisingkat\",\"$penulis\",\"$judul\",\"$file\")");
+				INSERT INTO `detail_monograf`(`id_serat`, `id_detail_monograf`, `cuplikan_monograf`, `penulis`, `judul`, `file`, `URL`) VALUES (\"$idserat\",\"\",\"$deskripsisingkat\",\"$penulis\",\"$judul\",\"$file\",\"$urll\")");
 		}
-		public function update_bud_nofile($idBud,$des,$penulis,$judul){	
-			$sql = $this->db->query("UPDATE `detail_monograf` SET `cuplikan_monograf`=\"$des\",`penulis`=\"$penulis\",`judul`=\"$judul\" WHERE `id_detail_monograf`=\"$idBud\"");	
+		public function update_bud_nofile($idBud,$des,$penulis,$judul,$url){	
+			$sql = $this->db->query("UPDATE `detail_monograf` SET `cuplikan_monograf`=\"$des\",`penulis`=\"$penulis\",`judul`=\"$judul\", `URL`=\"$url\" WHERE `id_detail_monograf`=\"$idBud\"");	
 		}	
-		public function update_bud_withfile($idBud,$des,$penulis,$judul,$file){					
-			$sql = $this->db->query("UPDATE `detail_monograf` SET `cuplikan_monograf`=\"$des\",`penulis`=\"$penulis\",`judul`=\"$judul\", `file`=\"$file\" WHERE `id_detail_monograf`=\"$idBud\"");	
+		public function update_bud_withfile($idBud,$des,$penulis,$judul,$file,$url){					
+			$sql = $this->db->query("UPDATE `detail_monograf` SET `cuplikan_monograf`=\"$des\",`penulis`=\"$penulis\",`judul`=\"$judul\", `file`=\"$file\", `URL`=\"$url\" WHERE `id_detail_monograf`=\"$idBud\"");	
 		}	
 
 		//Stok Benih
@@ -172,21 +172,18 @@
 		public function add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai){		
 			$sql = $this->db->query("INSERT INTO `stok_benih`(`id_stok_benih`, `id_benih`, `asal`, `tahun_panen`, `kelas`, `stok_bulan_terakhir`, `stok_sampai`) VALUES (\"\",\"$idBenih\",\"$asal\",\"$tahunpanen\",\"$kelas\",\"$stokbulanterakhir\",\"$stoksampai\");");			
 		}
-		// public function edit_nama_benih($idbenih, $namabenih) { 	
-		// 	$this->db->query("UPDATE `benih` SET `nama_benih`=\"$namabenih\" WHERE `id_benih`=\"$idbenih\" ");
-		// }
 		public function edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai){
 			$sql = $this->db->query("UPDATE `stok_benih` SET `asal`=\"$asal\",`tahun_panen`=\"$tahunpanen\",`kelas`=\"$kelas\",`stok_bulan_terakhir`=\"$stokbulanterakhir\",`stok_sampai`=\"$stoksampai\" WHERE `id_stok_benih`=\"$idstokbenih\" ");
 		}
 
 		//untuk stok benih dan distribusi
-		public function getIdnamaBenih($namaBenih) { 
-			$sql = $this->db->query("SELECT `id_benih` FROM `benih` WHERE nama_benih = \"$namaBenih\"");
+		public function getIdnmBenih($namaBenih) { 
+			$sql = $this->db->query("SELECT id_benih FROM benih WHERE nama_benih = \"$namaBenih\"");
 			$hasil = $sql->result();
 			return $hasil[0]->id_benih;
 		}
 
-		//untuk distribusi
+		//untuk stok benih dan distribusi
 		public function add_benih($namabenih) { 	
 			$this->db->query("INSERT INTO `benih`(`nama_benih`, `id_benih`) VALUES (\"$namabenih\",\"\")");
 		}

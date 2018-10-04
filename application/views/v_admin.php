@@ -125,7 +125,7 @@
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
-                  <input type="text" class="form-control image-preview-filename" disabled="disabled">    
+                  <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="400 x 292 piksel">    
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                       <span class="glyphicon glyphicon-remove"></span> Clear
@@ -272,7 +272,8 @@
                   <th>Spesifikasi</th>                              
                   <th>Tanggal Pelepasan</th>                              
                   <th>File Gambar</th>
-                  <th>File SK</th>                                
+                  <th>File SK</th>    
+                  <th>URL</th>                            
                   <th>Tanggal Upload</th>                                
                   <th>Waktu Upload</th>
                   <th>Deskripsi</th>  
@@ -286,7 +287,11 @@
                     $deskripsivar_cut = ""; 
                     if (strlen($row['deskripsi_varietas']) != 0) {
                       $deskripsivar_cut = substr($row['deskripsi_varietas'], 0, 50).' ...';
-                    }      
+                    }   
+                    $url_cut = ""; 
+                    if (strlen($row['URLV']) != 0) {
+                      $url_cut = substr($row['URLV'], 0, 5).' ...';
+                    }     
                 ?>
                 <tr >
                   <?php 
@@ -341,17 +346,19 @@
                       $namavar = $row['nama_varietas'];
                       $tgl = $row['tanggal_pelepasan'];
                       $file1 = $row['file_SK'];
+                      $urlvarietas = $row['URLV'];
                       $file2 = $row['file_gambar'];
                       $desk = $row['deskripsi_varietas'];
                    ?>       
                   <td><?php echo $row['tanggal_pelepasan']; ?></td>                         
                   <td><?php echo $row['file_gambar']; ?></td>
                   <td><?php echo $row['file_SK']; ?></td>
+                  <td><?php echo $url_cut; ?></td>
                   <td><?php echo $row['tanggal_upload']; ?></td>
                   <td><?php echo $row['waktu_upload']; ?></td>
                   <td><?php echo $deskripsivar_cut; ?></td>
                   <td>
-                    <a href="#tomboleditvar" class="edit" onclick="modal_edit_var('<?php echo "$namasrt"; ?>','<?php echo "$idvar"; ?>','<?php echo "$namavar"; ?>','<?php echo "$tgl"; ?>','<?php echo "$file1"; ?>','<?php echo "$file2"; ?>','<?php echo "$desk"; ?>');">
+                    <a href="#tomboleditvar" class="edit" onclick="modal_edit_var('<?php echo "$namasrt"; ?>','<?php echo "$idvar"; ?>','<?php echo "$namavar"; ?>','<?php echo "$tgl"; ?>','<?php echo "$file1"; ?>','<?php echo "$urlvarietas"; ?>','<?php echo "$file2"; ?>','<?php echo "$desk"; ?>');">
                         <i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i>
                     </a>
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_varietas('<?php echo $row['id_varietas']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a> 
@@ -478,12 +485,12 @@
               </div> 
               <div class="form-group">
                 <label>Deskripsi</label>
-                <textarea type="text" id="deskripsi_id" name="deskripsiv" class="form-control" rows="8" required ></textarea>
+                <textarea type="text" id="deskripsi_id" name="deskripsiv" class="form-control" rows="8"></textarea>
               </div>
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
-                  <input id="filegambar_id" type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="324 x 210 piksel"> 
+                  <input id="filegambar_id" type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="324 x 210 piksel maksimal 2MB"> 
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                       <span class="glyphicon glyphicon-remove"></span> Clear
@@ -498,10 +505,14 @@
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload SK</label>
                 <div class="input-group">                                
-                  <input type="file" id="picked" name="sk" style="display:none" onchange="document.getElementById('filesk_id').value=this.value" accept="application/pdf">
+                  <input type="file" id="picked" name="updatesk" style="display:none" onchange="document.getElementById('filesk_id').value=this.value" accept="application/pdf">
                   <input type="text" id="filesk_id" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disable">
                   <input type="button" value="Pilih File" onclick="document.getElementById('picked').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">
                 </div>
+              </div>
+              <div class="form-group"> 
+                <label>Link URL</label>
+                <input type="text" id="urleditvar_id" name="urlvar" class="form-control">
               </div>
             </div>
             <div class="modal-footer">
@@ -513,7 +524,7 @@
       </div>
     </div>
      <script>
-        function modal_edit_var(namaSerat,idvarietas,namaVarietas,tglPelepasan,filesk,filegambar,deskripsivarietas) {
+        function modal_edit_var(namaSerat,idvarietas,namaVarietas,tglPelepasan,filesk,urleditvarietas,filegambar,deskripsivarietas) {
           // alert(namaSerat+" "+idvarietas+" "+namaVarietas+" "+tglPelepasan+" "+filesk+" "+filegambar+" "+deskripsivarietas);
           $('#tomboleditvar').modal('show', {backdrop: 'static'});
           document.getElementById('namaSerat_id').value = namaSerat;
@@ -521,6 +532,7 @@
           document.getElementById('namaVarietas_id').value = namaVarietas;
           document.getElementById('tanggal_id').value = tglPelepasan;
           document.getElementById('filesk_id').value = filesk;
+          document.getElementById('urleditvar_id').value = urleditvarietas;
           document.getElementById('filegambar_id').value = filegambar;
           document.getElementById('deskripsi_id').value = deskripsivarietas;  
         }        
@@ -611,7 +623,7 @@
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
-                  <input type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="324 x 210 piksel"> 
+                  <input type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="324 x 210 piksel maksimal 2MB"> 
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                       <span class="glyphicon glyphicon-remove"></span> Clear
@@ -627,9 +639,13 @@
                 <label>Upload SK</label>
                 <div class="input-group">                                
                   <input type="file" id="pickedsk" name="tambahsk" style="display:none" onchange="document.getElementById('filename').value=this.value" accept="application/pdf">
-                  <input type="text" id="filename" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disable">
+                  <input type="text" id="filename" style="width: 468px;height: 35px; padding-left: 10px;" placeholder="maksimal 2MB" disabled="disable">
                   <input type="button" value="Pilih File" onclick="document.getElementById('pickedsk').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">
                 </div>
+              </div>
+              <div class="form-group">
+                <label>Link URL (bila ada)</label>
+                <input type="text" name="linkurlvarietas" class="form-control">
               </div>
               <div class="form-group"> 
                 <label>Spesifikasi</label>   
@@ -684,7 +700,6 @@
 
       //   alert("asd");
       // }
-
 
         //menentukan target append
         var itemlist = document.getElementById('itemlist');
@@ -744,10 +759,6 @@
         }
     ?>
     </datalist>
-
-
-
-    
 
     <!-- Data Leaflet -->
     <section class="leaflet" id="tabelLeaflet" style="padding-top: 50px; margin-top: -80px;">
@@ -883,7 +894,7 @@
                             <label>Upload Gambar Ke-1</label>
                             <div class="input-group" required>              
                                 <input type="file" id="gmbr1" name="gambar1" style="display:none" onchange="document.getElementById('img1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="img1" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel" required>
+                                <input type="text" id="img1" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel maksimal 2MB" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                     
@@ -891,7 +902,7 @@
                             <label>Upload Gambar Ke-2</label>
                             <div class="input-group" required>                                
                                 <input type="file" id="gmbr2" name="gambar2" style="display:none" onchange="document.getElementById('img2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="img2" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel" required>
+                                <input type="text" id="img2" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel maksimal 2MB" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                                    
@@ -1015,13 +1026,18 @@
                   <th>Deskripsi Singkat</th>                              
                   <th>Penulis</th>                              
                   <th>File</th>
-                  <th>Aksi</th>                              
+                  <th>URL</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <?php 
                   $no = 1;                                          
-                  foreach ($monograf as $row) {    
+                  foreach ($monograf as $row) { 
+                    $url_c = ""; 
+                    if (strlen($row['URL']) != 0) {
+                      $url_c = substr($row['URL'], 0, 5).' ...';
+                    }  
                 ?>
                 <tr >
                   <td><?php echo $no; ?></td>                                
@@ -1029,6 +1045,7 @@
                   <td><?php echo "$row[cuplikan_monograf]"; ?></td>                         
                   <td><?php echo "$row[penulis]"; ?></td>
                   <td><?php echo "$row[file]"; ?></td>
+                  <td><?php echo $url_c; ?></td>
                   <td>
                     <a href="#tomboleditbudidaya" class="edit" onclick="modal_edit_budidaya(
                     '<?php echo $row['id_serat']; ?>',
@@ -1037,7 +1054,8 @@
                     '<?php echo $row['judul']; ?>',
                     '<?php echo $row['cuplikan_monograf']; ?>',
                     '<?php echo $row['penulis']; ?>',
-                    '<?php echo $row['file']; ?>'
+                    '<?php echo $row['file']; ?>',
+                    '<?php echo $row['URL']; ?>'
                     );"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Edit" aria-hidden="true"></i></a>
                     <a href="" class="delete" data-toggle="modal" onclick="confirm_modal_budidaya('<?php echo $row['id_detail_monograf']; ?>');"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete" aria-hidden="true"></i></a>      
                   </td>
@@ -1110,10 +1128,14 @@
                 <label>Upload File</label>
                   <div class="input-group">                                
                     <input type="file" id="filepdf" name="pdf" style="display:none" onchange="document.getElementById('pdftext').value=this.value" accept="application/pdf" required>
-                    <input type="text" id="pdftext" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable">
+                    <input type="text" id="pdftext" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable" placeholder="maksimal 2MB">
                     <input type="button" value="Pilih File" onclick="document.getElementById('filepdf').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                   </div>
               </div> 
+              <div class="form-group">
+                <label>URL (bila ada)</label>
+                <input type="text" name="urlbudidaya" class="form-control">
+              </div>
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
@@ -1138,7 +1160,7 @@
               <input hidden id="idBudidaya_id" name="idBudidaya">
               <div class="form-group">
                 <label>Komoditas</label>
-                <input type="text" id="namaSerat_id" name="namaSerat" class="form-control" disabled>
+                <input type="text" id="namaSerat_id2" name="namaSerat" class="form-control" disabled>
               </div>
               <div class="form-group">
                 <label>Judul</label>
@@ -1160,6 +1182,10 @@
                   <input type="button" value="Pilih File" onclick="document.getElementById('editfilepdf').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                 </div>
               </div> 
+              <div class="form-group">
+                <label>URL</label>
+                <input type="text" id="editurlbud_id" name="editurlbud" class="form-control">
+              </div>
             </div>  
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
@@ -1170,16 +1196,17 @@
       </div>
     </div>
     <script>
-        function modal_edit_budidaya(idSerat,namaSerat,idBudidaya,judul,cuplikan,penulis,file)
+        function modal_edit_budidaya(idSerat,namaSerat2,idBudidaya,judul,cuplikan,penulis,file,urlbud)
         {
           $('#tomboleditbudidaya').modal('show', {backdrop: 'static'});          
           document.getElementById('idSerat_id').value = idSerat;
-          document.getElementById('namaSerat_id').value = namaSerat;
+          document.getElementById('namaSerat_id2').value = namaSerat2;
           document.getElementById('idBudidaya_id').value = idBudidaya;
           document.getElementById('judul_id').value = judul;
           document.getElementById('cuplikan_id').value = cuplikan;
           document.getElementById('penulis_id').value = penulis;
-          document.getElementById('editpdftext_id').value = file;  
+          document.getElementById('editpdftext_id').value = file;
+          document.getElementById('editurlbud_id').value = urlbud;  
         }
     </script>
 
@@ -1328,11 +1355,11 @@
             <h4 class="modal-title" style="font-size: 18px;">Tambah Data Stok Benih</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahStokBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahStokBenihCuy'); ?>" method="post" class="form-horizontal" autocomplete="off">
               <div class="modal-body">
               <div class="form-group">
                 <label>Nama Benih</label>
-                <input type="text" class="form-control" list="daftarbenih" id="namaBenih" name="namaBenih" required>
+                <input type="text" class="form-control" list="daftarbenih" id="namaBenih" name="namaBenih2" rfequired>
               </div>
               <div class="form-group">
                 <label>Asal</label>

@@ -50,6 +50,7 @@
            $data=$this->db->query("SELECT * from leaflet l
            join gambar_leaflet g on l.id_leaflet=g.id_leaflet
            join jenis_leaflet j on j.id_jenis_leaflet=l.id_jenis_leaflet
+           order by l.id_leaflet desc
            LIMIT $perpage OFFSET $start ");
            return $data->result();
     }
