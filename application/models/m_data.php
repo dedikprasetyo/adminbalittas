@@ -90,7 +90,7 @@
 			return $sql->result_array();
 		}
 		public function load_gambar_leaflet(){
-			$sql = $this->db ->query("SELECT * FROM `gambar_leaflet`");
+			$sql = $this->db ->query("SELECT * FROM `gambar_leaflet` order by id_leaflet desc");
 			return $sql->result();
 		}
 		public function get_leaflet_byId($idLeaflet){

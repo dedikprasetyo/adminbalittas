@@ -49,7 +49,7 @@
 			$this->load->model("m_data");
 			$targetpathSeratgmbr = "item img/serat/";
 			$dataserat = $this->m_data->get_serat_byId($idSerat);
-			if ($dataserat[0]->gambar != "noImg.jpg") {
+			if ($dataserat[0]->gambar != "noImg.png") {
 				unlink($targetpathSeratgmbr.$dataserat[0]->gambar);
 			}
 			$this->m_data->hapus_serat($idSerat);
@@ -106,7 +106,7 @@
 		public function hapusVarietas($idVarietas){
 			$this->load->model("m_data");
 			$datagambardansk = $this->m_data->get_imgsk_varietas_byId($idVarietas);
-			if ($datagambardansk[0]->file_gambar != "serat.png") {
+			if ($datagambardansk[0]->file_gambar != "noImg.jpg") {
 				unlink('item img/gambar/Edited/'.$datagambardansk[0]->file_gambar);
 			}
 			unlink('file/SK/'.$datagambardansk[0]->file_SK);
@@ -129,7 +129,7 @@
 			$targetpathsk2 = $targetpathsk.basename($_FILES['tambahsk']['name']);
 			$gambarVarietas = "";
 			if (empty($_FILES['tambahsk']['name']) || empty($_FILES['gambarvar']['name'])) {
-				$gambarVarietas = "serat.jpg";
+				$gambarVarietas = "noImg.jpg";
 			} else {
 				$gambarVarietas = $_FILES['gambarvar']['name'];
 			}
@@ -232,7 +232,7 @@
 			$idgmbr1 = $this->input->post('idimg1');		
 			$idgmbr2 = $this->input->post('idimg2');	
 			$nama = $this->input->post('namaLeaflet');	
-			$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('namajenisLeaflet'));
+			$idJenis = $this->m_data->getIdjenisleaflet($this->input->post('	'));
 			$dataleaflet1 = $this->m_data->get_leaflet_img_byId($idgmbr1); 
 			$dataleaflet2 = $this->m_data->get_leaflet_img_byId($idgmbr2); 
 			$targetpathleaflet = "item img/leafletgabungan/";		

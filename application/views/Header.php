@@ -161,15 +161,15 @@
 				    if(!empty($Judul)){
 			 		foreach($Judul as $jud) {
 			 			?>
-				   <img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+				   <img src="<?php echo base_url() ?>item img/Header.jpg" alt="" style="width: 100%;">
 				    <?php } } else if(!empty($Judul2)){?>
 				    <?php foreach($Judul2 as $j) ?>
-				      <img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+				      <img src="<?php echo base_url() ?>item img/Header.jpg" alt="" style="width: 100%;">
 				     <?php } else if(!empty($JudulMono)){?>
 				     <?php foreach($JudulMono as $jm) {?>
-				        <img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+				        <img src="<?php echo base_url() ?>item img/Header.jpg" alt="" style="width: 100%;">
 				    <?php }} else{?>
-						  <img src="<?php echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;">
+						  <img src="<?php echo base_url() ?>item img/Header.jpg" alt="" style="width: 100%;">
 				    <?php } ?>
 
 				<!-- <img src="<?php //echo base_url() ?>item img/tembakauHeader.jpg" alt="" style="width: 100%;"> -->

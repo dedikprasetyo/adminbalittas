@@ -27,7 +27,7 @@
 				<div class="container-fluid">
 				    <div class="navbar-header" style="margin-top: 4.49px; margin-bottom: 3px;">
 				    	<a href="<?php echo base_url('Admin/serat') ?>">
-				    		<img src="<?php echo base_url() ?>assets/img/balittaslitbang.png" style="width:290px; height: 60px; margin-left: -35px;">
+				    		<img src="<?php echo base_url() ?>assets/img/balittaslitbang.png" style="width:350px; height: 60px; margin-left: -35px;">
 				    	</a>
 				    </div>			
 				    <div class="collapse navbar-collapse">			    

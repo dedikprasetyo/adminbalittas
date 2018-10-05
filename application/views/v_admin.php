@@ -120,7 +120,7 @@
               </div>
               <div class="form-group">
                 <label>Deskripsi</label>
-                <textarea type="text" name="deskripsi" class="form-control" rows="8" required ></textarea>
+                <textarea type="text" name="deskripsi" class="form-control" rows="8"></textarea>
               </div>
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
@@ -490,7 +490,7 @@
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
-                  <input id="filegambar_id" type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="324 x 210 piksel maksimal 2MB"> 
+                  <input id="filegambar_id" type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="324 x 210 piksel"> 
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                       <span class="glyphicon glyphicon-remove"></span> Clear
@@ -618,12 +618,12 @@
               </div> 
               <div class="form-group">
                 <label>Deskripsi</label>
-                <textarea type="text" name="deskripsivar" class="form-control" rows="8" required ></textarea>
+                <textarea type="text" name="deskripsivar" class="form-control" rows="8"></textarea>
               </div>
               <div class="form-group" style="padding-bottom: 0px">
                 <label>Upload Gambar</label>
                 <div class="input-group image-preview">
-                  <input type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="324 x 210 piksel maksimal 2MB"> 
+                  <input type="text" style="padding-left: 10px;" class="form-control image-preview-filename" disabled="disabled" placeholder="324 x 210 piksel"> 
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                       <span class="glyphicon glyphicon-remove"></span> Clear
@@ -639,7 +639,7 @@
                 <label>Upload SK</label>
                 <div class="input-group">                                
                   <input type="file" id="pickedsk" name="tambahsk" style="display:none" onchange="document.getElementById('filename').value=this.value" accept="application/pdf">
-                  <input type="text" id="filename" style="width: 468px;height: 35px; padding-left: 10px;" placeholder="maksimal 2MB" disabled="disable">
+                  <input type="text" id="filename" style="width: 468px;height: 35px; padding-left: 10px;" placeholder="" disabled="disable">
                   <input type="button" value="Pilih File" onclick="document.getElementById('pickedsk').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">
                 </div>
               </div>
@@ -894,7 +894,7 @@
                             <label>Upload Gambar Ke-1</label>
                             <div class="input-group" required>              
                                 <input type="file" id="gmbr1" name="gambar1" style="display:none" onchange="document.getElementById('img1').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="img1" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel maksimal 2MB" required>
+                                <input type="text" id="img1" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr1').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                     
@@ -902,7 +902,7 @@
                             <label>Upload Gambar Ke-2</label>
                             <div class="input-group" required>                                
                                 <input type="file" id="gmbr2" name="gambar2" style="display:none" onchange="document.getElementById('img2').value=this.value" accept="image/png, image/jpeg, image/gif" required>
-                                <input type="text" id="img2" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel maksimal 2MB" required>
+                                <input type="text" id="img2" style="width: 468px;height: 35px; padding-left: 10px;" disabled="disabled" placeholder="828x583 piksel" required>
                                 <input type="button" value="Pilih File" onclick="document.getElementById('gmbr2').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                             </div>
                         </div>                                    
@@ -1128,7 +1128,7 @@
                 <label>Upload File</label>
                   <div class="input-group">                                
                     <input type="file" id="filepdf" name="pdf" style="display:none" onchange="document.getElementById('pdftext').value=this.value" accept="application/pdf" required>
-                    <input type="text" id="pdftext" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable" placeholder="maksimal 2MB">
+                    <input type="text" id="pdftext" style="width: 468px;height: 35px;padding-left: 10px;" disabled="disable" placeholder="">
                     <input type="button" value="Pilih File" onclick="document.getElementById('filepdf').click()" style="height: 35px;margin-top: -2px;" class="btn btn-default">                                
                   </div>
               </div> 
