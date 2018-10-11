@@ -80,7 +80,7 @@
                            <a href="<?php echo base_url('varietas/spesifikasiVarietas/').urlencode(strtolower($row->nama_varietas));?>" style="text-decoration-line: none;">
                               <?php 
                                  if (empty($row->file_gambar)) { ?>
-                              <img src="<?php echo base_url() ?>item img/gambar/Edited/serat.jpg ?>" alt="" style="width: 100%;">
+                              <img src="<?php echo base_url() ?>item img/gambar/Edited/noImg.jpg ?>" alt="" style="width: 100%;">
                               <?php } else { ?>
                               <img src="<?php echo base_url() ?>item img/gambar/Edited/<?php echo $row->file_gambar; ?>" alt="" style="width: 100%;">
                               <?php
