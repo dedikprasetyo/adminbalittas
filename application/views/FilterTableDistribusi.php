@@ -6,7 +6,7 @@
                   <th>Tanggal Distribusi</th>                              
                   <th>Tahun Panen</th>                              
                   <th>Kelas</th>
-                  <th>Jumlah Kg</th>  
+                  <th>Jumlah (kg)</th>  
                   <th>Keterangan</th>                                
                   <th>Aksi</th>                              
                 </tr>
@@ -16,7 +16,7 @@
                   $no = 1;                                          
                   foreach ($dataDistribusiFiltered as $row) {    
                 ?>
-                <tr >
+                <tr>
                   <td><?php echo $no; ?></td>                                
                   <td><?php echo "$row[nama_benih]"; ?></td>                              
                   <td><?php echo "$row[tanggal]"; ?></td>                         
@@ -29,6 +29,7 @@
                       '<?php echo $row['id_benih']; ?>',
                     '<?php echo $row['id_distribusi'];?>',
                     '<?php echo $row['nama_benih']; ?>',
+                    '<?php echo $row['id_serat']; ?>',
                     '<?php echo $row['tanggal']; ?>',
                     '<?php echo $row['tahun_panen']; ?>',
                     '<?php echo $row['kelas_benih']; ?>',
@@ -43,3 +44,4 @@
                 ?>
               </tbody>
             </table>
+            

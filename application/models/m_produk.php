@@ -15,19 +15,19 @@ class M_produk extends CI_Model{
 	// 	$data=$this->db->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") ");
 	// 	return $data->result();
 
-	// 	// // versi 2
-	// 	// $sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") ");
-	//  //        return $sql->result();
+		// // versi 2
+		// $sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") ");
+	 //        return $sql->result();
 	// }
 	// dedik
-		// public function load_stok_benih(){
-		// 	$sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih`");
-		// 	return $sql->result_array();
-		// }
-		// public function load_stok_benih_filter($komoditas) {
-		// 	$sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") ");
-	 //        return $sql->result_array();
-		// }
+		public function load_stok_benih(){
+			$sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih`");
+			return $sql->result_array();
+		}
+		public function load_stok_benih_filter($komoditas) {
+			$sql = $this->db ->query("SELECT * FROM `benih` JOIN `stok_benih`on `benih`.`id_benih` = `stok_benih`.`id_benih` WHERE `id_serat` = (SELECT `id_serat` FROM `serat` WHERE `nama_serat` = \"$komoditas\") ");
+	        return $sql->result_array();
+		}
 	//without query builder
 	// public function FilterDistribusiBenih($tahun, $bulan){
 	// 	$data=$this->db->query("SELECT s.id_distribusi, b.nama_benih, s.tanggal, s.tahun_panen, s.kelas_benih, s.jumlah_kg, s.keterangan

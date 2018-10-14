@@ -26,13 +26,30 @@
                   <h3 class="text-left" style="color:black; font-family: Minion Pro">Ketersediaan Benih</h3>
                </a>
                <hr style="border-color: grey;margin-top: -8px;">
-               <!-- Label Filter -->
-              <!--  <div class="row">
-                  <div class="col-xs-4 col-sm-9 col-lg-9">
-                     <h5 class="text-right" style="margin-left: 5px;"><b>Filter by :</b></h5>
+               <!-- <div class="row">
+                 <div class="col-xs-4 col-sm-4 col-lg-2">
+                    <h5 style="margin-left: 0px;">Filter by &nbsp :</h5>
+                 </div>
+                 <div class="col-sm-2" style="padding-top: 0px;">
+                  <select class="form-control komoditasbenih" id="jenisKomoditasstokfilter" name="komoditasstokfilter" style="margin-left: -100px; width: 170px; height: 35px;" onchange="filterStokBenih();">
+                         <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                    <?php
+                      $komoditasbenih = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                      for($i = 1;$i < count($komoditasbenih);$i++){
+                        echo"<option value=$komoditasbenih[$i]> $komoditasbenih[$i] </option>";
+                      }
+                    ?>
+                  </select>
+                 </div>
+               </div> -->
+               
+              <!-- Label Filter -->
+               <div class="row">
+                  <div class="col-xs-2 col-sm-2 col-lg-2">
+                     <h5 style="margin-left: 0px;"><b>Filter by &nbsp :</b></h5>
                   </div>
-                  <div class="col-xs-4 col-sm-3 col-lg-3 text-right">
-                     <select class="form-control komoditas" id="komoditasku" name="komoditas" style="margin-right: 13px;" onchange="filterB();">
+                  <div class="col-xs-2 col-sm-4 col-lg-4">
+                     <select class="form-control komoditas" id="komoditasku" name="komoditasku" style="margin-left: -70px; width: 170px; height: 35px;" onchange="filterB();">
                         <option value="Semua Komoditas" selected>Semua Komoditas</option>
                         <?php
                            $komoditas = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
@@ -42,7 +59,7 @@
                         ?>
                      </select>
                   </div>
-               </div> -->
+               </div>
                <br>
                <div id="tablebenih2">
                <div class="table-responsive">
@@ -111,23 +128,23 @@
                         //    });
                         // }
 
-                        // function filterB(){
-                        //   var komoditas = $("#komoditasku").val();
-                        //         // alert(komoditasstok);
+                        function filterB(){
+                          var komoditas = $("#komoditasku").val();
+                                // alert(komoditasstok);
 
-                        //   $.ajax({
-                        //       type:"POST",
-                        //       url: "../produk/filterStokBenih",
-                        //       data: "benih=" + komoditas,
-                        //       dataType : "html",
-                        //       success:function(msg){
-                        //           $("#tablebenih2").html(msg);                
-                        //       },
-                        //       error:function(){
-                        //         alert("Search failed");
-                        //       }
-                        //   });
-                        // }
+                          $.ajax({
+                              type:"POST",
+                              url: "../produk/filterStokBenih",
+                              data: "benih=" + komoditas,
+                              dataType : "html",
+                              success:function(msg){
+                                  $("#tablebenih2").html(msg);                
+                              },
+                              error:function(){
+                                alert("Search failed");
+                              }
+                          });
+                        }
                </script>
 
                <h3>Distribusi Benih</h3>
@@ -140,13 +157,23 @@
                       <h5 style="margin-left: 0px;">Filter by &nbsp :</h5>
                   </div> -->
                   <div class="col-xs-4 col-sm-4 col-lg-2">
-                      <h5 style="margin-left: 0px;">Filter by &nbsp :</h5>
+                      <h5 style="margin-left: 0px;"><b>Filter by &nbsp :</b></h5>
                   </div>
-                  
+                  <div class="col-xs-4 col-sm-4 col-lg-2 text-right" >
+                      <select class="form-control komoditasdist" id="jenisKomoditasdist" name="komoditasdist" style="margin-left: -70px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                             <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                        <?php
+                          $komoditasdist = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                          for($i = 1;$i < count($komoditasdist);$i++){
+                            echo"<option value=$komoditasdist[$i]> $komoditasdist[$i] </option>";
+                          }
+                        ?>
+                      </select>
+                    </div>
 
 
                   <div class="col-xs-4 col-sm-4 col-lg-2 text-right">
-                     <select class="form-control tahundist" id="jenisTahundist" name="tahundist" style="margin-left: -70px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                     <select class="form-control tahundist" id="jenisTahundist" name="tahundist" style="margin-left: -40px; width: 170px; height: 35px;" onchange="filterDistribusi();">
                        <option value="Semua Tahun" selected>Semua Tahun</option>
                   <?php
                     for($i = 2000;$i <= 2050;$i++){
@@ -158,7 +185,7 @@
                   </div>
 
                   <div class="col-xs-4 col-sm-4 col-lg-2 text-right">
-                     <select class="form-control bulandist" id="jenisBulandist" name="bulandist" style="margin-left: -40px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                     <select class="form-control bulandist" id="jenisBulandist" name="bulandist" style="margin-left: -10px; width: 170px; height: 35px;" onchange="filterDistribusi();">
                        <option value="Semua Bulan" selected>Semua Bulan</option>
                   <?php
                     $bulandist = array("Semua Bulan","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
@@ -401,12 +428,12 @@
         if (tahun == "Semua Tahun") {
           tahun = "0000"; // tahun = "_%_%_%_%";
         } 
-        // var komoditasdist = $("#jenisKomoditasdist").val();
+        var komoditasdist = $("#jenisKomoditasdist").val();
           // alert("serattt=" + tahun + "-" + bulan + "-" + komoditasdist);
         $.ajax({
               type:"POST",
               url: "../produk/filterDistribusi",
-              data: "serattt=" + tahun + "-" + bulan,
+              data: "serattt=" + tahun + "-" + bulan + "-" + komoditasdist,
               dataType : "html",
               success:function(msg){
                  $("#table-data").html(msg);               

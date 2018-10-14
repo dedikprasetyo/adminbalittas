@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2018 at 08:44 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Oct 14, 2018 at 05:10 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -251,18 +253,7 @@ INSERT INTO `atribut` (`nama_atribut`, `id_atribut`) VALUES
 ('Warna Tepungsari', 'A0214'),
 ('Warna Tulang Daun', 'A0215'),
 ('Warna Tumpangsari', 'A0216'),
-('Warna Urat Daun', 'A0217'),
-('Kadar Air (%)', 'A0218'),
-('', 'A0219'),
-('dghf', 'A0220'),
-('erere', 'A0221'),
-('karakteristik kimia serat', 'A0222'),
-('Kadar Abu (%)', 'A0223'),
-('Kadar Lignin (%)', 'A0224'),
-('Kelarutan dalam air panas (%)', 'A0225'),
-('Kelarutan dalam air dingin (%)', 'A0226'),
-('Kelarutan dalam NaOH (%)', 'A0227'),
-('Kelarutan dalam Alkohol-Benzena (%)', 'A0228');
+('Warna Urat Daun', 'A0217');
 
 --
 -- Triggers `atribut`
@@ -292,6 +283,7 @@ DELIMITER ;
 --
 
 CREATE TABLE `benih` (
+  `id_serat` char(5) NOT NULL,
   `nama_benih` varchar(255) NOT NULL,
   `id_benih` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -300,39 +292,38 @@ CREATE TABLE `benih` (
 -- Dumping data for table `benih`
 --
 
-INSERT INTO `benih` (`nama_benih`, `id_benih`) VALUES
-('KR 6', 'B0001'),
-('KR 9', 'B0002'),
-('KR 11', 'B0003'),
-('KR 12', 'B0004'),
-('KR 14', 'B0005'),
-('KR 15', 'B0006'),
-('Roselindo 1', 'B0007'),
-('Roselindo 2', 'B0008'),
-('Roselindo 3', 'B0009'),
-('Roselindo 4', 'B0010'),
-('ASB 81', 'B0011'),
-('ISA 205 A', 'B0012'),
-('Kanesia 1', 'B0013'),
-('Kanesia 2', 'B0014'),
-('Kanesia 3', 'B0015'),
-('Kanesia 5', 'B0016'),
-('Kanesia 7', 'B0017'),
-('Kanesia 8', 'B0018'),
-('Kanesia 9', 'B0019'),
-('Kanesia 10', 'B0020'),
-('Kanesia 11', 'B0021'),
-('Kanesia 12', 'B0022'),
-('Kanesia 13', 'B0023'),
-('Kanesia 14', 'B0024'),
-('Kanesia 15', 'B0025'),
-('LRA 5166', 'B0026'),
-('Kanesia 19', 'B0027'),
-('Kenafindo 1', 'B0028'),
-('Kenafindo 2', 'B0029'),
-('benih kapas 1', 'B0030'),
-('benih kapas 2', 'B0031'),
-('brownesia', 'B0036');
+INSERT INTO `benih` (`id_serat`, `nama_benih`, `id_benih`) VALUES
+('S0004', 'KR 6', 'B0001'),
+('S0004', 'KR 9', 'B0002'),
+('S0004', 'KR 11', 'B0003'),
+('S0004', 'KR 12', 'B0004'),
+('S0004', 'KR 14', 'B0005'),
+('S0004', 'KR 15', 'B0006'),
+('S0006', 'Roselindo 1', 'B0007'),
+('S0006', 'Roselindo 2', 'B0008'),
+('S0006', 'Roselindo 3', 'B0009'),
+('S0006', 'Roselindo 4', 'B0010'),
+('S0006', 'ASB 81', 'B0011'),
+('S0002', 'ISA 205 A', 'B0012'),
+('S0002', 'Kanesia 1', 'B0013'),
+('S0002', 'Kanesia 2', 'B0014'),
+('S0002', 'Kanesia 3', 'B0015'),
+('S0002', 'Kanesia 5', 'B0016'),
+('S0002', 'Kanesia 7', 'B0017'),
+('S0002', 'Kanesia 8', 'B0018'),
+('S0002', 'Kanesia 9', 'B0019'),
+('S0002', 'Kanesia 10', 'B0020'),
+('S0002', 'Kanesia 11', 'B0021'),
+('S0002', 'Kanesia 12', 'B0022'),
+('S0002', 'Kanesia 13', 'B0023'),
+('S0002', 'Kanesia 14', 'B0024'),
+('S0002', 'Kanesia 15', 'B0025'),
+('S0002', 'LRA 5166', 'B0026'),
+('S0002', 'Kanesia 19', 'B0027'),
+('S0004', 'Kenafindo 1', 'B0028'),
+('S0004', 'Kenafindo 2', 'B0029'),
+('S0002', 'benih kapas 1', 'B0030'),
+('S0002', 'benih kapas 2', 'B0031');
 
 --
 -- Triggers `benih`
@@ -376,6 +367,7 @@ CREATE TABLE `detail_monograf` (
 --
 
 INSERT INTO `detail_monograf` (`id_serat`, `id_detail_monograf`, `cuplikan_monograf`, `penulis`, `judul`, `file`, `URL`) VALUES
+('S0002', 'DM0001', 'Tanaman kapas (Gossypium hirsutum L.) merupakan salah satu komoditas perkebunan unggulan di Indonesia. Tanaman ini merupakan penghasil serat alam yang banyak digunakan untuk bahan baku tekstil. Dengan semakin pesatnya penggunaan serat sintetis, serat kapas tetap merupakan salah satu pilihan yang masih banyak digunakan. Karena serat kapas memiliki keunggulan yaitu bersifat higroskopis sehingga mudah menyerap keringat (Sulistyo dan Mawarni 1991). Industri tekstil dan produk tekstil (TPT) telah menjadi andalan penghasil devisa terbesar dari sektor non-migas (sekitar 15%), Didukung oleh sekitar 2.650 Unit perusahaan dengan kapasitas produksi ± 6 Juta ton yang memerlukan serat kapas ± 500 Ribu ton per tahun (Rachman 2007).', 'Badan Penelitian dan Pengembangan Pertanian', 'File Lengkap Buku Kapas', 'Buku Kapas 2013 full.pdf', ''),
 ('S0002', 'DM0013', 'Tanaman kapas telah dikembangkan sejak jaman penjajahan Be1anda, dengan pola “tanam paksa”. Pada saat itu tercatat bahwa luas areal kapas mencapai 82.120 ha (Hasmosoewignyo dalam Kemala et al., 1975) sebagian besar (60%) berada di Jawa TImur dan Jawa Tengah. Penanaman kapas terus dilanjutkan pada saat penjajahan Jepang, namun luasnya semakin berkurang, yaitu hanya sekitar 17.278 ha (Loebis dalam Sulistyo dan Mawaini, 1991), hingga akhirnya kapas hampir tidak diusahakan lagi. Dibandingkan dengan komoditas perkebunan. lainnya, kapas belum diusahakan dalam skala perkebunan besar.', 'Moch. Sahid dan S.A. Wahyuni', 'KERAGAAN DAN KONSEP PERBAIKAN PENGEMBANGAN KAPAS DI INDONESIA', 'keragaan-dan-konsep-kapas.pdf', ''),
 ('S0002', 'DM0014', 'Tanaman kapas diduga berasal dari Asia, Afrika, Australia, dan Amerika. Tanaman kapas telah lama dikenal dan dibudidayakan sejak zaman prasejarah. Di India (di lembah Sungai Indus) telah dikenal sekitar 3000 tahun sebelum Masehi dan digunakan untuk bahan baku tekstil (Poehlman, 1977; AAK. 1983). Kapas juga telah digunakan di Asia Kecil, Ethiopia, dan Afrika Timur. Bahkan menurut Harlan dalam Lee (1984) di sekitar Asia Kecil (Timur Dekat) kapas telah dibudidayakan sejak tahun 7000 sebelum Masehi.  Kapas masuk ke Eropa melalui Spanyol, dibawa oleh bangsa Moor. Di Cina telah dikenal sejak abad ke-7 dan di Amerika telah digunakan oleh suku Aztek dan Inca. Di Amerika terutama di Peru dan Meksiko tanaman kapas sebagai bahan baku pakaian telah dikenal jauh sebelum bangsa Eropa menemukan Amerika (Poehlman, 1977).', 'Rusim Mardjono', 'BIOLOGI TANAMAN KAPAS', 'biologi-tanaman-kapas.pdf', ''),
 ('S0002', 'DM0015', 'Untuk mencapai sasaran pemuliaan tanaman yang semakin kompleks, diperlukan sumber genetik yang luas. Menghadapi tuntutan konsumen yang semakin beragam, pemulia tanaman berlomba-lomba untuk mendapatkan varietas baru dengan memanfaatkan spesies-spesies yang berkerabat atau varietas-varietas primitif yang memiliki sifat menguntungkan. diketemukannya varietas-varietas baru menyebabkan tersingkirnya varietas-varietas lama dan makin menyempitnya keragaman genetik. Sebagai contoh, dengan masuknya varietas-varietas kapas unggul yang mutu seratnya tinggi dari Amerika Serikat pada tahun 1960-an menyebabkan tersingkirnya varietas-varietas yang sudah beradaptasi di Indonesia seperti seperti kapas Bayan, kapas Hulu, Cambodia yang kesemuanya tahan terhadap hama Sundapteryx Bigutulla.', 'Siwi Sumartini', 'PENGELOLAAN PLASMA NUTFAH KAPAS DI INDONESIA', 'Pengelolaan-Plasma-nutfah-kapas-Indonesia.pdf', ''),
@@ -418,8 +410,7 @@ INSERT INTO `detail_monograf` (`id_serat`, `id_detail_monograf`, `cuplikan_monog
 ('S0004', 'DM0052', 'Komoditas kenaf (Hibiscus cannabinus L.) pada saat ini sedang mendapat perhatian dari dunia industri karena semua organ-organ tanamannya dapat dijadikan komoditas industri yang bernilai komersial tinggi. Selain itu tanaman kenaf merupakan tanaman yang ramah lingkungan dan banyak menyerap CO2, sehingga sangat sesuai untuk dikembangkan sebagai bahan baku industri yang ramah lingkungan. Slogan dunia untuk keselamatan lingkungan yang dikenal dengan “back to nature“ diharapkan dapat terwu-jud di masa datang. Dengan demikian ke depan perkembangan komoditas kenaf memiliki prospek yang sangat cerah, karena di era supermilenium nanti diharapkan dunia terbebas dari produk-produk yang menyebabkan pencemaran lingkungan.', 'Sudjindro', 'PRODUK-PRODUK DIVERSIFIKASI KENAF', '8.pdf', ''),
 ('S0004', 'DM0053', 'Serat kenaf merupakan salah satu bahan baku karung goni, di samping yute dan rosela. Akhir-akhir ini serat yang berasal dari serat batang dan daun lainnya dipakai un-tuk bahan penguat pembuatan door trim mobil. Hal ini disebabkan karena serat yang ber-asal dari tanaman tersebut sangat kuat, lentur, dan berbagai kelebihan lainnya dibanding dengan serat sintetis. Untuk memperoleh serat dari kulit batang, secara tradisional dilaku-kan dengan merendam batang kenaf dalam air. Pengambilan serat (ekstraksi) dilakukan dengan melepas bagian kulit batang yang telah berubah menjadi serat (seset = Jawa). Pekerjaan ini dilakukan di dalam kolam perendaman dan berbau busuk, karena itu merupa-kan pekerjaan yang kurang nyaman. Pada perendaman secara tradisional terdapat bebera-pa masalah, antara lain: 1) kebutuhan air perendaman cukup banyak dan tidak selalu dapat dipenuhi, 2) sering terjadi kontaminasi antara serat dengan bahan pemberat (tanah, batang pisang, dan lain-lain) sehingga menurunkan mutu, 3) kurang praktis karena memerlukan banyak tempat dan waktu perendaman yang lama, dan 4) mengakibatkan pencemaran air (Anonim, 1988; Krishnareni dan Thongsawatwong, 1993).', 'Darmono dan Supriyadi-Tirtosuprobo', 'ALAT MESIN UNTUK PENGOLAHAN BATANG KENAF', '9.pdf', ''),
 ('S0004', 'DM0054', 'Salah satu kendala teknis dalam mengembangkan tanaman kenaf/yute/rosela yaitu masalah pascapanen, terutama cara penyeratannya. Cara yang dipakai sampai saat ini masih konvensional yaitu dengan merendam batang ke dalam kolam perendaman selama kurang lebih 14 hari (proses retting). Proses retting dikatakan selesai atau masak kalau kulit batang kenaf telah terurai sempurna menjadi helaian serat atau serat elementer. Tahapan mengolah kulit batang kenaf menjadi serat untuk bahan karung atau material campuran pembuatan komposit meliputi: panen, perendaman, pemisahan serat dari kayu, pencucian, dan pengeringan. Perendaman merupakan tahapan terpenting dalam pengolahan serat. Ali (t.t.) menyatakan bahwa sekitar 60 persen dari jumlah tenaga kerja dan biaya dalam pengusahaan tanaman kenaf tercurah pada pengolahan serat, mulai dari panen, defoliasi (pembuangan daun), pengikatan batang-batang kenaf menjadi ikatan-ikatan, perendaman, penyeratan dan pencucian serat, pengeringan serat, dan pengebalan.', 'Winarto B.W. dan Joko Hartono', 'PROSES PENGOLAHAN KENAF MENJADI SERAT', '10.pdf', ''),
-('S0004', 'DM0055', 'Kenaf (Hibiscus cannabinus L.) merupakan tanaman penghasil serat. Selain untuk bahan baku kemasan produk-produk pertanian/perkebunan, serat kenaf dapat digunakan sebagai bahan berbagai produk, seperti: kertas, pelapis dinding, interior mobil, geo-tekstil, soil safer, fiber drain, particle board, dan reinforcement plastic. Komoditas kenaf saat ini mendapat perhatian dari dunia industri karena semua bagian tanamannya dapat dijadikan komoditas industri yang memiliki nilai komersial tinggi. Dengan demikian pengembang-an komoditas kenaf ke depan memiliki prospek yang sangat cerah. Apalagi di era super-milenium nanti diharapkan dunia terbebas dari produk-produk yang menyebabkan pence-maran lingkungan. Tanaman kenaf merupakan tanaman yang ramah lingkungan, biomassa yang dihasilkan mudah terdegradasi dalam tanah, sehingga sangat sesuai untuk dikem-bangkan sebagai bahan baku industri. Hal ini juga ditunjang oleh gencarnya semangat untuk keselamatan lingkungan yang dikenal dengan “back to nature“.', 'Supriyadi-Tirtosuprobo', 'PERKEMBANGAN USAHA TANI KENAF', '11.pdf', ''),
-('S0002', 'DM0056', 'deskripsi', 'penulis', 'new budidaya', 'bismillah.pdf', 'www.google.com');
+('S0004', 'DM0055', 'Kenaf (Hibiscus cannabinus L.) merupakan tanaman penghasil serat. Selain untuk bahan baku kemasan produk-produk pertanian/perkebunan, serat kenaf dapat digunakan sebagai bahan berbagai produk, seperti: kertas, pelapis dinding, interior mobil, geo-tekstil, soil safer, fiber drain, particle board, dan reinforcement plastic. Komoditas kenaf saat ini mendapat perhatian dari dunia industri karena semua bagian tanamannya dapat dijadikan komoditas industri yang memiliki nilai komersial tinggi. Dengan demikian pengembang-an komoditas kenaf ke depan memiliki prospek yang sangat cerah. Apalagi di era super-milenium nanti diharapkan dunia terbebas dari produk-produk yang menyebabkan pence-maran lingkungan. Tanaman kenaf merupakan tanaman yang ramah lingkungan, biomassa yang dihasilkan mudah terdegradasi dalam tanah, sehingga sangat sesuai untuk dikem-bangkan sebagai bahan baku industri. Hal ini juga ditunjang oleh gencarnya semangat untuk keselamatan lingkungan yang dikenal dengan “back to nature“.', 'Supriyadi-Tirtosuprobo', 'PERKEMBANGAN USAHA TANI KENAF', '11.pdf', '');
 
 --
 -- Triggers `detail_monograf`
@@ -1332,6 +1323,38 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0032', 'A0082', 'Tahan terhadap kekeringan, Moderat tahan Alumunium pada pH rendah'),
 ('V0032', 'A0124', 'Sujindro, Rully Dyah Purwati, Rr. Sri Hartati, Bambang Heliyanto, Marjani, Untung Setyo-Budi, Gembong Dalmadiyo, Sri Handayani dan Adji Sastrosupadi'),
 ('V0032', 'A0169', 'Subur Wahyudi, Sumanto, Dudut Sunardi'),
+('V0033', 'A0113', '85-9-66-I BB'),
+('V0033', 'A0004', 'Hasil persilangan antara Hc 48 dengan G4'),
+('V0033', 'A0164', 'Hibiscus cannabinus L'),
+('V0033', 'A0130', 'Berduri sedikit'),
+('V0033', 'A0191', 'Hijau'),
+('V0033', 'A0212', 'Hijau'),
+('V0033', 'A0199', 'Hijau '),
+('V0033', 'A0215', 'Hijau'),
+('V0033', 'A0213', 'Hijau'),
+('V0033', 'A0196', 'Kuning krem'),
+('V0033', 'A0205', 'Hijau'),
+('V0033', 'A0195', 'Hijau'),
+('V0033', 'A0193', 'Abu-abu'),
+('V0033', 'A0170', '265-415 cm'),
+('V0033', 'A0033', '1,50-3,00 cm'),
+('V0033', 'A0128', 'Rudimeter (siwilan) banyak'),
+('V0033', 'A0009', 'Menjari bertoreh dalam'),
+('V0033', 'A0181', '70-85 hari'),
+('V0033', 'A0183', '120-130 hari'),
+('V0033', 'A0017', '21,6-26,5 gram'),
+('V0033', 'A0042', 'A'),
+('V0033', 'A0211', 'Putih'),
+('V0033', 'A0120', '255-370 cm'),
+('V0033', 'A0073', '21,96-29,36 g/tex (sangat baik)'),
+('V0033', 'A0101', 'Mengkilap'),
+('V0033', 'A0103', 'Sedikit'),
+('V0033', 'A0072', 'Halus'),
+('V0033', 'A0161', '5-7 %'),
+('V0033', 'A0135', '2,50-4,50 ton/ha'),
+('V0033', 'A0082', 'Tahan terhadap kekeringan, Moderat tahan Alumunium pada pH rendah'),
+('V0033', 'A0124', 'Marjani, Sudjindro, R.D. Purwati, U. Setya Budi'),
+('V0033', 'A0169', 'Subur Wahyudi, Sumanto, Dudut Sunardi'),
 ('V0034', 'A0004', 'Introduksi dari Vietnam tahun 1960'),
 ('V0034', 'A0153', 'Seleksi massa negatif'),
 ('V0034', 'A0164', 'Hibiscus cannabinus L'),
@@ -1465,6 +1488,39 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0037', 'A0082', 'Toleran terhadap gangguan dan kekeringan, kurang peka terhadap fotoperiode'),
 ('V0037', 'A0142', '2,75-4,20 ton/ha'),
 ('V0037', 'A0124', 'Sujindro, R.D. Purwati, Rr. Sri Hartati, B.Heliyanto, Marjani, U.Setyo-Budi, Gembong D., Sri Handayani dan Adji Sastrosupadi'),
+('V0038', 'A0113', 'Hc 85-9-66-1'),
+('V0038', 'A0004', 'Persilangan Hc 48 x G4, Th 1985'),
+('V0038', 'A0153', 'Seleksi pedigree'),
+('V0038', 'A0164', 'Hibiscus cannabinus L'),
+('V0038', 'A0130', 'Berduri sedikit'),
+('V0038', 'A0191', 'Hijau'),
+('V0038', 'A0212', 'Hijau'),
+('V0038', 'A0199', 'Hijau '),
+('V0038', 'A0215', 'Hijau'),
+('V0038', 'A0213', 'Hijau'),
+('V0038', 'A0196', 'Kuning krem'),
+('V0038', 'A0205', 'Hijau'),
+('V0038', 'A0195', 'Hijau'),
+('V0038', 'A0193', 'Abu-abu'),
+('V0038', 'A0170', '278-420 cm'),
+('V0038', 'A0033', '1,60-3,20 cm'),
+('V0038', 'A0128', 'Rudimeter (siwilan) banyak'),
+('V0038', 'A0009', 'Menjari'),
+('V0038', 'A0181', '87-95 hari'),
+('V0038', 'A0183', '130-140 hari'),
+('V0038', 'A0017', '23,66-26,24 gram'),
+('V0038', 'A0042', 'A'),
+('V0038', 'A0211', 'Putih'),
+('V0038', 'A0120', '260-376 cm'),
+('V0038', 'A0073', '21,46-29,60 g/tex (sangat baik)'),
+('V0038', 'A0101', 'Mengkilap'),
+('V0038', 'A0103', 'Sedikit'),
+('V0038', 'A0072', 'Halus'),
+('V0038', 'A0161', '5,5-6,5%'),
+('V0038', 'A0088', 'Rentan terhadap Nematoda paru akar (Meloidogyne sp), moderat rentan terhadap Jassi (Amrasca biguttula)'),
+('V0038', 'A0082', 'Toleran terhadap genangan dan lingkungan, kurang peka terhadap fotoperiode'),
+('V0038', 'A0142', '2,75-4,20 ton/ha'),
+('V0038', 'A0124', 'Sujindro, Rully Dyah Purwati, Rr. Sri Hartati, Bambang Heliyanto, Marjani, Untung Setyo-Budi, Gembong Dalmadiyo, Sri Handayani dan Adji Sastrosupadi'),
 ('V0039', 'A0113', 'Hc 85-9-75'),
 ('V0039', 'A0004', 'Persilangan Hc 48 x G4, Th 1985'),
 ('V0039', 'A0153', 'Seleksi pedigree'),
@@ -1598,6 +1654,75 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0042', 'A0083', 'Kurang Peka'),
 ('V0042', 'A0100', 'Sesuai dikembangkan pada lahan yang kurang produktif'),
 ('V0042', 'A0124', 'Sujindro, R.D. Purwati, Rr. Sri Hartati, B.Heliyanto, Marjani, U.Setyo-Budi, Gembong D., Sri Handayani dan Adji Sastrosupadi'),
+('V0043', 'A0113', '9011/G4-1-4-2 M Blk'),
+('V0043', 'A0153', 'Persilangan (G4 X KK60) XG4 dilanjutkan seleksi pedigree'),
+('V0043', 'A0175', 'Galur murni'),
+('V0043', 'A0130', 'Berduri sangat sedikit'),
+('V0043', 'A0191', 'Hijau berintik merah'),
+('V0043', 'A0009', 'Menjari bertoreh dalam'),
+('V0043', 'A0212', 'Hijau'),
+('V0043', 'A0199', 'Hijau'),
+('V0043', 'A0215', 'Hijau'),
+('V0043', 'A0213', 'Hijau'),
+('V0043', 'A0196', 'Kuning krem'),
+('V0043', 'A0205', 'Hijau');
+INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
+('V0043', 'A0195', 'Hijau'),
+('V0043', 'A0193', 'Abu-abu'),
+('V0043', 'A0017', '22,1 - 26,3 gram'),
+('V0043', 'A0128', 'Rudimenter (siwilan) banyak'),
+('V0043', 'A0170', '270 - 425 cm'),
+('V0043', 'A0033', '1,60 - 3,10 cm'),
+('V0043', 'A0181', '75-90 hr'),
+('V0043', 'A0183', '120-140 hr'),
+('V0043', 'A0042', 'A'),
+('V0043', 'A0211', 'Putih'),
+('V0043', 'A0120', '260-375'),
+('V0043', 'A0073', '22,19-28,89 (sangat baik)'),
+('V0043', 'A0101', 'Mengkilap'),
+('V0043', 'A0103', 'Sedikit'),
+('V0043', 'A0072', 'Halus'),
+('V0043', 'A0161', '5-7'),
+('V0043', 'A0135', '2,75-4,50'),
+('V0043', 'A0088', 'Rentan terhadap Amrasca biguttula Ishida, Sangat rentan terhadap nematoda puru akar (Meloidogyne sp)'),
+('V0043', 'A0082', 'Moderat tahan terhadap kekeringan, Moderat tahan terhadap keracunan Alumunium, Kurang peka terhadap fotoperiode'),
+('V0043', 'A0123', 'Marjani, Sudjindro, Untung Setyo Budi, Rully Dyah Purwati'),
+('V0043', 'A0125', 'Mala Murianingrum, Titiek Yulianti, Dwi Adi Sunarto, Budi Santoso, Moch.Machfud'),
+('V0044', 'A0113', 'idn-09-hcan-1272-1'),
+('V0044', 'A0153', 'Seleksi massa pada populasi IDN-09-HCAN-1272'),
+('V0044', 'A0175', 'Galur murni'),
+('V0044', 'A0130', 'Berduri sedikit'),
+('V0044', 'A0191', 'Merah'),
+('V0044', 'A0009', 'Menjari bertoreh dalam'),
+('V0044', 'A0212', 'Merah kehijauan'),
+('V0044', 'A0199', 'Hijau'),
+('V0044', 'A0215', 'Merah kehijauan'),
+('V0044', 'A0213', 'Hijau'),
+('V0044', 'A0196', 'Kuning krem'),
+('V0044', 'A0205', 'Hijau'),
+('V0044', 'A0195', 'Hijau'),
+('V0044', 'A0193', 'Abu-abu'),
+('V0044', 'A0017', '22,1-25,9 gram'),
+('V0044', 'A0128', 'Rudimenter (siwilan) banyak'),
+('V0044', 'A0170', '265-415 cm'),
+('V0044', 'A0033', '1,50-3,00 cm'),
+('V0044', 'A0181', '70-80 hr'),
+('V0044', 'A0183', '120-130 hr'),
+('V0044', 'A0042', 'A'),
+('V0044', 'A0211', 'Putih'),
+('V0044', 'A0120', '255-370 cm'),
+('V0044', 'A0073', '22,96-29,36 (sangat baik)'),
+('V0044', 'A0101', 'Mengkilap'),
+('V0044', 'A0103', 'Sedikit'),
+('V0044', 'A0072', 'Halus'),
+('V0044', 'A0161', '5-7'),
+('V0044', 'A0135', '2,50-4,50'),
+('V0044', 'A0088', 'Rentan terhadap Amrasca biguttula Ishida, Sangat rentan terhadap nematoda puru akar (Meloidogyne sp)'),
+('V0044', 'A0082', 'Moderat tahan terhadap kekeringan, Agak tahan terhadap keracunan Alumunium, Kurang peka terhadap fotoperiode'),
+('V0044', 'A0123', 'Marjani, Sudjindro, Untung Setyo Budi, Rully Dyah Purwati'),
+('V0044', 'A0125', 'Mala Murianingrum, Titiek Yulianti, Dwi Adi Sunarto, Budi Santoso, Moch.Machfud'),
+('V0044', 'A0169', 'Dudut Sunardi, Sadta Yoga, Priyono, Sucipto'),
+('V0044', 'A0122', 'Badan Penelitian dan Pengembangan Pertanian dan Toyota Boshoku Carporation Japan'),
 ('V0045', 'A0004', 'Pujon, Malang, Jawa Timur'),
 ('V0045', 'A0164', 'Boehmeria nivea'),
 ('V0045', 'A0191', 'Hijau'),
@@ -1676,8 +1801,7 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0047', 'A0203', 'Hijau tua'),
 ('V0047', 'A0215', 'Hijau kemerahan'),
 ('V0047', 'A0213', 'Hijau tua'),
-('V0047', 'A0207', 'Merah muda, bagian dalam merah tua');
-INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALUES
+('V0047', 'A0207', 'Merah muda, bagian dalam merah tua'),
 ('V0047', 'A0204', 'Ungu'),
 ('V0047', 'A0190', 'Ungu'),
 ('V0047', 'A0205', 'Ungu'),
@@ -1771,200 +1895,34 @@ INSERT INTO `detail_varietas` (`id_varietas`, `id_atribut`, `detail_value`) VALU
 ('V0049', 'A0083', 'Peka'),
 ('V0049', 'A0001', 'Luas'),
 ('V0049', 'A0124', 'U. Setyo Budi, Marjani, Sri Hartati, Rully Dyah Purwati'),
-('V0059', 'A0195', 'Hijau'),
-('V0059', 'A0088', 'Rentan terhadap Nematoda paru akar (Meloidogyne sp), moderat rentan terhadap Jassi (Amrasca biguttula)'),
-('V0059', 'A0113', 'Hc 85-9-66-1'),
-('V0059', 'A0181', '87-95 hari'),
-('V0059', 'A0212', 'Hijau'),
-('V0059', 'A0128', 'Rudimeter (siwilan) banyak'),
-('V0059', 'A0004', 'Persilangan Hc 48 x G4, Th 1985'),
-('V0059', 'A0009', 'Menjari'),
-('V0059', 'A0164', 'Hibiscus cannabinus L'),
-('V0059', 'A0142', '2,75-4,20 ton/ha'),
-('V0059', 'A0153', 'Seleksi pedigree'),
-('V0059', 'A0072', 'Halus'),
-('V0059', 'A0211', 'Putih'),
-('V0059', 'A0130', 'Berduri sedikit'),
-('V0059', 'A0103', 'Sedikit'),
-('V0059', 'A0161', '5,5-6,5%'),
-('V0059', 'A0082', 'Toleran terhadap genangan dan lingkungan, kurang peka terhadap fotoperiode'),
-('V0059', 'A0101', 'Mengkilap'),
-('V0059', 'A0196', 'Kuning krem'),
-('V0059', 'A0170', '278-420 cm'),
-('V0059', 'A0213', 'Hijau'),
-('V0059', 'A0215', 'Hijau'),
-('V0059', 'A0124', 'Sujindro, Rully Dyah Purwati, Rr. Sri Hartati, Bambang Heliyanto, Marjani, Untung Setyo-Budi, Gembong Dalmadiyo, Sri Handayani dan Adji Sastrosupadi'),
-('V0059', 'A0120', '260-376 cm'),
-('V0059', 'A0193', 'Abu-abu'),
-('V0059', 'A0042', 'A'),
-('V0059', 'A0183', '130-140 hari'),
-('V0059', 'A0199', 'Hijau '),
-('V0059', 'A0033', '1,60-3,20 cm'),
-('V0059', 'A0205', 'Hijau'),
-('V0059', 'A0073', '21,46-29,60 g/tex (sangat baik)'),
-('V0059', 'A0218', '8.88'),
-('V0059', 'A0223', '0.74'),
-('V0059', 'A0224', '9.83'),
-('V0059', 'A0225', '1.5'),
-('V0059', 'A0226', '0.007'),
-('V0059', 'A0227', '13.92'),
-('V0059', 'A0228', '0.82'),
-('V0059', 'A0017', '23,66-26,24 gram'),
-('V0059', 'A0191', 'Hijau muda'),
-('V0060', 'A0164', 'Hibiscus cannabinus L'),
-('V0060', 'A0211', 'Putih'),
-('V0060', 'A0130', 'Berduri sedikit'),
-('V0060', 'A0103', 'Sedikit'),
-('V0060', 'A0161', '5-7 %'),
-('V0060', 'A0101', 'Mengkilap'),
-('V0060', 'A0196', 'Kuning krem'),
-('V0060', 'A0135', '2,50-4,50 ton/ha'),
-('V0060', 'A0170', '265-415 cm'),
-('V0060', 'A0213', 'Hijau'),
-('V0060', 'A0215', 'Hijau'),
-('V0060', 'A0124', 'Marjani, Sudjindro, R.D. Purwati, U. Setya Budi'),
-('V0060', 'A0120', '255-370 cm'),
-('V0060', 'A0113', '85-9-66-I BB'),
-('V0060', 'A0193', 'Abu-abu'),
-('V0060', 'A0042', 'A'),
-('V0060', 'A0183', '120-130 hari'),
-('V0060', 'A0199', 'Hijau '),
-('V0060', 'A0033', '1,50-3,00 cm'),
-('V0060', 'A0205', 'Hijau'),
-('V0060', 'A0082', 'Tahan terhadap kekeringan, Moderat tahan Alumunium pada pH rendah'),
-('V0060', 'A0073', '21,96-29,36 g/tex (sangat baik)'),
-('V0060', 'A0191', 'Hijau'),
-('V0060', 'A0017', '21,6-26,5 gram'),
-('V0060', 'A0218', '8.67'),
-('V0060', 'A0223', '0.67'),
-('V0060', 'A0224', '8.96'),
-('V0060', 'A0225', '1.55'),
-('V0060', 'A0226', '0.009'),
-('V0060', 'A0227', '15.09'),
-('V0060', 'A0228', '0.19'),
-('V0060', 'A0195', 'Hijau'),
-('V0060', 'A0181', '70-85 hari'),
-('V0060', 'A0212', 'Hijau'),
-('V0060', 'A0128', 'Rudimeter (siwilan) banyak'),
-('V0060', 'A0009', 'Menjari bertoreh dalam'),
-('V0060', 'A0004', 'Hasil persilangan antara Hc 48 dengan G4'),
-('V0060', 'A0169', 'Subur Wahyudi, Sumanto, Dudut Sunardi'),
-('V0061', 'A0211', 'Putih'),
-('V0061', 'A0103', 'Sedikit'),
-('V0061', 'A0161', '5-7'),
-('V0061', 'A0101', 'Mengkilap'),
-('V0061', 'A0196', 'Kuning krem'),
-('V0061', 'A0125', 'Mala Murianingrum, Titiek Yulianti, Dwi Adi Sunarto, Budi Santoso, Moch.Machfud'),
-('V0061', 'A0170', '270 - 425 cm'),
-('V0061', 'A0213', 'Hijau'),
-('V0061', 'A0215', 'Hijau'),
-('V0061', 'A0120', '260-375'),
-('V0061', 'A0113', '9011/G4-1-4-2 M Blk'),
-('V0061', 'A0123', 'Marjani, Sudjindro, Untung Setyo Budi, Rully Dyah Purwati'),
-('V0061', 'A0042', 'A'),
-('V0061', 'A0033', '1,60 - 3,10 cm'),
-('V0061', 'A0193', 'Abu-abu'),
-('V0061', 'A0135', '2,75-4,50'),
-('V0061', 'A0017', '22,1 - 26,3 gram'),
-('V0061', 'A0183', '120-140 hr'),
-('V0061', 'A0199', 'Hijau'),
-('V0061', 'A0082', 'Moderat tahan terhadap kekeringan, Moderat tahan terhadap keracunan Alumunium, Kurang peka terhadap fotoperiode'),
-('V0061', 'A0205', 'Hijau'),
-('V0061', 'A0073', '22,19-28,89 (sangat baik)'),
-('V0061', 'A0218', '8.36'),
-('V0061', 'A0223', '0.82'),
-('V0061', 'A0224', '9.36'),
-('V0061', 'A0225', '1.42'),
-('V0061', 'A0226', '0.001'),
-('V0061', 'A0227', '12.93'),
-('V0061', 'A0228', '0.43'),
-('V0061', 'A0191', 'Hijau berintik merah'),
-('V0061', 'A0009', 'Menjari bertoreh dalam'),
-('V0061', 'A0175', 'Galur murni'),
-('V0061', 'A0195', 'Hijau'),
-('V0061', 'A0088', 'Rentan terhadap Amrasca biguttula Ishida, Sangat rentan terhadap nematoda puru akar (Meloidogyne sp)'),
-('V0061', 'A0072', 'Halus'),
-('V0061', 'A0181', '75-90 hr'),
-('V0061', 'A0212', 'Hijau'),
-('V0061', 'A0128', 'Rudimenter (siwilan) banyak'),
-('V0061', 'A0153', 'Persilangan (G4 X KK60) XG4 dilanjutkan seleksi pedigree'),
-('V0062', 'A0072', 'Halus'),
-('V0062', 'A0196', 'Kuning krem'),
-('V0062', 'A0191', 'Merah'),
-('V0062', 'A0183', '120-130 hr'),
-('V0062', 'A0212', 'Merah kehijauan'),
-('V0062', 'A0170', '265-415 cm'),
-('V0062', 'A0215', 'Merah kehijauan'),
-('V0062', 'A0017', '22,1-25,9 gram'),
-('V0062', 'A0205', 'Hijau'),
-('V0062', 'A0123', 'Marjani, Sudjindro, Untung Setyo Budi, Rully Dyah Purwati'),
-('V0062', 'A0153', 'Seleksi massa pada populasi IDN-09-HCAN-1272'),
-('V0062', 'A0161', '5-7'),
-('V0062', 'A0199', 'Hijau'),
-('V0062', 'A0169', 'Dudut Sunardi, Sadta Yoga, Priyono, Sucipto'),
-('V0062', 'A0213', 'Hijau'),
-('V0062', 'A0120', '255-370 cm'),
-('V0062', 'A0211', 'Putih'),
-('V0062', 'A0082', 'Moderat tahan terhadap kekeringan, Agak tahan terhadap keracunan Alumunium, Kurang peka terhadap fotoperiode'),
-('V0062', 'A0128', 'Rudimenter (siwilan) banyak'),
-('V0062', 'A0103', 'Sedikit'),
-('V0062', 'A0130', 'Berduri sedikit'),
-('V0062', 'A0181', '70-80 hr'),
-('V0062', 'A0009', 'Menjari bertoreh dalam'),
-('V0062', 'A0113', 'idn-09-hcan-1272-1'),
-('V0062', 'A0175', 'Galur murni'),
-('V0062', 'A0042', 'A'),
-('V0062', 'A0073', '22,96-29,36 (sangat baik)'),
-('V0062', 'A0218', '7.73'),
-('V0062', 'A0223', '0.72'),
-('V0062', 'A0224', '7.26'),
-('V0062', 'A0225', '1.45'),
-('V0062', 'A0226', '0.003'),
-('V0062', 'A0227', '13.12'),
-('V0062', 'A0228', '1.15'),
-('V0062', 'A0193', 'Abu-abu'),
-('V0062', 'A0101', 'Mengkilap'),
-('V0062', 'A0122', 'Badan Penelitian dan Pengembangan Pertanian dan Toyota Boshoku Carporation Japan'),
-('V0062', 'A0195', 'Hijau'),
-('V0062', 'A0125', 'Mala Murianingrum, Titiek Yulianti, Dwi Adi Sunarto, Budi Santoso, Moch.Machfud'),
-('V0062', 'A0135', '2,50-4,50'),
-('V0062', 'A0033', '1,50-3,00 cm'),
-('V0062', 'A0088', 'Rentan terhadap Amrasca biguttula Ishida, Sangat rentan terhadap nematoda puru akar (Meloidogyne sp)'),
-('V0063', 'A0107', '11 – 15 cm'),
-('V0063', 'A0161', '4 – 5,298  %'),
-('V0063', 'A0185', '8 – 13 tahun  '),
-('V0063', 'A0010', 'Lurus'),
-('V0063', 'A0125', 'Budi Santoso, Titiek Yulianti, Cece Suhara, dan Emy Sulistyowati'),
-('V0063', 'A0001', 'Luas'),
-('V0063', 'A0211', 'Putih kekuningan mengkilat'),
-('V0063', 'A0026', '520 g'),
-('V0063', 'A0184', '36 - 48 bulan setelah tanam'),
-('V0063', 'A0038', 'Ada'),
-('V0063', 'A0123', 'Untung Setyo-Budi, Marjani, Rully Dyah Purwati, dan Mala Murianingrum'),
-('V0063', 'A0105', 'Tipis'),
-('V0063', 'A0056', '560 – 650 lembar'),
-('V0063', 'A0140', '4.728  – 5.964,763 kg / ha / tahun'),
-('V0063', 'A0037', 'Tidak ada'),
-('V0063', 'A0055', '13 – 14 daun'),
-('V0063', 'A0206', 'Tidak ada'),
-('V0063', 'A0202', 'Coklat tua'),
-('V0063', 'A0046', 'Sisal (Agave Sisalana)'),
-('V0063', 'A0122', 'Soedomo (PT. Sumbawa Bangkit Sejahtera)'),
-('V0063', 'A0073', '31,363 ± 1,849 g/tex '),
-('V0063', 'A0218', '5.95'),
-('V0063', 'A0223', '1.25'),
-('V0063', 'A0224', '2.49'),
-('V0063', 'A0225', '10.84'),
-('V0063', 'A0226', '10.68'),
-('V0063', 'A0227', '17.72'),
-('V0063', 'A0228', '9.36'),
-('V0063', 'A0199', 'Hijau kebiruan'),
-('V0063', 'A0092', 'Peka'),
-('V0063', 'A0045', 'Keputusan Menteri Pertanian No 2765/kpts/SR.120/8/2010'),
-('V0063', 'A0175', 'Hibrida'),
-('V0063', 'A0117', '120 – 150 cm'),
-('V0063', 'A0004', 'Introduksi dari Tiongkok'),
-('V0063', 'A0009', 'Lanceolat ');
+('V0057', 'A0046', 'Sisal (Agave Sisalana)'),
+('V0057', 'A0004', 'Introduksi dari Tiongkok'),
+('V0057', 'A0175', 'Hibrida'),
+('V0057', 'A0045', 'Keputusan Menteri Pertanian No 2765/kpts/SR.120/8/2010'),
+('V0057', 'A0009', 'Lanceolat '),
+('V0057', 'A0199', 'Hijau kebiruan'),
+('V0057', 'A0206', 'Tidak ada'),
+('V0057', 'A0105', 'Tipis'),
+('V0057', 'A0037', 'Tidak ada'),
+('V0057', 'A0038', 'Ada'),
+('V0057', 'A0010', 'Lurus'),
+('V0057', 'A0202', 'Coklat tua'),
+('V0057', 'A0117', '120 – 150 cm'),
+('V0057', 'A0107', '11 – 15 cm'),
+('V0057', 'A0056', '560 – 650 lembar'),
+('V0057', 'A0055', '13 – 14 daun'),
+('V0057', 'A0026', '520 g'),
+('V0057', 'A0140', '4.728  – 5.964,763 kg / ha / tahun'),
+('V0057', 'A0161', '4 – 5,298  %'),
+('V0057', 'A0211', 'Putih kekuningan mengkilat'),
+('V0057', 'A0073', '31,363 ± 1,849 g/tex '),
+('V0057', 'A0185', '8 – 13 tahun  '),
+('V0057', 'A0184', '36 - 48 bulan setelah tanam'),
+('V0057', 'A0092', 'Peka'),
+('V0057', 'A0001', 'Luas'),
+('V0057', 'A0123', 'Untung Setyo-Budi, Marjani, Rully Dyah Purwati, dan Mala Murianingrum'),
+('V0057', 'A0125', 'Budi Santoso, Titiek Yulianti, Cece Suhara, dan Emy Sulistyowati'),
+('V0057', 'A0122', 'Soedomo (PT. Sumbawa Bangkit Sejahtera)');
 
 -- --------------------------------------------------------
 
@@ -2875,11 +2833,7 @@ INSERT INTO `gambar_leaflet` (`id_leaflet`, `id_gambar`, `file`) VALUES
 ('L0021', 'IMG0041', 'mesin pemecah.jpg'),
 ('L0021', 'IMG0042', 'mesin pemecah2.jpg'),
 ('L0022', 'IMG0043', 'alat pengupas.jpg'),
-('L0022', 'IMG0044', 'alat pengupas2.jpg'),
-('L0024', 'IMG0047', 'leaflett 2.jpg'),
-('L0024', 'IMG0048', 'leaflett 1.jpg'),
-('L0025', 'IMG0049', 'leaflet2.jpg'),
-('L0025', 'IMG0050', 'leaflet1.jpg');
+('L0022', 'IMG0044', 'alat pengupas2.jpg');
 
 --
 -- Triggers `gambar_leaflet`
@@ -2922,9 +2876,7 @@ INSERT INTO `jenis_leaflet` (`id_jenis_leaflet`, `nama_jenis`) VALUES
 ('JL002', 'Tebu'),
 ('JL003', 'Wijen'),
 ('JL004', 'Jarak Kepyar'),
-('JL005', 'Alat dan Mesin'),
-('JL007', ''),
-('JL008', 'Kapas');
+('JL005', 'Alat dan Mesin');
 
 --
 -- Triggers `jenis_leaflet`
@@ -2983,9 +2935,7 @@ INSERT INTO `leaflet` (`id_leaflet`, `nama_leaflet`, `id_jenis_leaflet`) VALUES
 ('L0019', 'Teknik Pembibitan Tebu Bud Chips', 'JL005'),
 ('L0020', 'Alat Dan Mesin Perajang Daun Tembakau', 'JL005'),
 ('L0021', 'Mesin Pemecah Buah Jarak Pagar', 'JL005'),
-('L0022', 'Alat Pengupas Buah Jarak', 'JL005'),
-('L0024', 'new alsin', 'JL005'),
-('L0025', 'Kapas', 'JL008');
+('L0022', 'Alat Pengupas Buah Jarak', 'JL005');
 
 --
 -- Triggers `leaflet`
@@ -3102,12 +3052,11 @@ INSERT INTO `statistik_pengunjung` (`id_statistik`, `id_pengunjung`, `tanggal`, 
 (31, '::1', '2018-09-20', 1, '04:54'),
 (32, '::1', '2018-09-27', 1, '06:47'),
 (33, '::1', '2018-09-27', 1, '06:48'),
-(34, '::1', '2018-10-03', 1, '09:44'),
-(35, '::1', '2018-10-03', 1, '09:44'),
-(36, '::1', '2018-10-03', 1, '10:03'),
-(37, '::1', '2018-10-04', 1, '15:04'),
-(38, '::1', '2018-10-04', 1, '23:56'),
-(39, '::1', '2018-10-05', 1, '08:54');
+(34, '::1', '2018-09-27', 1, '22:54'),
+(35, '::1', '2018-10-02', 1, '20:10'),
+(36, '::1', '2018-10-02', 1, '20:11'),
+(37, '::1', '2018-10-14', 1, '19:08'),
+(38, '::1', '2018-10-14', 1, '19:55');
 
 -- --------------------------------------------------------
 
@@ -3168,8 +3117,7 @@ INSERT INTO `stok_benih` (`id_stok_benih`, `id_benih`, `asal`, `tahun_panen`, `k
 ('SB0036', 'B0005', 'Sumberrejo', '2008', 'Dasar', 0, '2018-06-30'),
 ('SB0037', 'B0005', 'Sumberrejo', '2013', 'Dasar', 0, '2018-06-30'),
 ('SB0038', 'B0028', 'Karangploso', '2017', 'Dasar', 58.85, '2018-06-30'),
-('SB0039', 'B0029', 'Karangploso', '2017', 'Dasar', 154.6, '2018-06-30'),
-('SB0040', 'B0036', 'malang', '2018', 'Dasar', 100, '2018-10-05');
+('SB0039', 'B0029', 'Karangploso', '2017', 'Dasar', 154.6, '2018-06-30');
 
 --
 -- Triggers `stok_benih`
@@ -3244,24 +3192,24 @@ INSERT INTO `varietas` (`id_serat`, `id_varietas`, `nama_varietas`, `tanggal_pel
 ('S0003', 'V0030', 'Togo B', '2007-02-20', '2014-01-29', '08:00:00', 'Kapuk - TOGO B.pdf', '', 'togo b.jpeg', 'Varietas Togo B merupakan hasil seleksi dari varietas introduksi Togo yang berasal dari Togo di Afrika. Varietas ini menunjukkan potensi hasil gelondong yang tinggi dengan jumlah gelondong 41.428 gelondong/ha atau 2.551 gelondong/pohon pada umur 40 tahun. Ketika masih muda (12 tahun), varietas ini sudah mampu menghasilkan 845 gelondong/pohon. Serat yang dihasilkan oleh Togo B putih mengkilat, dan buahnya tidak pecah di pohon. Dengan habitus pohon yang kokoh, Togo-B digunakan dalam program konservasi lahan dan sebagai batang bawah dalam penyediaan bibit kapuk secara okulasi. Dengan habitus pohon yang kokoh, Togo-B digunakan dalam program konservasi lahan dan sebagai batang bawah dalam penyediaan bibit kapuk secara okulasi.'),
 ('S0003', 'V0031', 'LC31', '2014-01-29', '2014-01-29', '08:00:00', '', '', 'lc31.jpeg', 'Persilangan klon Lanang x Congo yang dilakukan pada sekitar tahun 1920-an dilanjutkan dengan penanaman benih hasil persilangan dan evaluasi klon hibrida. Di antara klon-klon hibrida yang diseleksi, maka terpilihlah individu nomor 31 yang menunjukkan keunggulan dibandingkan klon hibrida lainnya dan klon terpilih tersebut mulai diperbanyak dan ditanam oleh manajemen perkebunan pada saat itu. Keunikan varietas kapuk LC 31 adalah pembentukan cabang pertama yang rendah antara 20 cm-100 cm diatas permukaan tanah.'),
 ('S0004', 'V0032', 'Karangploso 14 (KR 14)', '2007-02-20', '2014-01-29', '08:00:00', 'Kenaf - KR 14.pdf', '', 'kr14.jpeg', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH rendah, kahat unsur hara, dan kandungan Al dan Fe tinggi. Lahan PMK di Kalimantan tersedia cukup luas yang berpotensi untuk pengembangan kenaf. Pemberdayaan lahan PMK di Kalimantan untuk pengembangan kenaf di samping memenuhi serat kenaf dalam negeri juga akan ber-dampak pada peningkatan pendapatan petani dan pendapatan asli daerah. Untuk mendukung pengembangan kenaf di lahan PMK Balittas telah menghasilkan dua varietas unggul yang telah dilepas berdasarkan SK. Mentan No. 133/Kpts/SR.120/2/2007 dan 134/Kpts/SR.120/2/2007 sebagai varietas unggul baru dengan nama Karangploso 14 (KR 14) dan Karangploso 15 (KR 15).'),
+('S0004', 'V0033', 'Karangploso 15 (KR 15)', '2007-02-20', '2014-01-29', '08:00:00', 'Kenaf - KR 15.pdf', '', 'kr15.jpeg', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH rendah, kahat unsur hara, dan kandungan Al dan Fe tinggi. Lahan PMK di Kalimantan tersedia cukup luas yang berpotensi untuk pengembangan kenaf. Pemberdayaan lahan PMK di Kalimantan untuk pengembangan kenaf di samping memenuhi serat kenaf dalam negeri juga akan ber-dampak pada peningkatan pendapatan petani dan pendapatan asli daerah. Untuk mendukung pengembangan kenaf di lahan PMK Balittas telah menghasilkan dua varietas unggul yang telah dilepas berdasarkan SK. Mentan No. 133/Kpts/SR.120/2/2007 dan 134/Kpts/SR.120/2/2007 sebagai varietas unggul baru dengan nama Karangploso 14 (KR 14) dan Karangploso 15 (KR 15).'),
 ('S0004', 'V0034', 'Karangploso 2 (KR 2)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC 33.pdf', '', '', ''),
 ('S0004', 'V0035', 'HC 48', '1995-01-16', '2018-07-26', '08:00:00', 'Kenaf - HC 48.pdf', '', '', ''),
 ('S0004', 'V0036', 'Karangploso 3 (KR 3)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC 62.pdf', '', '', ''),
 ('S0004', 'V0037', 'Karangploso 9 (KR 9)', '2001-02-08', '2018-07-26', '08:00:00', 'Kenaf - HC 85-9-40-1.pdf', '', '', ''),
+('S0004', 'V0038', 'Karangploso 11 (KR 11)', '2001-02-08', '2014-01-29', '08:00:00', 'Kenaf - HC 85-9-66-1.pdf', '', 'kr11.jpeg', 'Meskipun kenaf termasuk tanaman hari pendek, namun Balittas telah menghasilkan va-rietas unggul yang kurang peka terhadap fotoperiode yaitu KR 11, sehingga varietas KR 11 ini dapat ditanam kapan saja dengan syarat kebutuhan air terpenuhi selama masa pertumbuhan-nya. KR 11 merupakan hasil persilangan Hc 48 x Hc G4 pada tahun 1985. Varietas ini dilepas pada tahun 2001 oleh Menteri Pertanian dengan Surat Keputusan No. 111/Kpts/TP.240/2/2001, tanggal 8 Februari 2001.'),
 ('S0004', 'V0039', 'Karangploso 12 (KR 12)', '2001-02-08', '2018-07-26', '08:00:00', 'Kenaf - HC 85-9-75.pdf', '', '', ''),
 ('S0004', 'V0040', 'Karangploso 6 (KR 6)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC Cuba 108 II.pdf', '', '', ''),
 ('S0004', 'V0041', 'Karangploso 4 (KR 4)', '1995-01-16', '2018-07-26', '08:00:00', 'Kenaf - HC G4.pdf', '', '', ''),
 ('S0004', 'V0042', 'Karangploso 5 (KR 5)', '1997-07-21', '2018-07-26', '08:00:00', 'Kenaf - HC G45.pdf', '', '', ''),
+('S0004', 'V0043', 'Kenafindo 1 Agribun', '2017-02-14', '2018-07-26', '08:00:00', 'KENAFINDO-1.pdf', '', '', ''),
+('S0004', 'V0044', 'Kenafindo 2 Agribun', '2017-02-14', '2018-07-26', '08:00:00', 'KENAFINDO-2.pdf', '', '', ''),
 ('S0005', 'V0045', 'Ramindo 1', '2007-02-20', '2014-01-29', '08:00:00', 'Rami - RAMINDO -1.pdf', '', 'ramindo1a.jpeg', 'Rami semula dikembangkan di daerah dataran tinggi walaupun sebenarnya rami juga dapat dikembangkan di dataran rendah terutama yang memiliki fasilitas pengairan. Kendala pengembangan rami adalah panjangnya rantai proses penyeratan sampai menjadi serat siap pintal. Proses yang panjang ini menyebabkan rami bukan sebagai cash crop, walaupun harga serat rami lebih tinggi dari harga serat kapas. Sebagai salah satu penghasil serat alami, rami merupakan komoditas yang perlu dikembangkan. Komoditas ini, selain menghasilkan serat alami yang bermutu tinggi, juga mempunyai hasil samping yang bernilai ekonomi, seperti kompos limbah dekortikasi dan daun rami untuk campuran pakan ternak. Varietas baru Ramindo 1, dengan nama lama Pujon 10, sudah sejak lama dikembangkan petani/pengusaha dan sudah terbukti keunggulannya baik di masyarakat maupun hasil penelitian. Ramindo 1 memberikan produktivitas serat yang tinggi (2-2,7 ton/ha/tahun) dengan kualitas serat yang cukup baik, serta memiliki daya adaptasi yang luas, sehingga klon ini sesuai untuk dikembangkan di dataran rendah, sedang hingga tinggi. Limbah dekortikasi (penyeratan) dapat diolah menjadi pupuk organik yang sangat halus dengan kandungan: Organik 20,13%; N total 2,15%; C/N ratio 3,01%; bahan organik 34,83%; P2O5 1,47%; K2O 2,76%; CaO 3,73%; MgO 2,22%; S 0,13%; dan KTK 65,56 me/100 g pupuk organik. Teknik pengomposan dapat dilakukan secara sederhana, yaitu dengan mencampurkan dedak, sedikit gula pasir, EM-4, dan disiram air secukupnya. Selain itu, sisa dekortikasi banyak mengandung kayu, dan seratnya baik untuk bahan baku pulp/kertas. Daun rami (40% dari bobot brangkasan segar) mengandung protein sekitar 24%, sangat baik untuk sumber protein ternak dan unggas. Setelah diproses menjadi tepung dapat diman-faatkan untuk campuran konsentrat berbagai pakan ternak. Pakan ternak dari daun rami mengandung sekitar: 10% air; 1,05-1,75% lisin; 0,14-0,73% methionin; dan 0,18-0,31% triptophan. Selain itu mengandung karotin (provitamin A) dan riboflavin (vitamin B2) masing-masing 13,3 dan 0,74 mg tiap 100 g bahan keringnya. Penggunaan varietas unggul Ramindo 1 dengan pemberian paket pupuk lengkap (organik, N, P, K dan ZPT+ PPC) dapat meningkatkan hasil serat sampai dengan 58-60%.'),
 ('S0006', 'V0046', 'Roselindo 1', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 1.pdf', '', 'Roselindo-1.1.png', ''),
 ('S0006', 'V0047', 'Roselindo 2', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 2.pdf', '', 'Roselindo-2.1.png', ''),
 ('S0006', 'V0048', 'Roselindo 3', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 3.pdf', '', 'Roselindo-3.1.jpg', ''),
 ('S0006', 'V0049', 'Roselindo 4', '2013-08-12', '2018-01-23', '08:00:00', 'Rosela - Roselindo 4.pdf', '', 'Roselindo-4.1.jpg', ''),
-('S0004', 'V0059', 'Kenaf - KR 11', '2001-02-08', '2018-10-05', '10:30:08', 'Kenaf - HC 85-9-66-1.pdf', '', 'kr11.jpeg', 'Meskipun kenaf termasuk tanaman hari pendek, namun Balittas telah menghasilkan va-rietas unggul yang kurang peka terhadap fotoperiode yaitu KR 11, sehingga varietas KR 11 ini dapat ditanam kapan saja dengan syarat kebutuhan air terpenuhi selama masa pertumbuhan-nya. KR 11 merupakan hasil persilangan Hc 48 x Hc G4 pada tahun 1985. Varietas ini dilepas pada tahun 2001 oleh Menteri Pertanian dengan Surat Keputusan No. 111/Kpts/TP.240/2/2001, tanggal 8 Februari 2001.'),
-('S0004', 'V0060', 'Kenaf - KR 15', '2007-02-20', '2018-10-05', '10:43:36', 'Kenaf - KR 15.pdf', '', 'kr15.jpeg', 'Untuk dapat meningkatkan daya saing kenaf, maka pengembangan kenaf di Indonesia diarahkan ke lahan yang kurang potensial, salah satunya adalah di lahan podsolik merah kuning (PMK). Lahan PMK umumnya berupa lahan kering yang memiliki sifat antara lain: pH rendah, kahat unsur hara, dan kandungan Al dan Fe tinggi. Lahan PMK di Kalimantan tersedia cukup luas yang berpotensi untuk pengembangan kenaf. Pemberdayaan lahan PMK di Kalimantan untuk pengembangan kenaf di samping memenuhi serat kenaf dalam negeri juga akan ber-dampak pada peningkatan pendapatan petani dan pendapatan asli daerah. Untuk mendukung pengembangan kenaf di lahan PMK Balittas telah menghasilkan dua varietas unggul yang telah dilepas berdasarkan SK. Mentan No. 133/Kpts/SR.120/2/2007 dan 134/Kpts/SR.120/2/2007 sebagai varietas unggul baru dengan nama Karangploso 14 (KR 14) dan Karangploso 15 (KR 15).'),
-('S0004', 'V0061', 'Kenafindo 1 Agribun', '2017-02-14', '2018-10-05', '12:46:34', 'KENAFINDO-1.pdf', '', 'noImg.jpg', ''),
-('S0004', 'V0062', 'Kenafindo 2 Agribun', '2017-02-14', '2018-10-05', '12:54:29', 'KENAFINDO-2.pdf', '', 'noImg.jpg', ''),
-('S0010', 'V0063', 'Agave - H 11648', '2017-02-14', '2018-10-05', '13:18:45', 'SISAL.pdf', '', 'sisal.jpg', '');
+('S0010', 'V0057', 'H 11648', '2017-02-14', '2018-07-26', '08:00:00', 'SISAL - H 11648.pdf', '', 'sisal.jpg', '');
 
 --
 -- Triggers `varietas`
@@ -3298,7 +3246,8 @@ ALTER TABLE `atribut`
 -- Indexes for table `benih`
 --
 ALTER TABLE `benih`
-  ADD PRIMARY KEY (`id_benih`);
+  ADD PRIMARY KEY (`id_benih`),
+  ADD KEY `id_serat` (`id_serat`);
 
 --
 -- Indexes for table `detail_monograf`
@@ -3375,10 +3324,17 @@ ALTER TABLE `varietas`
 -- AUTO_INCREMENT for table `statistik_pengunjung`
 --
 ALTER TABLE `statistik_pengunjung`
-  MODIFY `id_statistik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_statistik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `benih`
+--
+ALTER TABLE `benih`
+  ADD CONSTRAINT `benih_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `detail_monograf`
@@ -3422,6 +3378,7 @@ ALTER TABLE `stok_benih`
 --
 ALTER TABLE `varietas`
   ADD CONSTRAINT `varietas_ibfk_1` FOREIGN KEY (`id_serat`) REFERENCES `serat` (`id_serat`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,7 +1,6 @@
 <div class="table-responsive">
     <table class="table table-hover" style="text-align: center;">
-                     <table class="table table-striped table-hover">
-                    <thead>
+                    <thead style="background-color: rgba(28,69,26,0.9);border-bottom: 0px solid white; color:#fece00;">
                       <tr>                                
                         <th style="text-align:center;">No</th>
                         <th style="text-align:center;">Nama Benih</th>                                
@@ -10,7 +9,6 @@
                         <th style="text-align:center;">Kelas</th>
                         <th style="text-align:center;">Stok Bulan Terakhir</th>  
                         <th style="text-align:center;">Stok Sampai</th>                                
-                        <th style="text-align:center;">Aksi</th>                              
                       </tr>
                     </thead>
                     <tbody>

@@ -1251,12 +1251,22 @@
                 <h2>Data <b>Stok Benih</b></h2>
               </div>
               <div class="col-sm-2">
+                <h5 style="margin-left: -64.5px;">Filter by &nbsp :</h5>
               </div>
               <div class="col-sm-2" style="padding-top: 0px;">
-              </div>
-              <div class="col-sm-1">
+                <select class="form-control komoditasbenihh" id="jenisKomoditasstokfilter" name="komoditasstokfilter" style="margin-left: -169.5px; width: 170px; height: 35px;" onchange="filterStokBenih();">
+                       <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                  <?php
+                    $komoditasbenihh = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                    for($i = 1;$i < count($komoditasbenihh);$i++){
+                      echo"<option value=$komoditasbenihh[$i]> $komoditasbenihh[$i] </option>";
+                    }
+                  ?>
+                </select>
               </div>
               <div class="col-sm-2">
+              </div>
+              <div class="col-sm-1">
               </div>
               <div class="col-sm-2">
                 <a href="#tambahstokbenih" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>                   
@@ -1297,6 +1307,7 @@
                    '<?php echo $row['id_benih']; ?>',
                    '<?php echo $row['id_stok_benih']; ?>',
                    '<?php echo $row['nama_benih']; ?>',
+                   '<?php echo $row['id_serat']; ?>',
                    '<?php echo $row['asal']; ?>',
                    '<?php echo $row['tahun_panen']; ?>',
                    '<?php echo $row['kelas']; ?>',
@@ -1318,6 +1329,25 @@
       </div>
     </section>
 
+    <!-- Filter Stok Benih -->
+    <script>
+      function filterStokBenih(){
+        var komoditasstokbenih = $("#jenisKomoditasstokfilter").val();
+        // alert(komoditasstokbenih);
+          $.ajax({
+              type:"POST",
+              url: "../admin/filterStokBenih",
+              data: "serattt=" + komoditasstokbenih,
+              dataType : "html",
+              success:function(msg){
+                  $("#tableKomoditasStok").html(msg);                
+              },
+              error:function(){
+                alert("Search failed");
+              }
+          });
+      }
+    </script>
     <!-- Delete Modal HTML Stok Benih -->
     <div id="hapusstokbenih" class="modal fade">
       <div class="modal-dialog">
@@ -1356,10 +1386,22 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahStokBenihCuy'); ?>" method="post" class="form-horizontal" autocomplete="off">
-              <div class="modal-body">
+            <div class="modal-body">
               <div class="form-group">
                 <label>Nama Benih</label>
-                <input type="text" class="form-control" list="daftarbenih" id="namaBenih" name="namaBenih2" rfequired>
+                <input type="text" class="form-control" list="daftarbenih" id="namaBenih" name="namaBenih2" required>
+              </div>
+              <div class="form-group">
+                <label>Komoditas</label>
+                <select class="form-control" name="jenisKomoditasStok">
+                  <option value="S0002">Kapas</option>
+                  <option value="S0003">Kapuk</option>
+                  <option value="S0004">Kenaf</option>
+                  <option value="S0005">Rami</option>
+                  <option value="S0006">Rosela</option>
+                  <option value="S0010">Sisal</option>
+                  <option value="S0011">Abaka</option>
+                </select>    
               </div>
               <div class="form-group">
                 <label>Asal</label>
@@ -1416,9 +1458,21 @@
               <div class="modal-body">
               <div class="form-group">
                 <input hidden id="idstokben" name="idstokbenih">
-                <input hidden id="idben" name="idBenih">
+                <input hidden id="idben" name="idBenihedit">
                 <label>Nama Benih</label>
                 <input type="text" class="form-control"  id="namabenihid" name="namaBenih" disabled>
+              </div>
+              <div class="form-group">
+                <label>Komoditas</label>
+                <select class="form-control" id="id_jenisKomoditasStokEdit" name="jenisKomoditasStokEdit">
+                  <option value="S0002">Kapas</option>
+                  <option value="S0003">Kapuk</option>
+                  <option value="S0004">Kenaf</option>
+                  <option value="S0005">Rami</option>
+                  <option value="S0006">Rosela</option>
+                  <option value="S0010">Sisal</option>
+                  <option value="S0011">Abaka</option>
+                </select>    
               </div>
               <div class="form-group">
                 <label>Asal</label>
@@ -1455,12 +1509,13 @@
       </div>
     </div>
     <script>
-       function confirm_modal_editstokbenih(idBenih,idstokbenih, namaBenih, asalbenih, tahunpanenbenih, kelasbenih, stokbulanterakhirbenih, stoksampaibenih)
+       function confirm_modal_editstokbenih(idBenih,idstokbenih, namaBenih, idSerr, asalbenih, tahunpanenbenih, kelasbenih, stokbulanterakhirbenih, stoksampaibenih)
         {
           $('#editstokbenih').modal('show', {backdrop: 'static'});
           document.getElementById('idben').value = idBenih;
           document.getElementById('idstokben').value = idstokbenih;
           document.getElementById('namabenihid').value = namaBenih;
+          document.getElementById('id_jenisKomoditasStokEdit').value = idSerr;
           document.getElementById('asalid').value = asalbenih;
           document.getElementById('tahunid').value = tahunpanenbenih;
           document.getElementById('kelasid').value = kelasbenih;
@@ -1481,20 +1536,30 @@
               <div class="col-sm-2">
                 <h5 style="margin-left: 0px;">Filter by &nbsp :</h5>
               </div>
-              <div class="col-sm-2" style="padding-top: 0px;">
+              <div class="col-sm-2" >
+                <select class="form-control komoditasdist" id="jenisKomoditasdist" name="komoditasdist" style="margin-left: -105px; width: 170px; height: 35px;" onchange="filterDistribusi();">
+                  <option value="Semua Komoditas" selected>Semua Komoditas</option>
+                  <?php
+                    $komoditasdist = array("Semua Komoditas","Kapas","Kapuk","Kenaf","Rami","Rosela","Sisal","Abaka");
+                    for($i = 1;$i < count($komoditasdist);$i++){
+                      echo"<option value=$komoditasdist[$i]> $komoditasdist[$i] </option>";
+                    }
+                  ?>
+                </select>
+              </div>
+              <div class="col-sm-2">
                 <select class="form-control tahundist" id="jenisTahundist" name="tahundist" style="margin-left: -105px; width: 170px; height: 35px;" onchange="filterDistribusi();">
-                       <option value="Semua Tahun" selected>Semua Tahun</option>
+                  <option value="Semua Tahun" selected>Semua Tahun</option>
                   <?php
                     for($i = 2000;$i <= 2050;$i++){
                       echo"<option value=$i> $i </option>";
                     }
                   ?>
-                  ?>
                 </select>
               </div>
-              <div class="col-sm-2">
+              <div class="col-sm-1">
                 <select class="form-control bulandist" id="jenisBulandist" name="bulandist" style="margin-left: -105px; width: 170px; height: 35px;" onchange="filterDistribusi();">
-                       <option value="Semua Bulan" selected>Semua Bulan</option>
+                  <option value="Semua Bulan" selected>Semua Bulan</option>
                   <?php
                     $bulandist = array("Semua Bulan","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
                     for($i = 1;$i < count($bulandist);$i++){
@@ -1502,8 +1567,6 @@
                     }
                   ?>
                 </select>
-              </div>
-              <div class="col-sm-1">
               </div>
               <div class="col-sm-2">
                 <a href="#tambahdistribusibenih" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Tambah Data</span></a>            
@@ -1542,6 +1605,7 @@
                       '<?php echo $row['id_benih']; ?>',
                     '<?php echo $row['id_distribusi'];?>',
                     '<?php echo $row['nama_benih']; ?>',
+                    '<?php echo $row['id_serat']; ?>',
                     '<?php echo $row['tanggal']; ?>',
                     '<?php echo $row['tahun_panen']; ?>',
                     '<?php echo $row['kelas_benih']; ?>',
@@ -1574,6 +1638,18 @@
               <div class="form-group">
                 <label>Nama Benih</label>
                 <input type="text" class="form-control" list="daftarbenih2" id="namaBenih" name="namaBenih" required>
+              </div>
+              <div class="form-group">
+                <label>Komoditas</label>
+                <select class="form-control" name="jenisKomoditasDistri">
+                  <option value="S0002">Kapas</option>
+                  <option value="S0003">Kapuk</option>
+                  <option value="S0004">Kenaf</option>
+                  <option value="S0005">Rami</option>
+                  <option value="S0006">Rosela</option>
+                  <option value="S0010">Sisal</option>
+                  <option value="S0011">Abaka</option>
+                </select>    
               </div>
               <div class="form-group">
                 <label>Tanggal Distribusi</label><br>
@@ -1640,13 +1716,15 @@
         if (tahun == "Semua Tahun") {
           tahun = "0000"; // tahun = "_%_%_%_%";
         } 
+        var komoditasdist = $("#jenisKomoditasdist").val();
+          // alert("serattt=" + tahun + "-" + bulan + "-" + komoditasdist);
         $.ajax({
               type:"POST",
               url: "../admin/filterDistribusi",
-              data: "serattt=" + tahun + "-" + bulan,
+              data: "serattt=" + tahun + "-" + bulan + "-" + komoditasdist,
               dataType : "html",
               success:function(msg){
-                  $("#tabelDistribusi").html(msg);                
+                 $("#tabelDistribusi").html(msg);               
               },
               error:function(){
                 alert("Search failed");
@@ -1702,6 +1780,18 @@
                 <input type="text" class="form-control" list="daftarbenih2" id="namadisbenid" name="namanyabenih" disabled>
               </div>
               <div class="form-group">
+                <label>Komoditas</label>
+                <select class="form-control" id="id_jenisKomoditasDistriEdit" name="jenisKomoditasDistriEdit">
+                  <option value="S0002">Kapas</option>
+                  <option value="S0003">Kapuk</option>
+                  <option value="S0004">Kenaf</option>
+                  <option value="S0005">Rami</option>
+                  <option value="S0006">Rosela</option>
+                  <option value="S0010">Sisal</option>
+                  <option value="S0011">Abaka</option>
+                </select>   
+              </div>
+              <div class="form-group">
                 <label>Tanggal Distribusi</label><br>
                 <input type="date" id="tanggaldisbenid" name="tanggaldistribusibenih" class="form-control" required>
               </div>
@@ -1736,12 +1826,14 @@
     </div>
 
     <script>
-       function confirm_modal_editdistribusibenih(idbenihdistribusibenih,iddistribusibenih, namanyabenih,tanggaldistribusibenih, tahunpanendistribusibenih, kelasdistribusibenih, jumlahkgdistribusibenih, keterangandistribusibenih)
+       function confirm_modal_editdistribusibenih(idbenihdistribusibenih,iddistribusibenih, namanyabenih, idserateditdist,tanggaldistribusibenih, tahunpanendistribusibenih, kelasdistribusibenih, jumlahkgdistribusibenih, keterangandistribusibenih)
         {
           $('#editdistribusibenih').modal('show', {backdrop: 'static'});
           document.getElementById('idbendistri').value = idbenihdistribusibenih;
           document.getElementById('iddisben').value = iddistribusibenih;
           document.getElementById('namadisbenid').value = namanyabenih;
+          document.getElementById('id_jenisKomoditasDistriEdit').value = idserateditdist;
+
           document.getElementById('tanggaldisbenid').value = tanggaldistribusibenih;
           document.getElementById('tahundisbenid').value = tahunpanendistribusibenih;
           document.getElementById('kelasdisbenid').value = kelasdistribusibenih;

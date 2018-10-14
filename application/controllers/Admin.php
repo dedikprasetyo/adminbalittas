@@ -334,6 +334,16 @@
 			$this->m_data->hapus_stok_benih($idStokBenih);
 			redirect(base_url('admin/serat#tabelStokBenih'));
 		}
+		public function filterStokBenih() {
+			$this->load->model("m_data");
+			$komoditas = $this->input->post('serattt');
+			if ($komoditas == "Semua Komoditas") {
+				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih();
+			} else {
+				$data['dataStokBenihFiltered'] = $this->m_data->load_stok_benih_filter($komoditas);
+			}
+			$this->load->view('FilterTableStokBenih', $data);
+		}
 		public function tambahStokBenihCuy(){
 			$this->load->model("m_data");
 			$asal = $this->input->post('asal');
@@ -342,11 +352,13 @@
 			$stokbulanterakhir = $this->input->post('stokBulanTerakhir');
 			$stoksampai = $this->input->post('stokSampai');
 			$namabnh = $this->input->post('namaBenih2');
+			$komoditasstok = $this->input->post('jenisKomoditasStok');
 			$idBenih = $this->m_data->getIdnmBenih($namabnh);
 			if (!empty($idBenih)) { //ada
+				$this->m_data->edit_benih($idBenih, $komoditasstok);
 				$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
 			} else { //tidak ada
-				$this->m_data->add_benih($this->input->post('namaBenih2'));
+				$this->m_data->add_benih($komoditasstok, $this->input->post('namaBenih2'));
 				$idBenih = $this->m_data->getIdnmBenih($this->input->post('namaBenih2'));
 				$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
 			}
@@ -363,7 +375,12 @@
 			// $idbenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
 			$idbenih = $this->input->post('idBenih');
 			$namabenih = $this->input->post('namaBenih');
+			$komoditaseditstok = $this->input->post('jenisKomoditasStokEdit');
 			// $this->m_data->edit_nama_benih($idbenih,$namabenih);
+
+			$idBenihedit = $this->input->post('idBenihedit');
+
+			$this->m_data->edit_benih($idBenihedit, $komoditaseditstok);
 			$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
 			// if (!empty($idbenih)) { //ada
 			// 	$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
@@ -383,25 +400,50 @@
 		}
 		public function filterDistribusi() {
 			$this->load->model("m_data");
-			$filtertahunbulan = $this->input->post('serattt');
-			$Tahun = substr($filtertahunbulan, 0,4);	// echo $Tahun."<br>";
-			$Bulan = substr($filtertahunbulan, 5,2);	// echo $Bulan."<br>";
-			$Komoditas = substr($filtertahunbulan, 8,strlen($filtertahunbulan));	// echo $Komoditas;
-			$if1 = "0000-00";
-			$if2 = "0000-".$Bulan;
-			$if3 = $Tahun."-00";
-			$if4 = $Tahun.'-'.$Bulan;
-			if ($filtertahunbulan == $if1) { //iki 00
+			$filtertahunbulankomoditas = $this->input->post('serattt');
+			$Tahun = substr($filtertahunbulankomoditas, 0,4);	// echo $Tahun."<br>";
+			$Bulan = substr($filtertahunbulankomoditas, 5,2);	// echo $Bulan."<br>";
+			$Komoditas = substr($filtertahunbulankomoditas, 8,strlen($filtertahunbulankomoditas));	// echo $Komoditas;
+			// echo $Tahun."-".$Bulan."-".$Komoditas;
+			$if1 = "0000-00-Semua Komoditas";
+			$if2 = "0000-00-".$Komoditas;	
+			$if3 = "0000-".$Bulan."-Semua Komoditas";
+			$if4 = "0000-".$Bulan."-".$Komoditas;  
+			$if5 = $Tahun."-00-Semua Komoditas";
+			$if6 = $Tahun."-00-".$Komoditas;
+			$if7 = $Tahun.'-'.$Bulan."-Semua Komoditas";
+			$if8 = $Tahun.'-'.$Bulan.'-'.$Komoditas;
+			// echo $if1."<br>";
+			// echo $if2."<br>";
+			// echo $if3."<br>";
+			// echo $if4."<br>";
+			// echo $if5."<br>";
+			// echo $if6."<br>";
+			// echo $if7."<br>";
+			// echo $if8;
+			if ($filtertahunbulankomoditas == $if1) { //iki 000
 				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih();
 			} 
-			else if ($filtertahunbulan == $if2) { //iki 01
+			else if ($filtertahunbulankomoditas == $if2) { //iki 001
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_komoditas($Komoditas);
+			}
+			else if ($filtertahunbulankomoditas == $if3) { //iki 010
 				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_bulan($Bulan);
 			}
-			else if ($filtertahunbulan == $if3) { //iki 10
+			else if ($filtertahunbulankomoditas == $if4) { //iki 011
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_bulankomoditas($Bulan,$Komoditas);
+			}
+			else if ($filtertahunbulankomoditas == $if5) { //iki 100
 				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahun($Tahun);
 			}
-			else { //iki 11
+			else if ($filtertahunbulankomoditas == $if6) { //iki 101
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahunkomoditas($Tahun,$Komoditas);
+			}
+			else if ($filtertahunbulankomoditas == $if7) { //iki 110 //
 				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_tahunbulan($Tahun,$Bulan);
+			}
+			else { //iki 111
+				$data['dataDistribusiFiltered'] = $this->m_data->load_distribusibenih_filter_all($Tahun,$Bulan,$Komoditas);
 			}
 			$this->load->view('FilterTableDistribusi', $data);
 		}
@@ -412,11 +454,13 @@
 			$kelas = $this->input->post('kelas');
 			$jumlahkg = $this->input->post('jumlahkg');
 			$keterangan = $this->input->post('keterangan');
+			$komoditasdist = $this->input->post('jenisKomoditasDistri');
 			$idBenih = $this->m_data->getIdnmBenih($this->input->post('namaBenih'));
 			if (!empty($idBenih)) { //ada
+				$this->m_data->edit_benih($idBenih, $komoditasdist);
 				$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
 			} else { //tidak ada
-				$this->m_data->add_benih($this->input->post('namaBenih'));
+				$this->m_data->add_benih($komoditasdist, $this->input->post('namaBenih'));
 				$idBenih = $this->m_data->getIdnmBenih($this->input->post('namaBenih'));
 				$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
 			}
@@ -431,6 +475,14 @@
 			$kelasbenih=$this->input->post('kelasdistribusibenih');
 			$jumlahkg=$this->input->post('jumlahkgdistribusibenih');
 			$keterangan=$this->input->post('keterangandistribusibenih');
+
+			$komoditasdist = $this->input->post('jenisKomoditasDistriEdit');
+			// $this->m_data->edit_nama_benih($idbenih,$namabenih);
+
+			$idBenihedit = $this->input->post('idbenihdistribusibenih');
+
+			$this->m_data->edit_benih($idBenihedit, $komoditasdist);
+
 
 			$this->m_data->edit_distribusibenih($iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan);
 			redirect(base_url('admin/serat#tabelDistribusiBenih'));
