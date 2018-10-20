@@ -12,7 +12,7 @@
 				$this->session->set_userdata(array(
 						'akunAktif'=>"Administrator"),
 				true);
-				redirect(base_url('admin/serat'));
+				redirect(base_url('index.php/admin/serat'));
 			}else{
 				$data['coba'] = "salah";
 				$data['judul'] = "Admin - Balai Penelitian Tanaman Pemanis dan Serat";
@@ -21,7 +21,7 @@
 		}
 		public function logout() {
 			$this->session->sess_destroy();
-			redirect(base_url('admin'));
+			redirect(base_url('index.php/admin'));
 		}
 		public function serat(){		
 			$this->load->model("m_data");
@@ -53,7 +53,7 @@
 				unlink($targetpathSeratgmbr.$dataserat[0]->gambar);
 			}
 			$this->m_data->hapus_serat($idSerat);
-			redirect(base_url('admin/serat#tabelSerat'));
+			redirect(base_url('index.php/admin/serat#tabelSerat'));
 		}
 		public function tambahSerat(){
 			$this->load->model("m_data");
@@ -68,7 +68,7 @@
 				move_uploaded_file($_FILES['gambar']['tmp_name'],$targetpathSerat);
 				$this->m_data->tambah_serat($namaSerat, $deskripsi, $_FILES['gambar']['name']);	
 			}
-			redirect(base_url('admin/serat#tabelSerat'));
+			redirect(base_url('index.php/admin/serat#tabelSerat'));
 		}
 		public function editSerat(){
 			$this->load->model("m_data");
@@ -86,7 +86,7 @@
 			} else { 
 				$this->m_data->edit_serat_noimg($idSerat, $namaSerat, $deskripsi);	
 			}		
-			redirect(base_url('admin/serat#tabelSerat'));
+			redirect(base_url('index.php/admin/serat#tabelSerat'));
 		}
 
 		//varietas
@@ -111,7 +111,7 @@
 			}
 			unlink('file/SK/'.$datagambardansk[0]->file_SK);
 			$this->m_data->hapus_varietas($idVarietas);
-			redirect(base_url('admin/serat#tabelVarietas'));
+			redirect(base_url('index.php/admin/serat#tabelVarietas'));
 		}
 		public function tambahVarietas(){
 			$this->load->model("m_data");
@@ -153,7 +153,7 @@
 			}
 			move_uploaded_file($_FILES['tambahsk']['tmp_name'],$targetpathsk2);
 		    move_uploaded_file($_FILES['gambarvar']['tmp_name'],$targetpathgmbr2);
-			redirect(base_url('admin/serat#tabelVarietas'));	
+			redirect(base_url('index.php/admin/serat#tabelVarietas'));	
 		}
 		public function editVarietas(){
 			$this->load->model("m_data");
@@ -184,7 +184,7 @@
 				move_uploaded_file($_FILES['updatesk']['tmp_name'],$targetpathsk);
 				$this->m_data->updateVarietasKecGmbr($idVar,$namaVarietas,$tgl,$_FILES['updatesk']['name'],$deskripsiii,$urlvarr);
 			}
-			redirect(base_url('admin/serat#tabelVarietas'));	
+			redirect(base_url('index.php/admin/serat#tabelVarietas'));	
 		}
 		public function editDesVarietas(){
 			$this->load->model("m_data");
@@ -193,7 +193,7 @@
 				$idAtribut = $this->m_data->getIdAtribut(substr($this->input->post('atribut'."$i"), 1));
 				$this->m_data->updateDetailDeskripsi($idVar, $idAtribut, $this->input->post('value'."$i"));
 			}
-			redirect(base_url('admin/serat#tabelVarietas'));
+			redirect(base_url('index.php/admin/serat#tabelVarietas'));
 		}
 
 		//leaflet
@@ -204,7 +204,7 @@
 			unlink($targetpathleaflet.$dataleaflet[0]->file);
 			unlink($targetpathleaflet.$dataleaflet[1]->file);
 			$this->m_data->hapus_leaflet($idLeaflet);
-			redirect(base_url('admin/serat#tabelLeaflet'));
+			redirect(base_url('index.php/admin/serat#tabelLeaflet'));
 		}
 		public function tambahLeaflet(){
 			$this->load->model("m_data");
@@ -224,7 +224,7 @@
 		    $targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambar2']['name']);
 		    move_uploaded_file($_FILES['gambar2']['tmp_name'],$targetpathleaflet2);
 		    $this->m_data->add_leaflet_img($_FILES['gambar2']['name']);
-		    redirect(base_url('admin/serat#tabelLeaflet'));
+		    redirect(base_url('index.php/admin/serat#tabelLeaflet'));
 		}
 		public function editLeaflet(){
 			$this->load->model("m_data");
@@ -270,7 +270,7 @@
 				move_uploaded_file($_FILES['leaflet2']['tmp_name'],$targetpathleaflet2);
 				$this->m_data->updateLeafletImg($idgmbr2,$_FILES['leaflet2']['name']); 
 			}
-			redirect(base_url('admin/serat#tabelLeaflet'));
+			redirect(base_url('index.php/admin/serat#tabelLeaflet'));
 		}
 		
 		//budidaya
@@ -280,7 +280,7 @@
 			$databudidaya = $this->m_data->get_budidaya_byId($idBudidaya);
 			unlink($targetpathbudidaya.$databudidaya[0]->file);
 			$this->m_data->hapus_budidaya($idBudidaya);
-			redirect(base_url('admin/serat#tabelBudidaya'));
+			redirect(base_url('index.php/admin/serat#tabelBudidaya'));
 		}
 		public function tambahBudidaya(){
 			$this->load->model("m_data");
@@ -293,7 +293,7 @@
 			$targetpathbudidayamonograf = $targetpathbudidaya.basename($_FILES['pdf']['name']);
 			move_uploaded_file($_FILES['pdf']['tmp_name'],$targetpathbudidayamonograf);
 			$this->m_data->add_budidaya($idserat,$deskripsisingkat,$penulis,$judul,$_FILES['pdf']['name'],$urlbudd);
-			redirect(base_url('admin/serat#tabelBudidaya'));
+			redirect(base_url('index.php/admin/serat#tabelBudidaya'));
 		}
 		public function filterBudidaya() {
 			$this->load->model("m_data");
@@ -325,14 +325,14 @@
 				// echo $_FILES['editpdfbudi']['name'];
 				$this->m_data->update_bud_withfile($idBud,$des,$penulis,$judul,$_FILES['editpdfbudi']['name'],$urleditbud);
 			}
-			redirect(base_url('admin/serat#tabelBudidaya'));
+			redirect(base_url('index.php/admin/serat#tabelBudidaya'));
 		}
 		
 		//stok benih
 		public function hapusStokBenih($idStokBenih){
 			$this->load->model("m_data");
 			$this->m_data->hapus_stok_benih($idStokBenih);
-			redirect(base_url('admin/serat#tabelStokBenih'));
+			redirect(base_url('index.php/admin/serat#tabelStokBenih'));
 		}
 		public function filterStokBenih() {
 			$this->load->model("m_data");
@@ -362,7 +362,7 @@
 				$idBenih = $this->m_data->getIdnmBenih($this->input->post('namaBenih2'));
 				$this->m_data->add_stok_benih($idBenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);	
 			}
-			redirect(base_url('admin/serat#tabelStokBenih'));
+			redirect(base_url('index.php/admin/serat#tabelStokBenih'));
 		}
 		public function editStokBenih(){
 			$this->load->model('m_data');
@@ -389,14 +389,14 @@
 			// 	$idbenih = $this->m_data->getIdnamaBenih($this->input->post('namaBenih'));
 			// 	$this->m_data->edit_stok_benih($idstokbenih,$idbenih,$asal,$tahunpanen,$kelas,$stokbulanterakhir,$stoksampai);
 			// }
-			redirect(base_url('admin/serat#tabelStokBenih'));
+			redirect(base_url('index.php/admin/serat#tabelStokBenih'));
 		}
 		
 		//distribusi benih
 		public function hapusDistribusiBenih($idDistribusi){
 			$this->load->model("m_data");
 			$this->m_data->hapus_distribusibenih($idDistribusi);
-			redirect(base_url('admin/serat#tabelDistribusiBenih'));
+			redirect(base_url('index.php/admin/serat#tabelDistribusiBenih'));
 		}
 		public function filterDistribusi() {
 			$this->load->model("m_data");
@@ -464,7 +464,7 @@
 				$idBenih = $this->m_data->getIdnmBenih($this->input->post('namaBenih'));
 				$this->m_data->add_distribusi_benih($idBenih,$tanggal,$tahunpanen,$kelas,$jumlahkg,$keterangan);	
 			}
-			redirect(base_url('admin/serat#tabelDistribusiBenih'));
+			redirect(base_url('index.php/admin/serat#tabelDistribusiBenih'));
 		}
 		public function editDistribusiBenih(){
 			$this->load->model("m_data");
@@ -485,7 +485,7 @@
 
 
 			$this->m_data->edit_distribusibenih($iddistribusi,$tanggal,$tahunpanen,$kelasbenih,$jumlahkg,$keterangan);
-			redirect(base_url('admin/serat#tabelDistribusiBenih'));
+			redirect(base_url('index.php/admin/serat#tabelDistribusiBenih'));
 		}
 
 		//alsin
@@ -496,7 +496,7 @@
 			unlink($targetpathleaflet.$dataleaflet[0]->file);
 			unlink($targetpathleaflet.$dataleaflet[1]->file);
 			$this->m_data->hapus_Alsin($idAlsin);
-			redirect(base_url('admin/serat#tabelAlsin'));
+			redirect(base_url('index.php/admin/serat#tabelAlsin'));
 		}
 		public function tambahAlsin(){
 			$this->load->model("m_data");
@@ -509,7 +509,7 @@
 			$targetpathleaflet2 = $targetpathleaflet.basename($_FILES['gambaralsin2']['name']);
 			move_uploaded_file($_FILES['gambaralsin2']['tmp_name'],$targetpathleaflet2);
 			$this->m_data->add_alsin_img($_FILES['gambaralsin2']['name']);
-			redirect(base_url('admin/serat#tabelAlsin'));
+			redirect(base_url('index.php/admin/serat#tabelAlsin'));
 		}
 		public function editAlsin(){
 			$this->load->model("m_data");
@@ -548,7 +548,7 @@
 				move_uploaded_file($_FILES['leafletalsin2']['tmp_name'],$targetpathleaflet2);
 				$this->m_data->updateAlsinImg($idgmbralsin2,$_FILES['leafletalsin2']['name']); 
 			}
-			redirect(base_url('admin/serat#tabelAlsin'));
+			redirect(base_url('index.php/admin/serat#tabelAlsin'));
 		}
 	}
 ?>

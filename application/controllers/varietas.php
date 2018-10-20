@@ -15,7 +15,7 @@
 			$row=$this->m_varietas->getJumlahVarietasDariIdSerat($idSerat);
 			// var_dump($row);
 			//mengatur configuration pagination
-			$config['base_url'] = base_url()."varietas/detail/$namaSerat";
+			$config['base_url'] = base_url()."index.php/varietas/detail/$namaSerat";
 			$config['total_rows'] = $row;
 			$config['per_page'] = 6;
 			$config['num_links'] = $row;

@@ -33,7 +33,7 @@
 				    <div class="collapse navbar-collapse">			    
 					    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: -40.5px;">
 					      	<div class="dropdownHeader">
-							  	<a href="<?php echo base_url('admin/logout'); ?>"><div class="dropbtnHeader" 
+							  	<a href="<?php echo base_url('index.php/admin/logout'); ?>"><div class="dropbtnHeader" 
 							  	style="font-family: Minion Pro; cursor: pointer;">Logout &nbsp<i class="glyphicon glyphicon-log-out" style="font-size: 0.8em;"></i></div></a>
 							</div>																			      		     
 					    </ul>				    

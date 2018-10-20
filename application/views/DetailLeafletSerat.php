@@ -53,7 +53,7 @@
                <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
-                  <form method="get" action="<?php echo base_url('pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
+                  <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
                      <div class="input-group" style="z-index: 0;">
                         <input type="text" name="keyword" class="form-control" placeholder="Cari" required>
                         <div class="input-group-btn">
@@ -71,14 +71,14 @@
                   	$deskripsi="";
                   ?>
                <div style="margin-top: -5px;">
-                  <a href="<?php echo base_url('varietas/spesifikasiVarietas/').urlencode(strtolower($varside->nama_varietas));?>" style="color:black;text-decoration-line: none;">
+                  <a href="<?php echo base_url('index.php/varietas/spesifikasiVarietas/').urlencode(strtolower($varside->nama_varietas));?>" style="color:black;text-decoration-line: none;">
                      <p style="color:rgb(242,97,5);font-size: 15px;margin-bottom: 5px;"><?php echo $varside->nama_varietas; ?></p>
                      <div class="row">
                         <div class="col-xs-5 col-sm-5 col-lg-5">
                            <?php 
                               if(empty($varside->file_gambar)){
                               ?>
-                           <img src="<?php echo base_url() ?>item img/gambar/Edited/serat.jpg ?>" alt="" style="width: 115px;">
+                           <img src="<?php echo base_url() ?>item img/gambar/Edited/noImg.jpg ?>" alt="" style="width: 115px;">
                            <?php
                               } else{?>
                            <img src="<?php echo base_url() ?>item img/gambar/Edited/<?php echo $varside->file_gambar; ?>" alt="" style="width: 115px;">

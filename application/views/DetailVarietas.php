@@ -17,8 +17,8 @@
          <div class="row">
             <div class="col-sm-9 col-lg-9">
                <ul class="breadcrumb" style="margin-bottom: 0px;margin-top: 13px;">
-                  <li><a href="<?php echo base_url() ?>">Beranda</a></li>
-                  <li><a href="<?php echo base_url() ?>#serat">Tanaman Serat</a></li>
+                  <li><a href="<?php echo base_url('index.php') ?>">Beranda</a></li>
+                  <!-- <li><a href="<?php echo base_url('index.php') ?>#tanamanserat">Tanaman Serat</a></li> -->
                   <li class="active">Varietas</li>
                </ul>
                <hr style="border-color: black">
@@ -51,15 +51,15 @@
                         <div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
                            <span style="font-size: 12px;">Bagikan &nbsp</span>
                            <!-- Share link FB -->
-                           <a id="button" onclick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $value->nama_serat; ?>&amp;p[summary]=<?php echo substr($value->deskripsi_serat, 0, 25);?>&amp;p[url]=<?php echo base_url(); ?>&amp;&p[images][0]=<?php echo base_url() ?>item img/serat/<?php echo $value->gambar; ?>', 'sharer', 'toolbar=0,status=0,width=550,height=400');" target="_parent" href="javascript: void(0)">
+                           <a id="button" onclick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $value->nama_serat; ?>&amp;p[summary]=<?php echo substr($value->deskripsi_serat, 0, 25);?>&amp;p[url]=<?php echo base_url('index.php'); ?>&amp;&p[images][0]=<?php echo base_url() ?>item img/serat/<?php echo $value->gambar; ?>', 'sharer', 'toolbar=0,status=0,width=550,height=400');" target="_parent" href="javascript: void(0)">
                            <span><img src="<?php echo base_url() ?>item img/fb.png" /></span>
                            </a>
                            <!-- Share link Twitter -->
-                           <a class="twitter popup" href="http://twitter.com/share?source=sharethiscom&text=<?php echo "Tanaman Serat : ".$value->nama_serat;?>&url=<?php echo base_url(); ?>&via=berbagiyuks" target="blank">
-                           <span><img src="<?php echo base_url() ?>item img/twitter.png" /></span>
+                           <a class="twitter popup" href="http://twitter.com/share?source=sharethiscom&text=<?php echo "Tanaman Serat : ".$value->nama_serat;?>&url=<?php echo base_url('index.php'); ?>&via=berbagiyuks" target="blank">
+                           <span><img src="<?php echo base_url('index.php') ?>item img/twitter.png" /></span>
                            </a>
                            <!-- Share link Google -->
-                           <a href="javascript:void(0);" onclick="popUp=window.open('https://plus.google.com/share?url=<?php echo base_url('varietas/detail/').$value->nama_serat; ?> ','popupwindow','scrollbars=yes,width=800,height=400');popUp.focus();return false">
+                           <a href="javascript:void(0);" onclick="popUp=window.open('https://plus.google.com/share?url=<?php echo base_url('index.php/varietas/detail/').$value->nama_serat; ?> ','popupwindow','scrollbars=yes,width=800,height=400');popUp.focus();return false">
                            <span><img src="<?php echo base_url() ?>item img/gplus.png" /></span>
                            </a>
                         </div>
@@ -77,7 +77,7 @@
                          ?>
                      <div class="col-xs-12 col-sm-4 col-lg-4">
                         <div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);">
-                           <a href="<?php echo base_url('varietas/spesifikasiVarietas/').urlencode(strtolower($row->nama_varietas));?>" style="text-decoration-line: none;">
+                           <a href="<?php echo base_url('index.php/varietas/spesifikasiVarietas/').urlencode(strtolower($row->nama_varietas));?>" style="text-decoration-line: none;">
                               <?php 
                                  if (empty($row->file_gambar)) { ?>
                               <img src="<?php echo base_url() ?>item img/gambar/Edited/noImg.jpg ?>" alt="" style="width: 100%;">
@@ -106,7 +106,7 @@
                               ?>
                            <br>							
                            <div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-                              <a href="<?php echo base_url('varietas/spesifikasiVarietas/').urlencode(strtolower($row->nama_varietas));?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+                              <a href="<?php echo base_url('index.php/varietas/spesifikasiVarietas/').urlencode(strtolower($row->nama_varietas));?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
                            </div>
                         </div>
                      </div>
@@ -143,7 +143,7 @@
                <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
-                  <form method="get" action="<?php echo base_url('pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
+                  <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
                      <div class="input-group" style="z-index: 0;">
                         <input type="text" name="keyword" class="form-control" placeholder="Cari" required>
                         <div class="input-group-btn">
@@ -154,7 +154,7 @@
                      </div>
                   </form>
                </div>
-               <a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;">
+               <a href="<?php echo base_url('index.php/leaflet') ?>" style="text-decoration-line:none;">
                   <h3 class="text-left" style="color:black;">Leaflet</h3>
                </a>
                <hr style="border-color: black">

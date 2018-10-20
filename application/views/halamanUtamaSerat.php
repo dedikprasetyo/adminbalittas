@@ -17,7 +17,7 @@
          <nav class="navbar navbar-inverse navbar-fixed-top navbarHover">
             <div class="container-fluid">
                <div class="navbar-header" style="margin-top: 5px; margin-bottom: 3px;">		
-                  <a href="<?php echo base_url() ?>"><img src="item img/logoBalittas.png" style="width:280px;margin-top: -5px;margin-bottom: -6px;margin-left: 5px;"></a>
+                  <a href="<?php echo base_url('index.php') ?>"><img src="item img/logoBalittas.png" style="width:280px;margin-top: -5px;margin-bottom: -6px;margin-left: 5px;"></a>
                   <button type="botton" class="navbar-toggle" data-toggle="collapse" data-target="#main" style="margin-top: 10px;">
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
@@ -33,20 +33,20 @@
                            <div class="container-fluid">
                               <div class="row">
                                  <div class="col-sm-6 col-lg-6">
-                                    <a href="<?php echo base_url('varietas/detail/kapas') ?>" class="halaman" style="margin-top: 10px;">Kapas</a>
+                                    <a href="<?php echo base_url('index.php/varietas/detail/kapas') ?>" class="halaman" style="margin-top: 10px;">Kapas</a>
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('varietas/detail/kapuk') ?>" class="halaman">Kapuk</a>
+                                    <a href="<?php echo base_url('index.php/varietas/detail/kapuk') ?>" class="halaman">Kapuk</a>
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('varietas/detail/kenaf') ?>" class="halaman">Kenaf</a>
+                                    <a href="<?php echo base_url('index.php/varietas/detail/kenaf') ?>" class="halaman">Kenaf</a>
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('varietas/detail/abaka') ?>" class="halaman" style="margin-bottom: 10px;">Abaka</a>
+                                    <a href="<?php echo base_url('index.php/varietas/detail/abaka') ?>" class="halaman" style="margin-bottom: 10px;">Abaka</a>
                                  </div>
                                  <div class="col-sm-6 col-lg-6">
-                                    <a href="<?php echo base_url('varietas/detail/rami') ?>" class="halaman" style="margin-top:10px;">Rami</a>	
+                                    <a href="<?php echo base_url('index.php/varietas/detail/rami') ?>" class="halaman" style="margin-top:10px;">Rami</a>	
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('varietas/detail/rosela') ?>" class="halaman">Rosela</a>	
+                                    <a href="<?php echo base_url('index.php/varietas/detail/rosela') ?>" class="halaman">Rosela</a>	
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('varietas/detail/sisal') ?>" class="halaman">Sisal</a>	
+                                    <a href="<?php echo base_url('index.php/varietas/detail/sisal') ?>" class="halaman">Sisal</a>	
                                  </div>
                               </div>
                            </div>
@@ -58,18 +58,18 @@
                            <div class="container-fluid">
                               <div class="row">
                                  <div class="col-sm-6 col-lg-6">
-                                    <a href="<?php echo base_url('budidaya/budidayatanamanserat/kapas') ?>" class="halaman" style="margin-top: 10px;">Budidaya Kapas</a>
+                                    <a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kapas') ?>" class="halaman" style="margin-top: 10px;">Budidaya Kapas</a>
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('budidaya/budidayatanamanserat/kapuk') ?>" class="halaman">Budidaya Kapuk</a>
+                                    <a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kapuk') ?>" class="halaman">Budidaya Kapuk</a>
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('budidaya/budidayatanamanserat/kenaf') ?>" class="halaman" style="margin-bottom: 10px;">Budidaya Kenaf</a>
+                                    <a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kenaf') ?>" class="halaman" style="margin-bottom: 10px;">Budidaya Kenaf</a>
                                  </div>
                                  <div class="col-sm-6 col-lg-6">
-                                    <a href="<?php echo base_url('budidaya/budidayatanamanserat/rami') ?>" class="halaman" style="margin-top:10px;">Budidaya Rami</a>	
+                                    <a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/rami') ?>" class="halaman" style="margin-top:10px;">Budidaya Rami</a>	
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('budidaya/budidayatanamanserat/rosela') ?>" class="halaman">Budidaya Rosela</a>	
+                                    <a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/rosela') ?>" class="halaman">Budidaya Rosela</a>	
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('budidaya/budidayatanamanserat/sisal') ?>" class="halaman">Budidaya Sisal</a>	
+                                    <a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/sisal') ?>" class="halaman">Budidaya Sisal</a>	
                                  </div>
                               </div>
                            </div>
@@ -82,13 +82,13 @@
                               <div class="row">
                                  <div class="col-sm-12 col-lg-12">
                                     <!-- <a href="#produk" class="halaman" style="margin-top: 10px;">Benih</a>	 -->
-                                    <a href="<?php echo base_url('produk/benih')?>" style="margin-top: 10px;">Benih</a>	
+                                    <a href="<?php echo base_url('index.php/produk/benih')?>" style="margin-top: 10px;">Benih</a>	
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('produk/alsin') ?>" class="halaman">Alat dan Mesin</a>
+                                    <a href="<?php echo base_url('index.php/produk/alsin') ?>" class="halaman">Alat dan Mesin</a>
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('produk/produk3') ?>">Formula (Coming Soon)</a>
+                                    <a href="<?php echo base_url('#') ?>">Formula (Coming Soon)</a>
                                     <hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-                                    <a href="<?php echo base_url('produk/produk4') ?>" style="margin-bottom: 10px;">Produk Hilir (Coming Soon)</a>
+                                    <a href="<?php echo base_url('#') ?>" style="margin-bottom: 10px;">Produk Hilir (Coming Soon)</a>
                                  </div>
                               </div>
                            </div>
@@ -114,20 +114,20 @@
                      <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Budidaya Tanaman Serat<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/kapas') ?>">Budidaya Kapas</a></li>
-                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/kapuk') ?>">Budidaya Kapuk</a></li>
-                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/kenaf') ?>">Budidaya Kenaf</a></li>
-                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/rami') ?>">Budidaya Rami</a></li>
-                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/rosela') ?>">Budidaya Rosela</a></li>
-                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/sisal') ?>">Budidaya Sisal</a></li>
-                           <li><a href="<?php echo base_url('budidaya/budidayatanamanserat/abaka') ?>">Budidaya Abaka</a></li>
+                           <li><a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kapas') ?>">Budidaya Kapas</a></li>
+                           <li><a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kapuk') ?>">Budidaya Kapuk</a></li>
+                           <li><a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kenaf') ?>">Budidaya Kenaf</a></li>
+                           <li><a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/rami') ?>">Budidaya Rami</a></li>
+                           <li><a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/rosela') ?>">Budidaya Rosela</a></li>
+                           <li><a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/sisal') ?>">Budidaya Sisal</a></li>
+                           <li><a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/abaka') ?>">Budidaya Abaka</a></li>
                         </ul>
                      </li>
                      <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Produk<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                           <li><a href="<?php echo base_url('produk/benih') ?>">Benih</a></li>
-                           <li><a href="<?php echo base_url('produk/alsin') ?>">Alat dan Mesin</a></li>
+                           <li><a href="<?php echo base_url('index.php/produk/benih') ?>">Benih</a></li>
+                           <li><a href="<?php echo base_url('index.php/produk/alsin') ?>">Alat dan Mesin</a></li>
                            <li><a href="<?php echo base_url() ?>">Formula (Coming Soon)</a></li>
                            <li><a href="<?php echo base_url() ?>">Produk Hilir (Coming Soon)</a></li>
                         </ul>
@@ -161,7 +161,7 @@
                         ?>
                      <div class="col-xs-12 col-sm-4 col-lg-4" >
                         <div class="thumbnail thumbku" style="box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);" id="<?php echo $no++ ?>">
-                           <a href="<?php echo base_url('varietas/detail/').urlencode(strtolower($row->nama_serat));?>" style="text-decoration-line: none;">
+                           <a href="<?php echo base_url('index.php/varietas/detail/').urlencode(strtolower($row->nama_serat));?>" style="text-decoration-line: none;">
                               <img src="<?php echo base_url() ?>item img/serat/<?php echo $row->gambar; ?>" alt="" style="width: 100%;">
                               <h4 style="color:#fece00;">Komoditas Serat <b><?php echo $row->nama_serat; ?></b></h4>
                            </a>
@@ -176,7 +176,7 @@
                               ?> -->
                            <br>							
                            <div style="text-align: right; margin-bottom: 10px;margin-right: 10px;">
-                              <a href="<?php echo base_url('varietas/detail/').urlencode(strtolower($row->nama_serat));?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
+                              <a href="<?php echo base_url('index.php/varietas/detail/').urlencode(strtolower($row->nama_serat));?>" style="text-decoration-line: none;" class="hoverThumbnail"><i>Selengkapnya</i></a>
                            </div>
                         </div>
                      </div>
@@ -193,7 +193,7 @@
                   <h3 class="text-left" style="color:black;font-family: Minion Pro;margin-top: 36px; ">Pencarian</h3>
                   <hr style="border-color: grey;margin-top: -8px;">
                   <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
-                     <form method="get" action="<?php echo base_url('pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
+                     <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
                         <div class="input-group" style="z-index: 0;">
                            <input type="text" name="keyword" class="form-control" placeholder="Cari" required>
                            <div class="input-group-btn">
@@ -204,7 +204,7 @@
                         </div>
                      </form>
                   </div>
-                  <a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;">
+                  <a href="<?php echo base_url('index.php/leaflet') ?>" style="text-decoration-line:none;">
                      <h3 class="text-left" style="color:black;font-family: Minion Pro">Leaflet</h3>
                   </a>
                   <hr style="border-color: grey;margin-top: -8px;">
@@ -242,7 +242,7 @@
                   <div class="row">
                      <?php foreach($budidaya as $name) {?>
                      <div class="col-xs-12 col-sm-3 col-lg-3">
-                        <a href="<?php echo base_url('budidaya/budidayatanamanserat/').urlencode(strtolower($name->nama_serat)); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
+                        <a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/').urlencode(strtolower($name->nama_serat)); ?>" style="text-decoration-line: none;" class="teknologiBudidaya">
                            <h4 style="font-family: Minion Pro; margin-left: 10px;">Budidaya <?php echo $name->nama_serat; ?> </h4>
                            <hr style="margin:-6px 0px 5px 5px; border-color: orange;">
                            <div class="overlayhr"></div>
@@ -272,7 +272,7 @@
                <br><br>
                <div class="row text-center">
                   <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">
-                     <a href="<?php echo base_url('produk/benih') ?>" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
+                     <a href="<?php echo base_url('index.php/produk/benih') ?>" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
                         <div class="thumbnail text-center produk" style="background-color: rgba(28,69,26,0); border-style: none;" >
                            <img src="item img/hazelnut.png" style="width: 40%;" col="g">
                            <img src="item img/hazelnutY.png" style="width: 40%; display:none;" col="b">
@@ -283,7 +283,7 @@
                      </a>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">
-                     <a href="<?php echo base_url() ?>produk/alsin" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
+                     <a href="<?php echo base_url() ?>index.php/produk/alsin" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
                         <div class="thumbnail text-center produk" style="background-color: rgba(28,69,26,0); border-style: none">
                            <img src="item img/tools.png" style="width: 40%" col="g">
                            <img src="item img/toolsY.png" style="width: 40%; display:none;" col="b">
@@ -294,7 +294,7 @@
                      </a>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">
-                     <a href="<?php echo base_url() ?>produk/produk1" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
+                     <a href="<?php echo base_url() ?>#" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
                         <div class="thumbnail text-center produk" style="background-color: rgba(28,69,26,0); border-style: none">
                            <img src="item img/flask.png" style="width: 40%" col="g">
                            <img src="item img/flaskY.png" style="width: 40%; display:none;" col="b">
@@ -305,7 +305,7 @@
                      </a>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-lg-3 no-touch mroduk">
-                     <a href="<?php echo base_url() ?>produk/produk2" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
+                     <a href="<?php echo base_url() ?>#" style="text-decoration-line: none;" onmouseover="hvr(this, 'in')" onmouseleave="hvr(this, 'out')">
                         <div class="thumbnail text-center produk" style="background-color: rgba(28,69,26,0); border-style: none">
                            <img src="item img/pipe.png" style="width: 40%" col="g">
                            <img src="item img/pipeY.png" style="width: 40%; display:none;" col="b">

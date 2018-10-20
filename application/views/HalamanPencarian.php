@@ -19,14 +19,14 @@
 		<!-- content -->
 		<div class="container">			
 				<ul class="breadcrumb" style="margin: -6px 0px -10px -15px;">
-					  	<li><a href="<?php echo base_url() ?>">Beranda</a></li>
+					  	<li><a href="<?php echo base_url('index.php') ?>">Beranda</a></li>
 					  	<li class="active">Pencarian</li> 
 				</ul>			
 				<br><br>										
 					<!-- <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
 					<hr style="border-color: grey;margin-top: -8px;"> -->
 				<div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px; width: 60%;">
-					<form method="get" action="<?php echo base_url('pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
+					<form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
 						<div class="input-group" style="z-index: 0;">
 							<input type="text" name="keyword" class="form-control" placeholder="Cari" id="fieldCari" value="<?php echo $keyword; ?>" required>
 							<div class="input-group-btn" >
@@ -49,7 +49,7 @@
 						if($tempSerat!=$cari->nama_serat) {
 						?>
 							<div class="pencarian">
-								<a style="text-decoration-line:none; color:red;" href="<?php echo base_url('varietas/detail/').urlencode(strtolower($cari->nama_serat));?>"><h3><?php echo $cari->nama_serat; ?></h3></a>
+								<a style="text-decoration-line:none; color:red;" href="<?php echo base_url('index.php/varietas/detail/').urlencode(strtolower($cari->nama_serat));?>"><h3><?php echo $cari->nama_serat; ?></h3></a>
 								<?php 
 									$deskripsi="";
 									if(!empty($cari->deskripsi_serat)){
@@ -61,7 +61,7 @@
 									}
 								 ?>
 								 <div>
-								 <a href="<?php echo base_url('pencarian')?>?keyword=%23serat" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;Serat</span></a>	
+								 <a href="<?php echo base_url('index.php/pencarian')?>?keyword=%23serat" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;Serat</span></a>	
 								<hr style="margin-top: -2px;">
 								</div>
 							</div>
@@ -79,7 +79,7 @@
 							if($tempVarietas!=$cari->nama_varietas){
 							?>
 								<div class="pencarian">
-									<a style="text-decoration-line:none; color:red;" href="<?php echo base_url('varietas/spesifikasiVarietas/').urlencode(strtolower($cari->nama_varietas));?>"><h3><?php echo $cari->nama_varietas; ?></h3></a>
+									<a style="text-decoration-line:none; color:red;" href="<?php echo base_url('index.php/varietas/spesifikasiVarietas/').urlencode(strtolower($cari->nama_varietas));?>"><h3><?php echo $cari->nama_varietas; ?></h3></a>
 									<?php 
 										$deskripsi="";
 										if(!empty($cari->deskripsi_varietas)){
@@ -91,7 +91,7 @@
 										}
 									 ?>
 									 <div>
-								 <a href="<?php echo base_url('pencarian')?>?keyword=%23varietas" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;varietas</span></a>	
+								 <a href="<?php echo base_url('index.php/pencarian')?>?keyword=%23varietas" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;varietas</span></a>	
 								<hr style="margin-top: -2px;">
 								</div>
 								</div>
@@ -116,7 +116,7 @@
 								</div>
 								
 								<div>
-								 <a href="<?php echo base_url('leaflet')?>" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;leaflet</span></a>	
+								 <a href="<?php echo base_url('index.php/leaflet')?>" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;leaflet</span></a>	
 								<hr style="margin-top: -2px;">
 								</div>
 							</div>
@@ -149,7 +149,7 @@
 						if($tempBudidaya!=$cari->judul) {
 						?>
 							<div class="pencarian">
-								<a style="text-decoration-line:none; color:red;" href="<?php echo base_url('budidaya/budidayatanamanserat/').urlencode(strtolower($cari->nama_serat)); ?>"><h3><?php echo $cari->judul; ?></h3></a>
+								<a style="text-decoration-line:none; color:red;" href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/').urlencode(strtolower($cari->nama_serat)); ?>"><h3><?php echo $cari->judul; ?></h3></a>
 								<?php 
 									$cuplikan="";
 									if(!empty($cari->cuplikan_monograf)){
@@ -161,7 +161,7 @@
 									}
 								 ?>
 								 <div>
-								 <a href="<?php echo base_url('pencarian')?>?keyword=%23budidaya" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;Budidaya</span></a>	
+								 <a href="<?php echo base_url('index.php/pencarian')?>?keyword=%23budidaya" style="text-decoration-line: none;"><span style="color: #fece00; font-style: italic;"><p class="glyphicon glyphicon-tags small"></p>&nbsp;&nbsp;Budidaya</span></a>	
 								<hr style="margin-top: -2px;">
 								</div>
 							</div>

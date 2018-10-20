@@ -307,7 +307,7 @@
                <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
-                  <form method="get" action="<?php echo base_url('pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
+                  <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
                      <div class="input-group" style="z-index: 0;">
                         <input type="text" name="keyword" class="form-control" placeholder="Cari" required>
                         <div class="input-group-btn">
@@ -318,7 +318,7 @@
                      </div>
                   </form>
                </div>
-               <a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;">
+               <a href="<?php echo base_url('index.php/leaflet') ?>" style="text-decoration-line:none;">
                   <h3 class="text-left" style="color:black;font-family: Minion Pro">Leaflet</h3>
                </a>
                <hr style="border-color: grey;margin-top: -8px;">

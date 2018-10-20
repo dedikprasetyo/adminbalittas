@@ -14,7 +14,7 @@
 			$row=$this->m_budidaya->getJumlahDetailMonografBerdasarkanIDSerat($idSerat);	
 			// var_dump($row);
 			// 	//ngasih pagination
-			$config['base_url'] = base_url()."budidaya/budidayaTanamanSerat/$namaSerat";
+			$config['base_url'] = base_url()."index.php/budidaya/budidayaTanamanSerat/$namaSerat";
 			$config['total_rows'] = $row;
 			$config['per_page'] = 3;
 			//ngatur jumlah page yg tampil

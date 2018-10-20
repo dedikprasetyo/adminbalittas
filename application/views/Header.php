@@ -31,7 +31,7 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top navbarHover">
 				<div class="container-fluid">
 				    <div class="navbar-header" style="margin-top: 5px; margin-bottom: 3px;">						    
-				      <a href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>item img/logoBalittas.png" style="width:280px;margin-top: 0px;margin-bottom: -6px;margin-left: 5px;"></a>
+				      <a href="<?php echo base_url('index.php') ?>"><img src="<?php echo base_url() ?>item img/logoBalittas.png" style="width:280px;margin-top: 0px;margin-bottom: -6px;margin-left: 5px;"></a>
 				      <button type="botton" class="navbar-toggle" data-toggle="collapse" data-target="#main" style="margin-top: 10px;">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -48,20 +48,20 @@
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-6 col-lg-6">
-								       			<a href="<?php echo base_url('varietas/detail/kapas') ?>" class="halaman" style="margin-top: 10px;">Kapas</a>
+								       			<a href="<?php echo base_url('index.php/varietas/detail/kapas') ?>" class="halaman" style="margin-top: 10px;">Kapas</a>
 								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								       			<a href="<?php echo base_url('varietas/detail/kapuk') ?>" class="halaman">Kapuk</a>
+								       			<a href="<?php echo base_url('index.php/varietas/detail/kapuk') ?>" class="halaman">Kapuk</a>
 								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								       			<a href="<?php echo base_url('varietas/detail/kenaf') ?>" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
+								       			<a href="<?php echo base_url('index.php/varietas/detail/kenaf') ?>" class="halaman" style="margin-bottom: 10px;">Kenaf</a>
 								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								       			<a href="<?php echo base_url('varietas/detail/abaka') ?>" class="halaman" style="margin-bottom: 10px;">Abaka</a>
+								       			<a href="<?php echo base_url('index.php/varietas/detail/abaka') ?>" class="halaman" style="margin-bottom: 10px;">Abaka</a>
 								  			</div>
 											<div class="col-sm-6 col-lg-6">
-											    <a href="<?php echo base_url('varietas/detail/rami') ?>" class="halaman" style="margin-top:10px;">Rami</a>	
+											    <a href="<?php echo base_url('index.php/varietas/detail/rami') ?>" class="halaman" style="margin-top:10px;">Rami</a>	
 												<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-												<a href="<?php echo base_url('varietas/detail/rosela') ?>" class="halaman">Rosela</a>	
+												<a href="<?php echo base_url('index.php/varietas/detail/rosela') ?>" class="halaman">Rosela</a>	
 										  		<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-										  		<a href="<?php echo base_url('varietas/detail/sisal') ?>" class="halaman">Sisal</a>	
+										  		<a href="<?php echo base_url('index.php/varietas/detail/sisal') ?>" class="halaman">Sisal</a>	
 										  	</div>
 										</div>
 									  </div>							  	
@@ -73,18 +73,18 @@
 								  	<div class="container-fluid">
 								  	<div class="row">
 								  			<div class="col-sm-6 col-lg-6">
-								       			<a href="<?php echo base_url('budidaya/budidayatanamanserat/kapas') ?>" class="halaman" style="margin-top: 10px;">Budidaya Kapas</a>
+								       			<a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kapas') ?>" class="halaman" style="margin-top: 10px;">Budidaya Kapas</a>
 								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								       			<a href="<?php echo base_url('budidaya/budidayatanamanserat/kapuk') ?>" class="halaman">Budidaya Kapuk</a>
+								       			<a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kapuk') ?>" class="halaman">Budidaya Kapuk</a>
 								       			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								       			<a href="<?php echo base_url('budidaya/budidayatanamanserat/kenaf') ?>" class="halaman" style="margin-bottom: 10px;">Budidaya Kenaf</a>
+								       			<a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/kenaf') ?>" class="halaman" style="margin-bottom: 10px;">Budidaya Kenaf</a>
 								  			</div>
 											<div class="col-sm-6 col-lg-6">
-											    <a href="<?php echo base_url('budidaya/budidayatanamanserat/rami') ?>" class="halaman" style="margin-top:10px;">Budidaya Rami</a>	
+											    <a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/rami') ?>" class="halaman" style="margin-top:10px;">Budidaya Rami</a>	
 												<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-												<a href="<?php echo base_url('budidaya/budidayatanamanserat/rosela') ?>" class="halaman">Budidaya Rosela</a>	
+												<a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/rosela') ?>" class="halaman">Budidaya Rosela</a>	
 										  		<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-										  		<a href="<?php echo base_url('budidaya/budidayatanamanserat/sisal') ?>" class="halaman">Budidaya Sisal</a>	
+										  		<a href="<?php echo base_url('index.php/budidaya/budidayatanamanserat/sisal') ?>" class="halaman">Budidaya Sisal</a>	
 										  	</div>
 										</div>
 								  	</div>
@@ -96,9 +96,9 @@
 								  	<div class="container-fluid">
 								  		<div class="row">
 								  			<div class="col-sm-12 col-lg-12">
-								  				<a href="<?php echo base_url('produk/benih') ?>" style="margin-top: 10px;">Benih</a>	
+								  				<a href="<?php echo base_url('index.php/produk/benih') ?>" style="margin-top: 10px;">Benih</a>	
 								  				<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
-								  				<a href="<?php echo base_url('produk/alsin') ?>">Alat dan Mesin</a>
+								  				<a href="<?php echo base_url('index.php/produk/alsin') ?>">Alat dan Mesin</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
 							          			<a href="#">Formula (Coming Soon)</a>
 							          			<hr style="margin: 4px 0px 5px 0px; border-color: rgba(28,69,26,1);">
@@ -201,8 +201,8 @@
 				    	 <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Benih</h1>
 				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Benih
 				    <?php } else {?>
-				     	<h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Leaflet</h1>
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Leaflet
+				     	<h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Alat dan Mesin</h1>
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Alat dan Mesin
 				    <?php } ?>
 				     <!-- <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Detail Varietas</h1> -->
 				    <!-- <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Monograf</h1> -->
