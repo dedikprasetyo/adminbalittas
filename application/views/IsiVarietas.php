@@ -29,7 +29,7 @@
                      <div class="thumbnail" style=" border-radius: 5px; background-color: rgba(36,112,101,0.1);">
                         <?php 
                            if (empty($name->file_gambar)) { ?>
-                        <img src="<?php echo base_url() ?>item img/gambar/Edited/serat.jpg ?>" alt="" style="width: 100%;">
+                        <img src="<?php echo base_url() ?>item img/gambar/Edited/noImg.jpg ?>" alt="" style="width: 100%;">
                         <?php } else { ?>
                         <img src="<?php echo base_url() ?>item img/gambar/Edited/<?php echo $name->file_gambar; ?>" alt="" style="width: 100%;">
                         <?php

@@ -56,7 +56,7 @@
                            </a>
                            <!-- Share link Twitter -->
                            <a class="twitter popup" href="http://twitter.com/share?source=sharethiscom&text=<?php echo "Tanaman Serat : ".$value->nama_serat;?>&url=<?php echo base_url('index.php'); ?>&via=berbagiyuks" target="blank">
-                           <span><img src="<?php echo base_url('index.php') ?>item img/twitter.png" /></span>
+                           <span><img src="<?php echo base_url() ?>item img/twitter.png" /></span>
                            </a>
                            <!-- Share link Google -->
                            <a href="javascript:void(0);" onclick="popUp=window.open('https://plus.google.com/share?url=<?php echo base_url('index.php/varietas/detail/').$value->nama_serat; ?> ','popupwindow','scrollbars=yes,width=800,height=400');popUp.focus();return false">
