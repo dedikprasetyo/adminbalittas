@@ -56,7 +56,7 @@
 			$dataHeader["JudulLeaflet"]="Leaflet";
 			$data['varietas'] = $this->m_varietas->selectVarietasOnSide();
 			$data['leafletsemua']=$this->m_leaflet->paginationAllLeaflet($config['per_page'], $start);
-			$this->load->view('Header');
+			$this->load->view('Header', $dataHeader);
 			$this->load->view('DetailLeafletSerat', $data);
 			$this->load->view('Footer', $counter);
 		}

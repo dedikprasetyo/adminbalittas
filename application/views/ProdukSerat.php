@@ -22,9 +22,7 @@
                   <li><a href="<?php echo base_url() ?>">Beranda</a></li>
                   <li class="active">Produk Benih</li>
                </ul>
-               <a href="" style="text-decoration-line:none;">
                   <h3 class="text-left" style="color:black; font-family: Minion Pro">Ketersediaan Benih</h3>
-               </a>
                <hr style="border-color: grey;margin-top: -8px;">
                <!-- <div class="row">
                  <div class="col-xs-4 col-sm-4 col-lg-2">

@@ -199,10 +199,13 @@
 				    </h1>
 				    <?php } else if(!empty($JudulBenih)){?>
 				    	 <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Benih</h1>
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Benih
-				    <?php } else {?>
-				     	<h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Alat dan Mesin</h1>
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Alat dan Mesin
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Benih</h1>
+				    <?php } else if(!empty($JudulLeaflet)){?>
+				     	<h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Leaflet</h1>
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Leaflet</h1>
+				    <?php } else{?>
+						<h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Alat dan Mesin</h1>
+				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Alat dan Mesin </h1>
 				    <?php } ?>
 				     <!-- <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Detail Varietas</h1> -->
 				    <!-- <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Monograf</h1> -->
