@@ -43,7 +43,7 @@
                            <span style="margin-left: 5px;" class="label label-warning">
                               <p class="glyphicon glyphicon-time"> <?php echo $name->waktu_upload; ?> </p>
                            </span>
-                           <h4 style="color:rgb(242,97,5);font-size: 24px;"><?php echo $name->nama_varietas; ?></h4>
+                           <h4 style="font-family: Minion Pro; font-weight: bold;color:rgb(242,97,5);font-size: 24px;"><?php echo $name->nama_varietas; ?></h4>
                            <?php if(empty($name->deskripsi_varietas)){?>
                            <p style="text-indent: 0.5in; text-align: justify; font-style: italic;">(Belum ada deskripsi)</p>
                            <?php }else{?>
@@ -133,7 +133,7 @@
             </div>
             <div class="col-sm-3 col-lg-3">
                <br>
-               <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
+               <h3 class="text-left" style="color:black;font-family: Minion Pro; font-weight: bold;">Pencarian</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
                   <form method="get" action="<?php echo base_url('pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
@@ -148,7 +148,7 @@
                   </form>
                </div>
                <a href="<?php echo base_url('leaflet') ?>" style="text-decoration-line:none;">
-                  <h3 class="text-left" style="color:black;">Leaflet</h3>
+                  <h3 class="text-left" style="font-family: Minion Pro; font-weight: bold;color:black;">Leaflet</h3>
                </a>
                <hr style="border-color: black">
                <?php 

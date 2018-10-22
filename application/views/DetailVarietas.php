@@ -33,7 +33,7 @@
                         <div class="container-fluid">
                            <img src="<?php echo base_url() ?>item img/serat/<?php echo $value->gambar; ?>" alt="" style="width: 100%;">
                            <br>
-                           <h4 style="color:rgb(242,97,5);font-size: 24px;"><?php echo $value->nama_serat; ?></h4>
+                           <h4 style="font-family: Minion Pro; font-weight: bold;color:rgb(242,97,5);font-size: 24px;"><?php echo $value->nama_serat; ?></h4>
                           <?php 
                            if(!empty($value->deskripsi_serat)){
                                  $deskripsi='<p style="text-indent: 0.5in; text-align: justify;">'.$value->deskripsi_serat.'</p>';
@@ -67,7 +67,7 @@
                   </div>
                   <!-- Content masing - masing varietas -->
                   <div class="container-fluid" style="background-color: #eee;">
-                     <h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 20px;">Varietas <?php echo $value->nama_serat; ?></h4>
+                     <h4 style="font-family: Minion Pro; font-weight: bold;color:rgb(242,97,5);font-size: 24px; margin-left: 20px;">Varietas <?php echo $value->nama_serat; ?></h4>
                      <hr style="border-color: rgb(242,97,5);margin-top: -10px;">
                      <?php 
                      $deskripsi="";
@@ -140,7 +140,7 @@
             </div>
             <div class="col-sm-3 col-lg-3">
                <br>
-               <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
+               <h3 class="text-left" style="color:black;font-family: Minion Pro; font-weight: bold;">Pencarian</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
                   <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
@@ -155,7 +155,7 @@
                   </form>
                </div>
                <a href="<?php echo base_url('index.php/leaflet') ?>" style="text-decoration-line:none;">
-                  <h3 class="text-left" style="color:black;">Leaflet</h3>
+                  <h3 class="text-left" style="font-family: Minion Pro; font-weight: bold;color:black;">Leaflet</h3>
                </a>
                <hr style="border-color: black">
                <?php 

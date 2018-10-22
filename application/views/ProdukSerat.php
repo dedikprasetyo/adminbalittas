@@ -22,9 +22,7 @@
                   <li><a href="<?php echo base_url() ?>">Beranda</a></li>
                   <li class="active">Produk Benih</li>
                </ul>
-               <a href="" style="text-decoration-line:none;">
-                  <h3 class="text-left" style="color:black; font-family: Minion Pro">Ketersediaan Benih</h3>
-               </a>
+                  <h3 class="text-left" style="color:black; font-family: Minion Pro; font-weight: bold;">Ketersediaan Benih</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <!-- <div class="row">
                  <div class="col-xs-4 col-sm-4 col-lg-2">
@@ -147,7 +145,7 @@
                         }
                </script>
 
-               <h3>Distribusi Benih</h3>
+               <h3 style="font-family: Minion Pro; font-weight: bold;">Distribusi Benih</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <!-- Label Filter -->
                <div class="row" >
@@ -304,7 +302,7 @@
             </div>
             <div class="col-sm-3 col-lg-3">
                <br>
-               <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
+               <h3 class="text-left" style="color:black;font-family: Minion Pro; font-weight: bold;">Pencarian</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
                   <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
@@ -319,7 +317,7 @@
                   </form>
                </div>
                <a href="<?php echo base_url('index.php/leaflet') ?>" style="text-decoration-line:none;">
-                  <h3 class="text-left" style="color:black;font-family: Minion Pro">Leaflet</h3>
+                  <h3 class="text-left" style="color:black;font-family: Minion Pro; font-weight: bold;">Leaflet</h3>
                </a>
                <hr style="border-color: grey;margin-top: -8px;">
                <?php 
