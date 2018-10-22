@@ -112,7 +112,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Tambah Data Serat</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/tambahSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <div class="form-group">
                 <label>Nama Serat</label>
@@ -155,7 +155,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Edit Data Serat</h4>`
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/editSerat'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <input hidden id="idSerat" name="idSerat">
               <div class="form-group">
@@ -382,7 +382,7 @@
                 <h4 class="modal-title" style="font-size: 18px;">Data Spesifikasi Varietas</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
               </div>
-                 <form action="<?php echo base_url('admin/editDesVarietas'); ?>" method="post" class="form-horizontal">
+                 <form action="<?php echo base_url('index.php/admin/editDesVarietas'); ?>" method="post" class="form-horizontal">
                     <input hidden id="idSpe" name="idVarietasss">
                     <input hidden id="jumlahAtr" name="jumlahAtr">
                     <div class="modal-body">                                         
@@ -467,7 +467,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Edit Data Varietas</h4>`
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editVarietas'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/editVarietas'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <input id="idSerat_id" name="idSerat" hidden>
               <input id="idVarietas_id" name="idVarietass" hidden>
@@ -594,7 +594,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Tambah Data Varietas</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahVarietas'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/tambahVarietas'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <div class="form-group">
                 <label>Nama Varietas</label>
@@ -880,7 +880,7 @@
                 <h4 class="modal-title" style="font-size: 18px;">Tambah Data Leaflet</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
               </div>
-                 <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahLeaflet');?>" method="post" class="form-horizontal" autocomplete="off">
+                 <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/tambahLeaflet');?>" method="post" class="form-horizontal" autocomplete="off">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nama Leaflet</label>
@@ -932,7 +932,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Edit Data Leaflet</h4>`
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editLeaflet'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/editLeaflet'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <input id="idleaflet" name="idleaflett" hidden>
               <input id="idgambar1" name="idimg1" hidden>
@@ -1098,7 +1098,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Tambah Data Budidaya</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahBudidaya'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/tambahBudidaya'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <div class="form-group">
                 <label>Komoditas</label>
@@ -1154,7 +1154,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Edit Data Budidaya</h4>`
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editBudidayaaaa'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/editBudidayaaaa'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <input hidden id="idSerat_id" name="idSerat">
               <input hidden id="idBudidaya_id" name="idBudidaya">
@@ -1385,7 +1385,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Tambah Data Stok Benih</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahStokBenihCuy'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/tambahStokBenihCuy'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <div class="form-group">
                 <label>Nama Benih</label>
@@ -1454,7 +1454,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Edit Data Stok Benih</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editStokBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/editStokBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
               <div class="modal-body">
               <div class="form-group">
                 <input hidden id="idstokben" name="idstokbenih">
@@ -1633,7 +1633,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Tambah Data Distribusi Benih</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahDistribusiBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/tambahDistribusiBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
               <div class="modal-body">
               <div class="form-group">
                 <label>Nama Benih</label>
@@ -1771,7 +1771,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Edit Data Distribusi Benih</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editDistribusiBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/editDistribusiBenih'); ?>" method="post" class="form-horizontal" autocomplete="off">
               <div class="modal-body">
               <input hidden id="idbendistri" name="idbenihdistribusibenih">
               <input hidden id="iddisben" name="iddistribusibenih">
@@ -1958,7 +1958,7 @@
                 <h4 class="modal-title" style="font-size: 18px;">Tambah Data Alat dan Mesin</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;">&times;</button>
               </div>
-                 <form enctype="multipart/form-data" action="<?php echo base_url('admin/tambahAlsin');?>" method="post" class="form-horizontal">
+                 <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/tambahAlsin');?>" method="post" class="form-horizontal">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nama Alat dan Mesin</label>
@@ -1998,7 +1998,7 @@
             <h4 class="modal-title" style="font-size: 18px;">Edit Data Alat dan Mesin</h4>`
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <form enctype="multipart/form-data" action="<?php echo base_url('admin/editAlsin'); ?>" method="post" class="form-horizontal" autocomplete="off">
+          <form enctype="multipart/form-data" action="<?php echo base_url('index.php/admin/editAlsin'); ?>" method="post" class="form-horizontal" autocomplete="off">
             <div class="modal-body">
               <input id="idalsin_id" name="idalsin" hidden>
               <input id="idgambaralsin1_id" name="idgambaralsin1" hidden>

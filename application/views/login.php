@@ -19,7 +19,7 @@
 			<div align="center" style="margin-top: 100px;">				
 				<div class="alert alert-warning fade in text-center" style="width: 40%;">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<p><strong>Password salah!</strong></p>
+					<p><strong>Username atau Password salah!</strong></p>
 				</div>
 			</div>
 			<?php  } ?>		
