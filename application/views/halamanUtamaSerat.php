@@ -151,7 +151,7 @@
                   <ul class="breadcrumb" style="margin: 10px 0px -10px -15px;">
                      <li class="active">Beranda</li>
                   </ul>
-                  <h3 class="text-left" style="color:black; font-family: Minion Pro">Tanaman Serat</h3>
+                  <h3 class="text-left" style="color:black; font-family: Minion Pro; font-weight: lighter;">Tanaman <strong>Serat</strong></h3>
                   <hr style="border-color: grey; margin-top: -8px;">
                   <div class="row">
                      <?php 
@@ -190,7 +190,7 @@
                   <br>
 
 
-                  <h3 class="text-left" style="color:black;font-family: Minion Pro;margin-top: 36px; ">Pencarian</h3>
+                  <h3 class="text-left" style="color:black;font-family: Minion Pro; font-weight: bold; margin-top: 36px; ">Pencarian</h3>
                   <hr style="border-color: grey;margin-top: -8px;">
                   <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
                      <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
@@ -205,7 +205,7 @@
                      </form>
                   </div>
                   <a href="<?php echo base_url('index.php/leaflet') ?>" style="text-decoration-line:none;">
-                     <h3 class="text-left" style="color:black;font-family: Minion Pro">Leaflet</h3>
+                     <h3 class="text-left" style="color:black;font-family: Minion Pro; font-weight: bold;">Leaflet</h3>
                   </a>
                   <hr style="border-color: grey;margin-top: -8px;">
                   <?php 
@@ -234,8 +234,8 @@
       <section class="budidaya" id="budidaya" style="padding-top: 30px;">
          <div class="container">
             <div class="row">
-               <div class="col-sm-3 col-lg-3">
-                  <h3 class="text-center" style="color:black;margin-top: 0px;font-family: Minion Pro;">Budidaya Tanaman Serat</h3>
+               <div class="col-sm-3 col-lg-3" style="margin-top: 9px;">
+                  <h3 class="text-center" style="color:black;margin-top: 0px;font-family: Minion Pro; font-weight: lighter;">Budidaya <strong>Tanaman Serat</strong></h3>
                   <p style="text-align:justify; ">Tanaman serat yaitu tumbuhan yang dibudidayakan dan diambil seratnya untuk keperluan manusia. Biasanya serat tumbuhan berasal dari buah, kulit, kayu, akar, pelepah atau daunnya. Serat tumbuhan/serat pangan; biasanya tersusun atas selulosa, hemiselulosa, dan kadang-kadang mengandung pula lignin.</p>
                </div>
                <div class="col-sm-9 col-lg-9">
@@ -267,7 +267,7 @@
          <div class="container-fluid" >
             <div class="container">
                <!-- Produk -->
-               <h3 class="text-center" style="color:black;font-family: Minion Pro;">Produk</h3>
+               <h3 class="text-center" style="color:black;font-family: Minion Pro; font-weight: bold;">Produk</h3>
                <p class="text-center" style="color: black;">Inovasi teknologi yang paling strategis untuk mendukung pengembangan komoditas adalah varietas unggul. Penggunaan varietas unggul suatu komoditas mempunyai dampak yang sangat luas, antara lain dapat berpengaruh terhadap efisiensi biaya dalam budi daya, peningkatan produksi dan mutu, serta pemanfaatan lahan-lahan marginal, sehingga dapat berdampak sosial dan ekonomi yang cukup nyata bagi petani. Selain itu, penggunaan varietas unggul merupakan teknologi yang relatif mudah diterima dan diterapkan oleh petani.</p>
                <br><br>
                <div class="row text-center">

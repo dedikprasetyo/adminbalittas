@@ -24,7 +24,7 @@
                <hr style="border-color: grey;margin-top: 10px;">
                <div class="row" id="Tebu" style="background-color: #eee;  margin-top:20px;">
                   <div class="col-sm-3 col-lg-12">
-                     <h4 style="color:rgb(242,97,5);font-size: 24px; margin-left: 35px;"><strong>Leaflet</strong></h4>
+                     <h4 style="font-family: Minion Pro; font-weight: bold;color:rgb(242,97,5);font-size: 24px; margin-left: 35px;"><strong>Leaflet</strong></h4>
                      <hr style="border-color: rgb(242,97,5);margin-top: -10px;">
                   </div>
                   <?php
@@ -50,7 +50,7 @@
             </div>
             <div class="col-sm-3 col-lg-3">
                <br>
-               <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
+               <h3 class="text-left" style="color:black;font-family: Minion Pro; font-weight: bold;">Pencarian</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
                   <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
@@ -64,7 +64,7 @@
                      </div>
                   </form>
                </div>
-               <h3 class="text-left" style="color:black;font-family: Monion pro">Varietas Unggul Baru</h3>
+               <h3 class="text-left" style="color:black;font-family: Monion pro;font-weight: bold;">Varietas Unggul Baru</h3>
                <hr style="border-color: grey;margin-top: -5px;">
                <?php foreach($varietas as $varside)
                   {

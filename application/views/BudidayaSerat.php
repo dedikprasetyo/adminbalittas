@@ -30,7 +30,7 @@
                      <div class="thumbnail" style=" border-radius: 5px; background-color: #eee;">
                         <div class="container-fluid">
                            <br>
-                           <h4 style="color:rgb(242,97,5);font-size: 24px;"><?php echo $cup->judul; ?></h4>
+                           <h4 style="font-family: Minion Pro; font-weight: bold;color:rgb(242,97,5);font-size: 20px;"><?php echo $cup->judul; ?></h4>
                            <p style="text-indent: 0.5in; text-align: justify;"><?php echo $cup->cuplikan_monograf; ?></p>
                            <p>Penulis : <b style="font-style:italic;"><?php echo $cup->penulis; ?></b></p>
 
@@ -101,7 +101,7 @@
             </div>
             <div class="col-sm-3 col-lg-3">
                <br>
-               <h3 class="text-left" style="color:black;font-family: Minion Pro">Pencarian</h3>
+               <h3 class="text-left" style="font-family: Minion Pro; font-weight: bold;color:black;font-family: Minion Pro">Pencarian</h3>
                <hr style="border-color: grey;margin-top: -8px;">
                <div class="container-fluid" style="background-color:rgba(28,69,26,0.9);border-radius: 5px;">
                   <form method="get" action="<?php echo base_url('index.php/pencarian')?>" style="margin-top: 15px; margin-bottom: 15px;">
@@ -115,7 +115,7 @@
                      </div>
                   </form>
                </div>
-               <h3 class="text-left" style="color:black;font-family: Monion pro">Varietas Unggul Baru</h3>
+               <h3 class="text-left" style="font-family: Minion Pro; font-weight: bold;color:black;">Varietas Unggul Baru</h3>
                <hr style="border-color: grey;margin-top: -5px;">
                <?php foreach($budidayavarietas as $varside)
                   {

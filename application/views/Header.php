@@ -178,34 +178,34 @@
 				    if(!empty($Judul)){
 			 		foreach($Judul as $jud) {
 			 			?>
-				     <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Komoditas <b><?php echo $jud->nama_serat;?></b>
+				     <h1 class="hidden-xs hidden-sm" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:12%;font-size:4vw;">Komoditas <b><?php echo $jud->nama_serat;?></b>
 				    </h1>
-				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Komoditas <b><?php echo $jud->nama_serat;?></b>
+				     <h1 class="hidden-md hidden-lg" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:6vw;font-size:4vw;">Komoditas <b><?php echo $jud->nama_serat;?></b>
 				    </h1>
 				    <?php } } else if(!empty($Judul2)){?>
 				    <?php foreach($Judul2 as $j) {?>
-				    <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Deskripsi Varietas <b><?php echo $j->nama_varietas;?></b>
+				    <h1 class="hidden-xs hidden-sm" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:12%;font-size:4vw;">Deskripsi Varietas <b><?php echo $j->nama_varietas;?></b>
 				    </h1>
-				     <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Deskripsi Varietas <b><?php echo $j->nama_varietas;?></b>
+				     <h1 class="hidden-md hidden-lg" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:6vw;font-size:4vw;">Deskripsi Varietas <b><?php echo $j->nama_varietas;?></b>
 				    </h1>
 				     <?php } }else if(!empty($JudulMono)){?>
 				     <?php foreach($JudulMono as $jm) {?>
-				       <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Budidaya <b><?php echo $jm->nama_serat; ?></b> </h1>	
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Budidaya <b><?php echo $jm->nama_serat; ?></b>
+				       <h1 class="hidden-xs hidden-sm" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:12%;font-size:4vw;">Budidaya <b><?php echo $jm->nama_serat; ?></b> </h1>	
+				       	<h1 class="hidden-md hidden-lg" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:6vw;font-size:4vw;">Budidaya <b><?php echo $jm->nama_serat; ?></b>
 				    </h1>
 				    <?php }} else if(!empty($JudulPencarian)){?>
-						 <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Pencarian</h1>
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Pencarian
+						 <h1 class="hidden-xs hidden-sm" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:12%;font-size:4vw;">Pencarian</h1>
+				       	<h1 class="hidden-md hidden-lg" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:6vw;font-size:4vw;">Pencarian
 				    </h1>
 				    <?php } else if(!empty($JudulBenih)){?>
-				    	 <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Benih</h1>
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Benih</h1>
+				    	 <h1 class="hidden-xs hidden-sm" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:12%;font-size:4vw;">Benih</h1>
+				       	<h1 class="hidden-md hidden-lg" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:6vw;font-size:4vw;">Benih</h1>
 				    <?php } else if(!empty($JudulLeaflet)){?>
-				     	<h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Leaflet</h1>
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Leaflet</h1>
+				     	<h1 class="hidden-xs hidden-sm" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:12%;font-size:4vw;">Leaflet</h1>
+				       	<h1 class="hidden-md hidden-lg" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:6vw;font-size:4vw;">Leaflet</h1>
 				    <?php } else{?>
-						<h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:4vw;">Alat dan Mesin</h1>
-				       	<h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:4vw;">Alat dan Mesin </h1>
+						<h1 class="hidden-xs hidden-sm" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:12%;font-size:4vw;">Alat dan Mesin</h1>
+				       	<h1 class="hidden-md hidden-lg" style="font-family: Minion Pro; color:#fece00; font-weight: lighter;margin-top:6vw;font-size:4vw;">Alat dan Mesin </h1>
 				    <?php } ?>
 				     <!-- <h1 class="hidden-md hidden-lg" style="margin-top:6vw;font-size:5vw;">Detail Varietas</h1> -->
 				    <!-- <h1 class="hidden-xs hidden-sm" style="margin-top:12%;font-size:5vw;">Monograf</h1> -->
